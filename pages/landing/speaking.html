@@ -35,6 +35,27 @@
         .book-button:hover {
             right: -50px;
         }
+        .iframe-container {
+            position: fixed;
+            right: 20px;
+            bottom: 60px;
+            width: 400px;
+            height: 600px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            z-index: 1000;
+            display: none;
+        }
+        .iframe-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
     </style>
 </head>
 <body class="day-theme bg-light text-dark">
@@ -74,7 +95,14 @@
                     <img src="../../images/headers-pages/speaker.png" alt="Speaking Engagements" class="img-fluid">
                 </div>
                 <div class="description bg-dark text-white p-3 rounded">
-                    <p>Details about speaking engagements... Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis minus unde quia nisi pariatur? Sapiente cum earum enim eos velit ut minus tempora obcaecati deleniti nemo fugit inventore, voluptatem ducimus quibusdam sint, eum incidunt? Dolor, doloribus provident. Optio expedita similique ratione voluptatibus deserunt, fugiat sequi officia eveniet, laboriosam, sit quibusdam beatae unde excepturi dolores ab! Itaque quidem, illum consequatur iste aliquid, distinctio quas quae aliquam quaerat sequi accusamus totam! Aspernatur laborum repellendus iure a consequuntur blanditiis excepturi doloremque deserunt aut eaque quae est quod enim, voluptates impedit eligendi illum, atque hic nisi. Assumenda numquam beatae delectus quibusdam sit facere maiores.</p>
+                    <h2 class="text-center my-4">Chess-Inspired Decision-Making for Forward-Thinking Teams</h2>
+                    <p class="lead">In a world overloaded with data and choices, the ability to think strategically is invaluable. Our speaking sessions bring the essence of chess — fast-paced analysis, strategic planning, and calm under pressure — directly to your organization. Learn how to move from option paralysis to a clear, measurable plan of action.</p>
+                    <ul class="list-unstyled my-4">
+                        <li class="mb-2"><strong>Tailored for Corporate Audiences:</strong> Perfect for managerial teams, development groups, and C-suite executives.</li>
+                        <li class="mb-2"><strong>Actionable Frameworks:</strong> Discover how to rapidly evaluate data, set goals, generate solutions, and make confident decisions.</li>
+                        <li class="mb-2"><strong>Proven Expertise:</strong> Sessions led by the 2024 Rhode Island State Champion, with real-world coaching experience and a passion for empowering teams.</li>
+                    </ul>
+                    <p class="text-center mt-4"><strong>Ready to level up your team’s decision-making skills?</strong><br /><a href="#" onclick="document.querySelector('.book-button').click(); return false;">Schedule a speaking engagement</a> and see the difference a chess mindset can make.</p>
                 </div>
             </section>
         </div>
@@ -108,17 +136,27 @@
             bookButton.innerText = "Need a Speaker?";
             bookButton.className = "book-button";
             bookButton.onclick = function() {
+                var iframeContainer = document.createElement("div");
+                iframeContainer.className = "iframe-container";
                 var iframe = document.createElement("iframe");
                 iframe.src = "/pages/forms/contact.html";
-                iframe.style.position = "fixed";
-                iframe.style.right = "20px";
-                iframe.style.bottom = "60px";
-                iframe.style.width = "400px";
-                iframe.style.height = "600px";
-                iframe.style.border = "1px solid #ddd";
-                iframe.style.borderRadius = "5px";
-                iframe.style.zIndex = "1000";
-                document.body.appendChild(iframe);
+                iframe.style.width = "100%";
+                iframe.style.height = "100%";
+                iframe.style.border = "none";
+                iframeContainer.appendChild(iframe);
+
+                var overlay = document.createElement("div");
+                overlay.className = "iframe-overlay";
+                overlay.onclick = function() {
+                    document.body.removeChild(iframeContainer);
+                    document.body.removeChild(overlay);
+                };
+
+                document.body.appendChild(iframeContainer);
+                document.body.appendChild(overlay);
+
+                iframeContainer.style.display = "block";
+                overlay.style.display = "block";
             };
             document.body.appendChild(bookButton);
         });
