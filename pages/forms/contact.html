@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Pawn Island</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .content {
+            flex: 1;
+        }
+    </style>
+</head>
+<body class="day-theme bg-light text-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
+        <a class="navbar-brand" href="#" id="brand-toggle">
+            <img src="../../images/brand-icons/logo-light.png" alt="Logo" class="logo day-logo">
+            <img src="../../images/brand-icons/logo-dark.png" alt="Logo" class="logo night-logo d-none">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="#about-me">About Me</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="#chess-coaching">Chess Coaching</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="#apparel-shop">Apparel Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="#speaking-engagements">Speaking Engagements</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <header class="header text-center bg-light w-100">
+        <h1 class="title text-dark">Contact Us</h1>
+    </header>
+    <div class="content">
+        <div class="container">
+            <section id="contact-form" class="my-5 text-dark" data-aos="fade-up">
+                <h2 class="text-center">Get in Touch</h2>
+                <form action="mailto:support@pawnislandacademy.com" method="post" enctype="text/plain">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="organization">Organization Name</label>
+                        <input type="text" class="form-control" id="organization" name="organization">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message (300 characters or less)</label>
+                        <textarea class="form-control" id="message" name="message" maxlength="300" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </section>
+        </div>
+    </div>
+    <footer class="footer bg-dark text-white w-100 text-center">
+        <p>Copyright 2024 Matthew H. Freeman</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/pawnislandapparel" target="_blank"><img src="../../images/social-icons/fb-night.png" alt="Facebook" class="social-icon day-logo"></a>
+            <a href="https://www.facebook.com/pawnislandapparel" target="_blank"><img src="../../images/social-icons/fb-day.png" alt="Facebook" class="social-icon night-logo d-none"></a>
+            <a href="https://www.x.com/raisethecurve" target="_blank"><img src="../../images/social-icons/x-logo-night.png" alt="X" class="social-icon day-logo"></a>
+            <a href="https://www.x.com/raisethecurve" target="_blank"><img src="../../images/social-icons/x-logo-day.png" alt="X" class="social-icon night-logo d-none"></a>
+            <a href="https://www.instagram.com/pawnislandapparel" target="_blank"><img src="../../images/social-icons/insta-universal.png" alt="Instagram" class="social-icon"></a>
+            <a href="https://pawnislandapparel.myshopify.com" target="_blank"><img src="../../images/social-icons/shopify-universal.png" alt="Shopify" class="social-icon"></a>
+            <a href="https://www.chess.com/member/femmetantra" target="_blank"><img src="../../images/social-icons/chess-universal.png" alt="Chess.com" class="social-icon"></a>
+            <a href="https://www.lichess.org/@/cintas" target="_blank"><img src="../../images/social-icons/lichess-night.png" alt="Lichess" class="social-icon day-logo"></a>
+            <a href="https://www.lichess.org/@/cintas" target="_blank"><img src="../../images/social-icons/lichess-day.png" alt="Lichess" class="social-icon night-logo d-none"></a>
+        </div>
+        <a href="/pages/forms/contact.html" class="text-white">Contact Email</a>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>
