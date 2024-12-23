@@ -9,13 +9,63 @@
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- ...existing code... -->
+    <style>
+        /* Add styles for the jump to top button */
+        .jump-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #dd3649;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+        .jump-to-top:hover {
+            background-color: #c12e42;
+        }
+        .shop-now-btn {
+            background-color: transparent; /* Transparent background */
+            color: #ffffff; /* Default text color */
+            border: 2px solid #218838; /* Border to maintain button shape */
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            margin-left: 10px; /* Space between logo and button */
+        }
+        .shop-now-btn img {
+            margin-right: 10px;
+        }
+        .day-theme .shop-now-btn {
+            color: #000000; /* Black text for day theme */
+            border-color: #000000; /* Black border for day theme */
+        }
+        .night-theme .shop-now-btn {
+            color: #ffffff; /* White text for night theme */
+            border-color: #ffffff; /* White border for night theme */
+        }
+    </style>
 </head>
 <body class="day-theme bg-light text-dark">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
-        <a class="navbar-brand" href="#" id="brand-toggle">
+        <a class="navbar-brand d-flex align-items-center" href="#" id="brand-toggle">
             <img src="images/brand-icons/logo-light.png" alt="Logo" class="logo day-logo">
             <img src="images/brand-icons/logo-dark.png" alt="Logo" class="logo night-logo d-none">
+            <a class="shop-now-btn" href="https://pawnisland.myshopify.com" target="_blank">
+                <img src="images/social-icons/shopify-universal.png" alt="Shopify" width="20" height="20">
+                Shop Now
+            </a>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -48,7 +98,7 @@
                 <img src="images/headers-pages/coach.png" alt="Chess Coaching" class="img-fluid">
             </div>
             <div class="description bg-dark text-white p-3 rounded">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis minus unde quia nisi pariatur? Sapiente cum earum enim eos velit ut minus tempora obcaecati deleniti nemo fugit inventore, voluptatem ducimus quibusdam sint, eum incidunt? Dolor, doloribus provident. Optio expedita similique ratione voluptatibus deserunt, fugiat sequi officia eveniet, laboriosam, sit quibusdam beatae unde excepturi dolores ab! Itaque quidem, illum consequatur iste aliquid, distinctio quas quae aliquam quaerat sequi accusamus totam! Aspernatur laborum repellendus iure a consequuntur blanditiis excepturi doloremque deserunt aut eaque quae est quod enim, voluptates impedit eligendi illum, atque hic nisi. Assumenda numquam beatae delectus quibusdam sit facere maiores.</p>
+                <p>Unlock your potential with personalized chess coaching from a seasoned expert. Whether you're a beginner or an advanced player, our tailored sessions will help you master the game and achieve your goals. Join us and elevate your chess skills to new heights.</p>
                 <a href="/pages/landing/coaching.html" class="btn btn-primary mt-3">Learn More</a>
             </div>
         </section>
@@ -61,8 +111,9 @@
                 <img src="images/headers-pages/supplier.png" alt="Apparel Shop" class="img-fluid">
             </div>
             <div class="description bg-dark text-white p-3 rounded">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos quasi officiis nam. Enim, magnam asperiores perferendis cupiditate explicabo fugit hic esse quam adipisci ullam possimus deserunt doloribus autem distinctio cum, aut illum, rerum fuga ex. Voluptate neque impedit explicabo molestias assumenda! Vel sequi fuga debitis ratione, maiores accusantium dolores dolor doloribus deserunt ad iusto et eligendi cumque eaque veritatis maxime amet labore commodi enim ut incidunt tempore? Dicta est, culpa id non, illo suscipit sunt perferendis alias dolore necessitatibus laudantium. Aperiam quaerat omnis repudiandae doloremque, magni nulla voluptatem voluptate officia libero vitae error atque vel pariatur, exercitationem doloribus corrupti necessitatibus.</p>
-                <a href="/pages/landing/apparel.html" class="btn btn-primary mt-3">Shop Now</a>
+                <p>Welcome to a different kind of apparel experience — one that marries art, personal expression, and authenticity. Our designs aren’t churned out by mega-corporations; they’re created with a passion for standing out in a world that rewards conformity. Think of our pieces as subtle statements — iykyk.</p>
+                <p>Explore our latest collection and wear who you are with pride. Let’s make a statement together.</p>
+                <a href="/pages/landing/apparel.html" class="btn btn-primary mt-3">Learn More</a>
             </div>
         </section>
         <!-- Divider -->
@@ -74,8 +125,8 @@
                 <img src="images/headers-pages/speaker.png" alt="Speaking Engagements" class="img-fluid">
             </div>
             <div class="description bg-dark text-white p-3 rounded">
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut dolore ipsam dicta, veniam natus voluptatibus? Adipisci delectus consectetur consequuntur sed, libero voluptas, praesentium fuga deleniti iste enim at iure veniam. Rem nemo voluptas vero asperiores nulla accusamus voluptates, veniam sunt odit aperiam ullam sequi, officiis laborum, repudiandae est perferendis? Natus nostrum animi quas, maiores quod magnam accusantium molestiae possimus accusamus mollitia cum voluptatibus, sequi laborum ducimus iure iusto perferendis neque fugiat vero quae nam repellendus libero placeat sapiente? Dolore illo debitis iusto eius reprehenderit reiciendis dolores. Nam ullam, ab aut hic facilis modi, esse dolorum quas dolorem, quo nemo voluptate.</p>
-                <a href="/pages/landing/speaking.html" class="btn btn-primary mt-3">Book Now</a>
+                <p>In a world overloaded with data and choices, the ability to think strategically is invaluable. Our speaking sessions bring the essence of chess — fast-paced analysis, strategic planning, and calm under pressure — directly to your organization. Learn how to move from option paralysis to a clear, measurable plan of action.</p>
+                <p>Ready to level up your team’s decision-making skills? <a href="/pages/landing/speaking.html" class="btn btn-primary mt-3">Learn More</a></p>
             </div>
         </section>
         <!-- Divider -->
@@ -87,11 +138,14 @@
                 <img src="images/headers-pages/freeman-1.jpg" alt="About Me" class="img-fluid">
             </div>
             <div class="description bg-dark text-white p-3 rounded">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, qui, reiciendis at eius, accusantium similique numquam reprehenderit culpa enim repellendus illo harum eligendi. Sit, ipsum beatae repellat culpa officiis vel recusandae dignissimos facere sunt? Atque ad non, numquam minima quae eum excepturi explicabo molestias rerum quaerat possimus recusandae suscipit ullam reprehenderit quos aspernatur sequi culpa consequuntur tenetur ipsa harum. Dicta quaerat labore harum error assumenda earum! Est blanditiis commodi recusandae minus omnis? Accusamus earum molestias perferendis voluptatum maiores laudantium animi dolorem deserunt expedita! At, iure! Nobis maxime impedit doloribus quia dolor odio laboriosam nisi. Facere esse ipsa voluptatem consectetur maxime!</p>
-                <a href="/pages/landing/freeman.html" class="btn btn-primary mt-3">Read More</a>
+                <p>Hi, I’m Matt—founder of Pawn Island, chess coach for over 20 years, poet at heart, and proud Rhode Island State Chess Champion. My journey with chess began as a child under the guidance of my mentor, Mike Foycik. In 2003, I claimed the Virginia State Grade 12 Championship, and just a few years later, at age 20, I defeated my first International Master in a classical tournament.</p>
+                <p>My father once told me, “If you can master one thing, you can master anything.” This process of mastery taught me to understand my own mind in a focused environment. I’ve had the privilege of coaching a wide range of students, from young beginners to varsity teams. That dream lives on with Pawn Island, a line of artful, understated apparel for those who value self-expression over conformity.</p>
+                <a href="/pages/landing/freeman.html" class="btn btn-primary mt-3">Learn More</a>
             </div>
         </section>
     </div>
+    <!-- Jump to Top Button -->
+    <button class="jump-to-top" id="jumpToTopBtn" title="Go to top">↑</button>
     <!-- Custom footer -->
     <footer class="footer bg-dark text-white w-100 text-center">
         <p>Copyright 2024 Matthew H. Freeman</p>
@@ -100,6 +154,8 @@
             <a href="https://www.facebook.com/pawnislandapparel" target="_blank"><img src="images/social-icons/fb-day.png" alt="Facebook" class="social-icon night-logo d-none"></a>
             <a href="https://www.x.com/raisethecurve" target="_blank"><img src="images/social-icons/x-logo-night.png" alt="X" class="social-icon day-logo"></a>
             <a href="https://www.x.com/raisethecurve" target="_blank"><img src="images/social-icons/x-logo-day.png" alt="X" class="social-icon night-logo d-none"></a>
+            <a href="https://truthsocial.com/@raisethecurve" target="_blank"><img src="images/social-icons/truth-night.png" alt="Truth Social" class="social-icon day-logo"></a>
+            <a href="https://truthsocial.com/@raisethecurve" target="_blank"><img src="images/social-icons/truth-day.png" alt="Truth Social" class="social-icon night-logo d-none"></a>
             <a href="https://www.instagram.com/pawnislandapparel" target="_blank"><img src="images/social-icons/insta-universal.png" alt="Instagram" class="social-icon"></a>
             <a href="https://pawnislandapparel.myshopify.com" target="_blank"><img src="images/social-icons/shopify-universal.png" alt="Shopify" class="social-icon"></a>
             <a href="https://www.chess.com/member/femmetantra" target="_blank"><img src="images/social-icons/chess-universal.png" alt="Chess.com" class="social-icon"></a>
@@ -120,6 +176,25 @@
     <script src="//widget.simplybook.me/v2/widget/widget.js" type="text/javascript"></script>
     <script type="text/javascript">
         var widget = new SimplybookWidget({"widget_type":"button","url":"https:\/\/pawnisland.simplybook.me","theme":"default","theme_settings":{"timeline_hide_unavailable":"1","hide_past_days":"0","timeline_show_end_time":"0","timeline_modern_display":"as_slots","sb_base_color":"#dd3649","display_item_mode":"block","booking_nav_bg_color":"#dd3649","body_bg_color":"#f2f2f2","sb_review_image":"","dark_font_color":"#474747","light_font_color":"#f5fcff","btn_color_1":"#dd3649","sb_company_label_color":"#552f34","hide_img_mode":"0","show_sidebar":"1","sb_busy":"#c7b3b3","sb_available":"#d6ebff"},"timeline":"modern","datepicker":"top_calendar","is_rtl":false,"app_config":{"clear_session":0,"allow_switch_to_ada":0,"predefined":[]},"button_title":"Book Lessons","button_background_color":"#dd3649","button_text_color":"#ffffff","button_position":"right","button_position_offset":"55%"});
+    </script>
+    <script>
+        // Get the button
+        var jumpToTopBtn = document.getElementById("jumpToTopBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                jumpToTopBtn.style.display = "block";
+            } else {
+                jumpToTopBtn.style.display = "none";
+            }
+        };
+
+        // When the user clicks on the button, scroll to the top of the document
+        jumpToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
     </script>
 </body>
 </html>

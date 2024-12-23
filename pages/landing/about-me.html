@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../css/navbar.css">
     <link rel="stylesheet" href="../../css/footer.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/accordion.css">
     <style>
         html, body {
             height: 100%;
@@ -52,13 +53,61 @@
             margin: 0 auto;
             max-width: 100%;
         }
+        /* Add styles for the jump to top button */
+        .jump-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #dd3649;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+        }
+        .jump-to-top:hover {
+            background-color: #c12e42;
+        }
+        .shop-now-btn {
+            background-color: transparent; /* Transparent background */
+            color: #ffffff; /* Default text color */
+            border: 2px solid #218838; /* Border to maintain button shape */
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            margin-left: 10px; /* Space between logo and button */
+        }
+        .shop-now-btn img {
+            margin-right: 10px;
+        }
+        .day-theme .shop-now-btn {
+            color: #000000; /* Black text for day theme */
+            border-color: #000000; /* Black border for day theme */
+        }
+        .night-theme .shop-now-btn {
+            color: #ffffff; /* White text for night theme */
+            border-color: #ffffff; /* White border for night theme */
+        }
     </style>
 </head>
 <body class="day-theme bg-light text-dark">
     <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
-        <a class="navbar-brand" href="#" id="brand-toggle">
+        <a class="navbar-brand d-flex align-items-center" href="#" id="brand-toggle">
             <img src="../../images/brand-icons/logo-light.png" alt="Logo" class="logo day-logo">
             <img src="../../images/brand-icons/logo-dark.png" alt="Logo" class="logo night-logo d-none">
+            <a class="shop-now-btn" href="https://pawnisland.myshopify.com" target="_blank">
+                <img src="../../images/social-icons/shopify-universal.png" alt="Shopify" width="20" height="20">
+                Shop Now
+            </a>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -103,149 +152,14 @@
                 <div class="header-image-container">
                     <img src="../../images/headers-pages/projects-header2.webp" alt="Projects" class="img-fluid">
                 </div>
-                <div class="row mt-4">
-                    <div class="col-md-4 mb-4">
-                        <div class="card project-card">
-                            <img src="../../images/assets/antifish-logo.png" alt="AntiFish Chess Engine Development">
-                            <div class="card-body project-card-body">
-                                <h5 class="card-title">AntiFish Chess Engine Development</h5>
-                                <p><strong>Role:</strong> Founding Member and Lead Data Analyst</p>
-                                <p><strong>Duration:</strong> 2018-2019</p>
-                                <h6>Project Overview:</h6>
-                                <p>AntiFish is a neural network-based chess engine developed by Cscuile, designed to identify and exploit weaknesses in traditional engines like Stockfish. Built upon the Leela Chess Zero (Lc0) framework, AntiFish aimed to enhance neural network performance against classical alpha-beta search engines.</p>
-                                <p>AntiFish was Lc0, trained specifically to exploit weaknesses in Stockfish. AntiFish was trained from 96,308 games (As of AntiFish Mark 289) of Stockfish 11 Dev (77k Nodes) vs AntiFish Mark 25 and Leela ID 11258 (800 Nodes), with temperature. These games are then used to train off of ID 32425 with a heavy focus on policy, and a learning rate of 0.00002. (Up to Mark 125 Only)</p>
-                                <h6>Key Contributions:</h6>
-                                <ul>
-                                    <li>Training Data Analysis: Conducted comprehensive analyses of training games to evaluate and compare the performance of successive engine generations, both statistically and analytically.</li>
-                                    <li>Synthetic Data Generation: Proposed and worked with lead engineer to implemented the innovative use of Stockfish to generate high-quality synthetic training data, enhancing the robustness of the neural network's learning process.</li>
-                                    <li>Collaborated with leading engineers and theoreticians to create new benchmarking test suites for chess engines.</li>
-                                    <li>Project Evolution: Played a pivotal role in the conceptualization and development of DarkQueen, a GPU-based chess engine forked from AntiFish, to further explore and validate advanced machine learning applications in chess.</li>
-                                    <li>Research Validation: Contributed to efforts aimed at replicating and extending the proof-of-concept experiments conducted by Google DeepMind with AlphaZero, focusing on the hypothesis that higher-quality data could outperform random initialization in neural network training.</li>
-                                </ul>
-                                <h6>Achievements:</h6>
-                                <ul>
-                                    <li>Enhanced the performance and strategic capabilities of neural network-based chess engines through innovative training methodologies.</li>
-                                    <li>Advanced the understanding of synthetic data's role in machine learning, particularly within the domain of computer chess.</li>
-                                    <li>Contributed to the development of competitive chess engines that participated in prestigious tournaments, including Chess.com's Computer Chess Championship.</li>
-                                    <li>Finished clear 1st place in the CCC6 Winter Classic Stage 1 (5|2).</li>
-                                    <li>Finished clear 4th place in the CCC8 Deep Dive (15/5)</li>
-                                    <img src="../../images/assets/cccc8-standings.png" alt="CCCC8 Standings" class="img-fluid mt-2">
-                                </ul>
-                                <h6>Technologies Used:</h6>
-                                <ul>
-                                    <li>Neural Networks</li>
-                                    <li>Machine Learning</li>
-                                    <li>Python</li>
-                                    <li>TensorFlow/PyTorch</li>
-                                    <li>Chess Engine Frameworks (Lc0, Stockfish)</li>
-                                </ul>
-                                <h6>For a demonstration of AntiFish's capabilities, you may refer to the following match:</h6>
-                                <p>CCC 7: Blitz Bonanza Final (5|2) - AntiFish vs Stockfish</p>
-                                <iframe width="100%" height="315" src="https://www.youtube.com/embed/v64GgnI_B40" frameborder="0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card project-card">
-                            <img src="../../images/assets/DarkQueen_Banner.png" alt="DarkQueen Chess Engine Development">
-                            <div class="card-body project-card-body">
-                                <h5 class="card-title">DarkQueen Chess Engine Development</h5>
-                                <p><strong>Role:</strong> Founding Member and Lead Data Analyst</p>
-                                <p><strong>Duration:</strong> 2019–2020</p>
-                                <h6>Project Overview:</h6>
-                                <p>DarkQueen is a GPU-accelerated neural network chess engine developed to advance machine learning applications in chess. Evolving from its predecessors, AntiFish and BetaOne, DarkQueen aimed to validate the hypothesis that high-quality training data extracted from high-level (2400+) human games could enhance engine performance beyond traditional random initialization methods.</p>
-                                <p>Dark Queen makes use of the Lc0 binary. It began as a project to observe how q-learning affects the value head of a network, and is still in its early development stages. It is currently trained completely using human online games.</p>
-                                <h6>Key Contributions:</h6>
-                                <ul>
-                                    <li>Training Data Analysis: Conducted comprehensive analyses of training games to evaluate and compare the performance of successive engine generations, both statistically and analytically.</li>
-                                    <li>Benchmarking Development: Worked alongside engineers and theoreticians to create new benchmarking test suites for chess engines, facilitating more accurate performance assessments.</li>
-                                    <li>Project Evolution: Played a pivotal role in transitioning from CPU-based to GPU-based architecture, enhancing computational efficiency and enabling more complex neural network models.</li>
-                                    <li>Research Validation: Contributed to efforts replicating and extending Google DeepMind's AlphaZero experiments, focusing on the impact of high-quality data in neural network training.</li>
-                                </ul>
-                                <h6>Achievements:</h6>
-                                <ul>
-                                    <li>Enhanced the strategic capabilities of neural network-based chess engines through innovative training methodologies.</li>
-                                    <li>Advanced the understanding of high-quality human data's role in machine learning within computer chess.</li>
-                                    <li>Developed a competitive chess engine that participated in prestigious tournaments, including Chess.com's Computer Chess Championship.</li>
-                                    <li>Achieved a peak rating of 3458.5 on Chess.com, reflecting significant advancements in engine strength.</li>
-                                </ul>
-                                <h6>Technologies Used:</h6>
-                                <ul>
-                                    <li>Neural Networks</li>
-                                    <li>Machine Learning</li>
-                                    <li>Python</li>
-                                    <li>TensorFlow/PyTorch</li>
-                                    <li>Chess Engine Frameworks (Lc0, Stockfish)</li>
-                                </ul>
-                                <h6>For a demonstration of DarkQueen's capabilities, you may refer to the following match:</h6>
-                                <p>CCC 11 Qualification DarkQueen vs. Laser</p>
-                                <iframe width="100%" height="315" src="https://www.youtube.com/embed/oixQDc0WEhk" frameborder="0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card project-card">
-                            <img src="../../images/headers-pages/projects-header.jpg" alt="Project 3">
-                            <div class="card-body project-card-body">
-                                <h5 class="card-title">Project 3</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card project-card">
-                            <img src="../../images/headers-pages/projects-header.jpg" alt="Project 4">
-                            <div class="card-body project-card-body">
-                                <h5 class="card-title">Project 4</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card project-card">
-                            <img src="../../images/headers-pages/projects-header.jpg" alt="Project 5">
-                            <div class="card-body project-card-body">
-                                <h5 class="card-title">Project 5</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <div class="card project-card">
-                            <img src="../../images/headers-pages/projects-header.jpg" alt="Project 6">
-                            <div class="card-body project-card-body">
-                                <h5 class="card-title">Project 6</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section id="education" class="my-5 text-dark" data-aos="fade-up">
-                <div class="header-image-container">
-                    <img src="../../images/headers-pages/coach-2.png" alt="Education" class="img-fluid">
-                </div>
-                <div class="description bg-dark text-white p-3 rounded">
-                    <h2 class="text-center">Education</h2>
-                    <p>Details about education... Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis minus unde quia nisi pariatur? Sapiente cum earum enim eos velit ut minus tempora obcaecati deleniti nemo fugit inventore, voluptatem ducimus quibusdam sint, eum incidunt? Dolor, doloribus provident. Optio expedita similique ratione voluptatibus deserunt, fugiat sequi officia eveniet, laboriosam, sit quibusdam beatae unde excepturi dolores ab! Itaque quidem, illum consequatur iste aliquid, distinctio quas quae aliquam quaerat sequi accusamus totam! Aspernatur laborum repellendus iure a consequuntur blanditiis excepturi doloremque deserunt aut eaque quae est quod enim, voluptates impedit eligendi illum, atque hic nisi. Assumenda numquam beatae delectus quibusdam sit facere maiores.</p>
-                </div>
-            </section>
-            <section id="work-experience" class="my-5 text-dark" data-aos="fade-up">
-                <div class="header-image-container">
-                    <img src="../../images/headers-pages/chess-board.png".jpg" alt="Work Experience" class="img-fluid">
-                </div>
-                <div class="description bg-dark text-white p-3 rounded">
-                    <h2 class="text-center">Work Experience</h2>
-                    <p>Details about work experience... Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis minus unde quia nisi pariatur? Sapiente cum earum enim eos velit ut minus tempora obcaecati deleniti nemo fugit inventore, voluptatem ducimus quibusdam sint, eum incidunt? Dolor, doloribus provident. Optio expedita similique ratione voluptatibus deserunt, fugiat sequi officia eveniet, laboriosam, sit quibusdam beatae unde excepturi dolores ab! Itaque quidem, illum consequatur iste aliquid, distinctio quas quae aliquam quaerat sequi accusamus totam! Aspernatur laborum repellendus iure a consequuntur blanditiis excepturi doloremque deserunt aut eaque quae est quod enim, voluptates impedit eligendi illum, atque hic nisi. Assumenda numquam beatae delectus quibusdam sit facere maiores.</p>
-                </div>
-            </section>
-            <section id="accomplishments" class="my-5 text-dark" data-aos="fade-up">
-                <div class="header-image-container">
-                    <img src="../../images/headers-pages/freeman-2.jpg" alt="Accomplishments" class="img-fluid">
-                </div>
-                <div class="description bg-dark text-white p-3 rounded">
-                    <h2 class="text-center">Accomplishments</h2>
-                    <p>Details about accomplishments... Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis minus unde quia nisi pariatur? Sapiente cum earum enim eos velit ut minus tempora obcaecati deleniti nemo fugit inventore, voluptatem ducimus quibusdam sint, eum incidunt? Dolor, doloribus provident. Optio expedita similique ratione voluptatibus deserunt, fugiat sequi officia eveniet, laboriosam, sit quibusdam beatae unde excepturi dolores ab! Itaque quidem, illum consequatur iste aliquid, distinctio quas quae aliquam quaerat sequi accusamus totam! Aspernatur laborum repellendus iure a consequuntur blanditiis excepturi doloremque deserunt aut eaque quae est quod enim, voluptates impedit eligendi illum, atque hic nisi. Assumenda numquam beatae delectus quibusdam sit facere maiores.</p>
+                <div class="accordion mt-4" id="projectsAccordion">
+                    <!-- Projects will be dynamically inserted here -->
                 </div>
             </section>
         </div>
     </div>
+    <!-- Jump to Top Button -->
+    <button class="jump-to-top" id="jumpToTopBtn" title="Go to top">↑</button>
     <footer class="footer bg-dark text-white w-100 text-center">
         <p>Copyright 2024 Matthew H. Freeman</p>
         <div class="social-icons">
@@ -253,6 +167,8 @@
             <a href="https://www.facebook.com/pawnislandapparel" target="_blank"><img src="../../images/social-icons/fb-day.png" alt="Facebook" class="social-icon night-logo d-none"></a>
             <a href="https://www.x.com/raisethecurve" target="_blank"><img src="../../images/social-icons/x-logo-night.png" alt="X" class="social-icon day-logo"></a>
             <a href="https://www.x.com/raisethecurve" target="_blank"><img src="../../images/social-icons/x-logo-day.png" alt="X" class="social-icon night-logo d-none"></a>
+            <a href="https://truthsocial.com/@raisethecurve" target="_blank"><img src="../../images/social-icons/truth-night.png" alt="Truth Social" class="social-icon day-logo"></a>
+            <a href="https://truthsocial.com/@raisethecurve" target="_blank"><img src="../../images/social-icons/truth-day.png" alt="Truth Social" class="social-icon night-logo d-none"></a>
             <a href="https://www.instagram.com/pawnislandapparel" target="_blank"><img src="../../images/social-icons/insta-universal.png" alt="Instagram" class="social-icon"></a>
             <a href="https://pawnislandapparel.myshopify.com" target="_blank"><img src="../../images/social-icons/shopify-universal.png" alt="Shopify" class="social-icon"></a>
             <a href="https://www.chess.com/member/femmetantra" target="_blank"><img src="../../images/social-icons/chess-universal.png" alt="Chess.com" class="social-icon"></a>
@@ -269,9 +185,67 @@
         AOS.init();
     </script>
     <script src="../../js/script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('../../data/projects.json')
+                .then(response => response.json())
+                .then(data => {
+                    const projectsAccordion = document.getElementById('projectsAccordion');
+                    data.projects.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    data.projects.forEach(project => {
+                        const card = document.createElement('div');
+                        card.className = 'card';
+                        card.innerHTML = `
+                            <div class="card-header collapsed" id="heading${project.id}" data-toggle="collapse" data-target="#collapse${project.id}" aria-expanded="false" aria-controls="collapse${project.id}">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left" type="button">
+                                        ${project.title}
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapse${project.id}" class="collapse" aria-labelledby="heading${project.id}" data-parent="#projectsAccordion">
+                                <div class="card-body">
+                                    <img src="${project.image}" alt="${project.title}" class="img-fluid mb-3">
+                                    <p><strong>Role:</strong> ${project.role}</p>
+                                    <p><strong>Duration:</strong> ${project.duration}</p>
+                                    <h6>Project Overview:</h6>
+                                    <p>${project.overview}</p>
+                                    <h6>Key Contributions:</h6>
+                                    <ul>${project.contributions.map(contribution => `<li>${contribution}</li>`).join('')}</ul>
+                                    <h6>Achievements:</h6>
+                                    <ul>${project.achievements.map(achievement => `<li>${achievement}</li>`).join('')}</ul>
+                                    <h6>Technologies Used:</h6>
+                                    <ul>${project.technologies.map(technology => `<li>${technology}</li>`).join('')}</ul>
+                                </div>
+                            </div>
+                        `;
+                        projectsAccordion.appendChild(card);
+                    });
+                });
+        });
+    </script>
     <script src="//widget.simplybook.me/v2/widget/widget.js" type="text/javascript"></script>
     <script type="text/javascript">
         var widget = new SimplybookWidget({"widget_type":"button","url":"https:\/\/pawnisland.simplybook.me","theme":"default","theme_settings":{"timeline_hide_unavailable":"1","hide_past_days":"0","timeline_show_end_time":"0","timeline_modern_display":"as_slots","sb_base_color":"#dd3649","display_item_mode":"block","booking_nav_bg_color":"#dd3649","body_bg_color":"#f2f2f2","sb_review_image":"","dark_font_color":"#474747","light_font_color":"#f5fcff","btn_color_1":"#dd3649","sb_company_label_color":"#552f34","hide_img_mode":"0","show_sidebar":"1","sb_busy":"#c7b3b3","sb_available":"#d6ebff"},"timeline":"modern","datepicker":"top_calendar","is_rtl":false,"app_config":{"clear_session":0,"allow_switch_to_ada":0,"predefined":[]},"button_title":"Book Lessons","button_background_color":"#dd3649","button_text_color":"#ffffff","button_position":"right","button_position_offset":"55%"});
+    </script>
+    <script>
+        // Get the button
+        var jumpToTopBtn = document.getElementById("jumpToTopBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                jumpToTopBtn.style.display = "block";
+            } else {
+                jumpToTopBtn.style.display = "none";
+            }
+        };
+
+        // When the user clicks on the button, scroll to the top of the document
+        jumpToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
     </script>
 </body>
 </html>
