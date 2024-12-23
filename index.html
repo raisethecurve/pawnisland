@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- ...existing code... -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pawn Island - Chess Coaching, Apparel, and Speaking Engagements</title>
+    <meta name="description" content="Pawn Island offers personalized chess coaching, unique apparel, and engaging speaking sessions. Join us to elevate your skills and express your individuality.">
+    <meta name="keywords" content="chess, coaching, apparel, speaking engagements, blog">
+    <meta property="og:title" content="Pawn Island - Chess & Apparel">
+    <meta property="og:description" content="Elevate your chess & style with Pawn Island's coaching, apparel, and speaking engagements.">
+    <meta property="og:image" content="https://pawnislandacademy.com/images/og-image.jpg">
+    <meta property="og:url" content="https://pawnislandacademy.com.com">
+    <link rel="canonical" href="https://pawnislandacademy.com/index.html">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/navbar.css">
@@ -9,6 +18,13 @@
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- ...existing code... -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T12VEHM2PY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-T12VEHM2PY');
+    </script>
     <style>
         /* Add styles for the jump to top button */
         .jump-to-top {
@@ -60,8 +76,8 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
         <a class="navbar-brand d-flex align-items-center" href="#" id="brand-toggle">
-            <img src="images/brand-icons/logo-light.png" alt="Logo" class="logo day-logo">
-            <img src="images/brand-icons/logo-dark.png" alt="Logo" class="logo night-logo d-none">
+            <img src="images/brand-icons/logo-light.png" alt="Pawn Island Logo" class="logo day-logo">
+            <img src="images/brand-icons/logo-dark.png" alt="Pawn Island Logo" class="logo night-logo d-none">
             <a class="shop-now-btn" href="https://pawnisland.myshopify.com" target="_blank">
                 <img src="images/social-icons/shopify-universal.png" alt="Shopify" width="20" height="20">
                 Shop Now
@@ -86,7 +102,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center text-dark" href="https://chess.com/blog/squarethecurve" target="_blank">
-                        <img src="images/social-icons/chess-universal.png" alt="Chess.com" width="20" height="20" class="mr-2">
+                        <img src="images/social-icons/chess-universal.png" alt="Chess.com Blog" width="20" height="20" class="mr-2">
                         Blog
                     </a>
                 </li>
@@ -184,6 +200,7 @@
 
         // When the user clicks on the button, scroll to the top of the document
         jumpToTopBtn.onclick = function() {
+            document.documentElement.scrollTop = 0;
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
         };
