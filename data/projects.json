@@ -27,7 +27,15 @@
                 "Python"
             ],
             "keywords": ["AI", "business", "optimization"],
-            "seoDescription": "AI-driven estate auction optimization project."
+            "seoDescription": "AI-driven estate auction optimization project.",
+            "structuredData": {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "Auction House Project",
+                "description": "AI-driven estate auction optimization project.",
+                "url": "https://pawnislandacademy.com/projects/auctionhouse",
+                "keywords": ["AI", "business", "optimization"]
+            }
         },
         {
             "id": "OSCA",
@@ -53,7 +61,14 @@
                 "SwissSys"
             ],
             "keywords": ["chess", "community", "education"],
-            "seoDescription": "Strategic consulting and community-focused chess initiatives."
+            "seoDescription": "Strategic consulting and community-focused chess initiatives.",
+            "structuredData": {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "Ocean State Chess Association",
+                "description": "Strategic consulting and community-focused chess initiatives.",
+                "url": "https://pawnislandacademy.com/projects/osca"
+            }
         },
         {
             "id": "TournamentDirector",
@@ -78,7 +93,8 @@
             "technologies": [
                 "SwissSys"
             ],
-            "keywords": ["chess", "tournament", "organization"]
+            "keywords": ["chess", "tournament", "organization"],
+            "seoDescription": "Organizing and overseeing US Chess tournaments to ensure fair play."
         },
         {
             "id": "DarkQueen",
@@ -107,7 +123,8 @@
                 "TensorFlow/PyTorch",
                 "Chess Engine Frameworks (Lc0, Stockfish)"
             ],
-            "keywords": ["chess", "machine learning", "neural networks"]
+            "keywords": ["chess", "machine learning", "neural networks"],
+            "seoDescription": "Developing a GPU-accelerated neural network chess engine."
         },
         {
             "id": "AntiFish",
@@ -138,7 +155,8 @@
                 "TensorFlow/PyTorch",
                 "Chess Engine Frameworks (Lc0, Stockfish)"
             ],
-            "keywords": ["chess", "neural networks", "synthetic data"]
+            "keywords": ["chess", "neural networks", "synthetic data"],
+            "seoDescription": "Enhancing chess engine performance with neural networks and synthetic data."
         },
         {
             "id": "Literation",
@@ -167,7 +185,8 @@
                 "Editorial Tools",
                 "Social Media Platforms"
             ],
-            "keywords": ["literary journal", "creativity", "emerging talent"]
+            "keywords": ["literary journal", "creativity", "emerging talent"],
+            "seoDescription": "Revitalizing a literary journal to support emerging poets and writers."
         },
         {
             "id": "BeTheWhale",
@@ -193,7 +212,8 @@
                 "Online Collaboration Tools",
                 "Social Media Platforms"
             ],
-            "keywords": ["poetry", "community", "collaboration"]
+            "keywords": ["poetry", "community", "collaboration"],
+            "seoDescription": "Creating a Discord-based community for poets to collaborate and grow."
         },
         {
             "id": "RaiseTheCurve",
@@ -220,7 +240,8 @@
             "technologies": [
                 "Social Media Platforms"
             ],
-            "keywords": ["poetry", "blog", "community"]
+            "keywords": ["poetry", "blog", "community"],
+            "seoDescription": "Managing a widely recognized poetry blog to engage a global literary audience."
         }
     ]
 }

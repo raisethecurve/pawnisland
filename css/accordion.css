@@ -22,6 +22,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    /* aria-expanded should be handled in HTML, not CSS */
 }
 
 .accordion .card-header:focus {

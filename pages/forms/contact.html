@@ -38,6 +38,34 @@
             flex: 1;
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.querySelector('form[aria-label="Contact Form"]');
+            form.addEventListener('submit', function(event) {
+                var email = document.getElementById('email').value;
+                var phone = document.getElementById('phone').value;
+                var message = document.getElementById('message').value;
+
+                var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                var phonePattern = /^\d{10}$/;
+
+                if (!emailPattern.test(email)) {
+                    alert('Please enter a valid email address.');
+                    event.preventDefault();
+                }
+
+                if (!phonePattern.test(phone)) {
+                    alert('Please enter a valid 10-digit phone number.');
+                    event.preventDefault();
+                }
+
+                if (message.length > 300) {
+                    alert('Message must be 300 characters or less.');
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
 </head>
 <body class="day-theme bg-light text-dark">
     <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
@@ -72,10 +100,10 @@
         <div class="container">
             <section id="contact-form" class="my-5 text-dark" data-aos="fade-up">
                 <h2 class="text-center">Get in Touch</h2>
-                <form action="mailto:support@pawnislandacademy.com" method="post" enctype="text/plain">
+                <form action="mailto:support@pawnislandacademy.com" method="post" enctype="text/plain" aria-label="Contact Form">
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
+                        <input type="text" class="form-control" id="name" name="name" required aria-required="true">
                     </div>
                     <div class="form-group">
                         <label for="organization">Organization Name</label>
@@ -83,17 +111,18 @@
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <input type="email" class="form-control" id="email" name="email" required aria-required="true">
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
-                        <input type="tel" class="form-control" id="phone" name="phone">
+                        <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{10}" aria-describedby="phoneHelp">
+                        <small id="phoneHelp" class="form-text text-muted">Enter 10-digit phone number.</small>
                     </div>
                     <div class="form-group">
                         <label for="message">Message (300 characters or less)</label>
-                        <textarea class="form-control" id="message" name="message" maxlength="300" rows="4" required></textarea>
+                        <textarea class="form-control" id="message" name="message" maxlength="300" rows="4" required aria-required="true"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary" aria-label="Submit Contact Form">Submit</button>
                 </form>
             </section>
         </div>
@@ -108,7 +137,7 @@
             <a href="https://truthsocial.com/@raisethecurve" target="_blank" rel="noopener noreferrer" aria-label="Truth Social"><img src="../../images/social-icons/truth-night.png" alt="Truth Social" class="social-icon day-logo"></a>
             <a href="https://truthsocial.com/@raisethecurve" target="_blank" rel="noopener noreferrer" aria-label="Truth Social"><img src="../../images/social-icons/truth-day.png" alt="Truth Social" class="social-icon night-logo d-none"></a>
             <a href="https://www.instagram.com/pawnislandapparel" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="../../images/social-icons/insta-universal.png" alt="Instagram" class="social-icon"></a>
-            <a href="https://pawnislandapparel.myshopify.com" target="_blank" rel="noopener noreferrer" aria-label="Shopify"><img src="../../images/social-icons/shopify-universal.png" alt="Shopify" class="social-icon"></a>
+            <a href="https://pawnisland.myshopify.com/collections" target="_blank" rel="noopener noreferrer" aria-label="Shopify"><img src="../../images/social-icons/shopify-universal.png" alt="Shopify" class="social-icon"></a>
             <a href="https://www.chess.com/member/femmetantra" target="_blank" rel="noopener noreferrer" aria-label="Chess.com"><img src="../../images/social-icons/chess-universal.png" alt="Chess.com" class="social-icon"></a>
             <a href="https://www.lichess.org/@/cintas" target="_blank" rel="noopener noreferrer" aria-label="Lichess"><img src="../../images/social-icons/lichess-night.png" alt="Lichess" class="social-icon day-logo"></a>
             <a href="https://www.lichess.org/@/cintas" target="_blank" rel="noopener noreferrer" aria-label="Lichess"><img src="../../images/social-icons/lichess-day.png" alt="Lichess" class="social-icon night-logo d-none"></a>
@@ -131,7 +160,7 @@
         // Get the button
         var jumpToTopBtn = document.getElementById("jumpToTopBtn");
 
-        // When the user scrolls down 20px from the top of the document, show the button
+        // When the user scrolls down px from the top of the document, show the button
         window.onscroll = function() {
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
                 jumpToTopBtn.style.display = "block";

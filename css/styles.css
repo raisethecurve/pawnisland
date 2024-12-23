@@ -2,6 +2,44 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Ensure sufficient color contrast */
+body {
+    background-color: #ffffff;
+    color: #333333;
+}
+
 a:hover, button:hover {
   transition: 0.3s;
+}
+
+a:focus, button:focus, input:focus, textarea:focus {
+    outline: 2px solid #dd3649;
+    outline-offset: 2px;
+}
+
+/* Add comments for section headings */
+.header {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Additional styles for improved accessibility and performance */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.container {
+    padding: 15px;
+}
+
+.btn {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+    background-color: #c12e42;
+    color: #ffffff;
 }
