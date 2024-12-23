@@ -8,6 +8,10 @@
 }
 
 .social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Reduced spacing between icons */
     margin-top: 10px;
     padding-bottom: 10px; /* Add padding below the social icons */
 }
@@ -15,7 +19,7 @@
 .social-icon {
     width: 30px;
     height: 30px;
-    margin: 0 10px; /* Padding between icons */
+    margin: 0 5px; /* Reduced padding between icons */
 }
 
 @keyframes fadeIn {
