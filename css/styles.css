@@ -1,0 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
+a:hover, button:hover {
+  transition: 0.3s;
+}

@@ -24,6 +24,11 @@
     align-items: center;
 }
 
+.accordion .card-header:focus {
+  outline: 2px solid #dd3649;
+  outline-offset: 2px;
+}
+
 .accordion .card-header::before {
     content: '\25BC'; /* Down arrow */
     font-size: 1rem;
@@ -57,6 +62,10 @@
     display: block;
     width: 100%;
     text-align: left;
+}
+
+.accordion-content {
+  transition: max-height 0.3s ease;
 }
 
 .day-theme {

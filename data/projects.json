@@ -25,7 +25,9 @@
                 "Machine Learning",
                 "Data Analytics",
                 "Python"
-            ]
+            ],
+            "keywords": ["AI", "business", "optimization"],
+            "seoDescription": "AI-driven estate auction optimization project."
         },
         {
             "id": "OSCA",
@@ -49,7 +51,9 @@
             ],
             "technologies": [
                 "SwissSys"
-            ]
+            ],
+            "keywords": ["chess", "community", "education"],
+            "seoDescription": "Strategic consulting and community-focused chess initiatives."
         },
         {
             "id": "TournamentDirector",
@@ -73,7 +77,8 @@
             ],
             "technologies": [
                 "SwissSys"
-            ]
+            ],
+            "keywords": ["chess", "tournament", "organization"]
         },
         {
             "id": "DarkQueen",
@@ -101,7 +106,8 @@
                 "Python",
                 "TensorFlow/PyTorch",
                 "Chess Engine Frameworks (Lc0, Stockfish)"
-            ]
+            ],
+            "keywords": ["chess", "machine learning", "neural networks"]
         },
         {
             "id": "AntiFish",
@@ -131,7 +137,8 @@
                 "Python",
                 "TensorFlow/PyTorch",
                 "Chess Engine Frameworks (Lc0, Stockfish)"
-            ]
+            ],
+            "keywords": ["chess", "neural networks", "synthetic data"]
         },
         {
             "id": "Literation",
@@ -159,7 +166,8 @@
                 "Adobe Creative Suite",
                 "Editorial Tools",
                 "Social Media Platforms"
-            ]
+            ],
+            "keywords": ["literary journal", "creativity", "emerging talent"]
         },
         {
             "id": "BeTheWhale",
@@ -184,7 +192,8 @@
                 "Discord",
                 "Online Collaboration Tools",
                 "Social Media Platforms"
-            ]
+            ],
+            "keywords": ["poetry", "community", "collaboration"]
         },
         {
             "id": "RaiseTheCurve",
@@ -210,7 +219,8 @@
             ],
             "technologies": [
                 "Social Media Platforms"
-            ]
+            ],
+            "keywords": ["poetry", "blog", "community"]
         }
     ]
 }

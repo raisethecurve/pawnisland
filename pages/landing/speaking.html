@@ -8,7 +8,7 @@
     <meta name="keywords" content="speaking engagements, chess, strategic thinking, decision-making, corporate training">
     <meta property="og:title" content="Speaking Engagements - Pawn Island">
     <meta property="og:description" content="Engaging sessions on decision-making, strategy, and leadership.">
-    <meta property="og:image" content="https://pawnislandacademy.com/images/og-image.jpg">
+    <meta property="og:image" content="https://pawnislandacademy.com/images/og-image.jpg" loading="lazy">
     <meta property="og:url" content="https://pawnislandacademy.com/pages/landing/speaking.html">
     <link rel="canonical" href="https://pawnislandacademy.com/pages/landing/speaking.html">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
@@ -93,6 +93,13 @@
             color: #ffffff; /* White text for night theme */
             border-color: #ffffff; /* White border for night theme */
         }
+        .speaking-link:link,
+        .speaking-link:visited,
+        .speaking-link:hover,
+        .speaking-link:active {
+            color: gold;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body class="day-theme bg-light text-dark">
@@ -100,7 +107,7 @@
         <a class="navbar-brand d-flex align-items-center" href="#" id="brand-toggle">
             <img src="../../images/brand-icons/logo-light.png" alt="Pawn Island Logo" class="logo day-logo">
             <img src="../../images/brand-icons/logo-dark.png" alt="Pawn Island Logo" class="logo night-logo d-none">
-            <a class="shop-now-btn" href="https://pawnisland.myshopify.com" target="_blank">
+            <a class="shop-now-btn" href="https://pawnisland.myshopify.com" target="_blank" rel="noopener noreferrer">
                 <img src="../../images/social-icons/shopify-universal.png" alt="Shopify" width="20" height="20">
                 Shop Now
             </a>
@@ -123,7 +130,7 @@
                     <a class="nav-link text-dark" href="#speaking-engagements">Speaking Engagements</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center text-dark" href="https://chess.com/blog/squarethecurve" target="_blank">
+                    <a class="nav-link d-flex align-items-center text-dark" href="https://chess.com/blog/squarethecurve" target="_blank" rel="noopener noreferrer">
                         <img src="../../images/social-icons/chess-universal.png" alt="Chess.com Blog" width="20" height="20" class="mr-2">
                         Blog
                     </a>
@@ -139,7 +146,7 @@
         <div class="container">
             <section id="speaking-engagements" class="my-5 text-dark" data-aos="fade-up">
                 <div class="header-image-container">
-                    <img src="../../images/headers-pages/speaker.png" alt="Speaking Engagements" class="img-fluid">
+                    <img src="../../images/headers-pages/speaker.png" alt="Speaking Engagements" class="img-fluid" loading="lazy">
                 </div>
                 <div class="description bg-dark text-white p-3 rounded">
                     <h2 class="text-center my-4">Chess-Inspired Decision-Making for Forward-Thinking Teams</h2>
@@ -149,7 +156,7 @@
                         <li class="mb-2"><strong>Actionable Frameworks:</strong> Discover how to rapidly evaluate data, set goals, generate solutions, and make confident decisions.</li>
                         <li class="mb-2"><strong>Proven Expertise:</strong> Sessions led by the 2024 Rhode Island State Champion, with real-world coaching experience and a passion for empowering teams.</li>
                     </ul>
-                    <p class="text-center mt-4"><strong>Ready to level up your team’s decision-making skills?</strong><br /><a href="#" onclick="document.querySelector('.book-button').click(); return false;">Schedule a speaking engagement</a> and see the difference a chess mindset can make.</p>
+                    <p class="text-center mt-4"><strong>Ready to level up your team’s decision-making skills?</strong><br /><a href="#" class="speaking-link" onclick="document.querySelector('.book-button').click(); return false;">Schedule a speaking engagement</a> and see the difference a chess mindset can make.</p>
                 </div>
             </section>
         </div>
@@ -157,17 +164,17 @@
     <footer class="footer bg-dark text-white w-100 text-center">
         <p>Copyright 2024 Matthew H. Freeman</p>
         <div class="social-icons">
-            <a href="https://www.facebook.com/pawnislandapparel" target="_blank"><img src="../../images/social-icons/fb-night.png" alt="Facebook" class="social-icon day-logo"></a>
-            <a href="https://www.facebook.com/pawnislandapparel" target="_blank"><img src="../../images/social-icons/fb-day.png" alt="Facebook" class="social-icon night-logo d-none"></a>
-            <a href="https://www.x.com/raisethecurve" target="_blank"><img src="../../images/social-icons/x-logo-night.png" alt="X" class="social-icon day-logo"></a>
-            <a href="https://www.x.com/raisethecurve" target="_blank"><img src="../../images/social-icons/x-logo-day.png" alt="X" class="social-icon night-logo d-none"></a>
-            <a href="https://truthsocial.com/@raisethecurve" target="_blank"><img src="../../images/social-icons/truth-night.png" alt="Truth Social" class="social-icon day-logo"></a>
-            <a href="https://truthsocial.com/@raisethecurve" target="_blank"><img src="../../images/social-icons/truth-day.png" alt="Truth Social" class="social-icon night-logo d-none"></a>
-            <a href="https://www.instagram.com/pawnislandapparel" target="_blank"><img src="../../images/social-icons/insta-universal.png" alt="Instagram" class="social-icon"></a>
-            <a href="https://pawnislandapparel.myshopify.com" target="_blank"><img src="../../images/social-icons/shopify-universal.png" alt="Shopify" class="social-icon"></a>
-            <a href="https://www.chess.com/member/femmetantra" target="_blank"><img src="../../images/social-icons/chess-universal.png" alt="Chess.com" class="social-icon"></a>
-            <a href="https://www.lichess.org/@/cintas" target="_blank"><img src="../../images/social-icons/lichess-night.png" alt="Lichess" class="social-icon day-logo"></a>
-            <a href="https://www.lichess.org/@/cintas" target="_blank"><img src="../../images/social-icons/lichess-day.png" alt="Lichess" class="social-icon night-logo d-none"></a>
+            <a href="https://www.facebook.com/pawnislandapparel" target="_blank" rel="noopener noreferrer"><img src="../../images/social-icons/fb-night.png" alt="Facebook" class="social-icon day-logo"></a>
+            <a href="https://www.facebook.com/pawnislandapparel" target="_blank" rel="noopener noreferrer"><img src="../../images/social-icons/fb-day.png" alt="Facebook" class="social-icon night-logo d-none"></a>
+            <a href="https://www.x.com/raisethecurve" target="_blank" rel="noopener noreferrer"><img src="../../images/social-icons/x-logo-night.png" alt="X" class="social-icon day-logo"></a>
+            <a href="https://www.x.com/raisethecurve" target="_blank" rel="noopener noreferrer"><img src="../../images/social-icons/x-logo-day.png" alt="X" class="social-icon night-logo d-none"></a>
+            <a href="https://truthsocial.com/@raisethecurve" target="_blank" rel="noopener noreferrer"><img src="../../images/social-icons/truth-night.png" alt="Truth Social" class="social-icon day-logo"></a>
+            <a href="https://truthsocial.com/@raisethecurve" target="_blank" rel="noopener noreferrer"><img src="../../images/social-icons/truth-day.png" alt="Truth Social" class="social-icon night-logo d-none"></a>
+            <a href="https://www.instagram.com/pawnislandapparel" target="_blank" rel="noopener noreferrer"><img src="../../images/social-icons/insta-universal.png" alt="Instagram" class="social-icon"></a>
+            <a href="https://pawnislandapparel.myshopify.com" target="_blank" rel="noopener noreferrer"><img src="../../images/social-icons/shopify-universal.png" alt="Shopify" class="social-icon"></a>
+            <a href="https://www.chess.com/member/femmetantra" target="_blank" rel="noopener noreferrer"><img src="../../images/social-icons/chess-universal.png" alt="Chess.com" class="social-icon"></a>
+            <a href="https://www.lichess.org/@/cintas" target="_blank" rel="noopener noreferrer"><img src="../../images/social-icons/lichess-night.png" alt="Lichess" class="social-icon day-logo"></a>
+            <a href="https://www.lichess.org/@/cintas" target="_blank" rel="noopener noreferrer"><img src="../../images/social-icons/lichess-day.png" alt="Lichess" class="social-icon night-logo d-none"></a>
          </div>
         <a href="/pages/forms/contact.html" class="text-white">Contact Email</a>
     </footer>

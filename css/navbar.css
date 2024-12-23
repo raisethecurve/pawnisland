@@ -30,3 +30,12 @@
 #navbarNav > ul {
     align-items: end;
 }
+
+.nav-link:hover {
+  color: #dd3649;
+}
+
+.nav-link:focus {
+  outline: 2px solid #dd3649;
+  outline-offset: 2px;
+}
