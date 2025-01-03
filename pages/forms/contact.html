@@ -133,9 +133,6 @@
         </div>
     </div>
     
-    <!-- Jump to Top Button -->
-    <button class="jump-to-top" id="jumpToTopBtn" title="Go to top">↑</button>
-
     <!-- Placeholder for Dynamic Footer -->
     <div class="footer-placeholder"></div>
 
@@ -148,24 +145,5 @@
     </script>
     <script src="../../js/script.js"></script>
     <script src="../../js/footer.js"></script>
-    <script>
-        // Get the button
-        var jumpToTopBtn = document.getElementById("jumpToTopBtn");
-
-        // When the user scrolls down px from the top of the document, show the button
-        window.onscroll = function() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                jumpToTopBtn.style.display = "block";
-            } else {
-                jumpToTopBtn.style.display = "none";
-            }
-        };
-
-        // When the user clicks on the button, scroll to the top of the document
-        jumpToTopBtn.onclick = function() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        };
-    </script>
 </body>
 </html>
