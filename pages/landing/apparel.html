@@ -15,6 +15,7 @@
     <meta name="description" content="Unique, faith-inspired chess apparel. Wear who you are with pride.">
     <meta property="og:image" content="https://pawnislandacademy.com/images/brand-icons/logo-light.png">
     <link rel="icon" type="image/png" href="../../images/brand-icons/favicon.png">
+    <link rel="stylesheet" href="../../css/buttons.css"> <!-- Ensure buttons.css is linked -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -26,7 +27,23 @@
     </script>
     <style>
         /* Minified CSS */
-        html,body{height:100%;margin:0;display:flex;flex-direction:column}.content{flex:1}.shop-now-btn{background-color:transparent;color:#fff;border:2px solid #218838;border-radius:50px;padding:5px 15px;font-size:16px;cursor:pointer;display:flex;align-items:center;margin-left:10px}.shop-now-btn img{margin-right:10px}.day-theme .shop-now-btn{color:#000;border-color:#000}.night-theme .shop-now-btn{color:#fff;border-color:#fff}
+        html,body{height:100%;margin:0;display:flex;flex-direction:column}.content{flex:1}
+        
+        /* Remove inlined shop-now-btn styles */
+        /*
+        .shop-now-btn {
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            margin: 0 auto;
+        }
+        */
+        
+        .shop-now-btn{background-color:transparent;color:#fff;border:2px solid #218838;border-radius:50px;padding:5px 15px;font-size:16px;cursor:pointer;display:flex;align-items:center;margin-left:10px}.shop-now-btn img{margin-right:10px}.day-theme .shop-now-btn{color:#000;border-color:#000}.night-theme .shop-now-btn{color:#fff;border-color:#fff}
     </style>
 </head>
 <body class="day-theme bg-light text-dark">
@@ -51,9 +68,6 @@
                     <a class="nav-link text-dark" href="coaching.html">Chess Coaching</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="apparel.html">Apparel Shop</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link text-dark" href="speaking.html">Speaking Engagements</a>
                 </li>
                 <li class="nav-item">
@@ -61,6 +75,12 @@
                         <img src="../../images/social-icons/chess-universal.png" alt="Chess.com" width="20" height="20" class="mr-2" loading="lazy">
                         Blog
                     </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="reviews.html" aria-label="Student Testimonials">Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="../forms/contact.html">Contact</a>
                 </li>
             </ul>
         </div>
@@ -91,23 +111,13 @@
             </section>
         </div>
     </div>
-    <footer class="footer bg-dark text-white w-100 text-center">
-        <p>Copyright 2024 Matthew H. Freeman</p>
-        <div class="social-icons">
-            <a href="https://www.facebook.com/pawnislandapparel" target="_blank" aria-label="Facebook"><img src="../../images/social-icons/fb-night.png" alt="Facebook" class="social-icon day-logo" loading="lazy"></a>
-            <a href="https://www.facebook.com/pawnislandapparel" target="_blank" aria-label="Facebook"><img src="../../images/social-icons/fb-day.png" alt="Facebook" class="social-icon night-logo d-none" loading="lazy"></a>
-            <a href="https://www.x.com/raisethecurve" target="_blank" aria-label="X"><img src="../../images/social-icons/x-logo-night.png" alt="X" class="social-icon day-logo" loading="lazy"></a>
-            <a href="https://www.x.com/raisethecurve" target="_blank" aria-label="X"><img src="../../images/social-icons/x-logo-day.png" alt="X" class="social-icon night-logo d-none" loading="lazy"></a>
-            <a href="https://truthsocial.com/@raisethecurve" target="_blank" aria-label="Truth Social"><img src="../../images/social-icons/truth-night.png" alt="Truth Social" class="social-icon day-logo" loading="lazy"></a>
-            <a href="https://truthsocial.com/@raisethecurve" target="_blank" aria-label="Truth Social"><img src="../../images/social-icons/truth-day.png" alt="Truth Social" class="social-icon night-logo d-none" loading="lazy"></a>
-            <a href="https://www.instagram.com/pawnislandapparel" target="_blank" aria-label="Instagram"><img src="../../images/social-icons/insta-universal.png" alt="Instagram" class="social-icon" loading="lazy"></a>
-            <a href="https://pawnisland.myshopify.com/collections" target="_blank" rel="noopener noreferrer" aria-label="Shopify"><img src="../../images/social-icons/shopify-universal.png" alt="Shopify" class="social-icon"></a>
-            <a href="https://www.chess.com/member/femmetantra" target="_blank" aria-label="Chess.com"><img src="../../images/social-icons/chess-universal.png" alt="Chess.com" class="social-icon" loading="lazy"></a>
-            <a href="https://www.lichess.org/@/cintas" target="_blank" aria-label="Lichess"><img src="../../images/social-icons/lichess-night.png" alt="Lichess" class="social-icon day-logo" loading="lazy"></a>
-            <a href="https://www.lichess.org/@/cintas" target="_blank" aria-label="Lichess"><img src="../../images/social-icons/lichess-day.png" alt="Lichess" class="social-icon night-logo d-none" loading="lazy"></a>
-          </div>
-        <a href="/pages/forms/contact.html" class="text-white" aria-label="Contact Email">Contact Email</a>
-    </footer>
+
+    <!-- Jump to Top Button -->
+    <button class="jump-to-top" id="jumpToTopBtn" title="Go to top">↑</button>
+
+    <!-- Placeholder for Dynamic Footer -->
+    <div class="footer-placeholder"></div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -139,5 +149,6 @@
             document.documentElement.scrollTop = 0;
         };
     </script>
+    <script src="../../js/footer.js"></script>
 </body>
 </html>

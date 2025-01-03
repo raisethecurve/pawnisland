@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Testimonials</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="../../css/carousel.css"> <!-- Link to the new carousel CSS file -->
+    <link rel="stylesheet" href="../../css/buttons.css"> <!-- Link to the new buttons.css file -->
+    <link rel="icon" type="image/png" href="../../images/brand-icons/favicon.png">
+</head>
+<body class="day-theme bg-light text-dark">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
+        <a class="navbar-brand d-flex align-items-center" href="#" id="brand-toggle" aria-label="Homepage">
+            <img src="../../images/brand-icons/logo-light.png" alt="Pawn Island Academy Logo (Light Theme)" class="logo day-logo">
+            <img src="../../images/brand-icons/logo-dark.png" alt="Pawn Island Academy Logo (Dark Theme)" class="logo night-logo d-none">
+            <a class="shop-now-btn" href="https://pawnisland.myshopify.com/collections" target="_blank" aria-label="Shop Now">
+                <img src="../../images/social-icons/shopify-universal.png" alt="Shopify" width="20" height="20">
+                Shop Now
+            </a>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="coaching.html">Chess Coaching</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="apparel.html">Apparel Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="speaking.html">Speaking Engagements</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="about-me.html">About Me</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center text-dark" href="https://chess.com/blog/squarethecurve" target="_blank" aria-label="Chess.com Blog">
+                        <img src="../../images/social-icons/chess-universal.png" alt="Chess.com Blog" width="20" height="20" class="mr-2">
+                        Blog
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="../forms/contact.html">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <header class="header text-center bg-light w-100">
+        <h1 class="title text-dark">What Our Students Say</h1>
+    </header>
+    <div class="container my-5">
+        <div id="testimonialCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" id="testimonialCarouselInner">
+                <!-- Testimonials will be dynamically inserted here -->
+            </div>
+            <a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#testimonialCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <!-- Jump to Top Button -->
+    <button class="jump-to-top" id="jumpToTopBtn" title="Go to top">↑</button>
+
+    <!-- Placeholder for Dynamic Footer -->
+    <div class="footer-placeholder"></div>
+
+    <!-- Include jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/carousel.js"></script>
+    <script src="../../js/footer.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('../../data/testimonials.json')
+                .then(response => response.json())
+                .then(data => {
+                    const carouselInner = document.getElementById('testimonialCarouselInner');
+                    data.testimonials.forEach((testimonial, index) => {
+                        const item = document.createElement('div');
+                        item.className = `carousel-item ${index === 0 ? 'active' : ''}`;
+                        item.innerHTML = `
+                            <div class="testimonial-card text-center p-4">
+                                <div class="watermark"></div> <!-- Add watermark div -->
+                                <img src="${testimonial.image}" alt="${testimonial.name}">
+                                <h3 style="font-size: 26px;">${testimonial.name}</h3> <!-- Increase font size -->
+                                <p class="designation">${testimonial.designation}</p>
+                                <p>${testimonial.text}</p>
+                            </div>
+                        `;
+                        carouselInner.appendChild(item);
+                    });
+
+                    // Automatically transition to the next testimonial every 7 seconds
+                    setInterval(() => {
+                        $('#testimonialCarousel').carousel('next');
+                    }, 7000);
+
+                    // Pause the slideshow on click action inside the bounds of the carousel
+                    document.querySelector('.carousel').addEventListener('click', function() {
+                        $('#testimonialCarousel').carousel('pause');
+                    });
+                });
+        });
+    </script>
+</body>
+</html>

@@ -21,6 +21,7 @@ Pawn Island is a multi-faceted platform offering chess coaching services, a dedi
 - **Apparel Shop**: A wide range of chess-themed apparel.
 - **Speaking Engagements**: Book Matthew Freeman for speaking engagements.
 - **Contact Form**: Easily get in touch with us through the contact form.
+- **Student Testimonials**: Read what our students have to say.
 
 ## Installation
 
@@ -53,6 +54,10 @@ Book Matthew Freeman for speaking engagements through the [Speaking Engagements]
 ### Contact Form
 
 Use the [Contact Form](pages/forms/contact.html) to get in touch with us for any inquiries.
+
+### Student Testimonials
+
+Read what our students have to say on the [Student Testimonials](pages/landing/reviews.html) page.
 
 ## Contributing
 

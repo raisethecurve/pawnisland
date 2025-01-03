@@ -13,7 +13,7 @@
 
 .accordion .card-header {
     background-color: var(--accordion-header-bg);
-    color: var(--accordion-header-color);
+    color: inherit; /* Inherit text color based on the theme */
     padding: 15px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;

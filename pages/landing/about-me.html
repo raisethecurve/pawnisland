@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../../css/footer.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/accordion.css">
+    <link rel="stylesheet" href="../../css/buttons.css"> <!-- Ensure buttons.css is linked -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T12VEHM2PY"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -74,50 +75,6 @@
             margin: 0 auto;
             max-width: 100%;
         }
-        /* Add styles for the jump to top button */
-        .jump-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #dd3649;
-            color: #ffffff;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            text-align: center;
-            line-height: 50px;
-            font-size: 24px;
-            cursor: pointer;
-            display: none;
-            z-index: 1000;
-        }
-        .jump-to-top:hover {
-            background-color: #c12e42;
-        }
-        .shop-now-btn {
-            background-color: transparent; /* Transparent background */
-            color: #ffffff; /* Default text color */
-            border: 2px solid #218838; /* Border to maintain button shape */
-            border-radius: 50px;
-            padding: 5px 15px; /* Reduced padding for thinner button */
-            font-size: 16px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            margin-left: 10px; /* Space between logo and button */
-        }
-        .shop-now-btn img {
-            margin-right: 10px;
-        }
-        .day-theme .shop-now-btn {
-            color: #000000; /* Black text for day theme */
-            border-color: #000000; /* Black border for day theme */
-        }
-        .night-theme .shop-now-btn {
-            color: #ffffff; /* White text for night theme */
-            border-color: #ffffff; /* White border for night theme */
-        }
     </style>
 </head>
 <body class="day-theme bg-light text-dark">
@@ -136,9 +93,6 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="about-me.html">About Me</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link text-dark" href="coaching.html">Chess Coaching</a>
                 </li>
                 <li class="nav-item">
@@ -152,6 +106,12 @@
                         <img src="../../images/social-icons/chess-universal.png" alt="Chess.com" width="20" height="20" class="mr-2">
                         Blog
                     </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="reviews.html" aria-label="Student Testimonials">Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="../forms/contact.html">Contact</a>
                 </li>
             </ul>
         </div>
@@ -187,23 +147,10 @@
     </div>
     <!-- Jump to Top Button -->
     <button class="jump-to-top" id="jumpToTopBtn" title="Go to top">↑</button>
-    <footer class="footer bg-dark text-white w-100 text-center">
-        <p>Copyright 2024 Matthew H. Freeman</p>
-        <div class="social-icons">
-            <a href="https://www.facebook.com/pawnislandapparel" target="_blank"><img src="../../images/social-icons/fb-night.png" alt="Facebook" class="social-icon day-logo"></a>
-            <a href="https://www.facebook.com/pawnislandapparel" target="_blank"><img src="../../images/social-icons/fb-day.png" alt="Facebook" class="social-icon night-logo d-none"></a>
-            <a href="https://www.x.com/raisethecurve" target="_blank"><img src="../../images/social-icons/x-logo-night.png" alt="X" class="social-icon day-logo"></a>
-            <a href="https://www.x.com/raisethecurve" target="_blank"><img src="../../images/social-icons/x-logo-day.png" alt="X" class="social-icon night-logo d-none"></a>
-            <a href="https://truthsocial.com/@raisethecurve" target="_blank"><img src="../../images/social-icons/truth-night.png" alt="Truth Social" class="social-icon day-logo"></a>
-            <a href="https://truthsocial.com/@raisethecurve" target="_blank"><img src="../../images/social-icons/truth-day.png" alt="Truth Social" class="social-icon night-logo d-none"></a>
-            <a href="https://www.instagram.com/pawnislandapparel" target="_blank"><img src="../../images/social-icons/insta-universal.png" alt="Instagram" class="social-icon"></a>
-            <a href="https://pawnisland.myshopify.com/collections" target="_blank" rel="noopener noreferrer" aria-label="Shopify"><img src="../../images/social-icons/shopify-universal.png" alt="Shopify" class="social-icon"></a>
-            <a href="https://www.chess.com/member/femmetantra" target="_blank"><img src="../../images/social-icons/chess-universal.png" alt="Chess.com" class="social-icon"></a>
-            <a href="https://www.lichess.org/@/cintas" target="_blank"><img src="../../images/social-icons/lichess-night.png" alt="Lichess" class="social-icon day-logo"></a>
-            <a href="https://www.lichess.org/@/cintas" target="_blank"><img src="../../images/social-icons/lichess-day.png" alt="Lichess" class="social-icon night-logo d-none"></a>
-        </div>
-        <a href="/pages/forms/contact.html" class="text-white">Contact Email</a>
-    </footer>
+
+    <!-- Placeholder for Dynamic Footer -->
+    <div class="footer-placeholder"></div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -274,5 +221,6 @@
             document.documentElement.scrollTop = 0;
         };
     </script>
+    <script src="../../js/footer.js"></script>
 </body>
 </html>
