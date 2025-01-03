@@ -3,22 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Testimonials</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Reviews - Pawn Island</title>
+    <meta name="description" content="Read what our students have to say about their experiences with Pawn Island.">
+    <meta name="keywords" content="Reviews, Testimonials, Chess Coaching, Pawn Island">
+    <meta property="og:title" content="Reviews - Pawn Island">
+    <meta property="og:description" content="Discover the experiences of our students at Pawn Island.">
+    <meta property="og:image" content="https://pawnislandacademy.com/images/brand-icons/logo-light.png">
+    <meta property="og:url" content="https://pawnislandacademy.com/pages/landing/reviews.html">
+    <link rel="canonical" href="https://pawnislandacademy.com/pages/landing/reviews.html">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href="../../css/navbar.css">
     <link rel="stylesheet" href="../../css/footer.css">
-    <link rel="stylesheet" href="../../css/carousel.css"> <!-- Link to the new carousel CSS file -->
-    <link rel="stylesheet" href="../../css/buttons.css"> <!-- Link to the new buttons.css file -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/buttons.css">
     <link rel="icon" type="image/png" href="../../images/brand-icons/favicon.png">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T12VEHM2PY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-T12VEHM2PY');
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .content {
+            flex: 1;
+        }
+        .review-card {
+            background-color: #343a40;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .review-card:hover {
+            transform: scale(1.05);
+        }
+        .review-card img {
+            width: 100%;
+            height: auto;
+        }
+        .review-card-body {
+            padding: 15px;
+        }
+        .review-header {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .review-copy {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .accordion-text {
+            color: var(--text-color);
+        }
+        .accordion.container {
+            margin-top: 1rem; /* Adjusted margin */
+        }
+    </style>
 </head>
 <body class="day-theme bg-light text-dark">
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
-        <a class="navbar-brand d-flex align-items-center" href="#" id="brand-toggle" aria-label="Homepage">
+        <a class="navbar-brand d-flex align-items-center" href="../../index.html" id="brand-toggle">
             <img src="../../images/brand-icons/logo-light.png" alt="Pawn Island Academy Logo (Light Theme)" class="logo day-logo">
             <img src="../../images/brand-icons/logo-dark.png" alt="Pawn Island Academy Logo (Dark Theme)" class="logo night-logo d-none">
-            <a class="shop-now-btn" href="https://pawnisland.myshopify.com/collections" target="_blank" aria-label="Shop Now">
+            <a class="shop-now-btn" href="https://pawnisland.myshopify.com/collections" target="_blank">
                 <img src="../../images/social-icons/shopify-universal.png" alt="Shopify" width="20" height="20">
                 Shop Now
             </a>
@@ -29,6 +87,9 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
+                    <a class="nav-link text-dark" href="about-me.html">About Me</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link text-dark" href="coaching.html">Chess Coaching</a>
                 </li>
                 <li class="nav-item">
@@ -38,13 +99,13 @@
                     <a class="nav-link text-dark" href="speaking.html">Speaking Engagements</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="about-me.html">About Me</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center text-dark" href="https://chess.com/blog/squarethecurve" target="_blank" aria-label="Chess.com Blog">
-                        <img src="../../images/social-icons/chess-universal.png" alt="Chess.com Blog" width="20" height="20" class="mr-2">
+                    <a class="nav-link d-flex align-items-center text-dark" href="https://chess.com/blog/squarethecurve" target="_blank">
+                        <img src="../../images/social-icons/chess-universal.png" alt="Chess.com" width="20" height="20" class="mr-2">
                         Blog
                     </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="reviews.html" aria-label="Student Testimonials">Reviews</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="../forms/contact.html">Contact</a>
@@ -53,30 +114,36 @@
         </div>
     </nav>
     <header class="header text-center bg-light w-100">
-        <h1 class="title text-dark">What Our Students Say</h1>
+        <h1 class="title text-dark">Student Testimonials</h1>
     </header>
-    <div class="container my-5">
-        <div id="testimonialCarousel" class="carousel slide" data-ride="carousel" data-interval="7000">
-            <div class="carousel-inner" id="testimonialCarouselInner">
-                <!-- Testimonials will be dynamically inserted here -->
-            </div>
-            <a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#testimonialCarousel" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+    <div class="content">
+        <div class="container">
+            <section id="reviews" class="my-5 text-dark" data-aos="fade-up">
+                <div class="header-image-container">
+                    <img src="../../images/headers-pages/reviews.png" alt="Reviews" class="img-fluid">
+                </div>
+                <div class="description bg-dark text-white p-3 rounded">
+                    <h2 class="text-center review-header">What Our Students Say</h2>
+                    <p class="review-copy">Discover the experiences of our students at Pawn Island. Read their testimonials and see how our coaching has helped them improve their chess skills and achieve their goals.</p>
+                </div>
+                <div class="row">
+                    <!-- Reviews will be dynamically inserted here -->
+                </div>
+            </section>
         </div>
     </div>
+
+    <!-- Accordion Section -->
+    <div id="testimonial-accordion" class="accordion container" style="background-color: transparent;">
+        <!-- Accordion items will be dynamically inserted here -->
+    </div>
+
     <!-- Jump to Top Button -->
     <button class="jump-to-top" id="jumpToTopBtn" title="Go to top">↑</button>
 
     <!-- Placeholder for Dynamic Footer -->
     <div class="footer-placeholder"></div>
 
-    <!-- Include jQuery and Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -85,7 +152,90 @@
         AOS.init();
     </script>
     <script src="../../js/script.js"></script>
-    <script src="../../js/carousel.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('../../data/reviews.json')
+                .then(response => response.json())
+                .then(data => {
+                    const reviewsContainer = document.querySelector('#reviews .row');
+                    data.reviews.forEach(review => {
+                        const card = document.createElement('div');
+                        card.className = 'col-md-4 mb-4';
+                        card.innerHTML = `
+                            <div class="review-card">
+                                <img src="${review.image}" alt="${review.name}" class="img-fluid">
+                                <div class="review-card-body">
+                                    <h3 class="review-header">${review.name}</h3>
+                                    <p class="review-copy">${review.text}</p>
+                                </div>
+                            </div>
+                        `;
+                        reviewsContainer.appendChild(card);
+                    });
+                });
+
+            fetch('../../data/testimonials.json')
+                .then(response => response.json())
+                .then(data => {
+                    const accordionContainer = document.getElementById('testimonial-accordion');
+                    
+                    data.testimonials.forEach((review, index) => {
+                        const card = document.createElement('div');
+                        card.className = 'card bg-dark text-white';
+                        card.innerHTML = `
+                            <div class="card-header bg-dark text-white" id="heading${index}">
+                                <h2 class="mb-0 text-right">
+                                    <button class="btn btn-link text-white ${index !== 0 ? 'collapsed' : ''}" type="button" data-toggle="collapse" data-target="#collapse${index}" aria-expanded="${index === 0}" aria-controls="collapse${index}">
+                                        ${review.name}
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapse${index}" class="collapse ${index === 0 ? 'show' : ''}" aria-labelledby="heading${index}" data-parent="#testimonial-accordion">
+                                <div class="card-body accordion-text bg-dark text-white">
+                                    <img src="${review.image}" alt="${review.name}" class="img-fluid mb-3 rounded-circle">
+                                    <h3 class="review-header">${review.name}</h3>
+                                    <div class="review-text">
+                                        <p>${review.text}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        accordionContainer.appendChild(card);
+                    });
+
+                    // Make the entire card header clickable
+                    document.querySelectorAll('.card-header').forEach(header => {
+                        header.addEventListener('click', function() {
+                            const button = this.querySelector('button');
+                            button.click();
+                        });
+                    });
+                });
+        });
+    </script>
+    <script src="//widget.simplybook.me/v2/widget/widget.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var widget = new SimplybookWidget({"widget_type":"button","url":"https:\/\/pawnisland.simplybook.me","theme":"default","theme_settings":{"timeline_hide_unavailable":"1","hide_past_days":"0","timeline_show_end_time":"0","timeline_modern_display":"as_slots","sb_base_color":"#dd3649","display_item_mode":"block","booking_nav_bg_color":"#dd3649","body_bg_color":"#f2f2f2","sb_review_image":"","dark_font_color":"#474747","light_font_color":"#f5fcff","btn_color_1":"#dd3649","sb_company_label_color":"#552f34","hide_img_mode":"0","show_sidebar":"1","sb_busy":"#c7b3b3","sb_available":"#d6ebff"},"timeline":"modern","datepicker":"top_calendar","is_rtl":false,"app_config":{"clear_session":0,"allow_switch_to_ada":0,"predefined":[]},"button_title":"Book Lessons","button_background_color":"#dd3649","button_text_color":"#ffffff","button_position":"right","button_position_offset":"55%"});
+    </script>
+    <script>
+        // Get the button
+        var jumpToTopBtn = document.getElementById("jumpToTopBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                jumpToTopBtn.style.display = "block";
+            } else {
+                jumpToTopBtn.style.display = "none";
+            }
+        };
+
+        // When the user clicks on the button, scroll to the top of the document
+        jumpToTopBtn.onclick = function() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        };
+    </script>
     <script src="../../js/footer.js"></script>
 </body>
 </html>
