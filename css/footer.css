@@ -19,7 +19,7 @@
 .social-icon {
     width: 30px;
     height: 30px;
-    margin: 0 5px; /* Reduced padding between icons */
+    margin: 0; /* Removed additional margin to match spacing */
 }
 
 @keyframes fadeIn {
