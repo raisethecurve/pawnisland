@@ -8,8 +8,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 item.className = `carousel-item ${index === 0 ? 'active' : ''}`;
                 item.innerHTML = `
                     <div class="testimonial-card text-center p-4">
-                        <img src="${testimonial.image}" alt="${testimonial.name}">
-                        <h3>${testimonial.name}</h3>
+                        <div class="watermark"></div>
+                        <img src="${testimonial.image}" alt="${testimonial.name}" class="rounded-circle mb-3" width="150" height="150">
+                        <h3 class="font-weight-bold">${testimonial.name}</h3>
+                        <p class="designation">${testimonial.designation}</p>
                         <p>${testimonial.text}</p>
                     </div>
                 `;
@@ -17,20 +19,8 @@ document.addEventListener("DOMContentLoaded", function() {
             });
 
             // Automatically transition to the next testimonial every 7 seconds
-            const carouselInterval = setInterval(() => {
-                $('#testimonialCarousel').carousel('next');
-            }, 7000);
-
-            let isPaused = false;
-
-            const carousel = document.getElementById('testimonialCarousel');
-            carousel.addEventListener('click', () => {
-                if (isPaused) {
-                    $('#testimonialCarousel').carousel('cycle');
-                } else {
-                    $('#testimonialCarousel').carousel('pause');
-                }
-                isPaused = !isPaused;
+            $('#testimonialCarousel').carousel({
+                interval: 7000
             });
 
             // Ensure forward and backward buttons work correctly

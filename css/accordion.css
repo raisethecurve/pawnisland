@@ -75,7 +75,7 @@
     --accordion-header-hover-bg: #495057;
     --accordion-header-hover-color: #ffffff;
     --accordion-body-bg: #343a40; /* Match the about-me text container background */
-    --accordion-body-color: #ffffff;
+    --accordion-body-color: #ffffff; /* Ensure text color is white */
     --accordion-border-color: #495057;
 }
 

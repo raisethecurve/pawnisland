@@ -56,7 +56,7 @@
         <h1 class="title text-dark">What Our Students Say</h1>
     </header>
     <div class="container my-5">
-        <div id="testimonialCarousel" class="carousel slide" data-ride="carousel">
+        <div id="testimonialCarousel" class="carousel slide" data-ride="carousel" data-interval="7000">
             <div class="carousel-inner" id="testimonialCarouselInner">
                 <!-- Testimonials will be dynamically inserted here -->
             </div>
@@ -87,38 +87,5 @@
     <script src="../../js/script.js"></script>
     <script src="../../js/carousel.js"></script>
     <script src="../../js/footer.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch('../../data/testimonials.json')
-                .then(response => response.json())
-                .then(data => {
-                    const carouselInner = document.getElementById('testimonialCarouselInner');
-                    data.testimonials.forEach((testimonial, index) => {
-                        const item = document.createElement('div');
-                        item.className = `carousel-item ${index === 0 ? 'active' : ''}`;
-                        item.innerHTML = `
-                            <div class="testimonial-card text-center p-4">
-                                <div class="watermark"></div> <!-- Add watermark div -->
-                                <img src="${testimonial.image}" alt="${testimonial.name}">
-                                <h3 style="font-size: 26px;">${testimonial.name}</h3> <!-- Increase font size -->
-                                <p class="designation">${testimonial.designation}</p>
-                                <p>${testimonial.text}</p>
-                            </div>
-                        `;
-                        carouselInner.appendChild(item);
-                    });
-
-                    // Automatically transition to the next testimonial every 7 seconds
-                    setInterval(() => {
-                        $('#testimonialCarousel').carousel('next');
-                    }, 7000);
-
-                    // Pause the slideshow on click action inside the bounds of the carousel
-                    document.querySelector('.carousel').addEventListener('click', function() {
-                        $('#testimonialCarousel').carousel('pause');
-                    });
-                });
-        });
-    </script>
 </body>
 </html>
