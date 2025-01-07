@@ -29,6 +29,12 @@
             "image": "../../images/testimonials/placeholder.svg",
             "text": "Matt is passionate and knowledgeable about chess. Patient with young kids; explains things clearly. Great chess teacher!",
             "designation": "Parent of a Student"
+        },
+        {
+            "name": "ESL and JPL",
+            "image": "../../images/testimonials/placeholder.svg",
+            "text": "My husband and I are happy to highly recommend Matt Freeman for in-person chess lessons. Matt helped our son finish third in his grade in the 2023 US Chess Nationals. Our son enjoyed each of his many hour-long lessons with Matt.",
+            "designation": "Parent of a Student"
         }
     ]
 }
