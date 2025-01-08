@@ -35,6 +35,12 @@
             "image": "../../images/testimonials/placeholder.svg",
             "text": "My husband and I are happy to highly recommend Matt Freeman for in-person chess lessons. Matt helped our son finish third in his grade in the 2023 US Chess Nationals. Our son enjoyed each of his many hour-long lessons with Matt.",
             "designation": "Parent of a Student"
+        },
+        {
+            "name": "Mete T.",
+            "image": "../../images/testimonials/placeholder.svg",
+            "text": "My son worked with Matt for a long time and learned a great deal. Matt is very knowledgeable, patient, and a great teacher!",
+            "designation": "Parent of a Student"
         }
     ]
 }
