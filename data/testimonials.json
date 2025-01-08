@@ -1,0 +1,46 @@
+{
+    "testimonials": [
+        {
+            "name": "James R.",
+            "image": "../../images/testimonials/testimonial-ryan-upscaled.jpeg",
+            "text": "I've been working with Matt for over a year now. Not only has my rating increased, but my understanding, perception, discipline, and passion for the game have all increased dramatically. In that time, I went from someone who just barely scratched 1400 to a high of 1760 online and feel no signs of stopping.<br /><br />All of my lessons had been carefully tailored to what I needed every given week. You will NOT receive generic one-size-fits-all chess courses but rather a meticulous, well-thought-out training plan that demonstrates the care and dedication Matt has to each and every one of his students.<br /><br />It is worth every penny.",
+            "designation": "Current or Former Student"
+        },
+        {
+            "name": "Zhiyang",
+            "image": "../../images/testimonials/placeholder.svg",
+            "text": "I have had the pleasure of meeting many members of the Rhode Island chess community upon my return to OTB tournament chess after the COVID-19 pandemic. Matt's chess coaching services were highly praised by his peers.<br /><br />After working together with him for a year, I am pleased to say that the praises are indeed well-earned. From concrete chess knowledge to sports psychology, Matt incorporated all topics harmoniously in his lessons. To say I have learned a lot from him is an understatement.<br /><br />My USCF rating increased several hundred points from the low 1400s to a new personal high of 1743 to date. His passion for chess and his skills as an instructor speak volumes.",
+            "designation": "Current or Former Student"
+        },
+        {
+            "name": "Ryan Boudreau",
+            "image": "../../images/testimonials/placeholder.svg",
+            "text": "One of the most brilliant coaches and players I've known since I started playing chess. Any question I've ever had, Matt has never left me empty handed. He has also guided me well in my own journey as a budding coach.<br /><br />I can't say enough positive things about him; if you're looking for one of the hardest working and knowledgeable players/coaches around, I can't recommend being under his wing enough.",
+            "designation": "Current or Former Student"
+        },
+        {
+            "name": "Wayne",
+            "image": "../../images/testimonials/placeholder.svg",
+            "text": "Matt is the best chess coach that I have ever come across. He has a talent for relating to both adults and children, unlike I have ever previously seen.<br /><br />In addition, Matt is the most talented chess player that I have ever played. He displays not only great chess skills and amazing teaching abilities, but also the highest levels of character and integrity. It is an honor to call him a colleague and a friend.",
+            "designation": "Rhode Island Chess Community Member"
+        },
+        {
+            "name": "Drew",
+            "image": "../../images/testimonials/placeholder.svg",
+            "text": "Matt is passionate and knowledgeable about chess. Patient with young kids; explains things clearly. Great chess teacher!",
+            "designation": "Parent of a Student"
+        },
+        {
+            "name": "ESL and JPL",
+            "image": "../../images/testimonials/placeholder.svg",
+            "text": "My husband and I are happy to highly recommend Matt Freeman for in-person chess lessons. Matt helped our son finish third in his grade in the 2023 US Chess Nationals. Our son enjoyed each of his many hour-long lessons with Matt.",
+            "designation": "Parent of a Student"
+        },
+        {
+            "name": "Mete T.",
+            "image": "../../images/testimonials/placeholder.svg",
+            "text": "My son worked with Matt for a long time and learned a great deal. Matt is very knowledgeable, patient, and a great teacher!",
+            "designation": "Parent of a Student"
+        }
+    ]
+}

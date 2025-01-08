@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Pawn Island Academy</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/themes/day/day-theme.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Import Lato Font */
+        @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+        body {
+            transition: background-color 0.5s ease, color 0.5s ease;
+            font-family: 'Lato', sans-serif; /* Updated to Lato */
+        }
+
+        #brand-toggle {
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        #brand-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .profile-image {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin: 1rem auto;
+        }
+
+        .about-me-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body class="day-theme">
+    <nav class="navbar">
+        <a id="brand-toggle">
+            <img src="../../images/branding/pia-day.png" alt="Pawn Island Academy Logo" class="day-logo">
+            <img src="../../images/branding/pia-night.png" alt="Pawn Island Academy Logo Night" class="night-logo d-none">
+        </a>
+        <ul class="nav-links">
+            <li><a href="coaching.html">Coaching</a></li>
+            <li><a href="apparel.html">Apparel</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>About Me</h1>
+        <p>Discover my journey in chess, faith, and community building.</p>
+    </header>
+
+    <main>
+        <section class="about-me-section">
+            <img src="../../images/profile/matthew-freeman.jpg" alt="Matthew Freeman Portrait" class="profile-image">
+            <h2>Matthew Freeman</h2>
+            <p>Hi, I’m Matt—founder of Pawn Island, a dedicated chess coach with over 20 years of experience, and an advocate for community building through chess and faith. My journey began under the mentorship of Mike Foycik, shaping my approach to chess and life.</p>
+
+            <p>I’ve coached players at all levels, led teams to national championships, and found joy in seeing students achieve their goals. Beyond chess, I’ve pursued passions in poetry, apparel design, and creating spaces for meaningful conversation and growth.</p>
+
+            <p>Pawn Island embodies values of integrity, creativity, and giving back. A portion of our proceeds supports local community initiatives, aligning with the dream my late brother and I shared of making a positive impact through our talents.</p>
+        </section>
+
+        <section class="about-me-section">
+            <h2>Accomplishments</h2>
+            <ul>
+                <li>2024 Rhode Island State Chess Champion</li>
+                <li>Virginia State Grade 12 Chess Champion (2003)</li>
+                <li>Chess coach for Classical High School teams at nationals</li>
+                <li>Founder of Pawn Island Apparel, launched in November 2024</li>
+                <li>Published poet and creative community leader</li>
+            </ul>
+        </section>
+
+        <section class="about-me-section">
+            <h2>Get in Touch</h2>
+            <p>Whether you’re looking to improve your chess game, explore our apparel line, or collaborate on an event, I’d love to hear from you. Let’s make our next move together!</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Pawn Island Academy. All Rights Reserved.</p>
+    </footer>
+
+    <div id="header-placeholder"></div>
+    <!-- Other content here -->
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- JavaScript to load the header -->
+    <script src="../../js/load-header.js"></script>
+    <script src="../../js/load-footer.js"></script>
+</body>
+</html>

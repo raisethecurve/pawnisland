@@ -1,0 +1,313 @@
+/* Day Theme Stylesheet */
+body.day-theme {
+    --bg-color: #fdf6f0; /* Cream */
+    --text-color: #333333; /* Dark Gray */
+    --accent-color: #f4a261; /* Terracotta */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Lato', sans-serif;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: var(--accent-color);
+    color: white;
+    height: 200px;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    font-family: 'Cinzel', serif;
+}
+
+header p {
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 1.5;
+    font-family: 'Cinzel', serif;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--bg-color);
+    padding: 1rem 2rem;
+    border-bottom: 2px solid var(--accent-color);
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+}
+
+/* Logo Container Styles */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 140px;
+    padding: 0 1rem; /* Ensure equal buffering */
+}
+
+.brand-text-left,
+.brand-text-right {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem; /* Default font size */
+    color: var(--accent-color);
+    font-weight: bold;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.navbar #brand-toggle img {
+    max-height: 150px;
+    margin-right: 0.5rem;
+}
+
+/* Logo Images */
+.logo-container img {
+    max-width: 100%;
+    height: auto;
+    width: 100px; /* Default width */
+    min-width: 100px; /* Ensure the logo doesn't shrink below 100px */
+}
+
+/* Responsive Logo Sizes */
+@media (min-width: 576px) {
+    .logo-container img {
+        width: 120px;
+    }
+}
+
+@media (min-width: 768px) {
+    .logo-container img {
+        width: 150px;
+    }
+}
+
+/* Responsive Title Text Sizes */
+@media (min-width: 576px) {
+    .brand-text-left,
+    .brand-text-right {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .brand-text-left,
+    .brand-text-right {
+        font-size: 2.5rem;
+    }
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.hamburger-bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-color);
+    border-radius: 2px;
+}
+
+/* Dropdown Menu Styles */
+.nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--bg-color);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.nav-links li:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li {
+    padding: 0.5rem 1rem;
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    color: var(--text-color);
+    display: block;
+    width: 100%;
+}
+
+.dropdown-menu li a:hover {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--bg-color);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 1rem 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        text-align: center;
+        width: 100%;
+    }
+
+    .dropdown-menu {
+        position: static;
+        border: none;
+        box-shadow: none;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .brand-text-left {
+        order: 1;
+        margin-bottom: 0.5rem;
+    }
+
+    .logo-container {
+        order: 2;
+        margin-bottom: 0.5rem;
+    }
+
+    .brand-text-right {
+        order: 3;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Section Styles */
+main section {
+    padding: 2rem 1rem;
+    margin: 1rem auto;
+    max-width: 800px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+main section h2 {
+    color: var(--accent-color);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-family: 'Cinzel', serif;
+}
+
+main section p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Button Styles */
+.btn-primary {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #0066cc; /* Dark Blue */
+    color: #ffffff; /* White Text */
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #004c99; /* Darker Blue */
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 1.5rem 1rem;
+    border-top: 2px solid var(--accent-color);
+    font-size: 0.9rem;
+}
+
+footer .social-icons {
+    margin-top: 0.5rem;
+}
+
+footer .social-icons a {
+    color: var(--text-color);
+    margin: 0 0.5rem;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+    color: var(--accent-color);
+}
+
+/* Utility Classes */
+.d-none {
+    display: none;
+}

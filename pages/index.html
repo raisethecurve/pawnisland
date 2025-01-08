@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pawn Island Academy</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/themes/day/day-theme.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Import Lato Font */
+        @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+        body {
+            transition: background-color 0.5s ease, color 0.5s ease;
+            font-family: 'Lato', sans-serif; /* Updated to Lato */
+        }
+
+        #brand-toggle {
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        #brand-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Mobile-first styles */
+        main {
+            padding: 1rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: darken(var(--accent-color), 10%);
+        }
+
+        /* Remove any inline font-size styles */
+        .brand-text-left,
+        .brand-text-right {
+            /* font-size is controlled via CSS themes */
+        }
+
+        /* Shrink h1 and h2 text */
+        h1, h2 {
+            font-size: 2rem; /* Reduced font size */
+        }
+
+        /* Add margin around body text */
+        p {
+            margin: 0 1rem; /* Add horizontal margin */
+        }
+
+        /* Responsive styles */
+        @media (min-width: 768px) {
+            .section {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: left;
+                padding: 2rem;
+            }
+
+            .section h2 {
+                flex: 1;
+            }
+
+            .section p {
+                flex: 2;
+                margin-left: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="day-theme">
+    <!-- Dynamic Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="section">
+            <h2>Welcome to Pawn Island Academy</h2>
+            <p>Experience the best in chess coaching, apparel, and community engagement rooted in faith and strategy.</p>
+            <a href="about.html" class="cta-button">Learn More</a>
+        </section>
+
+        <section class="section">
+            <h2>Coaching</h2>
+            <p>Tailored chess lessons to enhance your skills and strategy. Perfect for all levels.</p>
+            <a href="coaching.html" class="cta-button">Start Learning</a>
+        </section>
+
+        <section class="section">
+            <h2>Apparel</h2>
+            <p>Discover our unique chess-inspired clothing line. Wear your passion proudly.</p>
+            <a href="apparel.html" class="cta-button">Shop Now</a>
+        </section>
+
+        <section class="section">
+            <h2>Community</h2>
+            <p>Join events, tournaments, and a vibrant community of chess enthusiasts.</p>
+            <a href="community.html" class="cta-button">Get Involved</a>
+        </section>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const body = document.body;
+            const logo = document.querySelector('#brand-toggle');
+            const dayLogo = document.querySelector('.day-logo');
+            const nightLogo = document.querySelector('.night-logo');
+
+            logo.addEventListener('click', () => {
+                const isDayTheme = body.classList.contains('day-theme');
+                if (isDayTheme) {
+                    body.classList.replace('day-theme', 'night-theme');
+                    dayLogo.classList.add('d-none');
+                    nightLogo.classList.remove('d-none');
+                    document.getElementById('theme-stylesheet').href = '../css/themes/night/night-theme.css';
+                } else {
+                    body.classList.replace('night-theme', 'day-theme');
+                    nightLogo.classList.add('d-none');
+                    dayLogo.classList.remove('d-none');
+                    document.getElementById('theme-stylesheet').href = '../css/themes/day/day-theme.css';
+                }
+            });
+        });
+    </script>
+    <script src="../js/load-header.js"></script>
+    <script src="../js/load-footer.js"></script>
+</body>
+</html>

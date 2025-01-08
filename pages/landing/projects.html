@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Pawn Island Academy</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/themes/day/day-theme.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Import Lato Font */
+        @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+        body {
+            transition: background-color 0.5s ease, color 0.5s ease;
+            font-family: 'Lato', sans-serif; /* Updated to Lato */
+        }
+
+        .project-section {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: var(--bg-color);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .project-section img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .project-section h2 {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-section p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-section ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .project-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .project-header h1 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            border-top: 2px solid var(--accent-color);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Add margin around body text */
+        p {
+            margin: 0 1rem; /* Add horizontal margin */
+        }
+    </style>
+</head>
+<body class="day-theme">
+
+    <!-- Include header placeholder -->
+    <div id="header-placeholder"></div>
+
+    <header class="project-header">
+        <h1>Projects</h1>
+        <p>Explore the key milestones that define my journey in chess, technology, and creativity.</p>
+    </header>
+
+    <main id="projects-container">
+        <!-- Projects will be dynamically loaded here -->
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Dynamically load projects from projects.json
+        fetch('../../data/projects.json')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('projects-container');
+                data.projects.forEach(project => {
+                    const section = document.createElement('section');
+                    section.className = 'project-section';
+
+                    section.innerHTML = `
+                        <h2>${project.title}</h2>
+                        <img src="${project.image}" alt="${project.title}">
+                        <p>${project.overview}</p>
+                        <ul>
+                            ${project.contributions.map(contribution => `<li>${contribution}</li>`).join('')}
+                        </ul>
+                    `;
+
+                    container.appendChild(section);
+                });
+            })
+            .catch(error => console.error('Error loading projects:', error));
+    </script>
+
+    <!-- JavaScript to load the header -->
+    <script src="../../js/load-header.js"></script>
+    <script src="../../js/load-footer.js"></script>
+</body>
+</html>

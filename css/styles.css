@@ -1,0 +1,300 @@
+/* Global Variables */
+:root {
+    --bg-color: #1e293b; /* Default background color */
+    --text-color: #ffffff; /* Default text color */
+    --accent-color: #f4a261; /* Default accent color */
+    --white: #ffffff; /* Common white */
+    --black: #000000; /* Common black */
+}
+
+/* Global Stylesheet */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    margin: 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    color: var(--accent-color);
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+p {
+    margin: 0 1rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: var(--accent-color);
+    color: var(--white);
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-color);
+    padding: 1rem 2rem;
+}
+
+/* Logo Container */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    flex: 1 1 auto;
+}
+
+/* Logo Images */
+.logo-container img {
+    max-width: 100%;
+    height: auto;
+    width: 100px; /* Default width */
+    min-width: 100px; /* Ensure the logo doesn't shrink below 100px */
+}
+
+/* Responsive Logo Sizes */
+@media (min-width: 576px) {
+    .logo-container img {
+        width: 120px;
+    }
+}
+
+@media (min-width: 768px) {
+    .logo-container img {
+        width: 150px;
+    }
+}
+
+/* Brand Text */
+.brand-text-left,
+.brand-text-right {
+    margin: 0 0.5rem;
+    font-size: 1.5rem; /* Default font size */
+}
+
+#brand-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0.5rem;
+}
+
+/* Responsive Title Text Sizes */
+@media (min-width: 576px) {
+    .brand-text-left,
+    .brand-text-right {
+        font-size: 2rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .brand-text-left,
+    .brand-text-right {
+        font-size: 2.5rem;
+    }
+}
+
+/* Hamburger Button */
+.hamburger {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.hamburger-bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-color);
+    border-radius: 2px;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    flex: 2 1 auto;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--bg-color);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 1rem 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        text-align: center;
+        width: 100%;
+    }
+
+    .dropdown-menu {
+        position: static;
+        border: none;
+        box-shadow: none;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .brand-text-left {
+        order: 1;
+        margin-bottom: 0.5rem;
+    }
+
+    .logo-container {
+        order: 2;
+        margin-bottom: 0.5rem;
+    }
+
+    .brand-text-right {
+        order: 3;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Equal Buffering Around Logo Texts */
+.logo-container {
+    padding: 0 1rem;
+}
+
+/* Dropdown */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    background-color: var(--bg-color);
+    list-style: none;
+    padding: 0;
+    border: 1px solid var(--accent-color);
+}
+
+.nav-links li:hover .dropdown-menu {
+    display: block;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--accent-color);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    text-align: center;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: var(--black);
+}
+
+/* Sections */
+main section {
+    margin: 1rem auto;
+    padding: 2rem;
+    max-width: 800px;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border-top: 2px solid var(--accent-color);
+}
+
+.footer .social-icons {
+    margin: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.footer .social-icons a {
+    color: var(--accent-color);
+    transition: color 0.3s ease;
+}
+
+.footer .social-icons a:hover {
+    color: var(--white);
+}
+
+/* Utility */
+.d-none {
+    display: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.margin-auto {
+    margin: auto;
+}
+
+.padding-sm {
+    padding: 0.5rem;
+}
+
+.padding-md {
+    padding: 1rem;
+}
