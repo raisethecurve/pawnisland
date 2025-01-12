@@ -4,95 +4,105 @@ Pawn Island Academy offers personalized chess coaching, unique apparel, and enga
 
 ## Table of Contents
 
-- [About](#about)
 - [Features](#features)
-- [Installation](#installation)
+- [Project Structure](#project-structure)
+- [Setup Instructions](#setup-instructions)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 
-## About
-
-Pawn Island Academy is a multi-faceted platform offering chess coaching services, a dedicated apparel shop, and opportunities to book speaking engagements with Matthew Freeman.
-
 ## Features
 
-- **Chess Coaching**: Online, in-person, group coaching, and bootcamps.
-- **Apparel Shop**: A wide range of chess-themed apparel.
-- **Speaking Engagements**: Book Matthew Freeman for speaking engagements.
-- **Contact Form**: Easily get in touch with us through the contact form.
-- **Student Testimonials**: Read what our students have to say.
+- **Chess Coaching:** Personalized sessions for all skill levels.
+- **Apparel Shop:** Unique, faith-inspired chess apparel with a commitment to community support.
+- **Speaking Engagements:** Interactive sessions focusing on strategic thinking and personal development.
+- **Blog:** Insights and articles on chess strategies, community stories, and more.
+- **Student Reviews:** Testimonials from our community members.
 
-## Installation
+## Project Structure
+```
+pawnisland/
+├── css/
+│   ├── buttons.css
+│   ├── footer.css
+│   ├── navbar.css
+│   └── styles.css
+├── js/
+│   ├── footer.js
+│   ├── script.js
+├── pages/
+│   ├── landing/
+│   │   ├── about-me.html
+│   │   ├── apparel.html
+│   │   ├── coaching.html
+│   │   ├── reviews.html
+│   │   ├── speaking.html
+│   │   └── testimonials.html
+│   └── partials/
+│       └── footer.html
+├── images/
+│   ├── brand-icons/
+│   ├── headers-pages/
+│   └── social-icons/
+├── data/
+│   ├── projects.json
+│   └── reviews.json
+├── index.html
+├── robots.txt
+├── sitemap.xml
+└── readme.md
+```
 
-To set up the project locally, follow these steps:
+## Setup Instructions
 
-1. Clone the repository:
-    ```sh
-    git clone https://github.com/yourusername/pawnisland.git
-    ```
-2. Navigate to the project directory:
-    ```sh
-    cd pawnisland
-    ```
-3. Open the project in your preferred code editor.
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/yourusername/pawnislandacademy.git
+   ```
+
+2. **Navigate to the Project Directory:**
+   ```bash
+   cd pawnislandacademy
+   ```
+
+3. **Install Dependencies:**
+   - Ensure you have [Node.js](https://nodejs.org/) installed.
+   - Install any necessary packages if applicable.
+
+4. **Run the Application:**
+   - Open `index.html` in your preferred web browser.
 
 ## Usage
 
-### Chess Coaching
-
-Navigate to the [Chess Coaching](https://pawnislandacademy.com/pages/landing/coaching.html) page to explore various coaching options.
-
-### Apparel Shop
-
-Visit the [Apparel Shop](https://pawnislandacademy.com/pages/landing/apparel.html) to browse and purchase chess-themed apparel.
-
-### Speaking Engagements
-
-Book Matthew Freeman for speaking engagements through the [Speaking Engagements](https://pawnislandacademy.com/pages/landing/speaking.html) page. Use the "Need a Speaker?" button to open the contact form in an iframe.
-
-### Contact Form
-
-Use the [Contact Form](https://pawnislandacademy.com/pages/forms/contact.html) to get in touch with us for any inquiries.
-
-### Student Testimonials
-
-Read what our students have to say on the [Student Testimonials](https://pawnislandacademy.com/pages/landing/reviews.html) page.
+- **Chess Coaching:** Visit the [Chess Coaching](https://pawnislandacademy.com/pages/landing/coaching.html) page to learn more and sign up for sessions.
+- **Apparel Shop:** Explore unique apparel designs on the [Apparel Shop](https://pawnislandacademy.com/pages/landing/apparel.html) page.
+- **Speaking Engagements:** Book speaking sessions through the [Speaking Engagements](https://pawnislandacademy.com/pages/landing/speaking.html) page.
+- **Blog:** Read insightful articles on our [Blog](https://chess.com/blog/squarethecurve).
+- **Reviews:** Check out testimonials from our [Students](https://pawnislandacademy.com/pages/landing/reviews.html).
 
 ## Contributing
 
-We welcome contributions! Please follow these steps to contribute:
+Contributions are welcome! Please follow these steps:
 
-1. Fork the repository.
-2. Create a new branch:
-    ```sh
-    git checkout -b feature/your-feature-name
-    ```
-3. Make your changes and commit them:
-    ```sh
-    git commit -m 'Add some feature'
-    ```
-4. Push to the branch:
-    ```sh
-    git push origin feature/your-feature-name
-    ```
-5. Open a pull request.
+1. **Fork the Repository**
+2. **Create a Feature Branch**
+   ```bash
+   git checkout -b feature/YourFeature
+   ```
+3. **Commit Your Changes**
+   ```bash
+   git commit -m "Add your message here"
+   ```
+4. **Push to the Branch**
+   ```bash
+   git push origin feature/YourFeature
+   ```
+5. **Open a Pull Request
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the [MIT License](LICENSE).
 
-## Pages
+---
 
-- [Home](https://pawnislandacademy.com/)
-- [Chess Coaching](https://pawnislandacademy.com/pages/landing/coaching.html)
-- [Apparel Shop](https://pawnislandacademy.com/pages/landing/apparel.html)
-- [Speaking Engagements](https://pawnislandacademy.com/pages/landing/speaking.html)
-- [About Me](https://pawnislandacademy.com/pages/landing/about-me.html)
-- [Reviews](https://pawnislandacademy.com/pages/landing/reviews.html)
-- [Contact](https://pawnislandacademy.com/pages/forms/contact.html)
-
-## Updates
-
-- Removed "Browse Shop" button from the personalized coaching section on the coaching page.
-- Updated sitemap to reflect changes.
+© 2025 Pawn Island Academy. All rights reserved.

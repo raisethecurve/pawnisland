@@ -54,4 +54,40 @@
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
+    <url>
+        <loc>https://pawnislandacademy.com/</loc>
+        <lastmod>2024-04-27</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://pawnislandacademy.com/pages/landing/about-me.html</loc>
+        <lastmod>2024-04-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://pawnislandacademy.com/pages/landing/coaching.html</loc>
+        <lastmod>2024-04-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://pawnislandacademy.com/pages/landing/apparel.html</loc>
+        <lastmod>2024-04-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://pawnislandacademy.com/pages/landing/speaking.html</loc>
+        <lastmod>2024-04-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://pawnislandacademy.com/pages/landing/reviews.html</loc>
+        <lastmod>2024-04-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
 </urlset>

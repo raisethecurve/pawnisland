@@ -1,18 +1,6 @@
 User-agent: *
+Disallow: /admin/
 Disallow: /private/
-Disallow: /tmp/
-Disallow: /backup/
-Disallow: /*.pdf$
-Disallow: /*.doc$
-Disallow: /*.docx$
-
-User-agent: Googlebot
 Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-# Optional: Add crawl delay if experiencing server load issues
-# Crawl-delay: 10
 
 Sitemap: https://pawnislandacademy.com/sitemap.xml
