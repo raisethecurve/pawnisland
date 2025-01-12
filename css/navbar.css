@@ -60,3 +60,7 @@
     outline-offset: 2px;
 }
 
+.navbar-brand {
+    font-family: 'Cinzel', serif;
+}
+

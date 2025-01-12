@@ -9,6 +9,7 @@
     align-items: center;
     animation: slideUp 0.6s ease-out;
     color: inherit; /* Ensure child elements inherit text color */
+    font-family: 'Cinzel', serif;
 }
 
 .footer p {
