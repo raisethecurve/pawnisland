@@ -2,6 +2,7 @@
 .navbar {
     justify-content: space-between;
     background-color: var(--navbar-bg-color);
+    font-family: inherit;
 }
 
 .navbar-toggler {
@@ -34,6 +35,7 @@
 /* Prefix nav-link to prevent conflicts */
 .navbar .nav-link {
     color: inherit; /* Inherit color based on the theme */
+    font-family: 'Cinzel', serif;
 }
 
 .navbar .nav-link:hover {

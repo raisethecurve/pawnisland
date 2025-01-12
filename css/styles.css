@@ -1,10 +1,15 @@
+/* Import Lato and Cinzel */
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Cinzel:wght@400;700&display=swap');
+
 html {
   scroll-behavior: smooth;
+}
 
 /* Ensure sufficient color contrast */
 body {
     background-color: #ffffff;
     color: #333333;
+    font-family: 'Lato', sans-serif;
 }
 
 .pi-body a:hover, 
@@ -40,6 +45,7 @@ img {
 
 .btn {
     transition: background-color 0.3s, color 0.3s;
+    font-family: 'Cinzel', serif;
 }
 
 .btn:hover {
@@ -55,36 +61,19 @@ img {
     padding: 10px 20px;
     margin: 5px;
     transition: transform 0.3s, background 0.3s;
+    font-family: 'Cinzel', serif;
 }
 .pi-btn-custom:hover {
     background: linear-gradient(45deg, #1e88e5, #2196f3);
     transform: translateY(-2px);
 }
 
-/* Increase specificity for buttons within specific containers */
-
-/* Removed jump-to-top styles */
-
-/* Remove duplicated shop-now-btn styles */
-/* .shop-now-btn {
-    background-color: #343a40;
-    color: #ffffff;
-    border: 2px solid #218838;
-    border-radius: 50px;
-    padding: 5px 15px;
-    font-size: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
+/* Set header text to Cinzel */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', serif;
 }
 
-.shop-now-btn img {
-    margin-right: 10px;
-}
-
-.day-theme .shop-now-btn {
-    color: #ffffff;
-/* Ensure all deprecated styles are properly commented out */
-    border-color: #ffffff;
+/* Set body text to Lato only */
+body {
+    font-family: 'Lato', sans-serif;
 }

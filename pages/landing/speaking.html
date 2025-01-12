@@ -27,30 +27,16 @@
         gtag('config', 'G-T12VEHM2PY');
     </script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
         html, body {
             height: 100%;
             margin: 0;
             display: flex;
             flex-direction: column;
+            /* font-family: unset; */ /* Remove or comment this out */
         }
         .content {
             flex: 1;
-        }
-        .book-button {
-            background-color: #aa2885;
-            color: #ffffff;
-            position: fixed;
-            right: -55px;
-            top: 50%;
-            transform: rotate(-90deg);
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: right 0.3s;
-        }
-        .book-button:hover {
-            right: -50px;
         }
         .iframe-container {
             position: fixed;
@@ -136,7 +122,8 @@
                         <li class="mb-2"><strong>Actionable Frameworks:</strong> Discover how to rapidly evaluate data, set goals, generate solutions, and make confident decisions.</li>
                         <li class="mb-2"><strong>Proven Expertise:</strong> Sessions led by the 2024 Rhode Island State Champion, with real-world coaching experience and a passion for empowering teams.</li>
                     </ul>
-                    <p class="text-center mt-4"><strong>Ready to level up your team’s decision-making skills?</strong><br /><a href="#" class="speaking-link" onclick="document.querySelector('.book-button').click(); return false;">Schedule a speaking engagement</a> and see the difference a chess mindset can make.</p>
+                    <p class="text-center mt-4"><strong>Ready to level up your team’s decision-making skills?</strong><br />Schedule a speaking engagement and see the difference a chess mindset can make.</p>
+                    <a href="mailto:info@pawnislandacademy.com?subject=Speaking%20Inquiry" class="btn btn-primary mt-3">Contact Me</a>
                 </div>
             </section>
         </div>
@@ -157,36 +144,5 @@
     </script>
     <script src="../../js/script.js"></script>
     <script src="../../js/footer.js"></script>
-    <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function() {
-            var bookButton = document.createElement("button");
-            bookButton.innerText = "Need a Speaker?";
-            bookButton.className = "book-button";
-            bookButton.onclick = function() {
-                var iframeContainer = document.createElement("div");
-                iframeContainer.className = "iframe-container";
-                var iframe = document.createElement("iframe");
-                iframe.src = "/pages/forms/contact.html";
-                iframe.style.width = "100%";
-                iframe.style.height = "100%";
-                iframe.style.border = "none";
-                iframeContainer.appendChild(iframe);
-
-                var overlay = document.createElement("div");
-                overlay.className = "iframe-overlay";
-                overlay.onclick = function() {
-                    document.body.removeChild(iframeContainer);
-                    document.body.removeChild(overlay);
-                };
-
-                document.body.appendChild(iframeContainer);
-                document.body.appendChild(overlay);
-
-                iframeContainer.style.display = "block";
-                overlay.style.display = "block";
-            };
-            document.body.appendChild(bookButton);
-        });
-    </script>
 </body>
 </html>

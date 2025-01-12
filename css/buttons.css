@@ -11,6 +11,7 @@
     justify-content: center;
     margin-left: 15px; /* Adjusted margin for better spacing */
     transition: border-color 0.3s, color 0.3s, transform 0.3s;
+    font-family: 'Lato', sans-serif !important;
 }
 
 .shop-now-btn img {
