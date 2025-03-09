@@ -308,6 +308,33 @@ blockquote {
     text-decoration: none;
 }
 
+/* Fix Jump to Top Button */
+.jump-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #dd3649;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.jump-to-top:hover {
+    background-color: #c12e42;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
 /* Responsive Adjustments */
 @media (max-width: 1200px) {
     .header-title {

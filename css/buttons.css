@@ -9,7 +9,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-left: 15px; /* Adjusted margin for better spacing */
+    position: absolute; /* Position absolutely */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Offset by half the button width */
     transition: border-color 0.3s, color 0.3s, transform 0.3s;
     font-family: 'Lato', sans-serif !important;
 }
@@ -19,7 +21,7 @@
 }
 
 .shop-now-btn:hover {
-    transform: scale(1.05); /* Slight enlarge on hover */
+    transform: translateX(-50%) scale(1.05); /* Keep centered while scaling */
     border-color: #333333; /* Darker border on hover */
 }
 
