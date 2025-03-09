@@ -7,8 +7,8 @@ html {
 
 /* Ensure sufficient color contrast */
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: #f8f9fa;
+    color: #212529;
     font-family: 'Cinzel', serif;
     transition: background-color 0.3s, color 0.3s;
 }
@@ -89,6 +89,7 @@ img {
     transition: transform 0.3s, background 0.3s;
     font-family: 'Cinzel', serif;
 }
+
 .pi-btn-custom:hover {
     background: linear-gradient(45deg, #1e88e5, #2196f3);
     transform: translateY(-2px);
@@ -162,6 +163,19 @@ body {
 :root {
     --primary-color: #dd3649;
     --primary-color-hover: #c12e42;
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --card-bg: #f8f9fa;
+    --card-text: #333333;
+    --navbar-bg-color: #f8f9fa;
+    --navbar-text-color: #333333;
+    --footer-bg-color: #ffffff;
+    --footer-text-color: #333333;
+    --border-color: #dee2e6;
+    --button-bg: #dd3649;
+    --button-text: #ffffff;
+    --filter-button-bg: #343a40;
+    --filter-button-text: #ffffff;
     
     /* Day theme colors */
     --day-bg-color: #ffffff;
@@ -457,4 +471,25 @@ body {
 /* Text muted color for night theme */
 .night-theme .text-muted {
     color: #adb5bd !important;
+}
+
+.header-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    font-size: 3rem;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    position: relative;
+    padding-bottom: 0.5rem;
+    color: white; /* Ensure hero title is always white */
+}
+
+.header-subtitle {
+    font-family: 'Cinzel', serif;
+    font-weight: 400;
+    margin-bottom: 0.8rem;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    color: white; /* Ensure hero subtitle is always white */
 }

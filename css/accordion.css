@@ -11,6 +11,16 @@
     transform: scale(1.02);
 }
 
+:root {
+    --accordion-header-bg: #343a40;
+    --accordion-header-color: #ffffff;
+    --accordion-header-hover-bg: #495057;
+    --accordion-header-hover-color: #ffffff;
+    --accordion-body-bg: #343a40;
+    --accordion-body-color: #ffffff;
+    --accordion-border-color: #495057;
+}
+
 .accordion .card-header {
     background-color: var(--accordion-header-bg);
     color: inherit; /* Inherit text color based on the theme */
@@ -67,24 +77,4 @@
 
 .accordion-content {
   transition: max-height 0.3s ease;
-}
-
-.day-theme {
-    --accordion-header-bg: #343a40; /* Match the about-me text container background */
-    --accordion-header-color: #ffffff;
-    --accordion-header-hover-bg: #495057;
-    --accordion-header-hover-color: #ffffff;
-    --accordion-body-bg: #343a40; /* Match the about-me text container background */
-    --accordion-body-color: #ffffff; /* Ensure text color is white */
-    --accordion-border-color: #495057;
-}
-
-.night-theme {
-    --accordion-header-bg: #2c2f33; /* Slightly lighter than the about-me text container */
-    --accordion-header-color: #ffffff;
-    --accordion-header-hover-bg: #3a3d41;
-    --accordion-header-hover-color: #ffffff;
-    --accordion-body-bg: #2c2f33; /* Slightly lighter than the about-me text container */
-    --accordion-body-color: #ffffff;
-    --accordion-border-color: #3a3d41;
 }

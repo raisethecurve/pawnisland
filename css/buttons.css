@@ -1,7 +1,7 @@
 .shop-now-btn {
     background-color: transparent; /* Transparent background */
-    border: 2px solid; /* Border color defined by theme */
-    color: inherit; /* Inherit text color based on the theme */
+    border: 2px solid #000000; /* Border color for light theme */
+    color: #000000; /* Text color for light theme */
     border-radius: 25px; /* Adjusted border radius for a smoother look */
     padding: 10px 20px; /* Increased padding for a more prominent button */
     font-size: 18px; /* Increased font size for better readability */
@@ -20,27 +20,7 @@
 
 .shop-now-btn:hover {
     transform: scale(1.05); /* Slight enlarge on hover */
-    /* Border color will transition based on theme */
-}
-
-/* Day Theme Styles for Shop Now Button */
-.day-theme .shop-now-btn {
-    color: #000000; /* Black text for day theme */
-    border-color: #000000; /* Black border for day theme */
-}
-
-.day-theme .shop-now-btn:hover {
-    border-color: #333333; /* Darker border on hover for day theme */
-}
-
-/* Night Theme Styles for Shop Now Button */
-.night-theme .shop-now-btn {
-    color: #ffffff; /* White text for night theme */
-    border-color: #ffffff; /* White border for night theme */
-}
-
-.night-theme .shop-now-btn:hover {
-    border-color: #cccccc; /* Light gray border on hover for night theme */
+    border-color: #333333; /* Darker border on hover */
 }
 
 /* Centralized Jump to Top Button Styles */

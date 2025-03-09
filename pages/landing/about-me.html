@@ -3,23 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Pawn Island</title>
-    <meta name="description" content="Learn more about Matthew H. Freeman, his journey in chess, and his contributions to the chess community.">
-    <meta name="keywords" content="Matthew Freeman, Chess, About Me, Chess Community">
-    <meta property="og:title" content="About Matthew Freeman - Pawn Island">
-    <meta property="og:description" content="Chess coach, Rhode Island State Chess Champion, and founder of Pawn Island.">
+    <title>About Me - Pawn Island Academy</title>
+    <meta name="description" content="Learn about the chess coach behind Pawn Island Academy and my journey in the chess world.">
+    <meta name="keywords" content="Chess Coach, Chess Instructor, Pawn Island Academy, Chess Biography">
+    <meta property="og:title" content="About Me - Pawn Island Academy">
+    <meta property="og:description" content="Learn about the chess coach behind Pawn Island Academy and my journey in the chess world.">
     <meta property="og:image" content="https://pawnislandacademy.com/images/brand-icons/logo-light.png">
     <meta property="og:url" content="https://pawnislandacademy.com/pages/landing/about-me.html">
     <link rel="canonical" href="https://pawnislandacademy.com/pages/landing/about-me.html">
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href="../../css/navbar.css">
     <link rel="stylesheet" href="../../css/footer.css">
     <link rel="stylesheet" href="../../css/buttons.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../../css/accordion.css">
+    <link rel="stylesheet" href="../../css/about-me.css">
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="../../images/brand-icons/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T12VEHM2PY"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -27,701 +32,12 @@
         gtag('js', new Date());
         gtag('config', 'G-T12VEHM2PY');
     </script>
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Matthew H. Freeman",
-            "url": "https://pawnislandacademy.com/pages/landing/about-me.html",
-            "image": "https://pawnislandacademy.com/images/matthew.jpg",
-            "description": "Chess enthusiast and community leader with extensive experience in coaching and tournament management."
-        }
-    </script>
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            font-family: 'Raleway', sans-serif;
-        }
-        .content {
-            flex: 1;
-        }
-        .project-card {
-            background-color: #343a40;
-            color: #ffffff;
-            border: none;
-            border-radius: 5px;
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
-        .project-card:hover {
-            transform: scale(1.05);
-        }
-        .project-card img {
-            width: 100%;
-            height: auto;
-        }
-        .project-card-body {
-            padding: 15px;
-        }
-        .about-me-copy {
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-        .about-me-header {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-        .header-image-container img {
-            display: block;
-            margin: 0 auto;
-            max-width: 100%;
-        }
-        .cinzel-font {
-            font-family: 'Cinzel', serif;
-        }
-        /* Enhanced Header styling - revised for better visibility */
-        .profile-header {
-            position: relative;
-            padding: 0;
-            margin-bottom: 6rem; /* Increased from 3rem to 6rem for better spacing */
-            overflow: hidden;
-            height: 500px;
-        }
-        
-        .header-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.8) 100%);
-            z-index: 1;
-        }
-        
-        .header-content {
-            position: absolute;
-            bottom: 80px;
-            left: 0;
-            right: 0;
-            z-index: 2;
-            padding: 0 2rem;
-        }
-        
-        .header-bg {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        
-        .profile-title {
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            font-size: 3.2rem;
-            margin-bottom: 1rem;
-            color: #fff;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-            letter-spacing: 2px;
-        }
-        
-        .profile-subtitle {
-            font-family: 'Raleway', sans-serif;
-            font-size: 1.5rem;
-            color: #f8f9fa;
-            margin-bottom: 1.5rem;
-            letter-spacing: 1px;
-            font-weight: 400;
-        }
-        
-        .profile-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 1.5rem;
-        }
-        
-        .profile-tag {
-            background-color: rgba(221, 54, 73, 0.9);
-            color: white;
-            padding: 6px 15px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-        
-        /* Media queries for responsive design */
-        @media (max-width: 992px) {
-            .profile-title {
-                font-size: 2.8rem;
-            }
-            .profile-subtitle {
-                font-size: 1.3rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .profile-header {
-                height: 400px;
-            }
-            .profile-title {
-                font-size: 2.2rem;
-            }
-            .profile-subtitle {
-                font-size: 1.1rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .profile-header {
-                height: 350px;
-            }
-            .header-content {
-                bottom: 50px;
-            }
-            .profile-title {
-                font-size: 1.8rem;
-            }
-            .profile-subtitle {
-                font-size: 1rem;
-            }
-            .profile-tag {
-                padding: 4px 12px;
-                font-size: 0.75rem;
-            }
-        }
-        
-        /* Bio section styling */
-        .bio-section {
-            padding: 3rem 0;
-            position: relative;
-            background-color: #f8f9fa;
-        }
-        
-        .bio-container {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
-            background-color: #fff;
-        }
-        
-        .bio-title {
-            font-family: 'Cinzel', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
-            color: #343a40;
-        }
-        
-        .bio-title:after {
-            content: '';
-            position: absolute;
-            width: 60%;
-            height: 3px;
-            background-color: #dd3649;
-            bottom: -8px;
-            left: 0;
-        }
-        
-        .bio-content {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: #343a40;
-        }
-        
-        .bio-content p {
-            margin-bottom: 1.5rem;
-        }
-        
-        .bio-content .highlight {
-            font-weight: 600;
-            color: #dd3649;
-        }
-        
-        @media (max-width: 768px) {
-            .bio-container {
-                padding: 1.5rem;
-            }
-            .bio-title {
-                font-size: 1.7rem;
-            }
-            .bio-content {
-                font-size: 1rem;
-                line-height: 1.7;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .bio-title {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* Projects section styling - fix day mode colors */
-        .projects-section {
-            padding: 4rem 0;
-            background-color: #f1f3f5;
-            position: relative;
-        }
-        
-        .projects-title {
-            font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            font-weight: 700;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-        
-        .projects-title:after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 4px;
-            background-color: #dd3649;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .project-card {
-            border: none;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 2rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            transition: all 0.4s cubic-bezier(0.2, 0, 0.2, 1);
-            background-color: #fff;
-            height: 100%;
-            color: #212529; /* Ensure text is dark in day theme */
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-        }
-        
-        .project-img-container {
-            position: relative;
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .project-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.2, 0, 0.2, 1);
-        }
-        
-        .project-card:hover .project-img {
-            transform: scale(1.08);
-        }
-        
-        .project-card-body {
-            padding: 1.5rem;
-        }
-        
-        .project-title {
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            font-size: 1.35rem;
-            color: #212529; /* Ensure title is visible in day theme */
-        }
-        
-        .project-date {
-            font-size: 0.9rem;
-            color: #6c757d;
-            margin-bottom: 1rem;
-        }
-        
-        .project-desc {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 1.2rem;
-            color: #343a40; /* Ensure description is visible in day theme */
-        }
-        
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 1.2rem;
-        }
-        
-        .project-tag {
-            background-color: #e9ecef;
-            color: #495057;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-        
-        .project-btn {
-            display: inline-block;
-            padding: 8px 20px;
-            background-color: #dd3649;
-            color: white;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .project-btn:hover {
-            background-color: #c12e42;
-            transform: translateY(-2px);
-            text-decoration: none;
-            color: white;
-        }
-        
-        /* Project Detail Modal */
-        .project-modal .modal-content {
-            border-radius: 12px;
-            border: none;
-        }
-        
-        .project-modal .modal-header {
-            border-bottom: 1px solid #dee2e6;
-            padding: 1.5rem;
-        }
-        
-        .project-modal .modal-title {
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-        }
-        
-        .project-modal .modal-body {
-            padding: 1.5rem;
-        }
-        
-        .project-modal-img {
-            width: 100%;
-            max-height: 300px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-        }
-        
-        .project-modal .section-title {
-            font-weight: 700;
-            color: #dd3649;
-            margin-top: 1.2rem;
-            margin-bottom: 0.8rem;
-            font-size: 1.1rem;
-        }
-        
-        .project-modal .modal-footer {
-            border-top: 1px solid #dee2e6;
-            padding: 1.5rem;
-        }
-        
-        .project-modal .close {
-            color: #495057;
-            opacity: 1;
-            text-shadow: none;
-        }
-        
-        @media (max-width: 992px) {
-            .projects-title {
-                font-size: 2.2rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .projects-title {
-                font-size: 2rem;
-                margin-bottom: 2rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .projects-title {
-                font-size: 1.8rem;
-            }
-            .project-title {
-                font-size: 1.2rem;
-            }
-        }
-
-        /* Helper buttons styling */
-        .floating-btn {
-            position: fixed;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1);
-            border: none;
-            z-index: 1000;
-        }
-        
-        .floating-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-        }
-        
-        .jump-to-top {
-            bottom: 30px;
-            right: 30px;
-            width: 55px;
-            height: 55px;
-            background-color: #dd3649;
-            color: #ffffff;
-            font-size: 22px;
-            display: none;
-        }
-        
-        .jump-to-top:hover {
-            background-color: #c12e42;
-        }
-        
-        /* Modernized Hero Section - Professional Redesign */
-        .hero-section {
-            position: relative;
-            padding: 6rem 0;
-            margin-bottom: 8rem; /* Increased from 5rem to 8rem */
-            background-color: #1a1f25;
-            overflow: visible; /* Changed from hidden to visible */
-            z-index: 10;
-        }
-        
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.08;
-            object-fit: cover;
-            z-index: 1;
-            filter: blur(1px);
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 20;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-bottom: 2rem; /* Added padding at the bottom */
-        }
-        
-        .hero-image-container {
-            width: 300px;
-            height: 350px;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 
-                0 20px 40px rgba(0,0,0,0.3),
-                0 0 0 1px rgba(255,255,255,0.1),
-                0 0 0 4px rgba(221,54,73,0.1);
-            position: relative;
-            transform: perspective(1000px) rotateY(5deg);
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            z-index: 25; /* Added explicit z-index */
-        }
-        
-        .hero-image-container:hover {
-            transform: perspective(1000px) rotateY(0);
-            box-shadow: 
-                0 25px 50px rgba(0,0,0,0.4),
-                0 0 0 1px rgba(255,255,255,0.15),
-                0 0 0 4px rgba(221,54,73,0.2);
-        }
-        
-        .hero-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        
-        .hero-image-container:hover .hero-image {
-            transform: scale(1.04);
-        }
-        
-        .hero-image-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(
-                to top,
-                rgba(0,0,0,0.4) 0%,
-                rgba(0,0,0,0) 40%
-            );
-            z-index: 2;
-        }
-        
-        .hero-text {
-            flex: 1;
-            min-width: 300px;
-            color: white;
-            padding: 1rem;
-        }
-        
-        .hero-title {
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            font-size: 3.4rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.15);
-            position: relative;
-            letter-spacing: 1px;
-        }
-        
-        .hero-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, #dd3649, #dd3649aa);
-            margin-top: 15px;
-            border-radius: 2px;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.6rem;
-            font-weight: 400;
-            margin-bottom: 2rem;
-            color: #e0e0e0;
-            opacity: 0.9;
-        }
-        
-        .hero-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 1.8rem;
-        }
-        
-        .hero-tag {
-            background: rgba(221, 54, 73, 0.15);
-            border: 1px solid rgba(221, 54, 73, 0.3);
-            color: #ffffff;
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-        
-        .hero-tag:hover {
-            background: rgba(221, 54, 73, 0.25);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(221, 54, 73, 0.2);
-        }
-        
-        /* Add responsive breakpoints */
-        @media (max-width: 992px) {
-            .hero-content {
-                gap: 2rem;
-            }
-            
-            .hero-title {
-                font-size: 3rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.4rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .hero-section {
-                margin-bottom: 10rem; /* Even more space on mobile */
-            }
-            
-            .hero-content {
-                flex-direction: column;
-            }
-            
-            .hero-image-container {
-                width: 260px;
-                height: 300px;
-                margin-bottom: 1.5rem;
-            }
-            
-            .hero-title {
-                font-size: 2.6rem;
-                text-align: center;
-            }
-            
-            .hero-title::after {
-                margin: 15px auto 0;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.3rem;
-                text-align: center;
-            }
-            
-            .hero-tags {
-                justify-content: center;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .hero-section {
-                padding: 4rem 0 5rem; /* Added bottom padding */
-            }
-            
-            .hero-image-container {
-                width: 220px;
-                height: 260px;
-            }
-            
-            .hero-title {
-                font-size: 2.2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .hero-tag {
-                padding: 6px 16px;
-                font-size: 0.85rem;
-            }
-        }
-    </style>
 </head>
 <body class="bg-light text-dark">
-    <!-- Updated navbar from clearinghouse.html -->
+    <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
-        <a class="navbar-brand d-flex align-items-center" href="../../index.html" aria-label="Homepage">
-            <img src="../../images/brand-icons/logo-dark.png" alt="Pawn Island Academy Logo Dark" class="logo day-logo">
-            <img src="../../images/brand-icons/logo-light.png" alt="Pawn Island Academy Logo Light" class="logo night-logo d-none">
+        <a class="navbar-brand d-flex align-items-center" href="../../index.html" id="brand-toggle" aria-label="Homepage">
+            <img src="../../images/brand-icons/logo-dark.png" alt="Pawn Island Academy Logo" class="logo">
         </a>
         <a class="shop-now-btn" href="https://pawnisland.myshopify.com/collections" target="_blank" aria-label="Shop Now">
             <img src="../../images/social-icons/shopify-universal.png" alt="Shopify" width="20" height="20">
@@ -732,6 +48,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-dark" href="about-me.html">About<span class="sr-only">(current)</span></a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark" href="https://pawnisland.myshopify.com/collections">Merch</a>
                 </li>
@@ -745,115 +64,183 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="clearinghouse.html" aria-label="Chess Clearinghouse">Clearinghouse</a>
+                    <a class="nav-link text-dark" href="clearinghouse.html">Clearinghouse</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <!-- Modernized Hero Section with Dynamic Card Design -->
-    <section class="hero-section">
-        <img src="../../images/headers-pages/chess-background.webp" alt="Chess Pattern Background" class="hero-bg">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-image-container" data-aos="fade-right" data-aos-duration="1000">
-                    <img src="../../images/headers-pages/freeman-2.jpg" alt="Matthew Freeman" class="hero-image">
-                </div>
-                <div class="hero-text" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                    <h1 class="hero-title">Matthew H. Freeman</h1>
-                    <h2 class="hero-subtitle">Chess Coach & Pawn Island Founder</h2>
-                    <div class="hero-tags">
-                        <span class="hero-tag">Rhode Island State Champion</span>
-                        <span class="hero-tag">Chess Instructor</span>
-                        <span class="hero-tag">Apparel Designer</span>
-                        <span class="hero-tag">Writer</span>
-                    </div>
-                </div>
-            </div>
+    <!-- Header Section -->
+    <header class="about-header">
+        <div class="header-overlay"></div>
+        <img src="../../images/headers-pages/about-me.webp" alt="Chess Coach Background" class="header-bg">
+        <div class="container header-content text-center">
+            <h1 class="header-title" data-aos="fade-down">About The Coach</h1>
+            <div class="title-decorator"></div>
+            <h2 class="header-subtitle" data-aos="fade-up" data-aos-delay="200">Chess Champion & Instructor</h2>
         </div>
-    </section>
+    </header>
 
-    <div class="content" style="padding-top: 2rem;">
-        <div class="container">
-            <!-- Replace existing About Me section with a modern bio section -->
-            <section class="bio-section">
-                <div class="container">
-                    <div class="bio-container" data-aos="fade-up">
-                        <h2 class="bio-title">About Me</h2>
+    <!-- Main Content -->
+    <div class="main-container">
+        <div class="container py-5">
+            <!-- Profile Section -->
+            <section class="profile-section mb-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 mb-4 mb-lg-0" data-aos="fade-right">
+                        <div class="profile-image-container">
+                            <img src="../../images/headers-pages/freeman-2.jpg" alt="Chess Coach Profile" class="profile-image">
+                        </div>
+                    </div>
+                    <div class="col-lg-8" data-aos="fade-left">
+                        <div class="profile-info">
+                            <h3 class="section-title">Who I Am</h3>
+                            <p class="lead mb-4">Welcome to Pawn Island Academy! I'm a dedicated chess coach with 25 years of experience playing and teaching chess at various levels.</p>
+                            <p>My journey in chess began as a child when my father taught me the game. What started as casual play quickly evolved into a passion as I began competing in tournaments and studying the game deeply. Over the years, I've had the privilege of coaching players from beginners to advanced competitors, helping them achieve their chess goals.</p>
+                            <p>I believe chess is more than just a game &mdash; it's a tool for developing critical thinking, patience, strategic planning, and resilience. My teaching philosophy emphasizes understanding rather than memorization, helping students develop a feel for positions that serves them well beyond specific openings or tactics.</p>
+                            
+                            <div class="achievements mt-4">
+                                <div class="achievement">
+                                    <i class="fas fa-trophy achievement-icon"></i>
+                                    <div>
+                                        <h4>Rhode Island State Champion</h4>
+                                        <p>Became the Rhode Island State Champion within two years of moving to the state, thanks to dedicated training and proven methods that I share with my students.</p>
+                                    </div>
+                                </div>
+                                <div class="achievement">
+                                    <i class="fas fa-graduation-cap achievement-icon"></i>
+                                    <div>
+                                        <h4>Accomplished Chess Coach</h4>
+                                        <p>I taught at The Met High School in Providence. As the varsity coach of Classical High School, I took two teams to Nationals. I also coached the Iona University esports team and served as a guest instructor at the Rhode Island Chess School. Additionally, I coached the elementary, middle, and high school chess programs for The Wheeler School in Providence and ran chess camps in Sharon, MA, and Little Compton, RI. I've also trained two successful former students as coaches.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Philosophy Section -->
+            <section class="philosophy-section mb-5">
+                <div class="section-container" data-aos="fade-up">
+                    <h3 class="section-title text-center mb-4">Teaching Philosophy</h3>
+                    <div class="philosophy-content">
+                        <p>My coaching approach combines classical chess wisdom with modern analytical methods. Rather than focusing solely on memorizing opening moves or tactical patterns, I emphasize:</p>
                         
-                        <div class="bio-content">
-                            <p>Hi, I'm Matt—founder of <span class="highlight">Pawn Island</span>, chess coach for over 20 years, poet at heart, and proud Rhode Island State Chess Champion (officially recognized by the Ocean State Chess Association for 2024). My journey with chess began as a child under the guidance of my mentor, Mike Foycik, who has helped shape my approach to the game for two decades. In 2003, I claimed the Virginia State Grade 12 Championship, and just a few years later, at age 20, I defeated my first International Master in a classical tournament—an experience that fueled my belief in the power of persistence and feedback.</p>
-                            
-                            <p>My father once told me, <em>"If you can master one thing, you can master anything."</em> I never truly understood what he meant until I immersed myself in chess. The process of mastery—this ongoing dance of trial, error, and reflection—taught me to understand my own mind in a focused environment. Once you master your thinking in one domain, the possibilities for growth and exploration become boundless.</p>
-                            
-                            <p>I've had the privilege of coaching a wide range of students, from young beginners to varsity teams. In 2003, I guided two teams from Classical High School to nationals in Baltimore, and I love helping others discover the same joy of competition and self-discovery that chess has given me. Through it all, my supportive parents and my late brother, Tom, have been my biggest inspirations—Tom and I originally dreamed of creating an apparel brand that stood out from mainstream designs.</p>
-                            
-                            <p>That dream lives on with <span class="highlight">Pawn Island</span>, a line of artful, understated apparel for those who value self-expression over conformity. We launched in November, and in honor of our shared vision (and my faith), I donate 10% of net revenue to Waters Church in North Attleboro. Although I keep my journey with Jesus fairly subtle, my values of integrity, growth, and compassion guide everything I do.</p>
-                            
-                            <p>Beyond the chessboard and apparel design, I've spent years writing poetry under the moniker raisethecurve on Tumblr, even becoming a "spotlit" blog and a tag editor on the platform. I still connect with my spoken-word community at Commonwealth Slam in Virginia and find creative expression to be as essential to my life as the next big chess tournament.</p>
-                            
-                            <p>My goal is simple: to help people master their own minds, one move—or one verse—at a time. Whether you're here for chess coaching, a fresh T-shirt design, or just a dose of inspiration, I'm grateful you've stopped by. Let's make our next move our best move, together.</p>
+                        <div class="philosophy-cards">
+                            <div class="row">
+                                <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="100">
+                                    <div class="philosophy-card">
+                                        <div class="card-icon">
+                                            <i class="fas fa-chess-knight"></i>
+                                        </div>
+                                        <h4>Positional Understanding</h4>
+                                        <p>Learning to evaluate positions and create plans based on structural features rather than just calculation</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                                    <div class="philosophy-card">
+                                        <div class="card-icon">
+                                            <i class="fas fa-brain"></i>
+                                        </div>
+                                        <h4>Pattern Recognition</h4>
+                                        <p>Developing an intuitive feel for tactical and strategic patterns that appear across different positions</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="300">
+                                    <div class="philosophy-card">
+                                        <div class="card-icon">
+                                            <i class="fas fa-puzzle-piece"></i>
+                                        </div>
+                                        <h4>Critical Thinking</h4>
+                                        <p>Learning to think systematically about positions and justify moves with concrete analysis</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="quote-container mt-5" data-aos="fade-up">
+                            <blockquote>
+                                "Understanding chess isn't about mastering a game, it's about mastering one's own mind. You don't have to become a professional player to reap the rewards of the decision-making frameworks that chess study cultivates."
+                            </blockquote>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Replace accordion with modern card grid for projects -->
-            <section class="projects-section" id="projects">
-                <div class="container">
-                    <h2 class="projects-title" data-aos="fade-up">Featured Projects</h2>
-                    
-                    <div class="row" id="projects-container">
-                        <!-- Projects will be loaded dynamically here -->
+            <!-- FAQ Section -->
+            <section class="faq-section mb-5" data-aos="fade-up">
+                <h3 class="section-title text-center mb-4">Frequently Asked Questions</h3>
+                <div class="accordion" id="faqAccordion">
+                    <div class="card">
+                        <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <span class="text-white">What age groups do you teach?</span>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                I work with students of all ages, from young children just learning the game to senior players looking to refine their skills. My teaching approach is tailored to each student's age, experience level, and learning style.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header collapsed" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <span class="text-white">Do I need to have any prior experience to start lessons?</span>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                Not at all! I work with complete beginners who are just learning how the pieces move, as well as advanced players looking to improve specific aspects of their game. Everyone starts somewhere, and it's never too late to begin learning chess.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header collapsed" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <span class="text-white">How are lessons structured?</span>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                Lessons are typically 60 minutes long and include a mix of instruction, practice, and review. I create a personalized curriculum based on your current level and goals. We'll work on opening principles, tactical patterns, positional understanding, and endgame techniques, with the balance determined by your specific needs.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header collapsed" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <span class="text-white">How quickly will I improve?</span>
+                        </div>
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                Progress depends on several factors including your starting level, the time you dedicate to practice, and how frequently we have lessons. Many students see noticeable improvement after just a few sessions, while significant rating gains typically take consistent work over several months. I'll provide homework and study recommendations to help you improve between lessons.
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Project Detail Modal -->
-            <div class="modal fade project-modal" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="projectModalLabel">Project Details</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body" id="projectModalBody">
-                            <!-- Content will be dynamically inserted here -->
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- Call to Action -->
+            <section class="cta-section text-center" data-aos="fade-up">
+                <h3>Ready to Elevate Your Chess Game?</h3>
+                <p class="mb-4">Schedule a coaching session and start your journey toward chess improvement.</p>
+                <a href="coaching.html" class="btn-custom">Explore Coaching Options</a>
+            </section>
         </div>
     </div>
-    <!-- Replace the floating buttons and scripts section at the bottom of the body -->
+
     <!-- Floating buttons -->
     <button class="floating-btn jump-to-top" id="jumpToTopBtn" title="Go to top" aria-label="Jump to top">
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <!-- Replace direct footer with placeholder -->
+    <!-- Footer placeholder -->
     <div class="footer-placeholder"></div>
 
-    <!-- Correct script order and versions -->
+    <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     
-    <!-- Load theme manager first -->
-    <script src="../../js/theme-manager.js"></script>
-    <script src="../../js/footer.js"></script>
-    <script src="../../js/script.js"></script>
-
-    <!-- Simplified scripts that work with theme-manager -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize AOS
+            // Initialize AOS with optimized settings
             AOS.init({
                 duration: 800,
                 once: true,
@@ -861,113 +248,17 @@
                 easing: 'ease-out-cubic'
             });
             
-            // Load projects
-            fetch('../../data/projects.json')
-                .then(response => response.json())
-                .then(data => {
-                    const projectsContainer = document.getElementById('projects-container');
-                    const projects = data.projects || [];
-                    
-                    // Sort projects by date (newest first)
-                    projects.sort((a, b) => new Date(b.date) - new Date(a.date));
-                    
-                    // Create project cards
-                    projects.forEach(project => {
-                        // Get first 100 characters of overview for the card description
-                        const shortDescription = project.overview.length > 100 ? 
-                            project.overview.substring(0, 100) + '...' : 
-                            project.overview;
-                        
-                        // Format date if available
-                        const projectDate = project.date ? new Date(project.date).toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: 'short'
-                        }) : '';
-                        
-                        // Create a column for the project card
-                        const column = document.createElement('div');
-                        column.className = 'col-lg-4 col-md-6 mb-4';
-                        column.setAttribute('data-aos', 'fade-up');
-                        column.setAttribute('data-aos-delay', (projects.indexOf(project) % 3) * 100);
-                        
-                        column.innerHTML = `
-                            <div class="project-card">
-                                <div class="project-img-container">
-                                    <img src="${project.image}" alt="${project.title}" class="project-img">
-                                </div>
-                                <div class="project-card-body">
-                                    <h3 class="project-title">${project.title}</h3>
-                                    <div class="project-date">${projectDate} · ${project.role}</div>
-                                    <p class="project-desc">${shortDescription}</p>
-                                    <div class="project-tags">
-                                        ${project.technologies.slice(0, 3).map(tech => `<span class="project-tag">${tech}</span>`).join('')}
-                                    </div>
-                                    <button class="project-btn" data-project-id="${project.id}">View Details</button>
-                                </div>
-                            </div>
-                        `;
-                        
-                        projectsContainer.appendChild(column);
-                    });
-                    
-                    // Add click event to project buttons
-                    document.querySelectorAll('.project-btn').forEach(button => {
-                        button.addEventListener('click', function() {
-                            const projectId = this.getAttribute('data-project-id');
-                            showProjectDetails(projectId, projects);
-                        });
-                    });
-                })
-                .catch(error => console.error('Error loading projects:', error));
-                
-            // Function to display project details in modal
-            function showProjectDetails(projectId, projects) {
-                const project = projects.find(p => p.id == projectId);
-                if (!project) return;
-                
-                const modalBody = document.getElementById('projectModalBody');
-                const modalTitle = document.getElementById('projectModalLabel');
-                
-                modalTitle.textContent = project.title;
-                
-                modalBody.innerHTML = `
-                    <img src="${project.image}" alt="${project.title}" class="project-modal-img">
-                    <p><strong>Role:</strong> ${project.role}</p>
-                    <p><strong>Duration:</strong> ${project.duration}</p>
-                    
-                    <h6 class="section-title">Project Overview</h6>
-                    <p>${project.overview}</p>
-                    
-                    <h6 class="section-title">Key Contributions</h6>
-                    <ul>
-                        ${project.contributions.map(contribution => `<li>${contribution}</li>`).join('')}
-                    </ul>
-                    
-                    <h6 class="section-title">Achievements</h6>
-                    <ul>
-                        ${project.achievements.map(achievement => `<li>${achievement}</li>`).join('')}
-                    </ul>
-                    
-                    <h6 class="section-title">Technologies Used</h6>
-                    <div class="project-tags">
-                        ${project.technologies.map(tech => `<span class="project-tag">${tech}</span>`).join('')}
-                    </div>
-                `;
-                
-                $('#projectModal').modal('show');
-            }
-
             // Jump to top button
             const jumpToTopBtn = document.getElementById("jumpToTopBtn");
-            
-            window.addEventListener('scroll', function() {
+
+            window.onscroll = function() {
                 if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
                     jumpToTopBtn.style.display = "flex";
                 } else {
                     jumpToTopBtn.style.display = "none";
                 }
-            }, { passive: true });
-            
+            };
+
             jumpToTopBtn.onclick = function() {
                 window.scrollTo({
                     top: 0,
@@ -976,15 +267,10 @@
             };
         });
     </script>
-
-    <!-- Setmore Booking Script -->
-    <script id="setmore_script" type="text/javascript" src="https://storage.googleapis.com/fullintegration-live/webComponentAppListing/Container/setmoreIframeLive.js"></script>
     
-    <!-- Setmore Booking Button -->
-    <a style="float:none; position: fixed; right: -2px; top: 25%; display: block; z-index: 20000;" 
-       id="Setmore_button_iframe" 
-       href="https://booking.setmore.com/scheduleappointment/1bc50848-c882-45f8-9549-b82028f120f7">
-        <img border="none" src="https://storage.googleapis.com/full-assets/setmore/images/1.0/Calendar/Setmore-Book-Now.png" alt="Book an appointment with Pawn Island using Setmore"/>
-    </a>
+    <!-- Custom Scripts -->
+    <script src="../../js/theme-manager.js"></script>
+    <script src="../../js/footer.js"></script>
+    <script src="../../js/script.js"></script>
 </body>
 </html>

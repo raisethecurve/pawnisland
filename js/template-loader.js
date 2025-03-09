@@ -41,11 +41,9 @@ class TemplateLoader {
     async loadComponent(id, path) {
         try {
             const placeholder = document.getElementById(`${id}-placeholder`);
-            if (!placeholder) return;ent.getElementById(`${id}-placeholder`);
-            if (!placeholder) {
+            if (!placeholder) return;
             const response = await fetch(path);
             if (!response.ok) throw new Error(`Failed to load ${path}: ${response.status}`);
-            }
             const html = await response.text();
             placeholder.innerHTML = html;
             this.loadedComponents[id] = true;
@@ -70,63 +68,9 @@ class TemplateLoader {
     }
     
     applyTheme() {
-        // Apply saved theme if available
-        const savedTheme = localStorage.getItem('theme') || 'day-theme';
-        document.body.className = savedTheme;
-        document.body.classList.add(savedTheme === 'day-theme' ? 'bg-light' : 'bg-dark');
-        document.body.classList.add(savedTheme === 'day-theme' ? 'text-dark' : 'text-white');
-        
-        // Initialize theme toggle button
-        const themeToggle = document.getElementById('themeToggle');
-        if (themeToggle) {
-            themeToggle.addEventListener('click', this.toggleTheme.bind(this));
-            this.updateThemeButtonDisplay(savedTheme);
-        }
-    }
-    
-    toggleTheme() {
-        const currentTheme = document.body.classList.contains('day-theme') ? 'day-theme' : 'night-theme';
-        const newTheme = currentTheme === 'day-theme' ? 'night-theme' : 'day-theme';
-        
-        // Update classes
-        document.body.classList.replace(currentTheme, newTheme);
-        document.body.classList.replace(
-            currentTheme === 'day-theme' ? 'bg-light' : 'bg-dark',
-            newTheme === 'day-theme' ? 'bg-light' : 'bg-dark'
-        );
-        document.body.classList.replace(
-            currentTheme === 'day-theme' ? 'text-dark' : 'text-white',
-            newTheme === 'day-theme' ? 'text-dark' : 'text-white'
-        );
-        
-        // Save preference
-        localStorage.setItem('theme', newTheme);
-        
-        // Update theme button
-        this.updateThemeButtonDisplay(newTheme);
-        
-        // Notify components
-        document.dispatchEvent(new CustomEvent('themeChanged', { 
-            detail: { theme: newTheme }
-        }));
-    }
-    
-    updateThemeButtonDisplay(theme) {
-        const themeToggle = document.getElementById('themeToggle');
-        if (!themeToggle) return;
-        
-        const dayIcon = themeToggle.querySelector('.day-icon');
-        const nightIcon = themeToggle.querySelector('.night-icon');
-        
-        if (dayIcon && nightIcon) {
-            if (theme === 'day-theme') {
-                dayIcon.classList.add('d-none');
-                nightIcon.classList.remove('d-none');
-            } else {
-                dayIcon.classList.remove('d-none');
-                nightIcon.classList.add('d-none');
-            }
-        }
+        // Apply day theme
+        document.body.className = 'day-theme';
+        document.body.classList.add('bg-light', 'text-dark');
     }
 }
 

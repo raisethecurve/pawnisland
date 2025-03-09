@@ -246,16 +246,14 @@ document.addEventListener("DOMContentLoaded", function() {
         eventCard.setAttribute('data-aos', 'fade-up');
         eventCard.setAttribute('data-aos-delay', 100); // Fixed delay since cards are stacked
         
-        // Theme-specific classes
-        const currentTheme = document.body.classList.contains('night-theme') ? 'night-theme' : 'day-theme';
-        const isNightTheme = currentTheme === 'night-theme';
-        const cardThemeClass = isNightTheme ? 'bg-dark text-white' : 'bg-light text-dark';
-        const mutedClass = isNightTheme ? 'text-light-muted' : 'text-muted';
+        // Use only light theme classes
+        const cardThemeClass = 'bg-light text-dark';
+        const mutedClass = 'text-muted';
         
         let noteSection = '';
         if (event.notes) {
             noteSection = `
-                <div class="card-footer ${isNightTheme ? 'bg-dark' : 'bg-light'}">
+                <div class="card-footer bg-light">
                     <strong>Coach's Note:</strong> ${event.notes}
                 </div>
             `;
@@ -292,7 +290,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         eventCard.innerHTML = `
-            <div class="card event-card h-100 ${isPast ? isNightTheme ? 'bg-secondary text-white' : 'bg-light text-dark' : cardThemeClass}">
+            <div class="card event-card h-100 ${isPast ? 'bg-light text-dark' : cardThemeClass}">
                 <div class="position-relative">
                     <div class="event-date">${formattedDate}</div>
                     <div class="event-img-container">
@@ -351,74 +349,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
     
-    // Update event cards when theme changes
+    // Remove night theme specific function
     function updateEventsForTheme(theme) {
-        const isNightTheme = theme === 'night-theme';
-        const eventCards = document.querySelectorAll('.event-card');
-        
-        eventCards.forEach(card => {
-            // Check if this is a past event card
-            const isPastEvent = card.closest('.event-item').classList.contains('past-event');
-            
-            // Update card backgrounds
-            if (isNightTheme) {
-                card.classList.remove('bg-light', 'text-dark');
-                if (isPastEvent) {
-                    card.classList.add('bg-secondary', 'text-white');
-                } else {
-                    card.classList.add('bg-dark', 'text-white');
-                }
-            } else {
-                card.classList.remove('bg-dark', 'bg-secondary', 'text-white');
-                card.classList.add('bg-light', 'text-dark');
-            }
-            
-            // Update card footers
-            const footer = card.querySelector('.card-footer');
-            if (footer) {
-                if (isNightTheme) {
-                    footer.classList.remove('bg-light');
-                    footer.classList.add('bg-dark');
-                } else {
-                    footer.classList.remove('bg-dark');
-                    footer.classList.add('bg-light');
-                }
-            }
-            
-            // Update text muted elements
-            const mutedElements = card.querySelectorAll('.text-muted, .text-light-muted');
-            mutedElements.forEach(el => {
-                if (isNightTheme) {
-                    el.classList.remove('text-muted');
-                    el.classList.add('text-light-muted');
-                } else {
-                    el.classList.remove('text-light-muted');
-                    el.classList.add('text-muted');
-                }
-            });
-        });
-        
-        // Update filter buttons
-        const filterButtons = document.querySelectorAll('.filter-btn:not(.active)');
-        filterButtons.forEach(btn => {
-            if (isNightTheme) {
-                btn.style.backgroundColor = '#212529';
-            } else {
-                btn.style.backgroundColor = '#343a40';
-            }
-        });
-        
-        // Update no events message
-        const noEventsMessage = document.getElementById('no-events-message');
-        if (noEventsMessage) {
-            if (isNightTheme) {
-                noEventsMessage.classList.remove('bg-light', 'text-dark');
-                noEventsMessage.classList.add('bg-dark', 'text-white');
-            } else {
-                noEventsMessage.classList.remove('bg-dark', 'text-white');
-                noEventsMessage.classList.add('bg-light', 'text-dark');
-            }
-        }
+        // This function is no longer needed
     }
 
     function parseDateNoOffset(dateString) {

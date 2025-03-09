@@ -60,33 +60,6 @@
     backface-visibility: hidden; /* Prevent flickering */
 }
 
-/* Sun icon styling */
-.theme-toggle .day-icon {
-    color: #ffc107; /* Warm yellow */
-    transform: scale(1);
-}
-
-/* Moon icon styling */
-.theme-toggle .night-icon {
-    color: #f8f9fa; /* Cool white */
-    transform: scale(1);
-}
-
-/* Smooth icon transition states */
-.theme-toggle .day-icon.d-none,
-.theme-toggle .night-icon.d-none {
-    display: none !important;
-}
-
-/* Theme-specific button states */
-.day-theme .theme-toggle {
-    background-color: #343a40;
-}
-
-.night-theme .theme-toggle {
-    background-color: #495057;
-}
-
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .theme-toggle {

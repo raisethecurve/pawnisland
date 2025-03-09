@@ -1,7 +1,7 @@
 /* Navbar styles */
 .navbar {
     justify-content: space-between;
-    background-color: var(--navbar-bg-color);
+    background-color: var(--navbar-bg-color, #f8f9fa);
     font-family: inherit;
 }
 
@@ -9,14 +9,9 @@
     border: none;
 }
 
-/* Default dark hamburger menu for day theme */
+/* Default dark hamburger menu */
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
-}
-
-/* Light hamburger menu for night theme */
-.night-theme .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
 }
 
 /* Ensure the menu is positioned on the right side */
@@ -34,25 +29,6 @@
     height: auto; /* Maintain aspect ratio */
 }
 
-/* Correct logo visibility rules for proper contrast */
-/* Dark logo (day-logo) shows in light theme */
-.day-theme .navbar .day-logo {
-    display: inline-block !important;
-}
-
-.day-theme .navbar .night-logo {
-    display: none !important;
-}
-
-/* Light logo (night-logo) shows in dark theme */
-.night-theme .navbar .day-logo {
-    display: none !important;
-}
-
-.night-theme .navbar .night-logo {
-    display: inline-block !important;
-}
-
 /* Ensure logo images have proper size and transitions */
 .navbar .logo {
     width: 50px;
@@ -66,21 +42,12 @@
 
 /* Prefix nav-link to prevent conflicts */
 .navbar .nav-link {
-    color: inherit; /* Inherit color based on the theme */
+    color: #333333;
     font-family: 'Cinzel', serif;
 }
 
 .navbar .nav-link:hover {
     color: #dd3649; /* Accent color on hover */
-}
-
-/* Ensure theme-specific styles are maintained */
-.day-theme .navbar .nav-link {
-    color: #333333; /* Dark text for day theme */
-}
-
-.night-theme .navbar .nav-link {
-    color: #ffffff; /* White text for night theme */
 }
 
 .nav-link:hover {

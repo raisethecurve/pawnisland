@@ -254,59 +254,6 @@
     box-shadow: 0 6px 20px rgba(0,0,0,0.25);
 }
 
-.theme-toggle {
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    background-color: #343a40;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 1000;
-    transition: all 0.3s ease;
-    border: none;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-.theme-toggle:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-}
-
-.theme-toggle i {
-    font-size: 22px;
-}
-
-.night-theme .theme-toggle {
-    background-color: #495057;
-}
-
-.day-icon, .night-icon {
-    width: 24px;
-    height: 24px;
-}
-
-.night-theme .day-icon {
-    display: inline-block;
-}
-
-.night-theme .night-icon {
-    display: none;
-}
-
-.day-theme .day-icon {
-    display: none;
-}
-
-.day-theme .night-icon {
-    display: inline-block;
-}
-
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -458,10 +405,6 @@
   z-index: 1;
 }
 
-.night-theme .coaching-main {
-  background-color: var(--dark-bg);
-}
-
 /* Introduction Section */
 .intro-section {
   margin-bottom: 4rem;
@@ -595,10 +538,6 @@
   margin-bottom: 1.5rem;  /* Reduced from 2rem */
 }
 
-.night-theme .coaching-card {
-  background-color: var(--muted-light);
-}
-
 .coaching-card:hover {
   transform: translateY(-10px);
   box-shadow: var(--shadow-lg);
@@ -647,10 +586,6 @@
   padding-bottom: 0.5rem;
 }
 
-.night-theme .card-title {
-  color: var(--light-text);
-}
-
 .card-title::after {
   content: '';
   position: absolute;
@@ -665,10 +600,6 @@
 .card-description {
   margin-bottom: 1.5rem;  /* Reduced from 2rem */
   color: var(--muted-dark);
-}
-
-.night-theme .card-description {
-  color: #adb5bd;
 }
 
 .card-button {
@@ -714,19 +645,11 @@
   box-shadow: var(--shadow-md);
 }
 
-.night-theme .detailed-section {
-  background-color: #2c3036 !important; /* Darker to ensure contrast */
-}
-
 .section-header {
   position: relative;
   padding: 2rem;
   text-align: center;
   border-bottom: 1px solid rgba(0,0,0,0.1);
-}
-
-.night-theme .section-header {
-  border-bottom-color: rgba(255,255,255,0.1);
 }
 
 .section-badge {
@@ -746,19 +669,11 @@
   color: var(--dark-text);
 }
 
-.night-theme .detailed-title {
-  color: var(--light-text);
-}
-
 .detailed-subtitle {
   font-size: 1.3rem;
   color: var(--muted-dark);
   font-weight: 400;
   margin-bottom: 0;
-}
-
-.night-theme .detailed-subtitle {
-  color: #d9d9d9 !important; /* Ensure subtitles are visible */
 }
 
 .section-image {
@@ -782,10 +697,6 @@
   line-height: 1.7;
   margin-bottom: 2rem;
   color: var(--dark-text);
-}
-
-.night-theme .content-intro {
-  color: #f8f9fa !important;  /* Almost white for better readability */
 }
 
 .content-features {
@@ -821,10 +732,6 @@
 .feature-text {
   color: var(--dark-text);
   line-height: 1.6;
-}
-
-.night-theme .feature-text {
-  color: #e9ecef !important;  /* Lighter color for better contrast */
 }
 
 .section-cta {
@@ -956,7 +863,7 @@
     font-size: 1rem;
   }
   
-  .jump-to-top, .theme-toggle {
+  .jump-to-top {
     width: 50px;
     height: 50px;
     bottom: 20px;
@@ -964,10 +871,6 @@
   
   .jump-to-top {
     right: 20px;
-  }
-  
-  .theme-toggle {
-    left: 20px;
   }
   
   .hero-title {
@@ -1181,21 +1084,12 @@
     transform: translateY(0);
 }
 
-.night-theme .modal-content {
-    background-color: #2c2f33;
-    color: white;
-}
-
 .modal-header {
     padding: 1.5rem;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.night-theme .modal-header {
-    border-color: rgba(255,255,255,0.1);
 }
 
 .modal-header h3 {
@@ -1217,16 +1111,8 @@
     color: var(--primary-color);
 }
 
-.night-theme .close-modal {
-    color: #ccc;
-}
-
 .modal-body {
     padding: 2rem;
-}
-
-.night-theme .modal-body {
-    background-color: #2c3036;
 }
 
 .form-group {
@@ -1249,13 +1135,6 @@
     border-radius: 8px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
-}
-
-.night-theme .form-group input,
-.night-theme .form-group textarea {
-    background-color: #3a3f44;
-    border-color: #495057;
-    color: white;
 }
 
 .form-group input:focus,
@@ -1379,10 +1258,6 @@
   opacity: 0.9;
 }
 
-.night-theme .premium-experience-text {
-  color: #f8f9fa !important;
-}
-
 .premium-metrics {
   display: flex;
   justify-content: center;
@@ -1409,18 +1284,10 @@
   display: inline;
 }
 
-.night-theme .metric-value {
-  color: var(--primary-light);
-}
-
 .metric-label {
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-}
-
-.night-theme .metric-label {
-  color: #e9ecef !important;
 }
 
 /* Enhanced testimonial section */
@@ -1453,20 +1320,11 @@
   text-align: center;
 }
 
-.night-theme .testimonial-card {
-  background: rgba(44, 48, 54, 0.7) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-}
-
 .testimonial-quote {
   font-size: 1.3rem;
   line-height: 1.8;
   margin-bottom: 2rem;
   font-style: italic;
-}
-
-.night-theme .testimonial-quote {
-  color: #f8f9fa !important;
 }
 
 .testimonial-quote::before,
@@ -1484,10 +1342,6 @@
     margin-top: 20px;
 }
 
-.night-theme .testimonial-author {
-  color: #f8f9fa !important;
-}
-
 .author-image {
   width: 70px;
   height: 70px;
@@ -1501,17 +1355,9 @@
   font-size: 1.1rem;
 }
 
-.night-theme .author-name {
-  color: #f8f9fa !important;
-}
-
 .author-title {
   font-size: 0.9rem;
   opacity: 0.7;
-}
-
-.night-theme .author-title {
-  color: #d9d9d9 !important; /* Slightly darker but still visible */
 }
 
 .slider-controls {
@@ -1728,37 +1574,6 @@
 }
 
 /* Fix dark mode text color issues */
-.night-theme .feature-text {
-  color: #e9ecef !important;  /* Lighter color for better contrast */
-}
-
-.night-theme .content-intro {
-  color: #f8f9fa !important;  /* Almost white for better readability */
-}
-
-.night-theme .premium-experience-text {
-  color: #f8f9fa !important;
-}
-
-.night-theme .metric-label {
-  color: #e9ecef !important;
-}
-
-.night-theme .testimonial-quote {
-  color: #f8f9fa !important;
-}
-
-.night-theme .author-name {
-  color: #f8f9fa !important;
-}
-
-.night-theme .author-title {
-  color: #d9d9d9 !important; /* Slightly darker but still visible */
-}
-
-.night-theme .detailed-subtitle {
-  color: #d9d9d9 !important; /* Ensure subtitles are visible */
-}
 
 /* Update card padding for tighter appearance */
 .section-content {
@@ -1785,20 +1600,6 @@
   margin: 3rem 0;  /* Reduced from 5rem */
 }
 
-/* Night theme background adjustments to avoid white on white */
-.night-theme .detailed-section {
-  background-color: #2c3036 !important; /* Darker to ensure contrast */
-}
-
-.night-theme .testimonial-card {
-  background: rgba(44, 48, 54, 0.7) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-}
-
-.night-theme .coaching-card {
-  background-color: #2c3036 !important;
-}
-
 /* Service navigation improved contrast */
 .service-nav-item {
   padding: 10px 18px;  /* Slightly smaller padding */
@@ -1809,176 +1610,15 @@
   color: white !important; /* Ensure text is always visible */
 }
 
-.night-theme .gradient-item {
-  background: linear-gradient(45deg, #212529, #343a40) !important;
-}
-
-.night-theme .gradient-item::before {
-  background: linear-gradient(45deg, var(--primary-light), var(--secondary-color), var(--primary-light));
-}
-
 /* Fix testimonial card background contrast */
 .testimonial-card {
   background: rgba(248, 249, 250, 0.05);
-}
-
-.night-theme .modal-body {
-  background-color: #2c3036;
 }
 
 /* Ensure 50+ displays properly on metrics */
 .metric-value[data-value="50+"]::after {
   content: "+";
   display: inline;
-}
-
-/* ===== COMPREHENSIVE DARK MODE COLOR SCHEME FIX ===== */
-
-/* Global dark mode adjustments */
-.night-theme {
-  --dark-bg-primary: #121212;
-  --dark-bg-secondary: #1e1e1e;
-  --dark-bg-tertiary: #2c2c2c;
-  --dark-text-primary: #ffffff;
-  --dark-text-secondary: #e0e0e0;
-  --dark-text-muted: #bbbbbb;
-  --dark-border-color: rgba(255, 255, 255, 0.1);
-  --dark-card-bg: #252525;
-  --dark-section-bg: #1a1a1a;
-}
-
-/* High-contrast mode fixes */
-.night-theme .coaching-main {
-  background-color: var(--dark-bg-primary);
-  color: var(--dark-text-primary);
-}
-
-/* Cards background fix */
-.night-theme .coaching-card {
-  background-color: var(--dark-card-bg);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-}
-
-.night-theme .card-title {
-  color: var(--dark-text-primary);
-}
-
-.night-theme .card-description {
-  color: var(--dark-text-secondary);
-}
-
-/* Detailed sections background adjustment */
-.night-theme .detailed-section {
-  background-color: var(--dark-bg-tertiary) !important;
-  color: var(--dark-text-primary);
-}
-
-/* Section header content */
-.night-theme .detailed-title {
-  color: var(--dark-text-primary);
-}
-
-.night-theme .detailed-subtitle {
-  color: var(--dark-text-secondary) !important;
-}
-
-/* Section content text color fixes */
-.night-theme .content-intro {
-  color: var(--dark-text-primary) !important;
-}
-
-.night-theme .feature-text {
-  color: var(--dark-text-secondary) !important; 
-}
-
-/* Testimonial containers */
-.night-theme .testimonial-card {
-  background-color: var(--dark-bg-tertiary) !important;
-  border: 1px solid var(--dark-border-color) !important;
-}
-
-.night-theme .testimonial-quote {
-  color: var(--dark-text-primary) !important;
-}
-
-.night-theme .author-name {
-  color: var(--dark-text-primary) !important;
-}
-
-.night-theme .author-title {
-  color: var(--dark-text-secondary) !important;
-}
-
-/* Premium experience section */
-.night-theme .premium-experience {
-  background: linear-gradient(125deg, #003152 0%, #001528 100%);
-}
-
-.night-theme .premium-experience-text {
-  color: var(--dark-text-primary) !important;
-}
-
-.night-theme .metric-label {
-  color: var(--dark-text-secondary) !important;
-}
-
-/* Navigation elements */
-.night-theme .service-nav-item {
-  color: var(--dark-text-primary) !important;
-}
-
-.night-theme .gradient-item {
-  background: linear-gradient(45deg, #1a1a1a, #2c2c2c) !important;
-  color: var(--dark-text-primary) !important;
-}
-
-.night-theme .gradient-item::before {
-  background: linear-gradient(45deg, var(--primary-light), #003152, var(--primary-light));
-}
-
-/* Ensure contrast for hover states */
-.night-theme .card-button:hover {
-  color: var(--dark-text-primary);
-}
-
-/* Modal/Contact form elements */
-.night-theme .modal-content {
-  background-color: var(--dark-bg-secondary);
-}
-
-.night-theme .modal-body {
-  background-color: var(--dark-bg-secondary);
-}
-
-.night-theme .modal-header h3 {
-  color: var(--dark-text-primary);
-}
-
-.night-theme .form-group label {
-  color: var(--dark-text-secondary);
-}
-
-/* Feature items - ensure visibility during reveal animation */
-.night-theme .feature-item {
-  opacity: 0;
-}
-
-.night-theme .feature-item.revealed {
-  opacity: 1 !important;
-}
-
-/* Override any inline styles that might be causing issues */
-.night-theme [style*="color"] {
-  color: inherit !important;
-}
-
-/* Ensure interactive elements maintain proper contrast */
-.night-theme a:not(.card-button):not(.banner-btn):not(.service-nav-item):not(.cta-button) {
-  color: #77b6ff !important;
-}
-
-.night-theme a:hover:not(.card-button):not(.banner-btn):not(.service-nav-item):not(.cta-button) {
-  color: #99ccff !important;
 }
 
 /* Testimonials Slider Styling */
@@ -1988,10 +1628,6 @@
     background-color: #f8f9fa;
     position: relative;
     overflow: hidden;
-}
-
-.night-theme .testimonials-slider-section {
-    background-color: var(--dark-bg-secondary);
 }
 
 .testimonial-card {
@@ -2010,11 +1646,6 @@
 .testimonial-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-}
-
-.night-theme .testimonial-card {
-    background-color: var(--dark-card-bg);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .testimonial-header {
@@ -2072,10 +1703,6 @@
     position: relative;
     z-index: 1;
     color: var(--dark-text);
-}
-
-.night-theme .testimonial-text {
-    color: var(--light-text);
 }
 
 .quote-mark {
@@ -2277,10 +1904,6 @@
     position: relative;
 }
 
-.night-theme .testimonials-slider-section {
-    background: linear-gradient(135deg, #1e2228 0%, #121417 100%);
-}
-
 #testimonialCarousel {
     overflow: hidden;
     padding: 20px 0 50px;
@@ -2297,28 +1920,6 @@
     margin: 0 auto;
     max-width: 1000px;
     min-height: 400px;
-}
-
-.night-theme .modern-testimonial {
-    background-color: #252830;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-}
-
-.testimonial-image-container {
-    flex: 0 0 40%;
-    position: relative;
-    overflow: hidden;
-}
-
-.testimonial-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    transition: all 0.5s ease;
 }
 
 .modern-testimonial:hover .testimonial-image {
@@ -2353,18 +1954,10 @@
     font-style: italic;
 }
 
-.night-theme .testimonial-message {
-    color: #e9ecef;
-}
-
 .testimonial-client-info {
     margin-top: auto;
     padding-top: 20px;
     border-top: 1px solid rgba(0,0,0,0.1);
-}
-
-.night-theme .testimonial-client-info {
-    border-top-color: rgba(255,255,255,0.1);
 }
 
 .client-name {
@@ -2378,10 +1971,6 @@
     font-size: 0.95rem;
     color: #6c757d;
     font-weight: 500;
-}
-
-.night-theme .client-designation {
-    color: #adb5bd;
 }
 
 .carousel-indicators {

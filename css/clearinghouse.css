@@ -1,0 +1,327 @@
+/* Page header styling */
+.page-header {
+    position: relative;
+    padding: 4.5rem 0;
+    margin-bottom: 0;
+    width: 100%;
+    overflow: visible;
+    color: white;
+}
+
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.8) 100%);
+    z-index: 1;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 1rem;
+}
+
+.header-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+/* Hero text styling - ensuring white color */
+.page-header .header-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    font-size: 3rem;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    position: relative;
+    padding-bottom: 0.5rem;
+    color: white !important; /* Force white color */
+}
+
+.page-header .header-title:after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 4px;
+    background-color: #dd3649;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.page-header .header-subtitle {
+    font-family: 'Cinzel', serif;
+    font-weight: 400;
+    margin-bottom: 0.8rem;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    color: white !important; /* Force white color */
+}
+
+/* Filter buttons styling */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    margin: 2.5rem 0;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.filter-btn {
+    background-color: #343a40;
+    color: white;
+    border: none;
+    padding: 0.7rem 2rem;
+    margin: 0 0.5rem;
+    border-radius: 30px;
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transform-origin: center;
+}
+
+.filter-btn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: rgba(255,255,255,0.1);
+    transition: width 0.3s ease;
+    z-index: 1;
+}
+
+.filter-btn:hover:before {
+    width: 100%;
+}
+
+.filter-btn span {
+    position: relative;
+    z-index: 2;
+}
+
+.filter-btn:hover {
+    background-color: #495057;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.filter-btn.active {
+    background-color: #dd3649;
+    box-shadow: 0 4px 12px rgba(221, 54, 73, 0.4);
+}
+
+.filter-btn.active:hover {
+    background-color: #c12e42;
+}
+
+.filter-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(221, 54, 73, 0.3);
+}
+
+/* Fix floating button styles */
+.floating-btn {
+    position: fixed;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+    border: none;
+    z-index: 1000;
+}
+
+.floating-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.jump-to-top {
+    bottom: 30px;
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    background-color: #dd3649;
+    color: #ffffff;
+    font-size: 22px;
+}
+
+.jump-to-top:hover {
+    background-color: #c12e42;
+}
+
+/* Event card styling */
+.event-card {
+    height: 100%;
+    transition: all 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border: none;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff !important;
+    color: #212529 !important;
+}
+
+.event-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.event-img-container {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.event-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+.event-card:hover .event-img {
+    transform: scale(1.08);
+}
+
+.event-date {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: rgba(221, 54, 73, 0.9);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    z-index: 2;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    letter-spacing: 0.5px;
+}
+
+.past-event-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    z-index: 1;
+    letter-spacing: 2px;
+}
+
+/* No events message */
+.no-events {
+    text-align: center;
+    padding: 3rem;
+    margin: 2rem 0;
+    display: none;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.no-events h3 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.no-events p {
+    font-size: 1.1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .header-title {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .header-title {
+        font-size: 2.5rem;
+    }
+    .filter-btn {
+        padding: 0.6rem 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        padding: 3.5rem 0;
+    }
+    .header-title {
+        font-size: 2.2rem;
+        letter-spacing: 1px;
+    }
+    .header-subtitle {
+        font-size: 1.2rem;
+    }
+    .filter-btn {
+        padding: 0.5rem 1.4rem;
+        font-size: 0.9rem;
+    }
+    .floating-btn {
+        width: 50px;
+        height: 50px;
+    }
+    .jump-to-top {
+        bottom: 20px;
+        right: 20px;
+    }
+    .event-img-container {
+        height: 250px;
+    }
+    .card-body {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-header {
+        padding: 3rem 0;
+    }
+    .header-title {
+        font-size: 1.8rem;
+    }
+    .header-title:after {
+        width: 80px;
+        height: 3px;
+    }
+    .filter-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0.8rem;
+        gap: 10px;
+    }
+}

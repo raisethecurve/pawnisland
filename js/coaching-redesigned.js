@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize advanced features when the page is idle
     requestIdleCallback(() => {
-        listenForThemeChanges();
         enhanceScrollEffects();
         initLiveAvailability();
     });
@@ -191,60 +190,6 @@ function revealVisibleSections() {
             });
         }
     });
-}
-
-/**
- * Handle theme changes with optimized DOM manipulation
- */
-function listenForThemeChanges() {
-    // Store references to avoid repeated DOM queries
-    const themeElements = {
-        navItems: document.querySelectorAll('.service-nav-item:not(.active)'),
-        badges: document.querySelectorAll('.section-badge'),
-        ctaButtons: document.querySelectorAll('.cta-button, .banner-btn.primary-btn'),
-        introCard: document.querySelector('.intro-card'),
-        featureIcons: document.querySelectorAll('.feature-icon')
-    };
-    
-    // Theme change handler
-    function handleThemeChange(isDark) {
-        // Batch DOM updates for better performance
-        requestAnimationFrame(() => {
-            // Optimize by only updating styles that change
-            const colors = isDark ? 
-                { bg: '#212529', accent: '#ff4c63', introCard: '#18242f' } : 
-                { bg: '#343a40', accent: '#dd3649', introCard: '#004d7a' };
-            
-            themeElements.navItems.forEach(item => {
-                item.style.backgroundColor = colors.bg;
-            });
-            
-            themeElements.badges.forEach(badge => {
-                badge.style.backgroundColor = colors.accent;
-            });
-            
-            themeElements.ctaButtons.forEach(btn => {
-                btn.style.backgroundColor = colors.accent;
-            });
-            
-            if (themeElements.introCard) {
-                themeElements.introCard.style.backgroundColor = colors.introCard;
-            }
-            
-            themeElements.featureIcons.forEach(icon => {
-                icon.style.color = colors.accent;
-            });
-        });
-    }
-    
-    // Listen for theme change events
-    document.addEventListener('themeChanged', function(e) {
-        const isDark = e.detail.theme === 'night-theme';
-        handleThemeChange(isDark);
-    });
-    
-    // Apply current theme immediately
-    handleThemeChange(document.body.classList.contains('night-theme'));
 }
 
 /**
