@@ -16,68 +16,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
-	<style>
-		/* Landing page specific styling */
-		body {
-			margin: 0;
-			font-family: var(--body-font);
-			background: var(--light-bg);
-		}
-		.hero {
-			position: relative;
-			height: 100vh;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			background: url(images/headers-pages/pawnisland-background.jpeg) center/cover no-repeat;
-		}
-		.hero::after {
-			content: "";
-			position: absolute;
-			top: 0; left: 0; right: 0; bottom: 0;
-			background: rgba(0, 0, 0, 0.5);
-			z-index: 1;
-		}
-		.hero-content {
-			position: relative;
-			z-index: 2;
-			text-align: center;
-			color: white;
-			padding: 0 20px;
-		}
-		.hero-title {
-			font-size: 4rem;
-			margin-bottom: 1rem;
-			opacity: 0;
-			animation: fadeInUp 1s forwards 0.3s;
-		}
-		.hero-subtitle {
-			font-size: 1.8rem;
-			margin-bottom: 2rem;
-			opacity: 0;
-			animation: fadeInUp 1s forwards 0.6s;
-		}
-		@keyframes fadeInUp {
-			from { opacity: 0; transform: translateY(50px); }
-			to { opacity: 1; transform: translateY(0); }
-		}
-		.card-container {
-			padding: 4rem 0;
-		}
-		.destination-card {
-			border: none;
-			border-radius: 15px;
-			overflow: hidden;
-			transition: transform 0.3s;
-		}
-		.destination-card:hover {
-			transform: translateY(-10px);
-		}
-		.card-img-top {
-			height: 200px;
-			object-fit: cover;
-		}
-	</style>
+	<link rel="stylesheet" href="css/home.css">
 </head>
 <body class="bg-light text-dark">
 	<!-- Navbar -->
@@ -131,7 +70,7 @@
 					<img src="images/headers-pages/freeman-3.jpg" class="card-img-top" alt="About Me">
 					<div class="card-body text-center">
 						<h5 class="card-title">About Me</h5>
-						<p class="card-text">The Story Behind Pawn Island</p>
+						<p class="card-text">The King of Pawn Island</p>
 						<a href="pages/landing/about-me.html" class="btn btn-outline-primary">Read More</a>
 					</div>
 				</div>
