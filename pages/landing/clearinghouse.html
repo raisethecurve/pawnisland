@@ -46,6 +46,7 @@
             background-repeat: repeat;
             background-attachment: fixed;
             background-size: 50px;
+            background-color: rgba(248, 249, 250, 0.7);
         }
         
         .day-theme .main-content {
@@ -375,10 +376,16 @@
             height: 55px;
             background-color: #343a40;
             color: #fff;
+            font-size: 22px;
+            display: none;
         }
         
         .theme-toggle i {
             font-size: 22px;
+        }
+        
+        .theme-toggle:hover {
+            background-color: #495057;
         }
         
         .night-theme .theme-toggle {
@@ -477,7 +484,6 @@
             .event-img-container {
                 height: 250px;
             }
-            
             .card-body {
                 padding: 1.5rem;
             }
@@ -500,27 +506,20 @@
                 padding: 0.8rem;
                 gap: 10px;
             }
-            .filter-btn {
-                width: 100%;
-                margin: 0;
-            }
-            .event-img-container {
-                height: 200px;
-            }
         }
-
-        .day-theme .card-body,
-        .day-theme .card-footer {
+        
+        .card-body,
+        .card-footer {
             color: #212529 !important;
         }
 
-        .day-theme .event-card {
+        .event-card {
             background-color: #fff !important;
             color: #212529 !important;
         }
     </style>
 </head>
-<body class="day-theme bg-light text-dark">
+<body class="bg-light text-dark">
     <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
         <a class="navbar-brand d-flex align-items-center" href="../../index.html" id="brand-toggle" aria-label="Homepage">
             <!-- Dark logo (for day theme) -->
@@ -602,11 +601,6 @@
     </div>
 
     <!-- Floating buttons -->
-    <button class="floating-btn theme-toggle" id="themeToggle" title="Toggle light/dark theme" aria-label="Toggle theme">
-        <i class="fas fa-sun day-icon"></i>
-        <i class="fas fa-moon night-icon d-none"></i>
-    </button>
-
     <button class="floating-btn jump-to-top" id="jumpToTopBtn" title="Go to top" aria-label="Jump to top">
         <i class="fas fa-chevron-up"></i>
     </button>
@@ -680,7 +674,7 @@
                     setTimeout(() => {
                         this.style.transform = '';
                     }, 300);
-                    
+
                     // Get filter value
                     const filter = this.getAttribute('data-filter');
                     
@@ -688,6 +682,7 @@
                     filterEvents(filter);
                 });
             });
+
         });
 
         // Enhanced filter function with animations
@@ -723,18 +718,7 @@
                 noEventsMessage.style.display = 'none';
             }
         }
-        
-        // Make sure the theme toggle button works
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggleBtn = document.getElementById('themeToggle');
-            if (themeToggleBtn) {
-                themeToggleBtn.addEventListener('click', function() {
-                    // ...existing theme toggle code...
-                });
-            }
-        });
     </script>
-    
     <!-- Load external scripts -->
     <script src="../../js/theme-manager.js"></script>
     <script src="../../js/footer.js"></script>

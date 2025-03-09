@@ -16,7 +16,6 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="css/theme-toggle.css"> <!-- Added -->
 	<style>
 		/* Landing page specific styling */
 		body {
@@ -80,7 +79,7 @@
 		}
 	</style>
 </head>
-<body class="day-theme bg-light text-dark">
+<body class="bg-light text-dark">
 	<!-- Navbar -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<!-- ...existing navbar code... -->
@@ -140,11 +139,6 @@
 		</div>
 	</section>
     <!-- Floating buttons -->
-    <button class="floating-btn theme-toggle" id="themeToggle" title="Toggle light/dark theme" aria-label="Toggle theme">
-        <i class="fas fa-sun day-icon"></i>
-        <i class="fas fa-moon night-icon d-none"></i>
-    </button>
-
     <button class="floating-btn jump-to-top" id="jumpToTopBtn" title="Go to top" aria-label="Jump to top">
         <i class="fas fa-chevron-up"></i>
     </button>
@@ -159,68 +153,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     
     <!-- Load scripts in correct order -->
-    <script src="js/theme-manager.js"></script>
     <script src="js/footer.js"></script>
     <script src="js/script.js"></script>
 	<script>
 		AOS.init({
 			duration: 800,
 			once: true
-			});
+		});
         
         document.addEventListener('DOMContentLoaded', function() {
-            // Theme toggle functionality
-            const themeToggleBtn = document.getElementById('themeToggle');
-            const dayIcon = document.querySelector('.day-icon');
-            const nightIcon = document.querySelector('.night-icon');
+            // Jump to top button functionality
+            const jumpToTopBtn = document.getElementById('jumpToTopBtn');
             
-            if (themeToggleBtn) {
-                themeToggleBtn.addEventListener('click', function() {
-                    // Toggle between day and night theme
-                    if (document.documentElement.classList.contains('day-theme')) {
-                        document.documentElement.classList.replace('day-theme', 'night-theme');
-                        document.body.classList.replace('bg-light', 'bg-dark');
-                        document.body.classList.replace('text-dark', 'text-light');
-                        localStorage.setItem('theme', 'night-theme');
-                        
-                        // Update icons
-                        dayIcon.classList.add('d-none');
-                        nightIcon.classList.remove('d-none');
+            if (jumpToTopBtn) {
+                window.onscroll = function() {
+                    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                        jumpToTopBtn.style.display = "flex";
                     } else {
-                        document.documentElement.classList.replace('night-theme', 'day-theme');
-                        document.body.classList.replace('bg-dark', 'bg-light');
-                        document.body.classList.replace('text-dark', 'text-light');
-                        localStorage.setItem('theme', 'day-theme');
-                        
-                        // Update icons
-                        nightIcon.classList.add('d-none');
-                        dayIcon.classList.remove('d-none');
+                        jumpToTopBtn.style.display = "none";
                     }
-                    
-                    // Update navbar logo visibility based on theme
-                    const dayLogo = document.querySelector('.logo.day-logo');
-                    const nightLogo = document.querySelector('.logo.night-logo');
-                    
-                    if (dayLogo && nightLogo) {
-                        if (document.documentElement.classList.contains('day-theme')) {
-                            dayLogo.classList.remove('d-none');
-                            nightLogo.classList.add('d-none');
-                        } else {
-                            dayLogo.classList.add('d-none');
-                            nightLogo.classList.remove('d-none');
-                        }
-                    }
-                });
+                };
                 
-                // Set initial state based on saved theme
-                const savedTheme = localStorage.getItem('theme') || 'day-theme';
-                if (savedTheme === 'night-theme') {
-                    dayIcon.classList.add('d-none');
-                    nightIcon.classList.remove('d-none');
-                } else {
-                    nightIcon.classList.add('d-none');
-                    dayIcon.classList.remove('d-none');
-                }
+                jumpToTopBtn.onclick = function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                };
             }
         });
 	</script>
