@@ -1,6 +1,6 @@
 # Pawn Island Academy
 
-Pawn Island Academy offers personalized chess coaching, unique apparel, and engaging community events.
+Pawn Island Academy offers personalized chess coaching, unique resources, and community events.
 
 ## Table of Contents
 
@@ -14,10 +14,8 @@ Pawn Island Academy offers personalized chess coaching, unique apparel, and enga
 ## Features
 
 - **Chess Coaching:** Personalized sessions for all skill levels.
-- **Apparel Shop:** Unique, faith-inspired chess apparel with a commitment to community support.
-- **Speaking Engagements:** Interactive sessions focusing on strategic thinking and personal development.
-- **Blog:** Insights and articles on chess strategies, community stories, and more.
-- **Student Reviews:** Testimonials from our community members.
+- **Event Clearinghouse:** A curated list of chess events in the Rhode Island area.
+- **About Me:** Information about the founder of Pawn Island Academy.
 
 ## Project Structure
 ```

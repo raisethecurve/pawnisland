@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Clearinghouse - Pawn Island Academy</title>
+    <meta name="description" content="Find upcoming chess events and tournaments in the Greater Rhode Island area.">
+    <meta name="keywords" content="Chess Events, Rhode Island Chess, Chess Tournaments, Pawn Island Academy">
+    <meta property="og:title" content="Chess Events - Pawn Island Academy">
+    <meta property="og:description" content="Find upcoming chess tournaments and events in Rhode Island, Massachusetts, and Connecticut.">
+    <meta property="og:image" content="https://pawnislandacademy.com/images/brand-icons/logo-light.png">
+    <meta property="og:url" content="https://pawnislandacademy.com/pages/landing/clearinghouse.html">
+    <link rel="canonical" href="https://pawnislandacademy.com/pages/landing/clearinghouse.html">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="../../css/buttons.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/png" href="../../images/brand-icons/favicon.png">
+    <link rel="stylesheet" href="../../css/theme-toggle.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T12VEHM2PY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-T12VEHM2PY');
+    </script>
+    <style>
+        html, body {
+            min-height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Main content container with subtle texture */
+        .main-content {
+            flex: 1;
+            padding-top: 20px;
+            position: relative;
+            z-index: 1;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIgLAAAEDklEQVRIiZXWhZajvBIF4D2IOyTuvP+DtlwCM73/7q6zF3RVwU/IffjvSDe5LEuTxLFhFz3N/8cjbf7xfLSxzYVS7OM/+GnclN0opTQVilIxjY3ySf9anw9UcpQqIJGKZUWxnMrP+ptcFsGYmEIg0AxSCdVmJazov3i4dZLSFCgno+EQCJCByNC0Tf+t15I1KdNQWkWxMpRmNJEKpJA2ZOmfdK1Z02KKqEDRChQJGy0lLUQYNJ8f9Wfb9iQtZxDLaQZIRARpUiN5or/Qn1FsGYY0ozlijVJJpLKiIPU/9ZNryaWisrYxfDBSqCwVy6hch/51PYvUIg6GsNRKaRYFGaT/xL9ek0JQ2UMvo4hQvCgKMv5Z/+onrTAUCmGG8QEskSibiv9Tj3QylXURKwgNRrycBdW0nf9MLxQXWv0AySBlcEOhKJxqf9EFEuVo6CKcIIzc1sMR4li2LKnU+1+aQUthJJGCB5EwXMZjYRgUcMoKS6XZCvGJUabyqcqliI9PjBOGcdk2jDESFT2Sgdqxlk1VRqONxy6MJ2LMcj4mhlL1M4ySQkXTEJ6Gu75nw4hwrwfyncTTnMbGCClkPXJlkEotSsOW3qQQDTweHGGcv8/j3DdsWastRguhyOwyiGV0HDS1fXOX107OSOy207x+HJa5b6aNJWs3YkMnlUrGjDYnvp9bA0l1X5yM6eObTzsPLNtyZK02mmopZMQyBTxTX5WSRnR9W9yR4/SY+mFgQ9cxH0WpGaI0klkzv3ZDXxhK6Zpu6PrRIBzfXTdWtl6HkZl9MAllGSoaWa9AXCsRdpgmZsz2ZhzGcRxOp/Mlt9kYOxojyO06YZQJZje2/ZwTD7d9bsrvfr9nqrBVVvhktrXMaC97aXphsYe78+n8EGbnbtqkyM4Lnbc6l0arq+1ls6215s3p9bLkNvf9NUfKbZc3TaO11iprTcpVbnsZ+rtbhyGfRzeM3bgeh13TwDZNowK9Sb3PSS/ZNl5jeXCX/Ikvj3yJnaoq9bpSVRn8A7lg4fzGB/R+FZt116uqLh2b5wHVLBSFrhs8dlfetIPRdTOI7zxB7sPIWLu7IBmJzTvVwSQceFGUvK7ifKesJ5PPE+fhn3EJZDa3WavjusqLyntT27JLJVwpPm73jdow9ibeam+KEFRZeJfrKICCvikpqfxV7p9iLmaFdybXrqhg5rzSTTmIVPCiasr6KvOscoKHfYZw7dq69L4tHXA+dJPklNB5U+Xt9vqDRQFWlvX2ptpKSbsxILOyrJ1zzvFSgTIH510JaQz7uvjJQ7fnxaVt2/pSOl8qbCnLOoe08NX94BH9D9c/UTz+V+0YAAAAAElFTkSuQmCC');
+            background-repeat: repeat;
+            background-attachment: fixed;
+            background-size: 50px;
+        }
+        
+        .day-theme .main-content {
+            background-color: rgba(248, 249, 250, 0.7);
+        }
+        
+        .night-theme .main-content {
+            background-color: rgba(33, 37, 41, 0.7);
+        }
+        
+        /* Enhanced Header styling */
+        .page-header {
+            position: relative;
+            padding: 4.5rem 0;
+            margin-bottom: 0;
+            width: 100%;
+            overflow: visible;
+            color: white;
+        }
+        
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.8) 100%);
+            z-index: 1;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 1rem;
+        }
+        
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+            z-index: 0;
+        }
+        
+        .header-title {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            font-size: 3rem;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .header-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background-color: #dd3649;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .header-subtitle {
+            font-family: 'Cinzel', serif;
+            font-weight: 400;
+            margin-bottom: 0.8rem;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        /* Enhanced Filter buttons */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            margin: 2.5rem 0;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .filter-btn {
+            background-color: #343a40;
+            color: white;
+            border: none;
+            padding: 0.7rem 2rem;
+            margin: 0 0.5rem;
+            border-radius: 30px;
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .filter-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: rgba(255,255,255,0.1);
+            transition: width 0.3s ease;
+            z-index: 1;
+        }
+        
+        .filter-btn:hover:before {
+            width: 100%;
+        }
+        
+        .filter-btn span {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .filter-btn:hover {
+            background-color: #495057;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+        
+        .filter-btn.active {
+            background-color: #dd3649;
+            box-shadow: 0 4px 12px rgba(221, 54, 73, 0.4);
+        }
+        
+        /* Enhanced Event card styling */
+        .event-card {
+            height: 100%;
+            transition: all 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: none;
+            max-width: 800px; /* Limit maximum width for better readability */
+            margin: 0 auto; /* Center the card */
+        }
+        
+        .event-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .event-img-container {
+            position: relative;
+            height: 300px; /* Increased height for better visual impact */
+            overflow: hidden;
+        }
+        
+        .event-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.2, 0, 0.2, 1);
+        }
+        
+        .event-card:hover .event-img {
+            transform: scale(1.08);
+        }
+        
+        .event-date {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(221, 54, 73, 0.9);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 2;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            letter-spacing: 0.5px;
+        }
+        
+        .card-body {
+            padding: 2rem;
+        }
+        
+        .card-title {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .card-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .night-theme .card-subtitle {
+            border-bottom-color: rgba(255,255,255,0.1);
+        }
+        
+        .past-event-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            z-index: 1;
+            letter-spacing: 2px;
+        }
+        
+        .event-info {
+            margin-bottom: 0.7rem;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .event-info i {
+            margin-right: 8px;
+            color: #dd3649;
+            min-width: 20px;
+            text-align: center;
+        }
+        
+        .event-info strong {
+            color: #dd3649;
+            font-weight: 600;
+            margin-right: 5px;
+        }
+        
+        .night-theme .event-info strong, 
+        .night-theme .event-info i {
+            color: #ff4c63;
+        }
+        
+        .organizer-link {
+            width: 100%;
+            margin-top: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding: 0.7rem;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            background-color: #dd3649;
+            border: none;
+        }
+        
+        .organizer-link:hover {
+            background-color: #c12e42;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(221, 54, 73, 0.3);
+        }
+        
+        /* Card footer styling */
+        .card-footer {
+            background-color: inherit;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding: 1rem 1.5rem;
+            font-style: italic;
+        }
+        
+        .night-theme .card-footer {
+            border-top-color: rgba(255,255,255,0.1);
+        }
+        
+        /* No events message */
+        .no-events {
+            text-align: center;
+            padding: 3rem;
+            margin: 2rem 0;
+            display: none;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .no-events h3 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .no-events p {
+            font-size: 1.1rem;
+        }
+        
+        /* Helper buttons styling */
+        .floating-btn {
+            position: fixed;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+            border: none;
+            z-index: 1000;
+        }
+        
+        .floating-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+        }
+        
+        .theme-toggle {
+            bottom: 30px;
+            left: 30px;
+            width: 55px;
+            height: 55px;
+            background-color: #343a40;
+            color: #fff;
+        }
+        
+        .theme-toggle i {
+            font-size: 22px;
+        }
+        
+        .night-theme .theme-toggle {
+            background-color: #495057;
+        }
+        
+        .jump-to-top {
+            bottom: 30px;
+            right: 30px;
+            width: 55px;
+            height: 55px;
+            background-color: #dd3649;
+            color: #ffffff;
+            font-size: 22px;
+            display: none;
+        }
+        
+        .jump-to-top:hover {
+            background-color: #c12e42;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        /* Events Loading Spinner */
+        .loading-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem 0;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(221, 54, 73, 0.3);
+            border-radius: 50%;
+            border-top-color: #dd3649;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .header-title {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .header-title {
+                font-size: 2.5rem;
+            }
+            .filter-btn {
+                padding: 0.6rem 1.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 3.5rem 0;
+            }
+            .header-title {
+                font-size: 2.2rem;
+                letter-spacing: 1px;
+            }
+            .header-subtitle {
+                font-size: 1.2rem;
+            }
+            .filter-btn {
+                padding: 0.5rem 1.4rem;
+                font-size: 0.9rem;
+            }
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+            }
+            .theme-toggle {
+                bottom: 20px;
+                left: 20px;
+            }
+            .jump-to-top {
+                bottom: 20px;
+                right: 20px;
+            }
+            .event-img-container {
+                height: 250px;
+            }
+            
+            .card-body {
+                padding: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .page-header {
+                padding: 3rem 0;
+            }
+            .header-title {
+                font-size: 1.8rem;
+            }
+            .header-title:after {
+                width: 80px;
+                height: 3px;
+            }
+            .filter-container {
+                flex-direction: column;
+                align-items: center;
+                padding: 0.8rem;
+                gap: 10px;
+            }
+            .filter-btn {
+                width: 100%;
+                margin: 0;
+            }
+            .event-img-container {
+                height: 200px;
+            }
+        }
+
+        .day-theme .card-body,
+        .day-theme .card-footer {
+            color: #212529 !important;
+        }
+
+        .day-theme .event-card {
+            background-color: #fff !important;
+            color: #212529 !important;
+        }
+    </style>
+</head>
+<body class="day-theme bg-light text-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
+        <a class="navbar-brand d-flex align-items-center" href="../../index.html" id="brand-toggle" aria-label="Homepage">
+            <!-- Dark logo (for day theme) -->
+            <img src="../../images/brand-icons/logo-dark.png" alt="Pawn Island Academy Logo Dark" class="logo day-logo">
+            <!-- Light logo (for night theme) -->
+            <img src="../../images/brand-icons/logo-light.png" alt="Pawn Island Academy Logo Light" class="logo night-logo d-none">
+        </a>
+        <a class="shop-now-btn" href="https://pawnisland.myshopify.com/collections" target="_blank" aria-label="Shop Now">
+            <img src="../../images/social-icons/shopify-universal.png" alt="Shopify" width="20" height="20">
+            Shop Now
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="about-me.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="https://pawnisland.myshopify.com/collections">Merch</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="coaching.html" aria-label="Chess Coaching Section">Lessons</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center text-dark" href="https://chess.com/blog/squarethecurve" target="_blank">
+                        <img src="../../images/social-icons/chess-universal.png" alt="Chess.com raisethecurve Blog" width="20" height="20" class="mr-2">
+                        Blog
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Enhanced Header Section -->
+    <header class="page-header">
+        <div class="header-overlay"></div>
+        <img src="../../images/headers-pages/clearinghouse.webp" alt="Event Background" class="header-bg">
+        <div class="container header-content text-center">
+            <h1 class="header-title" data-aos="fade-down">COACH'S CLEARINGHOUSE</h1>
+            <h2 class="header-subtitle" data-aos="fade-up" data-aos-delay="200">GREATER RHODE ISLAND</h2>
+            <h3 class="header-subtitle" data-aos="fade-up" data-aos-delay="400">Including RI, MA, & CT</h3>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="container">
+            <!-- Enhanced Filter buttons -->
+            <div class="filter-container" data-aos="fade-up">
+                <button class="filter-btn active" data-filter="all" aria-label="Show all events">
+                    <span><i class="fas fa-calendar-alt mr-2"></i>All Events</span>
+                </button>
+                <button class="filter-btn" data-filter="upcoming" aria-label="Show only upcoming events">
+                    <span><i class="fas fa-clock mr-2"></i>Upcoming</span>
+                </button>
+                <button class="filter-btn" data-filter="past" aria-label="Show only past events">
+                    <span><i class="fas fa-history mr-2"></i>Past</span>
+                </button>
+            </div>
+
+            <!-- Loading indicator -->
+            <div id="loading-events" class="loading-container">
+                <div class="loading-spinner"></div>
+            </div>
+
+            <!-- No events message -->
+            <div id="no-events-message" class="no-events bg-light text-dark">
+                <h3><i class="fas fa-calendar-times mb-3" style="font-size: 2.5rem;"></i></h3>
+                <h3>No events found</h3>
+                <p>Check back later for upcoming chess events in your area!</p>
+            </div>
+
+            <!-- Events container -->
+            <div id="events-container" class="row">
+                <!-- Events will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating buttons -->
+    <button class="floating-btn theme-toggle" id="themeToggle" title="Toggle light/dark theme" aria-label="Toggle theme">
+        <i class="fas fa-sun day-icon"></i>
+        <i class="fas fa-moon night-icon d-none"></i>
+    </button>
+
+    <button class="floating-btn jump-to-top" id="jumpToTopBtn" title="Go to top" aria-label="Jump to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Replace direct footer with placeholder -->
+    <div class="footer-placeholder"></div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS with better settings
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 100,
+                easing: 'ease-out-cubic'
+            });
+            
+            // Hide loading indicator when events are loaded
+            const eventsLoaded = new Promise((resolve) => {
+                const checkEvents = setInterval(() => {
+                    const events = document.querySelectorAll('.event-item');
+                    if (events.length > 0) {
+                        clearInterval(checkEvents);
+                        resolve();
+                    }
+                }, 100);
+                
+                // Timeout after 5 seconds in case of error
+                setTimeout(() => {
+                    clearInterval(checkEvents);
+                    resolve();
+                }, 5000);
+            });
+            
+            eventsLoaded.then(() => {
+                document.getElementById('loading-events').style.display = 'none';
+            });
+
+            // Jump to top button
+            const jumpToTopBtn = document.getElementById("jumpToTopBtn");
+
+            window.onscroll = function() {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    jumpToTopBtn.style.display = "flex";
+                } else {
+                    jumpToTopBtn.style.display = "none";
+                }
+            };
+
+            jumpToTopBtn.onclick = function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            };
+
+            // Enhanced filter functionality with animations
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active state with animation
+                    document.querySelectorAll('.filter-btn').forEach(b => {
+                        b.classList.remove('active');
+                        b.style.transform = '';
+                    });
+                    this.classList.add('active');
+                    this.style.transform = 'scale(1.05)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 300);
+                    
+                    // Get filter value
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Filter events with animation
+                    filterEvents(filter);
+                });
+            });
+        });
+
+        // Enhanced filter function with animations
+        function filterEvents(filter) {
+            const events = document.querySelectorAll('.event-item');
+            let visibleCount = 0;
+            
+            events.forEach((event, index) => {
+                const isPast = event.classList.contains('past-event');
+                const shouldShow = filter === 'all' || 
+                    (filter === 'upcoming' && !isPast) || 
+                    (filter === 'past' && isPast);
+                
+                // Apply different animations based on visibility
+                if (shouldShow) {
+                    event.style.display = 'block';
+                    event.style.animation = `fadeIn 0.3s ease-out ${index * 0.05}s forwards`;
+                    visibleCount++;
+                } else {
+                    event.style.animation = 'fadeOut 0.2s ease-out forwards';
+                    setTimeout(() => {
+                        event.style.display = 'none';
+                    }, 200);
+                }
+            });
+            
+            // Show/hide no events message
+            const noEventsMessage = document.getElementById('no-events-message');
+            if (visibleCount === 0) {
+                noEventsMessage.style.display = 'block';
+                noEventsMessage.style.animation = 'fadeIn 0.5s ease-out forwards';
+            } else {
+                noEventsMessage.style.display = 'none';
+            }
+        }
+        
+        // Make sure the theme toggle button works
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggleBtn = document.getElementById('themeToggle');
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', function() {
+                    // ...existing theme toggle code...
+                });
+            }
+        });
+    </script>
+    
+    <!-- Load external scripts -->
+    <script src="../../js/theme-manager.js"></script>
+    <script src="../../js/footer.js"></script>
+    <script src="../../js/events.js"></script>
+    <script src="../../js/script.js"></script>
+</body>
+</html>

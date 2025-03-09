@@ -1,145 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pawn Island - Chess Coaching, Apparel, and Speaking Engagements</title>
-    <meta name="description" content="Welcome to Pawn Island Academy - Your hub for chess coaching, apparel, and community events.">
-    <meta name="keywords" content="Chess, Coaching, Apparel, Community, Events">
-    <meta property="og:title" content="Pawn Island - Chess & Apparel">
-    <meta property="og:description" content="Elevate your chess & style with Pawn Island's coaching, apparel, and speaking engagements.">
-    <meta property="og:image" content="https://pawnislandacademy.com/images/brand-icons/logo-light.png">
-    <meta property="og:url" content="https://pawnislandacademy.com/">
-    <link rel="canonical" href="https://pawnislandacademy.com/index.html">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/navbar.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <link rel="stylesheet" href="/css/buttons.css"> <!-- Ensure buttons.css is linked -->
-    <!-- Include Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="icon" type="image/png" href="images/brand-icons/favicon.png">
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Pawn Island Academy",
-            "url": "https://pawnislandacademy.com/",
-            "logo": "https://pawnislandacademy.com/images/logo.png",
-            "description": "Offering personalized chess coaching, unique apparel, and engaging community events."
-        }
-    </script>
-    <!-- ...existing code... -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T12VEHM2PY"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-T12VEHM2PY');
-    </script>
+	<!-- ...existing meta tags and shared stylesheet links... -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pawn Island Academy - Home</title>
+	<meta name="description" content="Welcome to Pawn Island Academy: Your premier destination for chess coaching, resources, apparel, and more.">
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/navbar.css">
+	<link rel="stylesheet" href="css/footer.css">
+	<link rel="stylesheet" href="css/buttons.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/theme-toggle.css"> <!-- Added -->
+	<style>
+		/* Landing page specific styling */
+		body {
+			margin: 0;
+			font-family: var(--body-font);
+			background: var(--light-bg);
+		}
+		.hero {
+			position: relative;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: url(images/headers-pages/pawnisland-background.jpeg) center/cover no-repeat;
+		}
+		.hero::after {
+			content: "";
+			position: absolute;
+			top: 0; left: 0; right: 0; bottom: 0;
+			background: rgba(0, 0, 0, 0.5);
+			z-index: 1;
+		}
+		.hero-content {
+			position: relative;
+			z-index: 2;
+			text-align: center;
+			color: white;
+			padding: 0 20px;
+		}
+		.hero-title {
+			font-size: 4rem;
+			margin-bottom: 1rem;
+			opacity: 0;
+			animation: fadeInUp 1s forwards 0.3s;
+		}
+		.hero-subtitle {
+			font-size: 1.8rem;
+			margin-bottom: 2rem;
+			opacity: 0;
+			animation: fadeInUp 1s forwards 0.6s;
+		}
+		@keyframes fadeInUp {
+			from { opacity: 0; transform: translateY(50px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+		.card-container {
+			padding: 4rem 0;
+		}
+		.destination-card {
+			border: none;
+			border-radius: 15px;
+			overflow: hidden;
+			transition: transform 0.3s;
+		}
+		.destination-card:hover {
+			transform: translateY(-10px);
+		}
+		.card-img-top {
+			height: 200px;
+			object-fit: cover;
+		}
+	</style>
 </head>
 <body class="day-theme bg-light text-dark">
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
-        <a class="navbar-brand d-flex align-items-center" href="#" id="brand-toggle" aria-label="Homepage">
-            <img src="images/brand-icons/logo-light.png" alt="Pawn Island Academy Logo (Light Theme)" class="logo day-logo">
-            <img src="images/brand-icons/logo-dark.png" alt="Pawn Island Academy Logo (Dark Theme)" class="logo night-logo d-none">
-        </a>
-        <a class="shop-now-btn" href="https://pawnisland.myshopify.com/collections" target="_blank" aria-label="Shop Now">
-            <img src="images/social-icons/shopify-universal.png" alt="Shopify" width="20" height="20">
-            Shop Now
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="/pages/landing/coaching.html" aria-label="Chess Coaching Section">Chess Coaching</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="/pages/landing/apparel.html" aria-label="Apparel Shop Section">Apparel Shop</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="/pages/landing/speaking.html" aria-label="Speaking Engagements Section">Speaking Engagements</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="/pages/landing/about-me.html" aria-label="About Me Section">About Me</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center text-dark" href="https://chess.com/blog/squarethecurve" target="_blank" aria-label="Chess.com Blog">
-                        <img src="images/social-icons/chess-universal.png" alt="Chess.com Blog" width="20" height="20" class="mr-2">
-                        Blog
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="/pages/landing/reviews.html" aria-label="Student Testimonials">Reviews</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <header class="header text-center bg-light w-100">
-        <h1 class="title text-dark">Pawn Island Academy</h1>
-    </header>
-    <div class="container">
-        <!-- Chess Coaching Section -->
-        <section id="chess-coaching" class="my-5 text-dark" data-aos="fade-up">
-            <h2 class="text-center">Chess Coaching</h2>
-            <div class="header-image-container">
-                <img src="images/headers-pages/coach.png" alt="Chess coach providing a lesson" class="img-fluid" loading="lazy">
-            </div>
-            <div class="description bg-dark text-white p-3 rounded">
-                <p>Unlock your potential with personalized chess coaching from a seasoned expert. Whether you're a beginner or an advanced player, our tailored sessions will help you master the game and achieve your goals. Join us and elevate your chess skills to new heights.</p>
-                <a href="/pages/landing/coaching.html" class="btn btn-primary mt-3">Learn More</a>
-            </div>
-        </section>
-        <!-- Divider -->
-        <hr class="my-4" data-aos="fade-up">
-        <!-- Apparel Shop Section -->
-        <section id="apparel-shop" class="my-5 text-dark" data-aos="fade-up">
-            <h2 class="text-center">Apparel Shop</h2>
-            <div class="header-image-container">
-                <img src="images/headers-pages/supplier.png" alt="Apparel Shop" class="img-fluid" loading="lazy">
-            </div>
-            <div class="description bg-dark text-white p-3 rounded">
-                <p>Welcome to a different kind of apparel experience — one that marries art, personal expression, and authenticity. Our designs aren’t churned out by mega-corporations; they’re created with a passion for standing out in a world that rewards conformity. Think of our pieces as subtle statements — iykyk.</p>
-                <p>Explore our latest collection and wear who you are with pride. Let’s make a statement together.</p>
-                <a href="/pages/landing/apparel.html" class="btn btn-primary mt-3">Learn More</a>
-            </div>
-        </section>
-        <!-- Divider -->
-        <hr class="my-4" data-aos="fade-up">
-        <!-- Speaking Engagements Section -->
-        <section id="speaking-engagements" class="my-5 text-dark" data-aos="fade-up">
-            <h2 class="text-center">Speaking Engagements</h2>
-            <div class="header-image-container">
-                <img src="images/headers-pages/speaker.png" alt="Speaking Engagements" class="img-fluid" loading="lazy">
-            </div>
-            <div class="description bg-dark text-white p-3 rounded">
-                <p>In a world overloaded with data and choices, the ability to think strategically is invaluable. Our speaking sessions bring the essence of chess — fast-paced analysis, strategic planning, and calm under pressure — directly to your organization. Learn how to move from option paralysis to a clear, measurable plan of action.</p>
-                <a href="/pages/landing/speaking.html" class="btn btn-primary mt-3">Learn More</a>
-            </div>
-        </section>
-    </div>
-    <!-- Jump to Top Button -->
-    <button class="jump-to-top" id="jumpToTopBtn" title="Go to top">↑</button>
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<!-- ...existing navbar code... -->
+	</nav>
+	<!-- Hero Section -->
+	<header class="hero">
+		<div class="hero-content" data-aos="fade-up">
+			<h1 class="hero-title">Welcome to Pawn Island Academy</h1>
+			<p class="hero-subtitle">Where Chess Mastery Begins</p>
+			<a href="#destinations" class="btn btn-primary" data-aos="fade-up" data-aos-delay="500">Discover More</a>
+		</div>
+	</header>
+	<!-- Destination Cards -->
+	<section id="destinations" class="card-container container">
+		<h2 class="text-center mb-5" data-aos="fade-up">Explore Our World</h2>
+		<div class="row">
+			<div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up">
+				<div class="card destination-card">
+					<img src="images/headers-pages/coach-2.png" class="card-img-top" alt="Chess Coaching">
+					<div class="card-body text-center">
+						<h5 class="card-title">Chess Coaching</h5>
+						<p class="card-text">Personalized Lessons</p>
+						<a href="pages/landing/coaching.html" class="btn btn-outline-primary">Learn More</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="100">
+				<div class="card destination-card">
+					<img src="images/headers-pages/clearinghouse.webp" class="card-img-top" alt="Clearinghouse">
+					<div class="card-body text-center">
+						<h5 class="card-title">Clearinghouse</h5>
+						<p class="card-text">Tournaments and Local Clubs</p>
+						<a href="pages/landing/clearinghouse.html" class="btn btn-outline-primary">Explore</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+				<div class="card destination-card">
+					<img src="images/headers-pages/apparel.jpg" class="card-img-top" alt="Pawn Island Apparel">
+					<div class="card-body text-center">
+						<h5 class="card-title">Pawn Island Apparel</h5>
+						<p class="card-text">T-shirts, Mousepads and More</p>
+						<a href="https://pawnisland.myshopify.com/collections" class="btn btn-outline-primary">Shop Now</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="300">
+				<div class="card destination-card">
+					<img src="images/headers-pages/freeman-3.jpg" class="card-img-top" alt="About Me">
+					<div class="card-body text-center">
+						<h5 class="card-title">About Me</h5>
+						<p class="card-text">The Story Behind Pawn Island</p>
+						<a href="pages/landing/about-me.html" class="btn btn-outline-primary">Read More</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+    <!-- Floating buttons -->
+    <button class="floating-btn theme-toggle" id="themeToggle" title="Toggle light/dark theme" aria-label="Toggle theme">
+        <i class="fas fa-sun day-icon"></i>
+        <i class="fas fa-moon night-icon d-none"></i>
+    </button>
 
-    <!-- Placeholder for Dynamic Footer -->
+    <button class="floating-btn jump-to-top" id="jumpToTopBtn" title="Go to top" aria-label="Jump to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Replace direct footer with placeholder - moved outside all containers -->
     <div class="footer-placeholder"></div>
 
-    <!-- Include jQuery and Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Correct script order and versions - replace existing script tags -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
-    <script src="js/script.js"></script>
+    
+    <!-- Load scripts in correct order -->
+    <script src="js/theme-manager.js"></script>
     <script src="js/footer.js"></script>
-    <script id="setmore_script" type="text/javascript" src="https://storage.googleapis.com/fullintegration-live/webComponentAppListing/Container/setmoreIframeLive.js"></script>
-    <a style="float:none; position: fixed; right: -2px; top: 25%; display: block; z-index: 20000" id="Setmore_button_iframe" href="https://booking.setmore.com/scheduleappointment/1bc50848-c882-45f8-9549-b82028f120f7">
-        <img border="none" src="https://storage.googleapis.com/full-assets/setmore/images/1.0/Calendar/Setmore-Book-Now.png" alt="Book an appointment with Pawn Island using Setmore"/>
-    </a>
+    <script src="js/script.js"></script>
+	<script>
+		AOS.init({
+			duration: 800,
+			once: true
+			});
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            const themeToggleBtn = document.getElementById('themeToggle');
+            const dayIcon = document.querySelector('.day-icon');
+            const nightIcon = document.querySelector('.night-icon');
+            
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', function() {
+                    // Toggle between day and night theme
+                    if (document.documentElement.classList.contains('day-theme')) {
+                        document.documentElement.classList.replace('day-theme', 'night-theme');
+                        document.body.classList.replace('bg-light', 'bg-dark');
+                        document.body.classList.replace('text-dark', 'text-light');
+                        localStorage.setItem('theme', 'night-theme');
+                        
+                        // Update icons
+                        dayIcon.classList.add('d-none');
+                        nightIcon.classList.remove('d-none');
+                    } else {
+                        document.documentElement.classList.replace('night-theme', 'day-theme');
+                        document.body.classList.replace('bg-dark', 'bg-light');
+                        document.body.classList.replace('text-dark', 'text-light');
+                        localStorage.setItem('theme', 'day-theme');
+                        
+                        // Update icons
+                        nightIcon.classList.add('d-none');
+                        dayIcon.classList.remove('d-none');
+                    }
+                    
+                    // Update navbar logo visibility based on theme
+                    const dayLogo = document.querySelector('.logo.day-logo');
+                    const nightLogo = document.querySelector('.logo.night-logo');
+                    
+                    if (dayLogo && nightLogo) {
+                        if (document.documentElement.classList.contains('day-theme')) {
+                            dayLogo.classList.remove('d-none');
+                            nightLogo.classList.add('d-none');
+                        } else {
+                            dayLogo.classList.add('d-none');
+                            nightLogo.classList.remove('d-none');
+                        }
+                    }
+                });
+                
+                // Set initial state based on saved theme
+                const savedTheme = localStorage.getItem('theme') || 'day-theme';
+                if (savedTheme === 'night-theme') {
+                    dayIcon.classList.add('d-none');
+                    nightIcon.classList.remove('d-none');
+                } else {
+                    nightIcon.classList.add('d-none');
+                    dayIcon.classList.remove('d-none');
+                }
+            }
+        });
+	</script>
 </body>
 </html>

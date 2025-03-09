@@ -1,0 +1,102 @@
+/* Enhanced Theme Toggle Button Styling */
+.theme-toggle {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: #343a40;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+    z-index: 1000;
+    border: none;
+    overflow: hidden;
+}
+
+/* Interactive hover state */
+.theme-toggle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.theme-toggle:hover::before {
+    opacity: 1;
+}
+
+/* Active press state */
+.theme-toggle:active {
+    transform: scale(0.92);
+}
+
+.theme-toggle:focus {
+    outline: none;
+    box-shadow: 0 4px 15px rgba(221, 54, 73, 0.4);
+}
+
+.theme-toggle:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* Icon styling with enhanced transitions */
+.theme-toggle i {
+    position: absolute;
+    font-size: 22px;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncy effect */
+    backface-visibility: hidden; /* Prevent flickering */
+}
+
+/* Sun icon styling */
+.theme-toggle .day-icon {
+    color: #ffc107; /* Warm yellow */
+    transform: scale(1);
+}
+
+/* Moon icon styling */
+.theme-toggle .night-icon {
+    color: #f8f9fa; /* Cool white */
+    transform: scale(1);
+}
+
+/* Smooth icon transition states */
+.theme-toggle .day-icon.d-none,
+.theme-toggle .night-icon.d-none {
+    display: none !important;
+}
+
+/* Theme-specific button states */
+.day-theme .theme-toggle {
+    background-color: #343a40;
+}
+
+.night-theme .theme-toggle {
+    background-color: #495057;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .theme-toggle {
+        width: 45px;
+        height: 45px;
+        bottom: 20px;
+        left: 20px;
+    }
+    
+    .theme-toggle i {
+        font-size: 18px;
+    }
+}

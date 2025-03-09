@@ -39,6 +39,18 @@
 .footer .social-icon img {
     max-width: 100%;
     height: auto; /* Maintain aspect ratio */
+    display: inline-block !important;
+}
+
+/* Force footer theme colors with !important to overcome any conflicts */
+.day-theme .footer {
+    background-color: #f8f9fa !important;
+    color: #212529 !important;
+}
+
+.night-theme .footer {
+    background-color: #212529 !important;
+    color: #f8f9fa !important;
 }
 
 .footer .social-icon:not(:last-child) {
@@ -83,8 +95,8 @@
 
 /* Day and Night Theme Styles */
 .day-theme .footer {
-    background-color: white;
-    color: black; /* Set text color to black for day theme */
+    background-color: #f8f9fa;
+    color: #212529;
 }
 
 .day-theme .footer .footer-text {
@@ -93,29 +105,37 @@
 
 /* Night Theme Styles for Footer */
 .night-theme .footer {
-    background-color: black; /* Set to the darkest black possible */
-    color: white; /* Ensure text color is white for night theme */
+    background-color: #212529;
+    color: #f8f9fa;
 }
 
 .night-theme .footer .footer-text {
     color: white;
 }
 
-/* Social Icon Visibility Based on Theme */
+/* Social Icon Visibility Based on Theme - make day icons visible by default */
 .footer .social-icon.day-logo {
-    display: none;
+    display: inline-block !important;
 }
 
 .footer .social-icon.night-logo {
-    display: inline-block;
+    display: none !important;
 }
 
 .day-theme .footer .social-icon.day-logo {
-    display: inline-block;
+    display: inline-block !important;
 }
 
 .day-theme .footer .social-icon.night-logo {
-    display: none;
+    display: none !important;
+}
+
+.night-theme .footer .social-icon.day-logo {
+    display: none !important;
+}
+
+.night-theme .footer .social-icon.night-logo {
+    display: inline-block !important;
 }
 
 /* Ensure all child elements inherit text color */

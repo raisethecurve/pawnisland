@@ -9,8 +9,14 @@
     border: none;
 }
 
+/* Default dark hamburger menu for day theme */
 .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+}
+
+/* Light hamburger menu for night theme */
+.night-theme .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
 }
 
 /* Ensure the menu is positioned on the right side */
@@ -26,6 +32,32 @@
 .logo {
     width: 50px; /* Adjust the width as needed */
     height: auto; /* Maintain aspect ratio */
+}
+
+/* Correct logo visibility rules for proper contrast */
+/* Dark logo (day-logo) shows in light theme */
+.day-theme .navbar .day-logo {
+    display: inline-block !important;
+}
+
+.day-theme .navbar .night-logo {
+    display: none !important;
+}
+
+/* Light logo (night-logo) shows in dark theme */
+.night-theme .navbar .day-logo {
+    display: none !important;
+}
+
+.night-theme .navbar .night-logo {
+    display: inline-block !important;
+}
+
+/* Ensure logo images have proper size and transitions */
+.navbar .logo {
+    width: 50px;
+    height: auto;
+    transition: opacity 0.3s ease;
 }
 
 #navbarNav > ul {

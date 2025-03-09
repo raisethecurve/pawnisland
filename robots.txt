@@ -1,6 +1,16 @@
 User-agent: *
 Disallow: /admin/
 Disallow: /private/
+Disallow: /css/
+Disallow: /js/
+Disallow: /images/
+Disallow: /pages/landing/apparel.html
+Disallow: /pages/landing/speaking.html
+Disallow: /pages/landing/reviews.html
+
 Allow: /
+Allow: /pages/landing/about-me.html
+Allow: /pages/landing/clearinghouse.html
+Allow: /pages/landing/coaching.html
 
 Sitemap: https://pawnislandacademy.com/sitemap.xml
