@@ -493,3 +493,42 @@ body {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
     color: white; /* Ensure hero subtitle is always white */
 }
+
+/* Style the premium experience section */
+.premium-experience {
+    background: linear-gradient(135deg, #004d7a 0%, #002d47 100%); /* Gradient background */
+    color: #ffffff; /* White text */
+    padding: 3rem 2rem;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15); /* Subtle shadow */
+    border-radius: 15px; /* Rounded corners */
+    margin-bottom: 2rem; /* Add some space below */
+}
+
+.premium-experience h2,
+.premium-experience p {
+    color: #ffffff; /* Ensure text is white */
+}
+
+.premium-metrics {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.premium-metrics .metric {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.premium-metrics .metric-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #f8d948; /* Accent color */
+    margin-bottom: 0.5rem;
+}
+
+.premium-metrics .metric-label {
+    font-size: 1.1rem;
+    color: #ffffff;
+    opacity: 0.8;
+}

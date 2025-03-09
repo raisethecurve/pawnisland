@@ -299,6 +299,22 @@
   --transition-slow: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+/* Ensure coach page hero and opening card text are white */
+.coaching-hero .hero-content,
+.coaching-hero .hero-title,
+.coaching-hero .hero-subtitle,
+.opening-card .card-body {
+    color: white !important;
+}
+
+/* Ensure all hero content, including hero-tagline is white */
+.hero-tagline,
+.hero-tagline-container,
+.hero-tagline-container * {
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
 /* Hero Section */
 .coaching-hero {
   position: relative;
@@ -1273,7 +1289,7 @@
 .metric-value {
   font-size: 3.5rem;
   font-weight: 700;
-  line-height: 1;
+  line-height: 0.5;
   color: var(--primary-color);
   margin-bottom: 0.5rem;
   font-family: var(--heading-font);
@@ -2031,5 +2047,355 @@
     
     .client-name {
         font-size: 1.2rem;
+    }
+}
+
+/* Ensure premium experience text and titles are white */
+.premium-experience-title,
+.premium-experience-text,
+.premium-experience .premium-experience-title,
+.premium-experience .premium-experience-text {
+    color: white !important;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Ensure metric labels are also white */
+.premium-metrics .metric-label {
+    color: white !important;
+}
+
+/* Modern Testimonial Carousel with Squircle Images */
+.testimonial-modern-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    padding: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    margin: 20px auto;
+    max-width: 900px;
+    min-height: 280px;
+    transition: transform 0.3s ease;
+}
+
+.testimonial-modern-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-content-section {
+    flex: 3;
+    padding: 35px;
+    position: relative;
+}
+
+/* Update the testimonial-image-section to make background transparent */
+.testimonial-image-section {
+    flex: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: transparent; /* Remove blue gradient background */
+}
+
+.testimonial-image-section {
+    flex: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: transparent; /* Remove blue gradient background */
+}
+
+/* Squircle shape for images */
+.squircle-container {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 40px; /* Basic rounded corners */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    background: white;
+    padding: 5px;
+    /* Adding subtle border to ensure visibility against any background */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.squircle-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 35px; /* Slightly less than container */
+    transition: transform 0.5s ease;
+}
+
+.testimonial-modern-card:hover .squircle-image {
+    transform: scale(1.05);
+}
+
+.quote-marks {
+    font-family: 'Georgia', serif;
+    font-size: 72px;
+    line-height: 0;
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    color: var(--primary-color);
+    opacity: 0.1;
+}
+
+.testimonial-text {
+    font-size: 18px;
+    line-height: 1.7;
+    font-style: italic;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    position: relative;
+    z-index: 2;
+    text-align: left; /* Change to left alignment */
+}
+
+.testimonial-author-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    text-align: left; /* Add explicit left alignment */
+}
+
+.author-name {
+    font-size: 18px;
+    color: var(--primary-color);
+    margin-bottom: 3px;
+}
+
+.author-title {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .testimonial-modern-card {
+        flex-direction: column;
+        min-height: auto;
+    }
+    
+    .testimonial-image-section {
+        width: 100%;
+        padding: 30px 20px;
+    }
+    
+    .squircle-container {
+        width: 150px;
+        height: 150px;
+        border-radius: 30px;
+    }
+    
+    .squircle-image {
+        border-radius: 25px;
+    }
+    
+    .testimonial-content-section {
+        padding: 25px 20px;
+    }
+    
+    .quote-marks {
+        font-size: 50px;
+        top: 30px;
+        left: 15px;
+    }
+    
+    .testimonial-text {
+        font-size: 16px;
+    }
+}
+
+/* Testimonials without images - full width content */
+.testimonial-content-section.full-width {
+    flex: 1;
+    max-width: 100%;
+    padding: 40px;
+    text-align: left; /* Change from center to left alignment */
+}
+
+.testimonial-modern-card.no-image {
+    justify-content: center;
+}
+
+.testimonial-modern-card.no-image .quote-marks {
+    left: 30px; /* Adjust quote position for centered layout */
+}
+
+@media (max-width: 768px) {
+    .testimonial-content-section.full-width {
+        padding: 30px;
+    }
+}
+
+/* Ensure premium experience text and titles are white */
+.premium-experience-title,
+.premium-experience-text,
+.premium-experience .premium-experience-title,
+.premium-experience .premium-experience-text {
+    color: white !important;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Ensure metric labels are also white */
+.premium-metrics .metric-label {
+    color: white !important;
+}
+
+/* Modern Testimonial Carousel with Squircle Images */
+.testimonial-modern-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    padding: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    margin: 20px auto;
+    max-width: 900px;
+    min-height: 280px;
+    transition: transform 0.3s ease;
+}
+
+.testimonial-modern-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-content-section {
+    flex: 3;
+    padding: 35px;
+    position: relative;
+}
+
+/* Update the testimonial-image-section to make background transparent */
+.testimonial-image-section {
+    flex: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: transparent; /* Remove blue gradient background */
+}
+
+.testimonial-image-section {
+    flex: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: transparent; /* Remove blue gradient background */
+}
+
+/* Squircle shape for images */
+.squircle-container {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 40px; /* Basic rounded corners */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    background: white;
+    padding: 5px;
+    /* Adding subtle border to ensure visibility against any background */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.squircle-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 35px; /* Slightly less than container */
+    transition: transform 0.5s ease;
+}
+
+.testimonial-modern-card:hover .squircle-image {
+    transform: scale(1.05);
+}
+
+.quote-marks {
+    font-family: 'Georgia', serif;
+    font-size: 72px;
+    line-height: 0;
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    color: var(--primary-color);
+    opacity: 0.1;
+}
+
+.testimonial-text {
+    font-size: 18px;
+    line-height: 1.7;
+    font-style: italic;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    position: relative;
+    z-index: 2;
+    text-align: left; /* Change to left alignment */
+}
+
+.testimonial-author-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    text-align: left; /* Add explicit left alignment */
+}
+
+.author-name {
+    font-size: 18px;
+    color: var(--primary-color);
+    margin-bottom: 3px;
+}
+
+.author-title {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .testimonial-modern-card {
+        flex-direction: column;
+        min-height: auto;
+    }
+    
+    .testimonial-image-section {
+        width: 100%;
+        padding: 30px 20px;
+    }
+    
+    .squircle-container {
+        width: 150px;
+        height: 150px;
+        border-radius: 30px;
+    }
+    
+    .squircle-image {
+        border-radius: 25px;
+    }
+    
+    .testimonial-content-section {
+        padding: 25px 20px;
+    }
+    
+    .quote-marks {
+        font-size: 50px;
+        top: 30px;
+        left: 15px;
+    }
+    
+    .testimonial-text {
+        font-size: 16px;
     }
 }
