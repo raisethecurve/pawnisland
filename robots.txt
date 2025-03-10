@@ -1,16 +1,19 @@
+# Main access control
 User-agent: *
 Disallow: /admin/
 Disallow: /private/
-Disallow: /css/
-Disallow: /js/
-Disallow: /images/
-Disallow: /pages/landing/apparel.html
-Disallow: /pages/landing/speaking.html
-Disallow: /pages/landing/reviews.html
+Disallow: /data/
 
-Allow: /
+# Public resources
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+# Public pages
+Allow: /index.html
 Allow: /pages/landing/about-me.html
 Allow: /pages/landing/clearinghouse.html
 Allow: /pages/landing/coaching.html
 
+# Sitemap
 Sitemap: https://pawnislandacademy.com/sitemap.xml
