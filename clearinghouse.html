@@ -1,0 +1,46 @@
+<!-- Find the code that displays event images and modify it to look something like this: -->
+
+<!-- Assuming you're using JavaScript to render events from JSON -->
+<script>
+    // Assuming this is where your event rendering logic is
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('data/events.json')
+            .then(response => response.json())
+            .then(events => {
+                const container = document.getElementById('events-container');
+                
+                events.forEach(event => {
+                    const card = document.createElement('div');
+                    card.className = 'card event-card mb-4';
+                    
+                    // Add special class for large image events
+                    if (event.largeImage) {
+                        card.classList.add('event-card-large-image');
+                    }
+                    
+                    // Create card header with image
+                    const cardHeader = document.createElement('div');
+                    cardHeader.className = 'card-header p-0';
+                    
+                    const img = document.createElement('img');
+                    img.src = event.image;
+                    img.className = 'card-img-top event-image';
+                    img.alt = event.name;
+                    
+                    // Apply special styling for large images
+                    if (event.largeImage) {
+                        img.classList.add('event-image-large');
+                    }
+                    
+                    cardHeader.appendChild(img);
+                    card.appendChild(cardHeader);
+                    
+                    // Rest of your event card creation logic
+                    // ...existing code...
+                    
+                    container.appendChild(card);
+                });
+            })
+            .catch(error => console.error('Error loading events:', error));
+    });
+</script>
