@@ -44,7 +44,8 @@ document.addEventListener("DOMContentLoaded", function() {
      */
     function processRecurringEvent(event, currentDate) {
         const results = [];
-        const baseDate = parseDateNoOffset(event.date);
+        // Updated to use event.startdate if event.date is not provided
+        const baseDate = parseDateNoOffset(event.startdate);
         const dayOfWeek = event.recurrence.dayOfWeek; // 0-6, where 0 is Sunday
         const exceptions = new Set(event.recurrence.exceptions || []);
         const isCranstonChess = event.name.includes("Cranston");
@@ -139,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function() {
             
             const pastEvent = {
                 ...event,
-                date: mostRecentPast.dateStr,
+                startdate: mostRecentPast.dateStr,
                 isRecurring: true,
                 isPast: true,
                 days: getDayName(dayOfWeek)
@@ -164,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function() {
             
             results.push({
                 ...event,
-                date: nextRegular.dateStr,
+                startdate: nextRegular.dateStr,
                 isRecurring: true,
                 isPast: false,
                 days: getDayName(dayOfWeek)
@@ -180,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 
                 results.push({
                     ...event,
-                    date: nextBlitz.dateStr,
+                    startdate: nextBlitz.dateStr,
                     name: "Cranston Big Money Blitz Brawl",
                     isRecurring: true,
                     isBlitzEvent: true,
@@ -194,15 +195,14 @@ document.addEventListener("DOMContentLoaded", function() {
         
         return results;
     }
-
     function displayEvents(events, currentDate) {
         const eventsContainer = document.getElementById('events-container');
         eventsContainer.innerHTML = '';
 
         // Sort events
         events.sort((a, b) => {
-            const dateA = parseDateNoOffset(a.date);
-            const dateB = parseDateNoOffset(b.date);
+            const dateA = parseDateNoOffset(a.startdate);
+            const dateB = parseDateNoOffset(b.startdate);
             const aIsPast = dateA < currentDate;
             const bIsPast = dateB < currentDate;
             
@@ -220,7 +220,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function createEventCard(event, currentDate) {
-        const eventDate = parseDateNoOffset(event.date);
+        // Updated: use event.date or fallback to event.startdate
+        const eventDate = parseDateNoOffset(event.startdate);
         const isPast = eventDate < currentDate;
         
         // Format the date nicely
@@ -241,29 +242,112 @@ document.addEventListener("DOMContentLoaded", function() {
         const formattedDateWithSuffix = `${eventDate.toLocaleString('en-US', { month: 'long' })} ${day}${ordinalSuffix(day)}, ${eventDate.getUTCFullYear()}`;
         
         const eventCard = document.createElement('div');
-        // Changed from col-lg-4 col-md-6 to col-12 for full-width single column layout
         eventCard.className = `col-12 mb-4 event-item ${isPast ? 'past-event' : 'upcoming-event'}`;
         eventCard.setAttribute('data-aos', 'fade-up');
-        eventCard.setAttribute('data-aos-delay', 100); // Fixed delay since cards are stacked
+        eventCard.setAttribute('data-aos-delay', 100);
         
-        // Use only light theme classes
         const cardThemeClass = 'bg-light text-dark';
         const mutedClass = 'text-muted';
         
-        let noteSection = '';
-        if (event.notes) {
-            noteSection = `
-                <div class="card-footer bg-light">
-                    <strong>Coach's Note:</strong> ${event.notes}
-                </div>
-            `;
+        // Parse the start date and determine if it's a multi-day event
+        const eventStartDate = parseDateNoOffset(event.startdate);
+        const isEventPast = eventStartDate < currentDate;
+
+        // Fix the days parsing to ensure proper handling of string values
+        const eventDays = event.days ? parseInt(event.days, 10) : 1;
+        
+        // Format date with ordinal suffix
+        function formatDateWithOrdinal(date) {
+            const day = date.getUTCDate();
+            const month = date.toLocaleString('en-US', { month: 'long' });
+            const year = date.getUTCFullYear();
+            
+            const ordinalSuffix = (day) => {
+            if (day > 3 && day < 21) return 'th';
+            switch (day % 10) {
+                case 1: return 'st';
+                case 2: return 'nd';
+                case 3: return 'rd';
+                default: return 'th';
+            }
+            };
+            
+            return `${month} ${day}${ordinalSuffix(day)}, ${year}`;
         }
         
-        let ageSection = event.ages ? `<p class="card-text event-info"><strong>Age Range:</strong> ${event.ages}</p>` : '';
+        // Get day name
+        const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const dayOfWeek = dayNames[eventStartDate.getUTCDay()];
         
+        // Use short day names for start and full day names for end
+        const shortDayNames = ["Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat."];
+        const fullDayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+        // Format the date display based on event duration - simplified logic for clarity
+        let dateDisplay = '';
+        // Ensure we only use the multi-day format when days is GREATER THAN 1 (not just different from 1)
+        if (!eventDays || eventDays <= 1) {
+            // Single day event - no date range
+            dateDisplay = `${shortDayNames[eventStartDate.getUTCDay()]} ${formatDateWithOrdinal(eventStartDate)}`;
+        } else {
+            // Multi-day event handling with try/catch
+            try {
+                const eventEndDate = new Date(eventStartDate);
+                eventEndDate.setUTCDate(eventStartDate.getUTCDate() + (eventDays - 1));
+                
+                const startDayShort = shortDayNames[eventStartDate.getUTCDay()];
+                // Changed to use short day name for end date as well
+                const endDayShort = shortDayNames[eventEndDate.getUTCDay()];
+                
+                const startMonth = eventStartDate.toLocaleString('en-US', { month: 'long' });
+                const endMonth = eventEndDate.toLocaleString('en-US', { month: 'long' });
+                
+                const startDay = eventStartDate.getUTCDate();
+                const endDay = eventEndDate.getUTCDate();
+                
+                // Format with ordinal suffixes
+                const startDayWithSuffix = `${startDay}${ordinalSuffix(startDay)}`;
+                const endDayWithSuffix = `${endDay}${ordinalSuffix(endDay)}`;
+                
+                const year = eventStartDate.getUTCFullYear();
+                
+                if (startMonth === endMonth) {
+                    dateDisplay = `${startDayShort} ${startMonth} ${startDayWithSuffix} - ${endDayShort} ${endMonth} ${endDayWithSuffix}, ${year}`;
+                } else {
+                    dateDisplay = `${startDayShort} ${startMonth} ${startDayWithSuffix} - ${endDayShort} ${endMonth} ${endDayWithSuffix}, ${year}`;
+                }
+            } catch(e) {
+                // Fallback in case of any date calculation errors
+                console.error('Date calculation error:', e);
+                dateDisplay = `${shortDayNames[eventStartDate.getUTCDay()]} ${formatDateWithOrdinal(eventStartDate)}`;
+            }
+        }
+        
+        // Format the simple date for display in card
+        const dateLabelOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+        const formattedDateLabel = eventStartDate.toLocaleDateString('en-US', dateLabelOptions);
+        
+        // Conditionally create each section only if data exists
+        let noteSection = event.notes ? `
+            <div class="card-footer bg-light">
+            <strong>Coach's Note:</strong> ${event.notes}
+            </div>
+        ` : '';
+        
+        let organizerSection = event.organizer ? `<h5 class="card-title">${event.organizer}</h5>` : '';
+        let nameSection = event.name ? `<h6 class="card-subtitle mb-2 ${mutedClass}">${event.name}</h6>` : '';
+        let whenSection = `<p class="card-text event-info"><strong>When:</strong> ${dateDisplay}</p>`;
+        let locationSection = event.location ? `<p class="card-text event-info"><strong>Location:</strong> ${event.location}</p>` : '';
+        let addressSection = event.address ? `<p class="card-text event-info"><strong>Address:</strong> <a href="https://maps.google.com/?q=${encodeURIComponent(event.address)}" target="_blank">${event.address}</a></p>` : '';
+        let sectionsSection = event.sections ? `<p class="card-text event-info"><strong>Sections:</strong> ${event.sections}</p>` : '';
+        let entryFeeSection = event.entry_fee ? `<p class="card-text event-info"><strong>Entry Fee:</strong> ${event.entry_fee}</p>` : '';
+        let timeControlSection = event.time_control ? `<p class="card-text event-info"><strong>Time Control:</strong> ${event.time_control}</p>` : '';
+        let formatSection = event.format ? `<p class="card-text event-info"><strong>Format:</strong> ${event.format}</p>` : '';
+        let roundTimesSection = event.round_times ? `<p class="card-text event-info"><strong>Round Times:</strong> ${event.round_times}</p>` : '';
+        let prizesSection = event.prizes ? `<p class="card-text event-info"><strong>Prizes:</strong> ${event.prizes}</p>` : '';
+        let ageSection = event.ages ? `<p class="card-text event-info"><strong>Age Range:</strong> ${event.ages}</p>` : '';
         let linkSection = event.link ? 
-            `<a href="${event.link}" target="_blank" class="btn btn-primary btn-custom organizer-link">View Details</a>` : 
-            '';
+            `<a href="${event.link}" target="_blank" class="btn btn-primary btn-custom organizer-link">View Details</a>` : '';
         
         // Add recurring event badge
         let recurringBadge = '';
@@ -271,57 +355,58 @@ document.addEventListener("DOMContentLoaded", function() {
             let badgeClass, badgeText, iconClass;
             
             if (event.isBlitzEvent) {
-                badgeClass = 'badge-warning';
-                badgeText = 'Special Blitz Event';
-                iconClass = 'fa-bolt';
+            badgeClass = 'badge-warning';
+            badgeText = 'Special Blitz Event';
+            iconClass = 'fa-bolt';
             } else {
-                badgeClass = 'badge-info';
-                badgeText = 'Weekly Event';
-                iconClass = 'fa-redo-alt';
+            badgeClass = 'badge-info';
+            badgeText = 'Weekly Event';
+            iconClass = 'fa-redo-alt';
             }
             
             recurringBadge = `
-                <div class="position-absolute" style="top: 15px; left: 15px; z-index: 2;">
-                    <span class="badge ${badgeClass}">
-                        <i class="fas ${iconClass}"></i> ${badgeText}
-                    </span>
-                </div>
+            <div class="position-absolute" style="top: 15px; left: 15px; z-index: 2;">
+                <span class="badge ${badgeClass}">
+                <i class="fas ${iconClass}"></i> ${badgeText}
+                </span>
+            </div>
             `;
         }
 
         eventCard.innerHTML = `
-            <div class="card event-card h-100 ${isPast ? 'bg-light text-dark' : cardThemeClass}">
-                <div class="position-relative">
-                    <div class="event-date">${formattedDate}</div>
-                    <div class="event-img-container">
-                        <img src="${event.image}" class="event-img" alt="${event.name}" loading="lazy">
-                    </div>
-                    ${isPast ? '<div class="past-event-overlay">Event Passed</div>' : ''}
-                    ${recurringBadge}
+            <div class="card event-card h-100 ${isEventPast ? 'bg-light text-dark' : cardThemeClass}">
+            <div class="position-relative">
+                <div class="event-date">${formattedDateLabel}</div>
+                <div class="event-img-container">
+                <img src="${event.image}" class="event-img" alt="${event.name || 'Event'}" loading="lazy">
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">${event.organizer}</h5>
-                    <h6 class="card-subtitle mb-2 ${mutedClass}">${event.name}</h6>
-                    
-                    <p class="card-text event-info"><strong>When:</strong> ${event.days}, ${formattedDateWithSuffix}</p>
-                    <p class="card-text event-info"><strong>Location:</strong> ${event.location}</p>
-                    <p class="card-text event-info"><strong>Address:</strong> ${event.address}</p>
-                    <p class="card-text event-info"><strong>Time Control:</strong> ${event.time_control}</p>
-                    <p class="card-text event-info"><strong>Entry Fee:</strong> ${event.entry_fee}</p>
-                    <p class="card-text event-info"><strong>Round Times:</strong> ${event.round_times}</p>
-                    <p class="card-text event-info"><strong>Prizes:</strong> ${event.prizes}</p>
-                    ${ageSection}
-                    ${linkSection}
-                </div>
-                ${noteSection}
+                ${isEventPast ? '<div class="past-event-overlay">Event Passed</div>' : ''}
+                ${recurringBadge}
+            </div>
+            <div class="card-body">
+                ${organizerSection}
+                ${nameSection}
+                ${whenSection}
+                ${locationSection}
+                ${addressSection}
+                ${sectionsSection}
+                ${entryFeeSection}
+                ${timeControlSection}
+                ${formatSection}
+                ${roundTimesSection}
+                ${prizesSection}
+                ${ageSection}
+                ${linkSection}
+            </div>
+            ${noteSection}
             </div>
         `;
         
         return eventCard;
-    }
+        }
 
-    // Helper function to trigger filtering
-    function triggerFilter(filter) {
+        // Helper function to trigger filtering
+        function triggerFilter(filter) {
         const eventCards = document.querySelectorAll('.event-item');
         let visibleCount = 0;
         
@@ -329,12 +414,12 @@ document.addEventListener("DOMContentLoaded", function() {
             const isPast = card.classList.contains('past-event');
             
             if (filter === 'all' || 
-                (filter === 'upcoming' && !isPast) || 
-                (filter === 'past' && isPast)) {
-                card.style.display = 'block';
-                visibleCount++;
+            (filter === 'upcoming' && !isPast) || 
+            (filter === 'past' && isPast)) {
+            card.style.display = 'block';
+            visibleCount++;
             } else {
-                card.style.display = 'none';
+            card.style.display = 'none';
             }
         });
         
@@ -342,19 +427,17 @@ document.addEventListener("DOMContentLoaded", function() {
         const noEventsMessage = document.getElementById('no-events-message');
         if (noEventsMessage) {
             if (visibleCount === 0) {
-                noEventsMessage.style.display = 'block';
+            noEventsMessage.style.display = 'block';
             } else {
-                noEventsMessage.style.display = 'none';
+            noEventsMessage.style.display = 'none';
             }
         }
-    }
-    
-    // Remove night theme specific function
-    function updateEventsForTheme(theme) {
-        // This function is no longer needed
-    }
+        }
+        
+        // The triggerFilter and updateEventsForTheme functions are referenced elsewhere
+        // in the codebase, so we're keeping them for compatibility
 
-    function parseDateNoOffset(dateString) {
+        function parseDateNoOffset(dateString) {
         const [year, month, day] = dateString.split('-');
         // Set time to noon UTC to avoid timezone issues affecting the displayed day
         return new Date(Date.UTC(
@@ -363,5 +446,5 @@ document.addEventListener("DOMContentLoaded", function() {
             parseInt(day, 10),
             12, 0, 0 // noon UTC
         ));
-    }
-});
+        }
+    });
