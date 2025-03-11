@@ -27,8 +27,48 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
 
+            // Filter events based on visibility rules
+            const visibleEvents = processedEvents.filter(event => {
+                // If the event is not part of a tournament or is round 1, always show it
+                if (!event.tournamentId || !event.round || event.round === 1) {
+                    return true;
+                }
+                
+                // For round 2+, check if all previous rounds have passed
+                const allPreviousRoundsPassed = areAllPreviousRoundsPassed(event, events, currentDate);
+                return allPreviousRoundsPassed;
+            });
+
+            // Add tournament context info to events
+            visibleEvents.forEach(event => {
+                if (event.tournamentId && event.round) {
+                    // Find the first round of this tournament to get info
+                    const tournamentFirstRound = events.find(e => 
+                        e.tournamentId === event.tournamentId && (!e.round || e.round === 1)
+                    );
+                    
+                    if (tournamentFirstRound) {
+                        // Add context info for multi-round tournaments
+                        if (!event.notes.includes("Part of a")) {
+                            event.notes = `Part of a multi-round tournament. ${event.notes}`;
+                        }
+                    }
+                }
+            });
+
+            // Extract all unique organizers for filtering
+            const organizers = [...new Set(visibleEvents
+                .filter(event => event.organizer)
+                .map(event => event.organizer))];
+            
+            // Sort organizers alphabetically
+            organizers.sort();
+            
+            // Create organizer filters
+            createOrganizerFilters(organizers);
+            
             // Sort and display events
-            displayEvents(processedEvents, currentDate);
+            displayEvents(visibleEvents, currentDate);
         })
         .catch(error => {
             console.error('Error loading events:', error);
@@ -38,6 +78,36 @@ document.addEventListener("DOMContentLoaded", function() {
                 </div>
             `;
         });
+
+    /**
+     * Checks if all previous rounds of a tournament have passed
+     */
+    function areAllPreviousRoundsPassed(event, allEvents, currentDate) {
+        // If no tournament ID or round, or it's round 1, no need to check
+        if (!event.tournamentId || !event.round || event.round === 1) {
+            return true;
+        }
+        
+        // Find all previous rounds for this tournament
+        const previousRounds = allEvents.filter(e => 
+            e.tournamentId === event.tournamentId && 
+            e.round && 
+            e.round < event.round
+        );
+        
+        // If we can't find any previous rounds, something is wrong with the data
+        // But we'll allow the event to display anyway
+        if (previousRounds.length === 0) {
+            console.warn(`No previous rounds found for ${event.name} (round ${event.round})`);
+            return true;
+        }
+        
+        // Check that all previous rounds have dates that have passed
+        return previousRounds.every(prevRound => {
+            const prevRoundDate = parseDateNoOffset(prevRound.startdate);
+            return currentDate >= prevRoundDate;
+        });
+    }
 
     /**
      * Process a recurring event into its instances
@@ -212,8 +282,38 @@ document.addEventListener("DOMContentLoaded", function() {
             return dateA - dateB;
         });
 
-        // Display events
+        // Group tournaments together for better display
+        const groupedEvents = [];
+        const processedTournaments = new Set();
+        
         events.forEach(event => {
+            // If event is part of a tournament and not already processed
+            if (event.tournamentId && !processedTournaments.has(event.tournamentId)) {
+                // Find all visible events from this tournament
+                const tournamentEvents = events.filter(e => e.tournamentId === event.tournamentId);
+                
+                if (tournamentEvents.length > 0) {
+                    // Sort by round number if available
+                    tournamentEvents.sort((a, b) => {
+                        if (a.round && b.round) return a.round - b.round;
+                        if (a.round) return -1;
+                        if (b.round) return 1;
+                        return 0;
+                    });
+                    
+                    // Add all tournament events
+                    tournamentEvents.forEach(e => groupedEvents.push(e));
+                    processedTournaments.add(event.tournamentId);
+                }
+            } 
+            // If not part of a tournament or already processed tournament, add normally
+            else if (!event.tournamentId || processedTournaments.has(event.tournamentId)) {
+                groupedEvents.push(event);
+            }
+        });
+
+        // Display events
+        groupedEvents.forEach(event => {
             const eventCard = createEventCard(event, currentDate);
             eventsContainer.appendChild(eventCard);
         });
@@ -447,4 +547,192 @@ document.addEventListener("DOMContentLoaded", function() {
             12, 0, 0 // noon UTC
         ));
         }
-    });
+
+    /**
+     * Creates filter buttons for each organizer
+     */
+    function createOrganizerFilters(organizers) {
+        const organizerContainer = document.getElementById('organizer-filters');
+        if (!organizerContainer) return;
+        
+        // Clear existing filters
+        organizerContainer.innerHTML = '';
+        
+        // Add "All Organizers" button
+        const allButton = document.createElement('button');
+        allButton.className = 'organizer-btn active';
+        allButton.setAttribute('data-organizer', 'all');
+        allButton.textContent = 'All Organizers';  // Icon removed
+        organizerContainer.appendChild(allButton);
+        
+        // Add button for each organizer
+        organizers.forEach(organizer => {
+            const button = document.createElement('button');
+            button.className = 'organizer-btn';
+            button.setAttribute('data-organizer', organizer);
+            button.textContent = shortenOrganizerName(organizer);  // Icon removed
+            organizerContainer.appendChild(button);
+        });
+        
+        // Initialize the active organizer filters set and bind filter buttons
+        window.activeOrganizerFilters = new Set(['all']);
+        
+        // Add event listeners for time filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update active state for time filters (single selection)
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Apply the matrix filtering
+                applyMatrixFilters();
+            });
+        });
+        
+        // Add event listeners for organizer filter buttons
+        document.querySelectorAll('.organizer-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const organizerValue = this.getAttribute('data-organizer');
+                
+                // Handle "All Organizers" button specially
+                if (organizerValue === 'all') {
+                    // If clicking "All", make it the only active option
+                    document.querySelectorAll('.organizer-btn').forEach(b => {
+                        b.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    window.activeOrganizerFilters.clear();
+                    window.activeOrganizerFilters.add('all');
+                } else {
+                    // Remove "All" selection when clicking specific organizers
+                    const allBtn = document.querySelector('.organizer-btn[data-organizer="all"]');
+                    allBtn.classList.remove('active');
+                    window.activeOrganizerFilters.delete('all');
+                    
+                    // Toggle this specific organizer filter
+                    if (this.classList.contains('active')) {
+                        this.classList.remove('active');
+                        window.activeOrganizerFilters.delete(organizerValue);
+                        
+                        // If no filters remain active, reactivate "All"
+                        if (window.activeOrganizerFilters.size === 0) {
+                            allBtn.classList.add('active');
+                            window.activeOrganizerFilters.add('all');
+                        }
+                    } else {
+                        this.classList.add('active');
+                        window.activeOrganizerFilters.add(organizerValue);
+                    }
+                }
+                
+                // Apply the matrix filtering
+                applyMatrixFilters();
+            });
+        });
+    }
+
+    /**
+     * Shortens long organizer names for better display in filter buttons
+     */
+    function shortenOrganizerName(name) {
+        if (name.includes('Association with OSCA')) {
+            return 'OSCA Affiliated';
+        } else if (name.includes('Ocean State Chess Association')) {
+            return 'OSCA';
+        } else if (name.includes('Connecticut State Chess Association')) {
+            return 'CSCA';
+        } else if (name.includes('Continental Chess Association')) {
+            return 'CCA';
+        } else if (name.includes('Plainville Chess Club')) {
+            return 'Plainville CC';
+        }
+        return name;
+    }
+    
+    /**
+     * Apply both time and organizer filters using the matrix approach
+     * This allows multiple organizer selections combined with a time filter
+     */
+    function applyMatrixFilters() {
+        const events = document.querySelectorAll('.event-item');
+        const timeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+        const organizerFilters = Array.from(window.activeOrganizerFilters);
+        
+        let visibleCount = 0;
+
+        console.log(`Applying matrix filters: time=${timeFilter}, organizers=${organizerFilters.join(', ')}`);
+
+        // Sort the visible events array for consistent display order
+        const visibleEvents = [];
+        const pastEvents = [];
+
+        events.forEach(event => {
+            const isPast = event.classList.contains('past-event');
+            const organizerElement = event.querySelector('.card-title');
+            const organizer = organizerElement ? organizerElement.textContent.trim() : '';
+            
+            // Check time filter
+            const meetsTimeFilter = 
+                timeFilter === 'all' || 
+                (timeFilter === 'upcoming' && !isPast) ||
+                (timeFilter === 'past' && isPast);
+            
+            // Check organizer filters (can be multiple)
+            const meetsOrganizerFilter = 
+                organizerFilters.includes('all') || 
+                organizerFilters.includes(organizer);
+            
+            // Show event only if it meets both filters
+            const isVisible = meetsTimeFilter && meetsOrganizerFilter;
+            
+            if (isVisible) {
+                if (isPast) {
+                    pastEvents.push(event);
+                } else {
+                    visibleEvents.push(event);
+                }
+                visibleCount++;
+            } else {
+                event.style.animation = 'fadeOut 0.2s ease-out forwards';
+                setTimeout(() => {
+                    event.style.display = 'none';
+                }, 200);
+            }
+        });
+
+        // Sort upcoming events chronologically (earliest first)
+        visibleEvents.sort((a, b) => {
+            const dateA = new Date(a.querySelector('.event-date').textContent);
+            const dateB = new Date(b.querySelector('.event-date').textContent);
+            return dateA - dateB;
+        });
+        
+        // Sort past events reverse chronologically (newest first)
+        pastEvents.sort((a, b) => {
+            const dateA = new Date(a.querySelector('.event-date').textContent);
+            const dateB = new Date(b.querySelector('.event-date').textContent);
+            return dateB - dateA;
+        });
+        
+        // Display all visible events with proper animation
+        [...visibleEvents, ...pastEvents].forEach((event, index) => {
+            event.style.display = 'block';
+            event.style.animation = `fadeIn 0.3s ease-out ${index * 0.05}s forwards`;
+        });
+
+        // Show/hide no events message
+        const noEventsMessage = document.getElementById('no-events-message');
+        if (noEventsMessage) {
+            if (visibleCount === 0) {
+                noEventsMessage.style.display = 'block';
+                noEventsMessage.style.animation = 'fadeIn 0.5s ease-out forwards';
+            } else {
+                noEventsMessage.style.display = 'none';
+            }
+        }
+        
+        console.log(`Applied filters: time=${timeFilter}, organizers=${organizerFilters.join(', ')}. Visible events: ${visibleCount}`);
+    }
+});

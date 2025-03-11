@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="../../css/buttons.css">
     <link rel="stylesheet" href="../../css/clearinghouse.css">
     <link rel="stylesheet" href="../../css/product-card.css">
+    <!-- Add modern jump-to-top component CSS -->
+    <link rel="stylesheet" href="../../css/components/modernJumpToTop.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../../images/brand-icons/favicon.png">
     <!-- Google Analytics -->
@@ -95,17 +97,26 @@
 
     <div class="main-content">
         <div class="container">
-            <!-- Filter buttons -->
-            <div class="filter-container" data-aos="fade-up">
-                <button class="filter-btn active" data-filter="all" aria-label="Show all events">
-                    <span><i class="fas fa-calendar-alt mr-2"></i>All Events</span>
-                </button>
-                <button class="filter-btn" data-filter="upcoming" aria-label="Show only upcoming events">
-                    <span><i class="fas fa-clock mr-2"></i>Upcoming</span>
-                </button>
-                <button class="filter-btn" data-filter="past" aria-label="Show only past events">
-                    <span><i class="fas fa-history mr-2"></i>Past</span>
-                </button>
+            <!-- Unified filter container with improved layout -->
+            <div class="unified-filters" data-aos="fade-up">
+                <!-- Time filters - icons removed -->
+                <div class="filter-section">
+                    <div class="filter-btn-group">
+                        <button class="filter-btn active" data-filter="all">All Events</button>
+                        <button class="filter-btn" data-filter="upcoming">Upcoming</button>
+                        <button class="filter-btn" data-filter="past">Past</button>
+                    </div>
+                </div>
+                
+                <!-- Visual separator -->
+                <div class="filter-divider"></div>
+                
+                <!-- Organizer filters - now with multi-select capability -->
+                <div class="filter-section organizers-section">
+                    <div id="organizer-filters" class="organizer-filter-group">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
             </div>
 
             <!-- Loading indicator -->
@@ -127,10 +138,7 @@
         </div>
     </div>
 
-    <!-- Floating buttons -->
-    <button class="floating-btn jump-to-top" id="jumpToTopBtn" title="Go to top" aria-label="Jump to top">
-        <i class="fas fa-chevron-up"></i>
-    </button>
+    <!-- Remove redundant jump-to-top button since it's now created by the component -->
 
     <!-- Footer placeholder -->
     <div class="footer-placeholder"></div>
@@ -149,6 +157,8 @@
     
     <!-- Shopify Configuration -->
     <script src="../../js/shopify-config.js"></script>
+    <!-- Add modern jump-to-top component -->
+    <script src="../../js/components/modernJumpToTop.js"></script>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -198,23 +208,18 @@
                 document.getElementById('loading-events').style.display = 'none';
             });
 
-            // Jump to top button
-            const jumpToTopBtn = document.getElementById("jumpToTopBtn");
-
-            window.onscroll = function() {
-                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                    jumpToTopBtn.style.display = "flex";
-                } else {
-                    jumpToTopBtn.style.display = "none";
-                }
-            };
-
-            jumpToTopBtn.onclick = function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            };
+            // Initialize the jump-to-top component with custom styling
+            createModernJumpToTop({
+                theme: 'gradient',
+                color: '#dd3649',
+                position: 'right',
+                size: 'medium',
+                shape: 'circle',
+                animation: 'bounce',
+                showAfter: 300,
+                zIndex: 1500,
+                accessibility: true
+            });
 
             // Filter functionality
             document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -234,48 +239,143 @@
                     filterEvents(this.getAttribute('data-filter'));
                 });
             });
-        });
 
-        // Filter events function
-        function filterEvents(filter) {
-            const events = document.querySelectorAll('.event-item');
-            let visibleCount = 0;
-            
-            events.forEach((event, index) => {
-                const isPast = event.classList.contains('past-event');
-                const shouldShow = filter === 'all' || 
-                    (filter === 'upcoming' && !isPast) || 
-                    (filter === 'past' && isPast);
-                
-                if (shouldShow) {
-                    event.style.display = 'block';
-                    event.style.animation = `fadeIn 0.3s ease-out ${index * 0.05}s forwards`;
-                    visibleCount++;
+            // Filter events function
+            function filterEvents(filter) {
+                const events = document.querySelectorAll('.event-item');
+                let visibleCount = 0;
+
+                events.forEach((event, index) => {
+                    const isPast = event.classList.contains('past-event');
+                    const shouldShow = filter === 'all' || 
+                        (filter === 'upcoming' && !isPast) || 
+                        (filter === 'past' && isPast);
+                    
+                    if (shouldShow) {
+                        event.style.display = 'block';
+                        event.style.animation = `fadeIn 0.3s ease-out ${index * 0.05}s forwards`;
+                        visibleCount++;
+                    } else {
+                        event.style.animation = 'fadeOut 0.2s ease-out forwards';
+                        setTimeout(() => {
+                            event.style.display = 'none';
+                        }, 200);
+                    }
+                });
+
+                // Show/hide no events message
+                const noEventsMessage = document.getElementById('no-events-message');
+                if (visibleCount === 0) {
+                    noEventsMessage.style.display = 'block';
+                    noEventsMessage.style.animation = 'fadeIn 0.5s ease-out forwards';
                 } else {
-                    event.style.animation = 'fadeOut 0.2s ease-out forwards';
-                    setTimeout(() => {
-                        event.style.display = 'none';
-                    }, 200);
+                    noEventsMessage.style.display = 'none';
                 }
-            });
-            
-            // Show/hide no events message
-            const noEventsMessage = document.getElementById('no-events-message');
-            if (visibleCount === 0) {
-                noEventsMessage.style.display = 'block';
-                noEventsMessage.style.animation = 'fadeIn 0.5s ease-out forwards';
-            } else {
-                noEventsMessage.style.display = 'none';
             }
-        }
+        });
     </script>
-    
+
     <!-- Custom Scripts -->
-    <script src="../../js/theme-manager.js"></script>
     <script src="../../js/footer.js"></script>
+    <script src="../../js/script.js"></script>
     <script src="../../js/events.js"></script>
     <script src="../../js/ad-injector.js"></script>
+    <script src="../../js/theme-manager.js"></script>
     <script src="../../js/setmore-widget.js"></script>
-    <script src="../../js/script.js"></script>
+
+    <style>
+        /* Additional styles for the filter buttons */
+        .filter-groups {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .filter-heading {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .filter-heading:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 1rem;
+            width: 4px;
+            background: linear-gradient(to bottom, #dd3649, #ff9191);
+            border-radius: 2px;
+        }
+        
+        .filter-btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .filter-btn, .organizer-btn {
+            border: none;
+            background-color: #f0f0f0;
+            color: #555;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+        }
+        
+        .filter-btn:hover, .organizer-btn:hover {
+            background-color: #e5e5e5;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+        }
+        
+        .filter-btn.active, .organizer-btn.active {
+            background: linear-gradient(to right, #dd3649, #ff9191);
+            color: white;
+            border-color: #dd3649;
+            box-shadow: 0 4px 12px rgba(221, 54, 73, 0.3);
+        }
+        
+        .organizer-filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            max-width: 100%;
+        }
+        
+        .organizer-btn {
+            margin-bottom: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .organizer-btn i {
+            font-size: 0.8rem;
+        }
+        
+        @media (max-width: 768px) {
+            .filter-btn, .organizer-btn {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+            
+            .filter-heading {
+                font-size: 1rem;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // ...existing code...
+        });
+    </script>
 </body>
 </html>

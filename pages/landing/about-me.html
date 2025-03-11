@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="../../css/footer.css">
     <link rel="stylesheet" href="../../css/buttons.css">
     <link rel="stylesheet" href="../../css/about-me.css">
+    <!-- Add modern jump-to-top component CSS -->
+    <link rel="stylesheet" href="../../css/components/modernJumpToTop.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../../images/brand-icons/favicon.png">
     <!-- Google Analytics -->
@@ -56,7 +58,7 @@
                             <p class="lead mb-4">Welcome to Pawn Island Academy! I'm a dedicated chess coach with 25 years of experience playing and teaching chess at various levels.</p>
                             <p>My journey in chess began as a child when my father taught me the game. What started as casual play quickly evolved into a passion as I began competing in tournaments and studying the game deeply. Over the years, I've had the privilege of coaching players from beginners to advanced competitors, helping them achieve their chess goals.</p>
                             <p>I believe chess is more than just a game &mdash; it's a tool for developing critical thinking, patience, strategic planning, and resilience. My teaching philosophy emphasizes understanding rather than memorization, helping students develop a feel for positions that serves them well beyond specific openings or tactics.</p>
-                            
+                            <p>Beyond the chess board, I also explore various <a href="projects.html" class="subtle-link">projects and initiatives</a> that reflect my broader professional interests without being confined solely to chess.</p>
                             <div class="achievements mt-4">
                                 <div class="achievement">
                                     <i class="fas fa-trophy achievement-icon"></i>
@@ -182,10 +184,7 @@
         </div>
     </div>
 
-    <!-- Floating buttons -->
-    <button class="floating-btn jump-to-top" id="jumpToTopBtn" title="Go to top" aria-label="Jump to top">
-        <i class="fas fa-chevron-up"></i>
-    </button>
+    <!-- Remove redundant jump-to-top button since it's now created by the component -->
 
     <!-- Footer placeholder -->
     <div class="footer-placeholder"></div>
@@ -198,6 +197,10 @@
     
     <!-- Components and Custom Scripts -->
     <script src="../../js/components/hero-card.js"></script>
+    <!-- Remove jump-to-top component script -->
+    <script src="../../js/components/jump-to-top.js"></script>
+    <!-- Add modern jump-to-top component -->
+    <script src="../../js/components/modernJumpToTop.js"></script>
     <script src="../../js/navbar.js"></script>
     <script src="../../js/theme-manager.js"></script>
     <script src="../../js/footer.js"></script>
@@ -205,7 +208,7 @@
     
     <!-- Initialize components -->
     <script>
-        // Debug function to help track page loading
+        // Debug function
         function updateDebug(message) {
             const debug = document.getElementById('debug-message');
             if (debug) {
@@ -217,7 +220,6 @@
         
         document.addEventListener('DOMContentLoaded', function() {
             updateDebug('DOM loaded');
-            
             // Initialize hero card with enhanced options
             try {
                 createHeroCard('heroCardContainer', {
@@ -225,7 +227,7 @@
                     title: 'About Me',
                     subtitle: 'Chess Coach & Instructor',
                     altText: 'Chess Coach Profile Image',
-                    overlayOpacity: 0.65, 
+                    overlayOpacity: 0.65,
                     overlayColor: '0, 0, 0', // Black overlay
                     overlayGradient: true,
                     parallaxEffect: true,
@@ -237,7 +239,7 @@
                     alignment: 'left',
                     buttonText: 'Schedule Coaching',
                     buttonLink: 'coaching.html',
-                    buttonClass: 'btn-custom btn-lg mt-4'
+                    buttonClass: 'btn-custom btn-lg mt-4',
                 });
                 updateDebug('Hero card created');
             } catch (e) {
@@ -254,7 +256,6 @@
                     easing: 'ease-out-cubic'
                 });
                 updateDebug('AOS initialized');
-                
                 // Hide debug after 3 seconds if everything seems OK
                 setTimeout(() => {
                     document.getElementById('debug-message').style.display = 'none';
@@ -264,24 +265,19 @@
                 updateDebug('AOS error: ' + e.message);
             }
 
-            // Jump to top button
-            const jumpToTopBtn = document.getElementById("jumpToTopBtn");
-            if (jumpToTopBtn) {
-                window.onscroll = function() {
-                    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                        jumpToTopBtn.style.display = "flex";
-                    } else {
-                        jumpToTopBtn.style.display = "none";
-                    }
-                };
-
-                jumpToTopBtn.onclick = function() {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                };
-            }
+            // Remove jump to top component initialization
+            // Initialize modern jump-to-top button with custom styling
+            createModernJumpToTop({
+                theme: 'gradient',
+                color: '#3498db',
+                position: 'right',
+                size: 'medium',
+                shape: 'circle',
+                animation: 'bounce',
+                showAfter: 300,
+                zIndex: 1500,
+                accessibility: true
+            });
         });
     </script>
 </body>

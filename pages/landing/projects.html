@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects & Portfolio - Pawn Island Academy</title>
+    <meta name="description" content="Explore my diverse portfolio of projects spanning AI development, chess education, literary initiatives, and community building.">
+    <meta name="keywords" content="Portfolio, Projects, Chess, AI, Machine Learning, Literary, Community">
+    <meta property="og:title" content="Projects & Portfolio - Pawn Island Academy">
+    <meta property="og:description" content="Explore my diverse portfolio of projects spanning AI development, chess education, literary initiatives, and community building.">
+    <meta property="og:image" content="https://pawnislandacademy.com/images/brand-icons/logo-light.png">
+    <meta property="og:url" content="https://pawnislandacademy.com/pages/landing/projects.html">
+    <link rel="canonical" href="https://pawnislandacademy.com/pages/landing/projects.html">
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="../../css/buttons.css">
+    <link rel="stylesheet" href="../../css/portfolio.css">
+    <!-- Explicitly include the jump-to-top component CSS -->
+    <link rel="stylesheet" href="../../css/components/jump-to-top.css">
+    <!-- Add modern jump-to-top component CSS -->
+    <link rel="stylesheet" href="../../css/components/modernJumpToTop.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../images/brand-icons/favicon.png">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T12VEHM2PY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-T12VEHM2PY');
+    </script>
+    <!-- Remove jump-to-top component script -->
+</head>
+<body class="bg-light text-dark">
+    <!-- Navbar Container - Will be populated by navbar.js -->
+    <div id="navbar-container"></div>
+
+    <!-- Hero Card Container - Will be populated by hero-card.js -->
+    <div id="heroCardContainer"></div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <div class="container py-5">
+            <!-- Filter and Projects Section -->
+            <section class="projects-showcase-section mb-5">
+                <!-- Filter Controls -->
+                <div class="filter-controls mb-4 p-4 bg-white shadow-sm rounded mt-5" data-aos="fade-up">
+                    <div class="d-flex justify-content-center">
+                        <div class="filter-group">
+                            <label class="mb-3 d-block text-center h5">Filter Projects By Category</label>
+                            <div class="btn-group btn-group-sm filter-buttons" role="group" id="categoryFilter">
+                                <button type="button" class="btn btn-primary active" data-filter="all">All</button>
+                                <button type="button" class="btn btn-outline-primary" data-filter="chess">Chess</button>
+                                <button type="button" class="btn btn-outline-primary" data-filter="ai">AI/Tech</button>
+                                <button type="button" class="btn btn-outline-primary" data-filter="community">Community</button>
+                                <button type="button" class="btn btn-outline-primary" data-filter="creative">Creative</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-tags mt-2 d-flex flex-wrap justify-content-center" id="active-filters">
+                        <!-- Active filters will be displayed here -->
+                    </div>
+                </div>
+
+                <!-- Projects Section -->
+                <section class="projects-section">
+                    <!-- Loading indicator -->
+                    <div class="col-12 text-center py-5" id="loading-projects">
+                        <div class="loading-animation">
+                            <div class="spinner-grow text-primary" role="status">
+                                <span class="sr-only">Loading projects...</span>
+                            </div>
+                            <div class="spinner-grow text-secondary" role="status">
+                                <span class="sr-only">Loading projects...</span>
+                            </div>
+                            <div class="spinner-grow text-success" role="status">
+                                <span class="sr-only">Loading projects...</span>
+                            </div>
+                        </div>
+                        <p class="mt-3">Loading amazing projects...</p>
+                    </div>
+                    
+                    <!-- Projects container -->
+                    <div id="projects-container" class="projects-grid">
+                        <!-- Projects will be loaded here dynamically -->
+                    </div>
+                    
+                    <!-- No results message (hidden by default) -->
+                    <div id="no-projects-message" class="text-center py-5 bg-white shadow-sm rounded" style="display: none;">
+                        <i class="fas fa-search fa-3x text-muted mb-3"></i>
+                        <h3>No matching projects found</h3>
+                        <p>Try changing your filter criteria or view all projects.</p>
+                        <button class="btn btn-primary mt-3" onclick="resetFilters()">
+                            <i class="fas fa-redo mr-2"></i>Reset Filters
+                        </button>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Shopify Store Section -->
+            <section id="shopify-store" class="store-section mb-5" data-aos="fade-up">
+                <div class="card shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="row align-items-center">
+                            <div class="col-lg-5 mb-4 mb-lg-0">
+                                <img src="../../images/assets/shopify-store.png" alt="Pawn Island Store" class="img-fluid rounded">
+                            </div>
+                            <div class="col-lg-7">
+                                <h2 class="card-title">Pawn Island Store</h2>
+                                <p class="card-text lead">Discover unique apparel and accessories featuring original designs created with AI tools and inspired by chess themes.</p>
+                                <p class="text-muted">Our store offers high-quality products that combine creative expression with modern technology, all while maintaining a playful chess-inspired aesthetic.</p>
+                                <div class="mt-4">
+                                    <a href="#" class="btn btn-primary btn-lg" id="shopify-store-link">
+                                        <i class="fas fa-shopping-cart mr-2"></i>Visit Store
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Project Detail Modal -->
+    <div class="modal fade" id="projectDetailModal" tabindex="-1" role="dialog" aria-labelledby="projectDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="projectDetailModalLabel">Project Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="projectDetailContent">
+                    <!-- Project details will be inserted here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer placeholder -->
+    <div class="footer-placeholder"></div>
+
+    <!-- JavaScript Libraries - Load jQuery first -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- Components and Custom Scripts -->
+    <script src="../../js/components/hero-card.js"></script>
+    <script src="../../js/navbar.js"></script>
+    <script src="../../js/theme-manager.js"></script>
+    <script src="../../js/footer.js"></script>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/portfolio.js"></script>
+    <script src="../../js/shopify-config.js"></script>
+    <!-- Add Modern Jump-to-Top Component -->
+    <script src="../../js/components/modernJumpToTop.js"></script>
+    
+    <!-- Initialize components -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize hero card with adjusted settings
+            createHeroCard('heroCardContainer', {
+                bgImage: '../../images/headers-pages/portfolio.webp',
+                title: 'My Portfolio',
+                subtitle: 'A Collection of Projects & Initiatives',
+                overlayOpacity: 0.7,
+                overlayColor: '22, 28, 45',
+                height: '65vh',  // Increased height
+                minHeight: '500px', // Increased min height
+                parallaxIntensity: 0.2,
+                separatorColor: '#3498db',
+                buttonText: 'Explore Projects',
+                buttonLink: '#projects-container', // Direct link to projects
+                buttonStyle: 'fill',
+                buttonColor: '#3498db'
+            });
+            
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                once: true,
+                delay: 100
+            });
+            
+            // Set up Shopify store link
+            const shopifyLink = document.getElementById('shopify-store-link');
+            if (shopifyLink && typeof SHOPIFY_CONFIG !== 'undefined') {
+                shopifyLink.href = `https://${SHOPIFY_CONFIG.STORE_DOMAIN}`;
+            }
+
+            // Update total projects count when loaded
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList' && !document.getElementById('loading-projects').style.display) {
+                        const projectCards = document.querySelectorAll('#projects-container .project-card');
+                        if (projectCards.length > 0) {
+                            document.getElementById('total-projects').textContent = allProjects ? allProjects.length : projectCards.length;
+                            observer.disconnect();
+                        }
+                    }
+                });
+            });
+            observer.observe(document.getElementById('projects-container'), { childList: true, subtree: true });
+
+            // Initialize modern jump-to-top button with custom styling
+            createModernJumpToTop({
+                theme: 'gradient',
+                color: '#3498db',
+                position: 'right',
+                size: 'medium',
+                shape: 'circle',
+                animation: 'bounce',
+                showAfter: 300,
+                zIndex: 1500,
+                accessibility: true
+            });
+        });
+    </script>
+</body>
+</html>

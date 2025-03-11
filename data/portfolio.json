@@ -242,6 +242,89 @@
             ],
             "keywords": ["poetry", "blog", "community"],
             "seoDescription": "Managing a widely recognized poetry blog to engage a global literary audience."
-        }
+        },
+        {
+            "id": "StaticWebsite",
+            "title": "Personal Website Development",
+            "image": "../../images/assets/pawn-island.png",
+            "role": "Developer and Designer",
+            "duration": "2 Days",
+            "date": "2023-10-15",
+            "overview": "Developed a fully static website hosted on GitHub Pages using VS Code, HTML, CSS, and JavaScript, with collaborative help from GitHub Copilot. The site leverages a modular responsive design, engaging animations and visuals, and an innovative ad-injector technology to dynamically manage content.",
+            "contributions": [
+                "Designed and implemented a modular, responsive layout to ensure optimal performance across devices.",
+                "Integrated dynamic animations and visuals to enhance user engagement.",
+                "Developed an ad-injector technology to manage and display contextual advertisements seamlessly.",
+                "Collaborated using GitHub Copilot, optimizing development efficiency within a two-day timeframe."
+            ],
+            "achievements": [
+                "Delivered a fully functional and visually engaging website in just two days.",
+                "Showcased advanced front-end development techniques with responsive design and dynamic content injection.",
+                "Enhanced user experience with smooth animations and proactive performance optimizations."
+            ],
+            "technologies": [
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "GitHub Copilot",
+                "VS Code"
+            ],
+            "keywords": [
+                "static website",
+                "responsive design",
+                "animations",
+                "ad-injector"
+            ],
+            "seoDescription": "Developed a static website on GitHub Pages featuring a modular responsive design, dynamic animations, and an innovative ad-injector technology.",
+            "structuredData": {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "Personal Website Development",
+                "description": "A static website built using HTML, CSS, and JavaScript with advanced responsive design and dynamic content injection.",
+                "url": "https://yourusername.github.io"
+            }
+        },
+         {
+                "id": "ShopifyStore",
+                "title": "Pawn Island Shopify Store: Apparel & Art",
+                "image": "../../images/assets/shopify-store.png",
+                "role": "Founder and Designer",
+                "duration": "2024-2025",
+                "date": "2024-10-01",
+                "overview": "Launched a Shopify store on pawnisland.myshopify.com, featuring apparel and other items adorned with original designs. The visuals, created with collaborative AI tools like ChatGPT, Midjourney, and Grok, then refined using Paint.net, share a unique style, sense of humor, and Christian inspiration.",
+                "contributions": [
+                    "Designed and curated original merchandise using collaborative AI-assisted tools.",
+                    "Managed the Shopify store to deliver a unique brand experience.",
+                    "Integrated creative design elements that reflect a modern aesthetic and inspirational themes."
+                ],
+                "achievements": [
+                    "Successfully launched an online platform for original, art-driven apparel.",
+                    "Built a cohesive brand that merges technology, design, and inspirational messaging."
+                ],
+                "technologies": [
+                    "Shopify",
+                    "ChatGPT",
+                    "Midjourney",
+                    "Printful",
+                    "Grok",
+                    "Paint.net"
+                ],
+                "keywords": [
+                    "shopify",
+                    "print on demand",
+                    "apparel",
+                    "design",
+                    "AI",
+                    "inspiration"
+                ],
+                "seoDescription": "Pawn Island Shopify store offering original apparel and accessories with unique AI-assisted designs and Christian inspiration.",
+                "structuredData": {
+                    "@context": "https://schema.org",
+                    "@type": "Store",
+                    "name": "Pawn Island Shopify Store",
+                    "description": "An online store offering apparel and accessories featuring original designs created with AI tools and inspired by Christian themes.",
+                    "url": "https://pawnisland.myshopify.com"
+                }
+            }
     ]
 }

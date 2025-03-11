@@ -1,6 +1,9 @@
 /* Import Lato and Cinzel */
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Cinzel:wght@400;700&display=swap');
 
+/* Import component styles */
+@import url('components/jump-to-top.css');
+
 html {
   scroll-behavior: smooth;
 }
@@ -323,28 +326,8 @@ body, .navbar, .card, .footer, .nav-link, .btn, .header, section, .description {
     color: #adb5bd !important;
 }
 
-/* Jump to top button */
-.jump-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #dd3649;
-    color: #ffffff;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    line-height: 50px;
-    font-size: 24px;
-    cursor: pointer;
-    display: none;
-    z-index: 1000;
-}
-
-.jump-to-top:hover {
-    background-color: #c12e42;
-}
+/* Remove redundant jump to top button styles */
+/* Jump to top button styles are now in the component CSS file */
 
 /* Remove red hover from brand-toggle */
 #brand-toggle:hover {
@@ -425,7 +408,7 @@ body {
 
 .night-theme .card-body {
     background-color: var(--card-bg);
-    color: var(--card-text);
+    color: var (--card-text);
 }
 
 .night-theme .card-footer {
