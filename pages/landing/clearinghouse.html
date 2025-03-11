@@ -206,6 +206,8 @@
             
             eventsLoaded.then(() => {
                 document.getElementById('loading-events').style.display = 'none';
+                // Apply the initial "upcoming" filter when events are loaded
+                filterEvents('upcoming');
             });
 
             // Initialize the jump-to-top component with custom styling

@@ -961,3 +961,197 @@
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 2px;
 }
+
+/* Promo Code Event Card Styling */
+.event-card.promo-card {
+    border: 2px solid transparent;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    transform: translateY(-3px);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Gradient border animation */
+.event-card.promo-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid transparent;
+    background: linear-gradient(45deg, #2ecc71, #27ae60, #2ecc71) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    animation: borderGlow 3s ease infinite;
+    z-index: 1;
+    border-radius: inherit;
+}
+
+/* Ribbon for promo code */
+.promo-ribbon {
+    position: absolute;
+    top: 15px;
+    right: -30px;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: white;
+    padding: 5px 30px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transform: rotate(45deg);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    z-index: 10;
+    animation: ribbonPulse 2s infinite;
+}
+
+/* Register button styling */
+.event-card.promo-card .register-button {
+    background: linear-gradient(45deg, #2ecc71, #27ae60);
+    border: none;
+    box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.event-card.promo-card .register-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(46, 204, 113, 0.4);
+}
+
+.event-card.promo-card .register-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 3s infinite;
+}
+
+/* Animations */
+@keyframes borderGlow {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes ribbonPulse {
+    0% {
+        opacity: 0.9;
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 3px 15px rgba(46, 204, 113, 0.6);
+    }
+    100% {
+        opacity: 0.9;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+        opacity: 0.7;
+    }
+    100% {
+        left: 200%;
+        opacity: 0;
+    }
+}
+
+/* Additional hover effect for promo cards */
+.event-card.promo-card:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+/* Promo Code Event Card Styling - Fixed version */
+.event-card.promo-card {
+    border: 2px solid #2ecc71;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    transform: translateY(-3px);
+    position: relative;
+}
+
+/* Remove the problematic overlay that was blocking interactions */
+.event-card.promo-card::before {
+    display: none;
+}
+
+/* Horizontal promo badge instead of diagonal ribbon */
+.promo-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: white;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+/* Register button styling - simplified */
+.event-card.promo-card .register-button {
+    background: linear-gradient(45deg, #2ecc71, #27ae60);
+    border: none;
+    box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.event-card.promo-card .register-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(46, 204, 113, 0.4);
+}
+
+/* Simple hover effect for promo cards */
+.event-card.promo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+/* Remove these complex animations that might be causing issues */
+@keyframes borderGlow {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes ribbonPulse {
+    0% {
+        opacity: 0.9;
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 3px 15px rgba(46, 204, 113, 0.6);
+    }
+    100% {
+        opacity: 0.9;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+        opacity: 0.7;
+    }
+    100% {
+        left: 200%;
+        opacity: 0;
+    }
+}

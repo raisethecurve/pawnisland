@@ -346,6 +346,9 @@ document.addEventListener("DOMContentLoaded", function() {
         eventCard.setAttribute('data-aos', 'fade-up');
         eventCard.setAttribute('data-aos-delay', 100);
         
+        // Check if event has a promo code
+        const hasPromo = event.promo_code ? true : false;
+        
         const cardThemeClass = 'bg-light text-dark';
         const mutedClass = 'text-muted';
         
@@ -438,7 +441,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let nameSection = event.name ? `<h6 class="card-subtitle mb-2 ${mutedClass}">${event.name}</h6>` : '';
         let whenSection = `<p class="card-text event-info"><strong>When:</strong> ${dateDisplay}</p>`;
         let locationSection = event.location ? `<p class="card-text event-info"><strong>Location:</strong> ${event.location}</p>` : '';
-        let addressSection = event.address ? `<p class="card-text event-info"><strong>Address:</strong> <a href="https://maps.google.com/?q=${encodeURIComponent(event.address)}" target="_blank">${event.address}</a></p>` : '';
+        let addressSection = event.address ? `<p class="card-text event-info"><strong>Address:</strong> <a href="https://maps.google.com/?q=${encodeURIComponent(event.address)}" target="_blank" class="link-prevent-default">${event.address}</a></p>` : '';
         let sectionsSection = event.sections ? `<p class="card-text event-info"><strong>Sections:</strong> ${event.sections}</p>` : '';
         let entryFeeSection = event.entry_fee ? `<p class="card-text event-info"><strong>Entry Fee:</strong> ${event.entry_fee}</p>` : '';
         let timeControlSection = event.time_control ? `<p class="card-text event-info"><strong>Time Control:</strong> ${event.time_control}</p>` : '';
@@ -446,9 +449,30 @@ document.addEventListener("DOMContentLoaded", function() {
         let roundTimesSection = event.round_times ? `<p class="card-text event-info"><strong>Round Times:</strong> ${event.round_times}</p>` : '';
         let prizesSection = event.prizes ? `<p class="card-text event-info"><strong>Prizes:</strong> ${event.prizes}</p>` : '';
         let ageSection = event.ages ? `<p class="card-text event-info"><strong>Age Range:</strong> ${event.ages}</p>` : '';
-        let linkSection = event.link ? 
-            `<a href="${event.link}" target="_blank" class="btn btn-primary btn-custom organizer-link">View Details</a>` : '';
         
+        // Only show View Details link if there's no promo code
+        let linkSection = '';
+        if (event.link && !event.promo_code) {
+            linkSection = `<a href="${event.link}" target="_blank" class="btn btn-primary btn-custom organizer-link" onclick="event.stopPropagation();">View Details</a>`;
+        }
+        
+        // Add registration button with promo code if available
+        let registrationSection = '';
+        let promoBadge = ''; // Changed from promoRibbon to promoBadge
+        if (event.promo_code) {
+            const registrationUrl = event.registration_link || event.link || '#';
+            registrationSection = `
+                <div class="mt-3">
+                    <a href="${registrationUrl}" target="_blank" class="btn btn-success btn-custom register-button" onclick="event.stopPropagation();">
+                        <i class="fas fa-ticket-alt mr-2"></i>Register with 10% discount: <strong>${event.promo_code}</strong>
+                    </a>
+                </div>
+            `;
+            
+            // Add horizontal promo badge instead of diagonal ribbon
+            promoBadge = `<div class="promo-badge">10% DISCOUNT</div>`;
+        }
+
         // Add recurring event badge
         let recurringBadge = '';
         if (event.isRecurring) {
@@ -474,8 +498,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         eventCard.innerHTML = `
-            <div class="card event-card h-100 ${isEventPast ? 'bg-light text-dark' : cardThemeClass}">
+            <div class="card event-card h-100 ${isEventPast ? 'bg-light text-dark' : cardThemeClass} ${hasPromo ? 'promo-card' : ''}">
             <div class="position-relative">
+                ${promoBadge}
                 <div class="event-date">${formattedDateLabel}</div>
                 <div class="event-img-container">
                 <img src="${event.image}" class="event-img" alt="${event.name || 'Event'}" loading="lazy">
@@ -497,13 +522,24 @@ document.addEventListener("DOMContentLoaded", function() {
                 ${prizesSection}
                 ${ageSection}
                 ${linkSection}
+                ${registrationSection}
             </div>
             ${noteSection}
             </div>
         `;
         
+        // Add event listeners after the card is created to ensure links work
+        setTimeout(() => {
+            const links = eventCard.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+        }, 0);
+        
         return eventCard;
-        }
+    }
 
         // Helper function to trigger filtering
         function triggerFilter(filter) {
@@ -657,7 +693,9 @@ document.addEventListener("DOMContentLoaded", function() {
      */
     function applyMatrixFilters() {
         const events = document.querySelectorAll('.event-item');
-        const timeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+        const timeFilterBtn = document.querySelector('.filter-btn.active');
+        // Default to 'upcoming' if no active filter button is found
+        const timeFilter = timeFilterBtn ? timeFilterBtn.getAttribute('data-filter') : 'upcoming';
         const organizerFilters = Array.from(window.activeOrganizerFilters);
         
         let visibleCount = 0;
@@ -673,11 +711,8 @@ document.addEventListener("DOMContentLoaded", function() {
             const organizerElement = event.querySelector('.card-title');
             const organizer = organizerElement ? organizerElement.textContent.trim() : '';
             
-            // Check time filter
-            const meetsTimeFilter = 
-                timeFilter === 'all' || 
-                (timeFilter === 'upcoming' && !isPast) ||
-                (timeFilter === 'past' && isPast);
+            // Check time filter - simplified to handle only 'upcoming' and 'past'
+            const meetsTimeFilter = (timeFilter === 'upcoming' && !isPast) || (timeFilter === 'past' && isPast);
             
             // Check organizer filters (can be multiple)
             const meetsOrganizerFilter = 
@@ -735,4 +770,19 @@ document.addEventListener("DOMContentLoaded", function() {
         
         console.log(`Applied filters: time=${timeFilter}, organizers=${organizerFilters.join(', ')}. Visible events: ${visibleCount}`);
     }
+
+    // Add global handler to fix link clicking issues
+    document.body.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A' || e.target.closest('a')) {
+            e.stopPropagation();
+        }
+    }, true);
+
+    // Run initial filtering when events are loaded
+    setTimeout(() => {
+        // Check if events are loaded and apply initial filter
+        if (document.querySelectorAll('.event-item').length > 0) {
+            applyMatrixFilters();
+        }
+    }, 1000); // Give time for events to load
 });
