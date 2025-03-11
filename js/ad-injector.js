@@ -97,17 +97,17 @@ document.addEventListener('DOMContentLoaded', function() {
      */
     function createAdCard(product) {
         const adCard = document.createElement('div');
-        adCard.className = 'col-lg-6 mb-4 event-item ad-item';
+        adCard.className = 'col-12 mb-4 event-item ad-item'; // Changed from col-lg-6 to col-12 for full width
         adCard.dataset.aos = 'fade-up';
         
         // Generate unique ID for this card instance
         const cardId = 'product-card-' + Math.random().toString(36).substr(2, 9);
         
         adCard.innerHTML = `
-            <div class="premium-product-card" id="${cardId}">
+            <div class="premium-product-card horizontal-card" id="${cardId}">
                 <div class="card-background"></div>
                 
-                <div class="card-content">
+                <div class="card-content horizontal-layout">
                     <div class="product-image-wrapper">
                         <div class="image-container">
                             <img src="${product.images[0]}" alt="${product.name}" class="product-img">
@@ -116,11 +116,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     <div class="product-info">
                         <h3 class="product-name">${product.name}</h3>
-                        <div class="product-price-tag">
-                            <span>${product.price}</span>
-                        </div>
                         <a href="${product.url}" class="product-cta" target="_blank">
-                            <span class="cta-text">Buy Now</span>
+                            <span class="price-tag">${product.price}</span>
+                            <span class="cta-text">Shop Now</span>
                             <span class="cta-icon">
                                 <i class="fas fa-arrow-right"></i>
                             </span>
@@ -134,6 +132,256 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             if (product.images.length > 1) {
                 setupImageRotation(cardId, product.images);
+            }
+        }, 100);
+        
+        // Add inline styles to ensure proper layout
+        setTimeout(() => {
+            const card = document.getElementById(cardId);
+            if (card) {
+                // Ensure the card uses flexbox for horizontal layout
+                const cardContent = card.querySelector('.card-content');
+                if (cardContent) {
+                    cardContent.style.display = 'flex';
+                    cardContent.style.flexDirection = 'row';
+                    cardContent.style.alignItems = 'stretch';
+                }
+                
+                // Ensure the image container has proper dimensions
+                const imageWrapper = card.querySelector('.product-image-wrapper');
+                if (imageWrapper) {
+                    imageWrapper.style.flex = '0 0 40%';
+                    imageWrapper.style.maxWidth = '40%';
+                    imageWrapper.style.display = 'flex';
+                    imageWrapper.style.alignItems = 'center';
+                    imageWrapper.style.justifyContent = 'center';
+                }
+                
+                // Ensure the product info takes remaining space
+                const productInfo = card.querySelector('.product-info');
+                if (productInfo) {
+                    productInfo.style.flex = '1';
+                    productInfo.style.display = 'flex';
+                    productInfo.style.flexDirection = 'column';
+                    productInfo.style.justifyContent = 'space-between';
+                    productInfo.style.padding = '2rem';
+                }
+                
+                // Make image container maintain aspect ratio
+                const imageContainer = card.querySelector('.image-container');
+                if (imageContainer) {
+                    imageContainer.style.height = '100%';
+                    imageContainer.style.width = '100%';
+                    imageContainer.style.display = 'flex';
+                    imageContainer.style.alignItems = 'center';
+                    imageContainer.style.justifyContent = 'center';
+                    imageContainer.style.overflow = 'hidden';
+                }
+                
+                // Make the image properly sized
+                const productImg = card.querySelector('.product-img');
+                if (productImg) {
+                    productImg.style.width = '100%';
+                    productImg.style.height = 'auto';
+                    productImg.style.objectFit = 'contain';
+                    productImg.style.maxHeight = '220px';
+                }
+                
+                // Style product name with elegant typography
+                const productName = card.querySelector('.product-name');
+                if (productName) {
+                    productName.style.fontSize = '1.6rem';
+                    productName.style.fontWeight = '600';
+                    productName.style.margin = '0 0 1.5rem';
+                    productName.style.lineHeight = '1.3';
+                    productName.style.color = '#333';
+                    productName.style.fontFamily = "'Cinzel', sans-serif";
+                    productName.style.letterSpacing = '-0.01em';
+                    // Add text truncation for very long names
+                    productName.style.overflow = 'hidden';
+                    productName.style.textOverflow = 'ellipsis';
+                    productName.style.display = '-webkit-box';
+                    productName.style.webkitLineClamp = '2';
+                    productName.style.webkitBoxOrient = 'vertical';
+                }
+                
+                // Style the enhanced CTA button with eye-catching styling
+                const cta = card.querySelector('.product-cta');
+                if (cta) {
+                    // Position and basic layout
+                    cta.style.marginTop = 'auto';
+                    cta.style.alignSelf = 'flex-start';
+                    cta.style.display = 'flex';
+                    cta.style.alignItems = 'center';
+                    cta.style.justifyContent = 'center';
+                    cta.style.textDecoration = 'none';
+                    cta.style.position = 'relative';
+                    cta.style.fontFamily = "'Cinzel', serif"; // Changed to Cinzel font
+                    
+                    // Base button styling - more prominent and attention-grabbing
+                    // Reduced padding by 15% from 0.8rem 1.6rem to 0.68rem 1.36rem
+                    cta.style.padding = '0.68rem 1.36rem';
+                    cta.style.borderRadius = '50px';
+                    cta.style.background = 'linear-gradient(135deg, #dd3649 0%, #c62c3e 100%)';
+                    cta.style.color = 'white';
+                    cta.style.boxShadow = '0 4px 15px rgba(221, 54, 73, 0.4), 0 2px 5px rgba(221, 54, 73, 0.2)';
+                    cta.style.border = 'none';
+                    cta.style.overflow = 'hidden';
+                    cta.style.transition = 'all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1.2)';
+                    cta.style.transform = 'translateY(0)';
+                    
+                    // Add subtle "shine" element to the button
+                    const shine = document.createElement('div');
+                    shine.classList.add('button-shine');
+                    shine.style.position = 'absolute';
+                    shine.style.top = '0';
+                    shine.style.left = '-100%';
+                    shine.style.width = '100%';
+                    shine.style.height = '100%';
+                    shine.style.background = 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%)';
+                    shine.style.transform = 'skewX(-20deg)';
+                    shine.style.transition = 'all 0.7s ease';
+                    cta.prepend(shine);
+                    
+                    // Price tag styling - integrated into button
+                    const priceTag = cta.querySelector('.price-tag');
+                    if (priceTag) {
+                        priceTag.style.fontWeight = '700'; // Adjusted from 800 for Cinzel
+                        priceTag.style.fontSize = '1.1rem'; // Reduced from 1.2rem for 15% smaller
+                        priceTag.style.marginRight = '1rem';
+                        priceTag.style.color = 'white';
+                        priceTag.style.textShadow = '0 1px 2px rgba(0,0,0,0.2)';
+                        priceTag.style.transition = 'all 0.3s ease';
+                        priceTag.style.position = 'relative';
+                        priceTag.style.display = 'inline-block';
+                        priceTag.style.fontFamily = "'Cinzel', serif";
+                    }
+                    
+                    // Text styling
+                    const ctaText = cta.querySelector('.cta-text');
+                    if (ctaText) {
+                        ctaText.style.fontSize = '0.9rem'; // Reduced from 1rem for 15% smaller
+                        ctaText.style.fontWeight = '500'; // Cinzel is naturally heavier, so reduced from 600
+                        ctaText.style.letterSpacing = '0.5px';
+                        ctaText.style.textShadow = '0 1px 2px rgba(0,0,0,0.1)';
+                        ctaText.style.transition = 'all 0.3s ease';
+                        ctaText.style.fontFamily = "'Cinzel', serif";
+                    }
+                    
+                    // Icon styling
+                    const ctaIcon = cta.querySelector('.cta-icon');
+                    if (ctaIcon) {
+                        ctaIcon.style.display = 'flex';
+                        ctaIcon.style.alignItems = 'center';
+                        ctaIcon.style.justifyContent = 'center';
+                        ctaIcon.style.marginLeft = '0.75rem';
+                        ctaIcon.style.position = 'relative';
+                        ctaIcon.style.transform = 'translateX(0)';
+                        ctaIcon.style.transition = 'all 0.3s ease';
+                        ctaIcon.style.opacity = '1';
+                        
+                        // Add inner icon styling
+                        const icon = ctaIcon.querySelector('i');
+                        if (icon) {
+                            icon.style.fontSize = '0.8rem'; // Reduced from 0.9rem
+                        }
+                    }
+                    
+                    // Add dramatic hover effects with animation
+                    cta.addEventListener('mouseenter', () => {
+                        // Enhanced button effect
+                        cta.style.transform = 'translateY(-3px)'; // Removed scale effect
+                        cta.style.boxShadow = '0 10px 20px rgba(221, 54, 73, 0.45), 0 6px 10px rgba(221, 54, 73, 0.25)';
+                        cta.style.background = 'linear-gradient(135deg, #e6394c 0%, #dd3649 100%)';
+                        
+                        // Trigger shine effect
+                        shine.style.left = '100%';
+                        
+                        // Text animation
+                        const text = cta.querySelector('.cta-text');
+                        if (text) {
+                            text.style.transform = 'scale(1.02)';
+                            text.style.fontWeight = '600';
+                        }
+                        
+                        // Price animation
+                        const price = cta.querySelector('.price-tag');
+                        if (price) {
+                            price.style.transform = 'scale(1.05)';
+                        }
+                        
+                        // Arrow animation
+                        const icon = cta.querySelector('.cta-icon');
+                        if (icon) {
+                            icon.style.transform = 'translateX(5px)';
+                            // Add slight bouncing animation to the icon
+                            setTimeout(() => {
+                                if (icon) icon.style.transform = 'translateX(3px)';
+                                setTimeout(() => {
+                                    if (icon) icon.style.transform = 'translateX(5px)';
+                                }, 150);
+                            }, 150);
+                        }
+                    });
+                    
+                    cta.addEventListener('mouseleave', () => {
+                        // Reset to original state
+                        cta.style.transform = 'translateY(0)'; // No scale reset needed
+                        cta.style.boxShadow = '0 4px 15px rgba(221, 54, 73, 0.4), 0 2px 5px rgba(221, 54, 73, 0.2)';
+                        cta.style.background = 'linear-gradient(135deg, #dd3649 0%, #c62c3e 100%)';
+                        
+                        // Reset shine position
+                        shine.style.left = '-100%';
+                        
+                        // Reset text
+                        const text = cta.querySelector('.cta-text');
+                        if (text) {
+                            text.style.transform = 'scale(1)';
+                            text.style.fontWeight = '500'; // Changed from 600 to 500 for Cinzel
+                        }
+                        
+                        // Reset price
+                        const price = cta.querySelector('.price-tag');
+                        if (price) {
+                            price.style.transform = 'scale(1)';
+                        }
+                        
+                        // Reset icon
+                        const icon = cta.querySelector('.cta-icon');
+                        if (icon) {
+                            icon.style.transform = 'translateX(0)';
+                        }
+                    });
+                    
+                    // Add focus styles for accessibility
+                    cta.addEventListener('focus', () => {
+                        cta.style.transform = 'translateY(-2px)'; // Removed scale
+                        cta.style.boxShadow = '0 5px 15px rgba(221, 54, 73, 0.4), 0 3px 10px rgba(221, 54, 73, 0.3)';
+                        cta.style.outline = '2px solid #fff';
+                        cta.style.outlineOffset = '3px';
+                    });
+                    
+                    cta.addEventListener('blur', () => {
+                        cta.style.transform = 'translateY(0)'; // No scale reset needed
+                        cta.style.boxShadow = '0 4px 15px rgba(221, 54, 73, 0.4), 0 2px 5px rgba(221, 54, 73, 0.2)';
+                        cta.style.outline = 'none';
+                    });
+                    
+                    // Clean up pulse animation when card is removed
+                    const observer = new MutationObserver((mutations) => {
+                        mutations.forEach((mutation) => {
+                            if (!document.body.contains(cta) && cta.pulseInterval) {
+                                clearInterval(cta.pulseInterval);
+                                observer.disconnect();
+                            }
+                        });
+                    });
+                    
+                    observer.observe(document.body, {
+                        childList: true,
+                        subtree: true
+                    });
+                }
             }
         }, 100);
         
