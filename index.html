@@ -15,6 +15,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<!-- Removed modern jump-to-top component CSS -->
 </head>
 <body class="bg-light text-dark">
 	
@@ -68,10 +69,6 @@
 			</div>
 		</div>
 	</section>
-    <!-- Floating buttons -->
-    <button class="floating-btn jump-to-top" id="jumpToTopBtn" title="Go to top" aria-label="Jump to top">
-        <i class="fas fa-chevron-up"></i>
-    </button>
 
     <!-- Footer placeholder -->
     <div class="footer-placeholder"></div>
@@ -88,6 +85,7 @@
     <!-- Load scripts in correct order -->
     <script src="js/script.js"></script>
     <script src="js/footer.js"></script>
+    <!-- Removed modern jump-to-top component script -->
 	<script>
 		AOS.init({
 			duration: 800,
@@ -98,25 +96,7 @@
             // Initialize home hero
             createHomeHero('heroContainer');
             
-            // Jump to top button functionality
-            const jumpToTopBtn = document.getElementById('jumpToTopBtn');
-            
-            if (jumpToTopBtn) {
-                window.onscroll = function() {
-                    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                        jumpToTopBtn.style.display = "flex";
-                    } else {
-                        jumpToTopBtn.style.display = "none";
-                    }
-                };
-                
-                jumpToTopBtn.onclick = function() {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                };
-            }
+            // Removed modern jump-to-top button initialization
         });
 	</script>
 </body>
