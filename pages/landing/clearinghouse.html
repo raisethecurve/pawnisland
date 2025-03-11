@@ -99,12 +99,12 @@
         <div class="container">
             <!-- Unified filter container with improved layout -->
             <div class="unified-filters" data-aos="fade-up">
-                <!-- Time filters - icons removed -->
+                <!-- Time filters -->
                 <div class="filter-section">
                     <div class="filter-btn-group">
-                        <button class="filter-btn active" data-filter="all">All Events</button>
-                        <button class="filter-btn" data-filter="upcoming">Upcoming</button>
-                        <button class="filter-btn" data-filter="past">Past</button>
+                        <!-- Removed "All Events" button -->
+                        <button type="button" class="filter-btn active" data-filter="upcoming">Upcoming</button>
+                        <button type="button" class="filter-btn" data-filter="past">Past</button>
                     </div>
                 </div>
                 
@@ -235,21 +235,20 @@
                         this.style.transform = '';
                     }, 300);
 
-                    // Filter events
+                    // Filter events using the new logic
                     filterEvents(this.getAttribute('data-filter'));
                 });
             });
 
-            // Filter events function
+            // Updated Filter events function (only upcoming and past)
             function filterEvents(filter) {
                 const events = document.querySelectorAll('.event-item');
                 let visibleCount = 0;
 
                 events.forEach((event, index) => {
                     const isPast = event.classList.contains('past-event');
-                    const shouldShow = filter === 'all' || 
-                        (filter === 'upcoming' && !isPast) || 
-                        (filter === 'past' && isPast);
+                    // Only check for 'upcoming' and 'past'
+                    const shouldShow = (filter === 'upcoming' && !isPast) || (filter === 'past' && isPast);
                     
                     if (shouldShow) {
                         event.style.display = 'block';
@@ -257,9 +256,7 @@
                         visibleCount++;
                     } else {
                         event.style.animation = 'fadeOut 0.2s ease-out forwards';
-                        setTimeout(() => {
-                            event.style.display = 'none';
-                        }, 200);
+                        setTimeout(() => { event.style.display = 'none'; }, 200);
                     }
                 });
 
