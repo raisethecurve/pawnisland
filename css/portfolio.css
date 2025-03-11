@@ -263,3 +263,10 @@
 }
 
 /* Jump to top styles have been moved to a separate component CSS file */
+
+/* Project modal styling */
+.modal-footer {
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    padding: 1rem;
+}
