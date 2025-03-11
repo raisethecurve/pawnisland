@@ -2,8 +2,8 @@
     "testimonials": [
         {
             "name": "James R.",
-            "image": "../images/testimonials/testimonial-ryan-upscaled.jpeg",
-            "text": "I've been working with Matt for over a year now. Not only has my rating increased, but my understanding, perception, discipline, and passion for the game have all increased dramatically. In that time, I went from someone who just barely scratched 1400 to a high of 1760 online and feel no signs of stopping.<br /><br />All of my lessons had been carefully tailored to what I needed every given week. You will NOT receive generic one-size-fits-all chess courses but rather a meticulous, well-thought-out training plan that demonstrates the care and dedication Matt has to each and every one of his students.<br /><br />It is worth every penny.",
+            "image": "../../images/testimonials/testimonial-ryan-upscaled.jpeg",
+            "text": "I've been working with Matt for over a year now. Not only has my rating increased, but my understanding, perception, discipline, and passion for the game have all increased dramatically.<p>In that time, I went from someone who just barely scratched 1400 to a high of 1760 online and feel no signs of stopping. All of my lessons had been carefully tailored to what I needed every given week. You will NOT receive generic one-size-fits-all chess courses but rather a meticulous, well-thought-out training plan that demonstrates the care and dedication Matt has to each and every one of his students.<p> It is worth every penny.",
             "designation": "Current or Former Student"
         },
         {
@@ -36,5 +36,6 @@
             "text": "My son worked with Matt for a long time and learned a great deal. Matt is very knowledgeable, patient, and a great teacher!",
             "designation": "Parent of a Student"
         }
+    
     ]
 }

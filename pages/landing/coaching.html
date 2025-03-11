@@ -13,14 +13,16 @@
     <meta property="og:image" content="https://pawnislandacademy.com/images/brand-icons/logo-light.png">
     <link rel="canonical" href="https://pawnislandacademy.com/pages/landing/coaching.html">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href="../../css/navbar.css">
     <link rel="stylesheet" href="../../css/footer.css">
     <link rel="stylesheet" href="../../css/coaching.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/buttons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="icon" type="image/png" href="../../images/brand-icons/favicon.png">
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T12VEHM2PY"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -28,562 +30,228 @@
         gtag('js', new Date());
         gtag('config', 'G-T12VEHM2PY');
     </script>
-    <script>
-        // Theme detection and initialization
-        const savedTheme = localStorage.getItem('theme') || 'day-theme';
-        document.documentElement.classList.add(savedTheme);
-    </script>
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "ProfessionalService",
             "name": "Pawn Island Coaching",
             "description": "Offering personalized chess lessons and coaching bootcamps",
-            "image": "https://pawnislandacademy.com/images/headers-pages/coach-2.png",
+            "image": "https://pawnislandacademy.com/images/coaching/coaching-hero.jpg",
             "url": "https://pawnislandacademy.com/pages/landing/coaching.html"
         }
     </script>
-    <style>
-        /* Helper buttons styling */
-        .floating-btn {
-            position: fixed;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1);
-            border: none;
-            z-index: 1000;
-        }
-        
-        .floating-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-        }
-        
-        .navbar {
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-        }
-        
-        .navbar .navbar-brand {
-            display: flex;
-            align-items: center;
-        }
-        
-        .navbar .navbar-brand img {
-            height: 40px;
-        }
-        
-        .navbar .shop-now-btn {
-            display: flex;
-            align-items: center;
-            margin-left: auto;
-        }
-        
-        .navbar .shop-now-btn img {
-            margin-right: 5px;
-        }
-        
-        .navbar .navbar-toggler {
-            border: none;
-        }
-        
-        .navbar .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-        }
-        
-        .navbar .nav-link {
-            color: #343a40;
-        }
-        
-        .navbar .nav-link:hover {
-            color: #c12e42;
-        }
-        
-        .coaching-hero {
-            position: relative;
-            height: 100vh;
-            background-color: #000;
-            overflow: hidden;
-        }
-        
-        .coaching-hero .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
-        
-        .coaching-hero .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-        }
-        
-        .coaching-hero .hero-content {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            text-align: center;
-            color: #fff;
-        }
-        
-        .coaching-hero .hero-title {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .coaching-hero .hero-tagline-container {
-            margin-bottom: 1rem;
-        }
-        
-        .coaching-hero .hero-tagline {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .coaching-hero .tagline-decorator {
-            width: 50px;
-            height: 5px;
-            background-color: #c12e42;
-            margin: 0 auto;
-        }
-        
-        .coaching-hero .hero-subtitle {
-            font-size: 1.5rem;
-        }
-        
-        .coaching-main {
-            padding: 2rem 0;
-        }
-        
-        .premium-experience {
-            margin-bottom: 2rem;
-        }
-        
-        .premium-experience .premium-experience-title {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .premium-experience .premium-experience-text {
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .premium-metrics {
-            display: flex;
-            justify-content: space-around;
-        }
-        
-        .premium-metrics .metric {
-            text-align: center;
-        }
-        
-        .premium-metrics .metric-value {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-        
-        .premium-metrics .metric-label {
-            font-size: 1rem;
-        }
-        
-        .featured-services {
-            margin-bottom: 2rem;
-        }
-        
-        .coaching-card {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-        
-        .coaching-card .card-image-wrapper {
-            position: relative;
-        }
-        
-        .coaching-card .card-image-wrapper img {
-            width: 100%;
-            height: auto;
-        }
-        
-        .coaching-card .card-badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: #c12e42;
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.75rem;
-        }
-        
-        .coaching-card .card-content {
-            padding: 1rem;
-        }
-        
-        .coaching-card .card-title {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .coaching-card .card-description {
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .coaching-card .coaching-features {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .coaching-card .coaching-features li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-        
-        .coaching-card .coaching-features li i {
-            color: #c12e42;
-            margin-right: 0.5rem;
-        }
-        
-        .coaching-card .card-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #c12e42;
-            color: #fff;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        
-        .coaching-card .card-button:hover {
-            background-color: #a10e2b;
-        }
-        
-        .coaching-card .card-button i {
-            margin-left: 0.5rem;
-        }
-        
-        .testimonials-slider-section {
-            margin-bottom: 2rem;
-        }
-        
-        .testimonials-slider-section .section-title {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .testimonial-slider {
-            position: relative;
-        }
-        
-        .testimonial-slider .carousel-inner {
-            position: relative;
-        }
-        
-        .testimonial-slider .carousel-inner .carousel-item {
-            display: none;
-            transition: transform 0.6s ease;
-        }
-        
-        .testimonial-slider .carousel-inner .carousel-item.active {
-            display: block;
-        }
-        
-        .testimonial-slider .carousel-control-prev,
-        .testimonial-slider .carousel-control-next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 30px;
-            height: 30px;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-        
-        .testimonial-slider .carousel-control-prev {
-            left: 10px;
-        }
-        
-        .testimonial-slider .carousel-control-next {
-            right: 10px;
-        }
-        
-        .testimonial-slider .carousel-control-prev-icon,
-        .testimonial-slider .carousel-control-next-icon {
-            width: 15px;
-            height: 15px;
-            background-size: 100%;
-        }
-        
-        .testimonial-slider .carousel-indicators {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            justify-content: center;
-        }
-        
-        .testimonial-slider .carousel-indicators li {
-            width: 10px;
-            height: 10px;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 50%;
-            margin: 0 5px;
-            cursor: pointer;
-        }
-        
-        .testimonial-slider .carousel-indicators .active {
-            background-color: #c12e42;
-        }
-        
-        .detailed-coaching-sections {
-            margin-bottom: 2rem;
-        }
-        
-        .detailed-section {
-            margin-bottom: 2rem;
-        }
-        
-        .footer-placeholder {
-            height: 100px;
-        }
-    </style>
 </head>
-<body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
-        <a class="navbar-brand d-flex align-items-center" href="../../index.html" id="brand-toggle" aria-label="Homepage">
-            <img src="../../images/brand-icons/logo-dark.png" alt="Pawn Island Academy Logo" class="logo">
-        </a>
-        <a class="shop-now-btn" href="https://pawnisland.myshopify.com/collections" target="_blank" aria-label="Shop Now">
-            <img src="../../images/social-icons/shopify-universal.png" alt="Shopify" width="20" height="20">
-            Shop Now
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="about-me.html">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="https://pawnisland.myshopify.com/collections">Merch</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center text-dark" href="https://chess.com/blog/squarethecurve" target="_blank">
-                        <img src="../../images/social-icons/chess-universal.png" alt="Chess.com raisethecurve Blog" width="20" height="20" class="mr-2">
-                        Blog
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="clearinghouse.html">Clearinghouse</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+<body class="bg-light text-dark">
+    <!-- Navbar Container - Will be populated by navbar.js -->
+    <div id="navbar-container"></div>
 
-    <!-- Enhanced Hero Section - Contained height -->
-    <header class="coaching-hero">
-        <div class="hero-overlay"></div>
-        <img src="../../images/headers-pages/coach-2.png" alt="Chess Coaching Background" class="hero-bg">
-        <div class="hero-content">
-            <div class="container">
-                <h1 class="hero-title reveal-text" data-aos="fade-down">Chess Coaching</h1>
-                <div class="hero-tagline-container" data-aos="fade-up" data-aos-delay="200">
-                    <div class="tagline-decorator"></div>
-                </div>
-                <h3 class="hero-subtitle" data-aos="fade-up" data-aos-delay="400">Master Strategic Thinking</h3>
-            </div>
-        </div>
-    </header>
+    <!-- Hero Card Container -->
+    <div id="heroCardContainer"></div>
 
     <!-- Main Content Area -->
     <main class="coaching-main">
         <div class="container">
-            <!-- Add Premium Experience Section Moved to Top -->
+            <!-- Premium Experience Section -->
             <section class="premium-experience" data-aos="fade-up">
                 <div class="container">
                     <div class="premium-experience-content">
-                        <h2 class="premium-experience-title">The Pawn Island Advantage</h2>
-                        <p class="premium-experience-text">My coaching methodology has been refined through extensive experience and competitive play, helping students of all levels achieve remarkable results. I combine strategic principles with personalized game analysis, focusing on your unique strengths and areas for improvement. Each session is tailored to accelerate your chess development through practical exercises and targeted study plans.</p>
+                        <h2 class="premium-experience-title">Elevate Your Chess Game</h2>
+                        <p class="premium-experience-text">Personalized instruction designed to transform and reinforce your chess understanding and decision making.</p>
                         
                         <div class="premium-metrics">
                             <div class="metric">
-                                <div class="metric-value" data-value="300">300</div>
-                                <div class="metric-label">Average Rating Gain</div>
+                                <div class="metric-value" data-value="20+">20+</div>
+                                <div class="metric-label">Years Experience</div>
                             </div>
-                            
                             <div class="metric">
                                 <div class="metric-value" data-value="150+">150+</div>
                                 <div class="metric-label">Students Coached</div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            
-            <!-- Service Navigation Section Removed -->
-            
-            <!-- Featured Coaching Service -->
-            <section class="featured-services" data-aos="fade-up">
-                <div class="row justify-content-center">
-                    <!-- Online Coaching Card -->
-                    <div class="col-md-8" data-aos="fade-up" data-aos-delay="100">
-                        <div class="coaching-card">
-                            <div class="card-image-wrapper">
-                                <img src="../../images/headers-pages/online-coach.png" alt="Online Chess Coaching" loading="lazy">
-                                <div class="card-badge">Premium Service</div>
-                            </div>
-                            <div class="card-content">
-                                <h3 class="card-title">Online Chess Coaching</h3>
-                                <div class="card-description">
-                                    <p>Transform your chess game with personalized online coaching sessions tailored to your specific needs and goals. Learn advanced strategies, improve your tactical vision, and develop a stronger understanding of positional play.</p>
-                                    <ul class="coaching-features">
-                                        <li><i class="fas fa-check-circle"></i> One-on-one personalized instruction</li>
-                                        <li><i class="fas fa-check-circle"></i> Flexible scheduling to fit your lifestyle</li>
-                                        <li><i class="fas fa-check-circle"></i> Custom training plan based on your current level</li>
-                                        <li><i class="fas fa-check-circle"></i> Real-time analysis of your games</li>
-                                    </ul>
-                                </div>
-                                <a href="https://booking.setmore.com/scheduleappointment/1bc50848-c882-45f8-9549-b82028f120f7" class="card-button" target="_blank">
-                                    <span>Book a Session</span>
-                                    <i class="fas fa-arrow-right"></i>
-                                </a>
+                            <div class="metric">
+                                <div class="metric-value" data-value="1000+">1000+</div>
+                                <div class="metric-label">Tournament Wins</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            </section
-            <!-- Testimonials Slider -->
-            <section class="testimonials-slider-section" data-aos="fade-up">
+            
+            <!-- Services Section -->
+            <section id="coaching-options" class="coaching-services mt-5 pt-3">
+                <h2 class="section-title text-center mb-5">Our Coaching Services</h2>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-card">
+                            <div class="service-image">
+                                <img src="../../images/coaching/one-on-one-coaching.jpg" alt="One-on-One Coaching" class="w-100 h-auto">
+                                <h3 class="service-title">One-on-One Coaching</h3>
+                            </div>
+                            <div class="service-body">
+                                <p>Personalized chess lessons tailored to your specific needs and goals. Work directly with our expert coaches to rapidly improve your game.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-card">
+                            <div class="service-image">
+                                <img src="../../images/coaching/group-coaching.jpg" alt="Group Lessons">
+                                <h3 class="service-title">Group Lessons</h3>
+                            </div>
+                            <div class="service-body">
+                                <p>Learn chess in a collaborative environment with players of similar skill levels. Our structured curriculum ensures steady progress for all participants.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="service-card">
+                            <div class="service-image">
+                                <img src="../../images/coaching/chess-camp.jpg" alt="Chess Camps">
+                                <h3 class="service-title">Chess Camps</h3>
+                            </div>
+                            <div class="service-body">
+                                <p>Intensive multi-day chess training programs designed to significantly boost your chess understanding and performance in a short time.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Approach Section - Redesigned as full-width responsive card -->
+            <section class="approach-section my-5 py-4" data-aos="fade-up">
+                <div class="approach-card">
+                    <div class="approach-content p-4 p-md-5">
+                        <h2 class="section-title">Our Coaching Approach</h2>
+                        <p class="lead">We believe in developing complete chess players through a comprehensive approach.</p>
+                        <ul class="approach-list">
+                            <li><i class="fas fa-chess-knight text-primary mr-2"></i> <strong>Strategic Thinking:</strong> Learn how to create and execute long-term plans</li>
+                            <li><i class="fas fa-chess-bishop text-primary mr-2"></i> <strong>Tactical Vision:</strong> Develop your ability to spot combinations and calculate accurately</li>
+                            <li><i class="fas fa-chess-rook text-primary mr-2"></i> <strong>Endgame Technique:</strong> Master essential endgame principles and conversions</li>
+                            <li><i class="fas fa-chess-queen text-primary mr-2"></i> <strong>Opening Preparation:</strong> Build a solid repertoire suited to your style</li>
+                            <li><i class="fas fa-chess-king text-primary mr-2"></i> <strong>Psychological Resilience:</strong> Develop the mental strength to handle competitive pressure</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Testimonials Section -->
+            <section class="testimonials-section my-5 py-4">
+                <h2 class="section-title text-center mb-5">What Our Students Say</h2>
+                <div id="testimonialCarousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators" id="testimonialIndicators"></ol>
+                    <div class="carousel-inner" id="testimonialContainer"></div>
+                    <div id="testimonialLoading" class="loading-container">
+                        <div class="loading-spinner"></div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Call to Action -->
+            <section class="cta-banner text-center my-5" data-aos="fade-up">
                 <div class="container">
-                    <h2 class="section-title text-center mb-4">What My Students Say</h2>
-                    <div class="testimonial-slider">
-                        <div id="testimonialCarousel" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner" id="testimonialContainer">
-                                <!-- Testimonials will be loaded dynamically -->
-                                <div class="text-center p-4" id="testimonialLoading">
-                                    <div class="spinner-border text-primary" role="status">
-                                        <span class="sr-only">Loading testimonials...</span>
-                                    </div>
-                                    <p class="mt-2">Loading testimonials...</p>
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#testimonialCarousel" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                            <ol class="carousel-indicators" id="testimonialIndicators">
-                                <!-- Indicators will be added dynamically -->
-                            </ol>
-                        </div>
+                    <h2 class="mb-4">Ready to Improve Your Game?</h2>
+                    <p class="lead mb-5">Take the first step toward chess mastery.</p>
+                    <div class="cta-buttons">
+                        <a href="https://pawnisland.setmore.com" class="btn-custom btn-lg mr-3 mb-3 mb-md-0">Schedule Your First Session</a>
                     </div>
                 </div>
             </section>
-            </section>
-
-            <!-- Detailed Coaching Sections -->
-            <div class="detailed-coaching-sections">
-                <!-- Online Coaching Section -->
-                <section id="online-coaching" class="detailed-section" data-aos="fade-up"></section>
-            </div>
         </div>
     </main>
 
-    <!-- Setmore Booking Button -->
-    <a style="float:none; position: fixed; right: -2px; top: 25%; display: block; z-index: 20000" 
-       id="Setmore_button_iframe" 
-       href="https://booking.setmore.com/scheduleappointment/1bc50848-c882-45f8-9549-b82028f120f7">
-        <img border="none" src="https://storage.googleapis.com/full-assets/setmore/images/1.0/Calendar/Setmore-Book-Now.png" alt="Book an appointment with Pawn Island using Setmore"/>
-    </a>
+    <!-- Footer placeholder -->
+    <div class="footer-placeholder"></div>
 
     <!-- Floating buttons -->
     <button class="floating-btn jump-to-top" id="jumpToTopBtn" title="Go to top" aria-label="Jump to top">
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <!-- Replace direct footer with placeholder - moved outside all containers -->
-    <div class="footer-placeholder"></div>
-
-    <!-- Correct script order and versions - replace existing script tags -->
+    <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    
-    <!-- Load scripts in correct order -->
-    <script src="../../js/theme-manager.js"></script>
-    <script src="../../js/footer.js"></script>
-    <script src="../../js/script.js"></script>
-    <script src="../../js/coaching.js"></script>
-    <script src="../../js/testimonials.js"></script>
-    <script src="../../js/testimonial-carousel.js"></script>
 
-    <!-- Updated script for proper theme toggle functionality -->
+    <!-- Custom Scripts -->
+    <script src="../../js/components/hero-card.js"></script>
+    <script src="../../js/navbar.js"></script>
+    <script src="../../js/footer.js"></script>
+    <script src="../../js/testimonial-carousel.js"></script>
+    <script src="../../js/setmore-widget.js"></script>
+    <script src="../../js/theme-manager.js"></script>
+    <script src="../../js/script.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize AOS with better settings
+            // Initialize hero card with enhanced options
+            createHeroCard('heroCardContainer', {
+                bgImage: '../../images/headers-pages/coach-2.png',
+                title: 'Chess Coaching',
+                subtitle: 'Personalized Instruction for All Levels',
+                altText: 'Chess coaching session',
+                overlayOpacity: 0.6,
+                overlayColor: '0, 31, 63', // Dark blue overlay
+                overlayGradient: true,
+                parallaxEffect: true,
+                parallaxIntensity: 0.15, // Reduced intensity for smoother effect
+                titleAnimation: true,
+                subtitleAnimation: true,
+                animationDelay: 400,
+                height: '65vh',
+                buttonText: 'Schedule a Session',
+                buttonLink: 'https://pawnisland.setmore.com',
+                buttonClass: 'btn-custom btn-lg mt-4'
+            });
+            
+            // Initialize AOS with optimized settings
             AOS.init({
                 duration: 800,
                 once: true,
                 offset: 100,
                 easing: 'ease-out-cubic'
             });
-
-            // Jump to top button
-            const jumpToTopBtn = document.getElementById("jumpToTopBtn");
-
-            window.onscroll = function() {
-                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                    jumpToTopBtn.style.display = "flex";
-                } else {
-                    jumpToTopBtn.style.display = "none";
-                }
-            };
-
-            jumpToTopBtn.onclick = function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
+            
+            // Animate metrics numbers on scroll
+            const metrics = document.querySelectorAll('.metric-value');
+            if (metrics.length) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const target = entry.target;
+                            const value = target.getAttribute('data-value');
+                            if (value.includes('+')) {
+                                const numValue = parseInt(value);
+                                animateNumber(target, 0, numValue, 2000);
+                            } else {
+                                animateNumber(target, 0, parseInt(value), 2000);
+                            }
+                            observer.unobserve(target);
+                        }
+                    });
+                }, {threshold: 0.5});
+                
+                metrics.forEach(metric => {
+                    observer.observe(metric);
                 });
-            };
+            }
+            
+            // Number animation function
+            function animateNumber(element, start, end, duration) {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const currentValue = Math.floor(progress * (end - start) + start);
+                    element.innerHTML = currentValue + (element.getAttribute('data-value').includes('+') ? '+' : '');
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
         });
     </script>
-
-    <!-- Setmore Booking Script (keep this if it exists in your coaching page) -->
-    <script id="setmore_script" type="text/javascript" src="https://storage.googleapis.com/fullintegration-live/webComponentAppListing/Container/setmoreIframeLive.js"></script>
 </body>
 </html>

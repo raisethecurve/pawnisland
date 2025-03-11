@@ -34,15 +34,16 @@
     border: none;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    transition: transform 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.2, 0, 0.2, 1);
     margin-bottom: 30px;
+    position: relative;
+    background: #fff;
 }
 
-/* Add remaining coaching-specific styles */
 .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
 
 .service-image {
@@ -64,20 +65,25 @@
 
 .service-title {
     position: absolute;
-    bottom: 15px;
-    left: 15px;
+    bottom: 0;
+    left: 0;
+    right: 0;
     color: white;
     font-family: 'Cinzel', serif;
     font-weight: 700;
     font-size: 1.5rem;
     z-index: 2;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    margin: 0;
 }
 
 .service-body {
     padding: 2rem;
 }
 
+/* Add remaining coaching-specific styles */
 .coaching-section {
     padding: 4rem 0;
     position: relative;
@@ -2398,4 +2404,759 @@
     .testimonial-text {
         font-size: 16px;
     }
+}
+
+/* Helper buttons styling */
+.floating-btn {
+    position: fixed;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+    border: none;
+    z-index: 1000;
+}
+
+.floating-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* Navbar styling for coaching page */
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar .navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .navbar-brand img {
+    height: 40px;
+}
+
+.navbar .shop-now-btn {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.navbar .shop-now-btn img {
+    margin-right: 5px;
+}
+
+.navbar .navbar-toggler {
+    border: none;
+}
+
+.navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar .nav-link {
+    color: #343a40;
+}
+
+.navbar .nav-link:hover {
+    color: #c12e42;
+}
+
+/* Hero section styling */
+.coaching-hero {
+    position: relative;
+    height: 100vh;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.coaching-hero .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.coaching-hero .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.coaching-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+}
+
+.coaching-hero .hero-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.coaching-hero .hero-tagline-container {
+    margin-bottom: 1rem;
+}
+
+.coaching-hero .hero-tagline {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.coaching-hero .tagline-decorator {
+    width: 50px;
+    height: 5px;
+    background-color: #c12e42;
+    margin: 0 auto;
+}
+
+.coaching-hero .hero-subtitle {
+    font-size: 1.5rem;
+}
+
+/* Main content styling */
+.coaching-main {
+    padding: 2rem 0;
+}
+
+/* Premium experience section */
+.premium-experience {
+    margin-bottom: 2rem;
+}
+
+.premium-experience .premium-experience-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.premium-experience .premium-experience-text {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.premium-metrics {
+    display: flex;
+    justify-content: space-around;
+}
+
+.premium-metrics .metric {
+    text-align: center;
+}
+
+.premium-metrics .metric-value {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.premium-metrics .metric-label {
+    font-size: 1rem;
+}
+
+/* Featured services section */
+.featured-services {
+    margin-bottom: 2rem;
+}
+
+/* Coaching card styling */
+.coaching-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.coaching-card .card-image-wrapper {
+    position: relative;
+}
+
+.coaching-card .card-image-wrapper img {
+    width: 100%;
+    height: auto;
+}
+
+.coaching-card .card-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #c12e42;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+}
+
+.coaching-card .card-content {
+    padding: 1rem;
+}
+
+.coaching-card .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.coaching-card .card-description {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.coaching-card .coaching-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.coaching-card .coaching-features li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.coaching-card .coaching-features li i {
+    color: #c12e42;
+    margin-right: 0.5rem;
+}
+
+.coaching-card .card-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #c12e42;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.coaching-card .card-button:hover {
+    background-color: #a10e2b;
+}
+
+.coaching-card .card-button i {
+    margin-left: 0.5rem;
+}
+
+/* Testimonials slider section */
+.testimonials-slider-section {
+    margin-bottom: 2rem;
+}
+
+.testimonials-slider-section .section-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.testimonial-slider {
+    position: relative;
+}
+
+.testimonial-slider .carousel-inner {
+    position: relative;
+}
+
+.testimonial-slider .carousel-inner .carousel-item {
+    display: none;
+    transition: transform 0.6s ease;
+}
+
+.testimonial-slider .carousel-inner .carousel-item.active {
+    display: block;
+}
+
+.testimonial-slider .carousel-control-prev,
+.testimonial-slider .carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.testimonial-slider .carousel-control-prev {
+    left: 10px;
+}
+
+.testimonial-slider .carousel-control-next {
+    right: 10px;
+}
+
+.testimonial-slider .carousel-control-prev-icon,
+.testimonial-slider .carousel-control-next-icon {
+    width: 15px;
+    height: 15px;
+    background-size: 100%;
+}
+
+.testimonial-slider .carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+}
+
+.testimonial-slider .carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.testimonial-slider .carousel-indicators .active {
+    background-color: #c12e42;
+}
+
+/* Detailed coaching sections */
+.detailed-coaching-sections {
+    margin-bottom: 2rem;
+}
+
+.detailed-section {
+    margin-bottom: 2rem;
+}
+
+/* Footer placeholder */
+.footer-placeholder {
+    height: 100px;
+}
+
+/* Enhanced Coaching Main Styles */
+.coaching-main {
+    position: relative;
+    padding: 4rem 0;
+    background-color: #f8f9fa;
+    z-index: 1;
+}
+
+/* Approach list styling */
+.approach-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.approach-list li {
+    margin-bottom: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    background-color: rgba(248, 249, 250, 0.7);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.approach-list li:hover {
+    transform: translateX(5px);
+    background-color: rgba(248, 249, 250, 0.9);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.approach-list li i {
+    color: #dd3649;
+    margin-right: 10px;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.approach-list li:hover i {
+    transform: rotate(15deg);
+}
+
+.approach-image-container {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* CTA Banner Styling */
+.cta-banner {
+    background: linear-gradient(135deg, #004d7a 0%, #002d47 100%);
+    color: white;
+    padding: 5rem 0;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.cta-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../../images/patterns/chess-pattern.png');
+    opacity: 0.05;
+    z-index: 0;
+}
+
+.cta-banner h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.cta-banner p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    position: relative;
+    z-index: 1;
+}
+
+/* Button Styling */
+.btn-custom {
+    padding: 12px 25px;
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+    background-color: #dd3649;
+    color: white;
+    box-shadow: 0 4px 12px rgba(221, 54, 73, 0.3);
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn-custom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.2) 50%, 
+        rgba(255, 255, 255, 0) 100%);
+    transition: all 0.6s ease;
+    z-index: -1;
+}
+
+.btn-custom:hover::before {
+    left: 100%;
+}
+
+.btn-custom:hover {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(221, 54, 73, 0.4);
+    text-decoration: none;
+}
+
+.btn-custom.btn-outline {
+    background-color: transparent;
+    border: 2px solid #dd3649;
+    color: #dd3649;
+    box-shadow: none;
+}
+
+.btn-custom.btn-outline:hover {
+    background-color: #dd3649;
+    color: white;
+    box-shadow: 0 4px 12px rgba(221, 54, 73, 0.3);
+}
+
+.btn-custom.btn-lg {
+    padding: 14px 30px;
+    font-size: 1.1rem;
+}
+
+/* Section title styling */
+.section-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background-color: #dd3649;
+    border-radius: 2px;
+}
+
+.text-center .section-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Testimonial loading spinner */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 0;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(221, 54, 73, 0.3);
+    border-radius: 50%;
+    border-top-color: #dd3649;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Media queries */
+@media (max-width: 992px) {
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .service-title {
+        font-size: 1.3rem;
+    }
+    
+    .cta-banner h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .approach-list li {
+        padding: 0.6rem 0.8rem;
+    }
+    
+    .cta-banner {
+        padding: 4rem 1rem;
+    }
+    
+    .cta-banner h2 {
+        font-size: 1.8rem;
+    }
+    
+    .cta-banner p {
+        font-size: 1.1rem;
+    }
+    
+    .btn-custom.btn-lg {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .service-image {
+        height: 200px;
+    }
+    
+    .service-title {
+        font-size: 1.2rem;
+        padding: 1.2rem;
+    }
+    
+    .service-body {
+        padding: 1.5rem;
+    }
+    
+    .approach-list li i {
+        font-size: 1rem;
+    }
+    
+    .cta-banner h2 {
+        font-size: 1.6rem;
+    }
+}
+
+/* Night theme adjustments */
+.night-theme .coaching-main {
+    background-color: var(--night-bg-color);
+}
+
+.night-theme .service-card {
+    background-color: var(--night-card-bg);
+}
+
+.night-theme .service-body p {
+    color: var(--night-card-text);
+}
+
+.night-theme .approach-list li {
+    background-color: rgba(44, 47, 51, 0.7);
+    color: var(--night-text-color);
+}
+
+.night-theme .approach-list li:hover {
+    background-color: rgba(44, 47, 51, 0.9);
+}
+
+.night-theme .btn-custom.btn-outline {
+    border-color: #dd3649;
+    color: #dd3649;
+}
+
+.night-theme .btn-custom.btn-outline:hover {
+    background-color: #dd3649;
+    color: white;
+}
+
+/* Redesigned Approach Card */
+.approach-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+.approach-image-container {
+    overflow: hidden;
+    position: relative;
+}
+
+.approach-image-container img {
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.approach-card:hover .approach-image-container img {
+    transform: scale(1.05);
+}
+
+.approach-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.approach-content .section-title::after {
+    left: 0;
+    transform: none;
+}
+
+/* Night theme adjustments */
+.night-theme .approach-card {
+    background-color: var(--night-card-bg);
+}
+
+/* Emergency fix for hero background visibility */
+.page-header {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+.header-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Redesigned Approach Card - Full Width Responsive */
+.approach-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.approach-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.approach-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.approach-content .section-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.approach-content .section-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.approach-content .lead {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Night theme adjustments */
+.night-theme .approach-card {
+    background-color: var(--night-card-bg);
 }

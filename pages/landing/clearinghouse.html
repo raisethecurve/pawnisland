@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../../css/footer.css">
     <link rel="stylesheet" href="../../css/buttons.css">
     <link rel="stylesheet" href="../../css/clearinghouse.css">
+    <link rel="stylesheet" href="../../css/product-card.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../../images/brand-icons/favicon.png">
     <!-- Google Analytics -->
@@ -86,48 +87,11 @@
     </style>
 </head>
 <body class="bg-light text-dark">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
-        <a class="navbar-brand d-flex align-items-center" href="../../index.html" id="brand-toggle" aria-label="Homepage">
-            <img src="../../images/brand-icons/logo-dark.png" alt="Pawn Island Academy Logo" class="logo">
-        </a>
-        <a class="shop-now-btn" href="https://pawnisland.myshopify.com/collections" target="_blank" aria-label="Shop Now">
-            <img src="../../images/social-icons/shopify-universal.png" alt="Shopify" width="20" height="20">
-            Shop Now
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="about-me.html">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="https://pawnisland.myshopify.com/collections">Merch</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="coaching.html" aria-label="Chess Coaching Section">Lessons</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center text-dark" href="https://chess.com/blog/squarethecurve" target="_blank">
-                        <img src="../../images/social-icons/chess-universal.png" alt="Chess.com raisethecurve Blog" width="20" height="20" class="mr-2">
-                        Blog
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Navbar Container - Will be populated by navbar.js -->
+    <div id="navbar-container"></div>
 
-    <!-- Header Section -->
-    <header class="page-header">
-        <div class="header-overlay"></div>
-        <img src="../../images/headers-pages/clearinghouse.webp" alt="Event Background" class="header-bg">
-        <div class="container header-content text-center">
-            <h1 class="header-title" data-aos="fade-down">COACH'S CLEARINGHOUSE</h1>
-            <h2 class="header-subtitle" data-aos="fade-up" data-aos-delay="200">GREATER RHODE ISLAND</h2>
-            <h3 class="header-subtitle" data-aos="fade-up" data-aos-delay="400">Including RI, MA, & CT</h3>
-        </div>
-    </header>
+    <!-- Hero Card Container -->
+    <div id="heroCardContainer"></div>
 
     <div class="main-content">
         <div class="container">
@@ -176,9 +140,35 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <!-- Hero Card Component -->
+    <script src="../../js/components/hero-card.js"></script>
+    
+    <!-- Navbar Script -->
+    <script src="../../js/navbar.js"></script>
+    
+    <!-- Shopify Configuration -->
+    <script src="../../js/shopify-config.js"></script>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize hero card with enhanced options
+            createHeroCard('heroCardContainer', {
+                bgImage: '../../images/headers-pages/clearinghouse.webp',
+                title: 'COACH\'S CLEARINGHOUSE',
+                subtitle: 'GREATER RHODE ISLAND<br>RI, MA, and CT',
+                altText: 'Event Background',
+                overlayOpacity: 0.7,
+                overlayColor: '34, 34, 34', // Dark gray overlay
+                overlayGradient: true,
+                parallaxEffect: true,
+                parallaxIntensity: 0.12, // Slightly lower intensity
+                titleAnimation: true,
+                subtitleAnimation: true,
+                height: 'calc(100vh - 80px)', // never exceeds screen minus filter buttons
+                alignment: 'center'
+            });
+            
             // Initialize AOS with optimized settings
             AOS.init({
                 duration: 800,
@@ -284,6 +274,8 @@
     <script src="../../js/theme-manager.js"></script>
     <script src="../../js/footer.js"></script>
     <script src="../../js/events.js"></script>
+    <script src="../../js/ad-injector.js"></script>
+    <script src="../../js/setmore-widget.js"></script>
     <script src="../../js/script.js"></script>
 </body>
 </html>

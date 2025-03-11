@@ -1,19 +1,24 @@
 .shop-now-btn {
-    background-color: transparent; /* Transparent background */
-    border: 2px solid #000000; /* Border color for light theme */
-    color: #000000; /* Text color for light theme */
-    border-radius: 25px; /* Adjusted border radius for a smoother look */
-    padding: 10px 20px; /* Increased padding for a more prominent button */
-    font-size: 18px; /* Increased font size for better readability */
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+    border: 2px solid #ffffff; /* White border for visibility on dark background */
+    color: #ffffff; /* White text for visibility on dark background */
+    border-radius: 25px;
+    padding: 8px 16px; /* Smaller padding to fit in navbar */
+    font-size: 16px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    position: absolute; /* Position absolutely */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Offset by half the button width */
-    transition: border-color 0.3s, color 0.3s, transform 0.3s;
+    position: relative; /* Change to relative positioning in navbar */
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
     font-family: 'Lato', sans-serif !important;
+    margin-left: 1rem;
+}
+
+.navbar.scrolled .shop-now-btn {
+    background-color: transparent;
+    border: 2px solid #000000;
+    color: #000000;
 }
 
 .shop-now-btn img {
@@ -21,8 +26,12 @@
 }
 
 .shop-now-btn:hover {
-    transform: translateX(-50%) scale(1.05); /* Keep centered while scaling */
-    border-color: #333333; /* Darker border on hover */
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar.scrolled .shop-now-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* Centralized Jump to Top Button Styles */

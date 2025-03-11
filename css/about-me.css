@@ -68,11 +68,16 @@
 .main-container {
     background-color: #f8f9fa;
     color: #212529;
+    padding-top: 7rem !important; /* Ensure content is below fixed navbar */
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
 }
 
 /* Profile Section */
 .profile-section {
     padding: 2rem 0;
+    margin-bottom: 3rem;
 }
 
 .profile-image-container {
@@ -82,16 +87,18 @@
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     max-width: 350px;
     margin: 0 auto;
+    height: 350px;
 }
 
 .profile-image {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     transition: transform 0.6s ease;
 }
 
 .profile-image-container:hover .profile-image {
-    transform: scale(1.03);
+    transform: scale(1.05);
 }
 
 .profile-info h3 {
@@ -119,32 +126,48 @@
     color: #343a40;
 }
 
+.profile-info {
+    padding: 1rem;
+}
+
 /* Achievements */
 .achievements {
-    margin-top: 2rem;
+    margin-top: 2.5rem;
 }
 
 .achievement {
     display: flex;
     align-items: flex-start;
     margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.achievement:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .achievement-icon {
     color: #dd3649;
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-right: 1rem;
     margin-top: 0.25rem;
+    flex-shrink: 0;
 }
 
 .achievement h4 {
     font-size: 1.2rem;
     font-weight: 700;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+    color: #343a40;
 }
 
 .achievement p {
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #6c757d;
     margin: 0;
 }
@@ -153,14 +176,18 @@
 .philosophy-section {
     padding: 3rem 0;
     background-color: #ffffff;
+    margin-bottom: 3rem;
 }
 
 .section-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 2.5rem;
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .section-title {
@@ -169,6 +196,9 @@
     margin-bottom: 1.5rem;
     position: relative;
     padding-bottom: 0.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    padding-bottom: 15px;
 }
 
 .section-title:after {
@@ -181,6 +211,7 @@
     left: 50%;
     transform: translateX(-50%);
     border-radius: 2px;
+    left: 0;
 }
 
 .philosophy-content p {
@@ -210,6 +241,23 @@
     box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 
+.philosophy-cards .philosophy-card {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.philosophy-cards .philosophy-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
 .card-icon {
     font-size: 2.5rem;
     color: #dd3649;
@@ -227,6 +275,10 @@
     line-height: 1.6;
     margin: 0;
     text-align: center;
+    font-size: 0.9rem;
+    color: #6c757d;
+    text-align: center;
+    margin-bottom: 0;
 }
 
 /* Quote */
@@ -236,6 +288,10 @@
     padding: 2.5rem;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     position: relative;
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-left: 5px solid #dd3649;
+    border-radius: 5px;
 }
 
 .quote-container:before {
@@ -258,11 +314,50 @@ blockquote {
     margin: 0;
     padding: 0 2rem;
     text-align: center;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin-bottom: 0;
 }
 
 /* FAQ Section */
 .faq-section {
     padding: 3rem 0;
+    margin-bottom: 3rem;
+}
+
+.accordion .card {
+    border: none;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.accordion .card-header {
+    background-color: #343a40;
+    padding: 1rem 1.5rem;
+    border-radius: 5px !important;
+    cursor: pointer;
+    position: relative;
+}
+
+.accordion .card-header::after {
+    content: '\f107'; /* FontAwesome down arrow */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.accordion .card-header.collapsed::after {
+    transform: rotate(-90deg);
+}
+
+.accordion .card-body {
+    padding: 1.5rem;
+    background-color: #ffffff;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 /* CTA Section */
@@ -272,6 +367,10 @@ blockquote {
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.05);
     margin-bottom: 3rem;
+    padding: 3rem;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .cta-section h3 {
@@ -279,6 +378,9 @@ blockquote {
     font-weight: 700;
     margin-bottom: 1rem;
     color: #343a40;
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .cta-section p {
@@ -298,6 +400,16 @@ blockquote {
     display: inline-block;
     transition: all 0.3s ease;
     box-shadow: 0 5px 15px rgba(221,54,73,0.3);
+    background-color: #dd3649;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 10px rgba(221, 54, 73, 0.3);
 }
 
 .btn-custom:hover {
@@ -306,6 +418,10 @@ blockquote {
     box-shadow: 0 8px 20px rgba(221,54,73,0.4);
     color: white;
     text-decoration: none;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(221, 54, 73, 0.4);
+    background-color: #c12e42;
+    color: white;
 }
 
 /* Fix Jump to Top Button */
@@ -327,6 +443,9 @@ blockquote {
     z-index: 1000;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     transition: all 0.3s ease;
+    display: none;
+    width: 50px;
+    height: 50px;
 }
 
 .jump-to-top:hover {
@@ -361,6 +480,13 @@ blockquote {
     
     .profile-info h3 {
         margin-top: 1.5rem;
+    }
+}
+
+@media (max-width: 991px) {
+    .profile-image-container {
+        height: 300px;
+        margin-bottom: 2rem;
     }
 }
 
@@ -405,6 +531,24 @@ blockquote {
     
     .cta-section p {
         font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .section-container {
+        padding: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .cta-section {
+        padding: 2rem;
+    }
+    
+    .cta-section h3 {
+        font-size: 1.6rem;
     }
 }
 

@@ -3,6 +3,8 @@ body {
     margin: 0;
     font-family: var(--body-font);
     background: var(--light-bg);
+    padding: 0; /* Ensure no padding */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* Hero Section */
@@ -13,6 +15,8 @@ body {
     align-items: center;
     justify-content: center;
     background: url(../images/headers-pages/pawnisland-background.jpeg) center/cover no-repeat;
+    margin-top: 0; /* Ensure no top margin */
+    padding-top: 0; /* Ensure no top padding */
 }
 .hero::after {
     content: "";

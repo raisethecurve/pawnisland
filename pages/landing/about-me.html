@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="../../css/navbar.css">
     <link rel="stylesheet" href="../../css/footer.css">
     <link rel="stylesheet" href="../../css/buttons.css">
-    <link rel="stylesheet" href="../../css/accordion.css">
     <link rel="stylesheet" href="../../css/about-me.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../../images/brand-icons/favicon.png">
@@ -34,55 +33,14 @@
     </script>
 </head>
 <body class="bg-light text-dark">
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light w-100">
-        <a class="navbar-brand d-flex align-items-center" href="../../index.html" id="brand-toggle" aria-label="Homepage">
-            <img src="../../images/brand-icons/logo-dark.png" alt="Pawn Island Academy Logo" class="logo">
-        </a>
-        <a class="shop-now-btn" href="https://pawnisland.myshopify.com/collections" target="_blank" aria-label="Shop Now">
-            <img src="../../images/social-icons/shopify-universal.png" alt="Shopify" width="20" height="20">
-            Shop Now
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link text-dark" href="about-me.html">About<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="https://pawnisland.myshopify.com/collections">Merch</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="coaching.html" aria-label="Chess Coaching Section">Lessons</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center text-dark" href="https://chess.com/blog/squarethecurve" target="_blank">
-                        <img src="../../images/social-icons/chess-universal.png" alt="Chess.com raisethecurve Blog" width="20" height="20" class="mr-2">
-                        Blog
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark" href="clearinghouse.html">Clearinghouse</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Navbar Container - Will be populated by navbar.js -->
+    <div id="navbar-container"></div>
 
-    <!-- Header Section -->
-    <header class="about-header">
-        <div class="header-overlay"></div>
-        <img src="../../images/headers-pages/about-me.webp" alt="Chess Coach Background" class="header-bg">
-        <div class="container header-content text-center">
-            <h1 class="header-title" data-aos="fade-down">About The Coach</h1>
-            <div class="title-decorator"></div>
-            <h2 class="header-subtitle" data-aos="fade-up" data-aos-delay="200">Chess Champion & Instructor</h2>
-        </div>
-    </header>
+    <!-- Hero Card Container -->
+    <div id="heroCardContainer"></div>
 
     <!-- Main Content -->
-    <div class="main-container">
+    <div class="main-container mt-5 pt-5">
         <div class="container py-5">
             <!-- Profile Section -->
             <section class="profile-section mb-5">
@@ -232,45 +190,99 @@
     <!-- Footer placeholder -->
     <div class="footer-placeholder"></div>
 
-    <!-- JavaScript Libraries -->
+    <!-- JavaScript Libraries - Load jQuery first -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize AOS with optimized settings
-            AOS.init({
-                duration: 800,
-                once: true,
-                offset: 100,
-                easing: 'ease-out-cubic'
-            });
-            
-            // Jump to top button
-            const jumpToTopBtn = document.getElementById("jumpToTopBtn");
-
-            window.onscroll = function() {
-                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                    jumpToTopBtn.style.display = "flex";
-                } else {
-                    jumpToTopBtn.style.display = "none";
-                }
-            };
-
-            jumpToTopBtn.onclick = function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            };
-        });
-    </script>
-    
-    <!-- Custom Scripts -->
+    <!-- Components and Custom Scripts -->
+    <script src="../../js/components/hero-card.js"></script>
+    <script src="../../js/navbar.js"></script>
     <script src="../../js/theme-manager.js"></script>
     <script src="../../js/footer.js"></script>
     <script src="../../js/script.js"></script>
+    
+    <!-- Initialize components -->
+    <script>
+        // Debug function to help track page loading
+        function updateDebug(message) {
+            const debug = document.getElementById('debug-message');
+            if (debug) {
+                debug.textContent = message;
+                debug.style.display = 'block';
+                console.log(message);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            updateDebug('DOM loaded');
+            
+            // Initialize hero card with enhanced options
+            try {
+                createHeroCard('heroCardContainer', {
+                    bgImage: '../../images/headers-pages/freeman-3.jpg',
+                    title: 'About Me',
+                    subtitle: 'Chess Coach & Instructor',
+                    altText: 'Chess Coach Profile Image',
+                    overlayOpacity: 0.65, 
+                    overlayColor: '0, 0, 0', // Black overlay
+                    overlayGradient: true,
+                    parallaxEffect: true,
+                    parallaxIntensity: 0.1, // Lower intensity for this page
+                    titleAnimation: true,
+                    subtitleAnimation: true,
+                    animationDelay: 400,
+                    height: '60vh',
+                    alignment: 'left',
+                    buttonText: 'Schedule Coaching',
+                    buttonLink: 'coaching.html',
+                    buttonClass: 'btn-custom btn-lg mt-4'
+                });
+                updateDebug('Hero card created');
+            } catch (e) {
+                console.error('Error creating hero card:', e);
+                updateDebug('Hero card error: ' + e.message);
+            }
+            
+            // Initialize AOS with better settings
+            try {
+                AOS.init({
+                    duration: 800,
+                    once: true,
+                    offset: 100,
+                    easing: 'ease-out-cubic'
+                });
+                updateDebug('AOS initialized');
+                
+                // Hide debug after 3 seconds if everything seems OK
+                setTimeout(() => {
+                    document.getElementById('debug-message').style.display = 'none';
+                }, 3000);
+            } catch (e) {
+                console.error('Error initializing AOS:', e);
+                updateDebug('AOS error: ' + e.message);
+            }
+
+            // Jump to top button
+            const jumpToTopBtn = document.getElementById("jumpToTopBtn");
+            if (jumpToTopBtn) {
+                window.onscroll = function() {
+                    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                        jumpToTopBtn.style.display = "flex";
+                    } else {
+                        jumpToTopBtn.style.display = "none";
+                    }
+                };
+
+                jumpToTopBtn.onclick = function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                };
+            }
+        });
+    </script>
 </body>
 </html>

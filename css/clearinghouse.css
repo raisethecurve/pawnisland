@@ -260,6 +260,233 @@
     font-size: 1.1rem;
 }
 
+/* Product Ad Styling */
+.product-ad {
+    border: 2px solid rgba(221, 54, 73, 0.3);
+    position: relative;
+    overflow: hidden;
+    max-width: 800px; /* Ensure same width as event cards */
+    margin: 0 auto;
+}
+
+.product-ad:hover {
+    border-color: rgba(221, 54, 73, 0.7);
+}
+
+.product-ad::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #dd3649, #e74c3c);
+    z-index: 10;
+}
+
+.product-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #dd3649;
+    margin-bottom: 1rem;
+}
+
+/* Redesigned Product Ad Styling with horizontal layout */
+.product-ad.horizontal-ad {
+    border: 2px solid rgba(221, 54, 73, 0.3);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    max-width: 100%; /* Ensure it doesn't exceed container width */
+}
+
+.product-ad.horizontal-ad:hover {
+    border-color: rgba(221, 54, 73, 0.7);
+    transform: translateY(-5px);
+}
+
+.product-ad.horizontal-ad::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #dd3649, #e74c3c);
+    z-index: 10;
+}
+
+.ad-img-container {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 15px 0 15px 25px; /* Increased left padding from 15px to 25px for more buffer */
+}
+
+.ad-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.2, 0, 0.2, 1);
+    min-height: 250px;
+    max-height: 300px; /* Limit max height on large screens */
+    border-radius: 8px; /* Added slight rounding to image */
+}
+
+.product-ad.horizontal-ad:hover .ad-img {
+    transform: scale(1.05);
+}
+
+.ad-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center; /* Center content vertically */
+}
+
+.product-description {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+    max-width: 500px; /* Prevent extremely wide text on large screens */
+}
+
+.ad-action-area {
+    margin-top: auto; /* Push button to bottom */
+}
+
+/* Repositioned Ad Badge - Right justified */
+.ad-badge {
+    display: inline-block;
+    background-color: rgba(221, 54, 73, 0.9);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    align-self: flex-start;
+    margin-left: auto;
+}
+
+/* Ad item container sizing */
+.ad-item {
+    width: 100%;
+    max-width: 800px; /* Control maximum width on large screens */
+    margin: 0 auto 1.5rem; /* Center and add bottom margin */
+}
+
+/* Match the event card width exactly */
+.ad-item .event-card {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Responsive adjustments for horizontal ad layout */
+@media (max-width: 767px) {
+    .product-ad.horizontal-ad .row {
+        flex-direction: column;
+    }
+    
+    .product-ad.horizontal-ad .ad-img-container {
+        height: 200px;
+        padding: 10px 0 10px 18px; /* Increased left padding for mobile */
+    }
+    
+    .product-ad.horizontal-ad .ad-img {
+        min-height: unset;
+        max-height: 180px;
+    }
+    
+    .product-ad.horizontal-ad .ad-content {
+        padding: 1.2rem;
+    }
+    
+    .ad-item {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Handle extremely large screens */
+@media (min-width: 1600px) {
+    .ad-item {
+        max-width: 1000px;
+    }
+
+    .ad-item .event-card {
+        max-width: 800px; /* Keep same max width as event cards */
+    }
+    
+    .product-ad.horizontal-ad .row {
+        align-items: center;
+    }
+    
+    .ad-img-container {
+        padding: 20px 0 20px 30px; /* Increased left padding for large screens */
+    }
+    
+    .ad-img {
+        max-height: 350px;
+    }
+}
+
+/* Adjustments for regular large screens */
+@media (min-width: 1200px) and (max-width: 1599px) {
+    .ad-item {
+        max-width: 900px;
+    }
+    
+    .ad-item .event-card {
+        max-width: 800px; /* Keep same max width as event cards */
+    }
+    
+    .ad-content {
+        padding: 1.8rem 2rem;
+    }
+}
+
+/* Medium screens */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .product-ad.horizontal-ad .col-md-5 {
+        flex: 0 0 45%;
+        max-width: 45%;
+    }
+    
+    .product-ad.horizontal-ad .col-md-7 {
+        flex: 0 0 55%;
+        max-width: 55%;
+    }
+    
+    .ad-img {
+        min-height: 220px;
+    }
+}
+
+/* Night theme adjustments for ads */
+.night-theme .product-ad {
+    border-color: rgba(221, 54, 73, 0.4);
+    background-color: var(--night-card-bg);
+}
+
+.night-theme .product-price {
+    color: #f06870;
+}
+
+.night-theme .shop-btn {
+    background-color: #dd3649;
+    border-color: #dd3649;
+}
+
+.night-theme .shop-btn:hover {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+}
+
 /* Responsive adjustments */
 @media (max-width: 1200px) {
     .header-title {
@@ -323,5 +550,190 @@
         align-items: center;
         padding: 0.8rem;
         gap: 10px;
+    }
+}
+
+/* Completely Redesigned Product Ad Styling */
+.product-ad.horizontal-ad {
+    border: 2px solid rgba(221, 54, 73, 0.3);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    background-color: #fff;
+}
+
+/* Custom Red Top Border */
+.product-ad.horizontal-ad::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #dd3649, #e74c3c);
+    z-index: 10;
+}
+
+/* Row layout adjustments */
+.product-ad.horizontal-ad .row.no-gutters {
+    margin: 0;
+    height: 100%;
+}
+
+/* Image container - left side */
+.product-ad .ad-img-container {
+    position: relative;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.product-ad .ad-img-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 20px solid transparent;
+    border-right-width: 0;
+    pointer-events: none;
+}
+
+/* Product image styling */
+.product-ad .ad-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: 0;
+    min-height: 280px;
+    max-height: 320px;
+    transition: transform 0.5s ease;
+}
+
+/* Content container - right side */
+.product-ad .content-column {
+    display: flex;
+    align-items: center;
+    padding-left: 25px; /* Add spacing between image and content */
+}
+
+/* Inner content wrapper */
+.product-ad .ad-content {
+    width: 100%;
+    padding: 25px 25px 25px 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Badge styling */
+.product-ad .ad-badge {
+    display: inline-block;
+    background-color: rgba(221, 54, 73, 0.9);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.6px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    align-self: flex-start;
+    margin-left: auto;
+}
+
+/* Product title */
+.product-ad .card-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #333;
+    line-height: 1.3;
+}
+
+/* Product price */
+.product-ad .product-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #dd3649;
+    margin-bottom: 15px;
+}
+
+/* Product description */
+.product-ad .product-description {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    max-width: 100%;
+}
+
+/* Button container */
+.product-ad .ad-action-area {
+    margin-top: auto;
+}
+
+/* Shop button styling */
+.product-ad .shop-btn {
+    background-color: #dd3649;
+    border-color: #dd3649;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(221, 54, 73, 0.2);
+}
+
+.product-ad .shop-btn:hover {
+    background-color: #c12e42;
+    border-color: #c12e42;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(221, 54, 73, 0.3);
+}
+
+/* Hover effect for the entire card */
+.product-ad.horizontal-ad:hover {
+    border-color: rgba(221, 54, 73, 0.7);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.product-ad.horizontal-ad:hover .ad-img {
+    transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .product-ad.horizontal-ad .row {
+        flex-direction: column;
+    }
+    
+    .product-ad .ad-img-container {
+        height: 200px;
+        margin-bottom: 0;
+    }
+    
+    .product-ad .ad-img {
+        min-height: unset;
+        max-height: none;
+    }
+    
+    .product-ad .content-column {
+        padding: 0;
+    }
+    
+    .product-ad .ad-content {
+        padding: 20px;
+    }
+    
+    .product-ad .card-title {
+        font-size: 1.2rem;
     }
 }
