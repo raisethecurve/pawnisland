@@ -274,9 +274,12 @@
                 size: 'medium',
                 shape: 'circle',
                 animation: 'bounce',
-                showAfter: 300,
-                zIndex: 1500,
-                accessibility: true
+                showAfter: 300,           // Desktop scroll distance
+                mobileShowAfter: 100,     // Mobile scroll distance (lower value)
+                zIndex: 9999,             // Increased z-index to ensure visibility
+                accessibility: true,
+                mobileMargin: 15,         // Smaller margin on mobile
+                debug: false              // Set to true temporarily for troubleshooting if needed
             });
         });
     </script>

@@ -20,8 +20,10 @@ function createModernJumpToTop(options = {}) {
     icon: 'arrow-up',          // 'arrow-up', 'chevron-up', 'angle-up', 'custom'
     customIcon: null,          // Custom SVG/HTML content if icon is 'custom'
     showAfter: 300,            // Show after scrolling these many pixels
+    mobileShowAfter: 100,      // Show after scrolling these many pixels on mobile
     animation: 'bounce',       // 'bounce', 'fade', 'slide', 'zoom', 'pulse'
     margin: 20,                // Margin from edge in pixels
+    mobileMargin: 15,          // Margin from edge in pixels on mobile
     zIndex: 1000,              // z-index value
     mobileOnly: false,         // Show only on mobile devices
     desktopOnly: false,        // Show only on desktop devices
@@ -36,6 +38,13 @@ function createModernJumpToTop(options = {}) {
 
   // Merge options with defaults
   const settings = { ...defaults, ...options };
+  
+  // Check if mobile device
+  const isMobile = isMobileDevice();
+  
+  // Use mobile-specific settings on mobile devices
+  const effectiveShowAfter = isMobile ? (settings.mobileShowAfter || settings.showAfter) : settings.showAfter;
+  const effectiveMargin = isMobile ? (settings.mobileMargin || settings.margin) : settings.margin;
   
   // Create button element
   const button = document.createElement('button');
@@ -100,7 +109,7 @@ function createModernJumpToTop(options = {}) {
   // Custom styles based on options
   button.style.setProperty('--mjt-color', getComputedColor(settings.color));
   button.style.zIndex = settings.zIndex;
-  button.style.margin = `${settings.margin}px`;
+  button.style.margin = `${effectiveMargin}px`;
   
   // Add button to the DOM
   document.body.appendChild(button);
@@ -113,31 +122,48 @@ function createModernJumpToTop(options = {}) {
   const updateButtonVisibility = () => {
     const currentScrollPos = window.pageYOffset;
     
+    if (settings.debug) {
+      console.log(`Scroll position: ${currentScrollPos}, Show after: ${effectiveShowAfter}, Is mobile: ${isMobile}`);
+    }
+    
     // Check if we should show/hide based on scroll position
-    if (currentScrollPos > settings.showAfter) {
+    if (currentScrollPos > effectiveShowAfter) {
       if (!isVisible) {
         button.classList.remove('modern-jump-top--hidden');
         button.classList.add('modern-jump-top--visible');
         isVisible = true;
+        if (settings.debug) {
+          console.log('Making button visible');
+        }
       }
     } else {
       if (isVisible) {
         button.classList.remove('modern-jump-top--visible');
         button.classList.add('modern-jump-top--hidden');
         isVisible = false;
+        if (settings.debug) {
+          console.log('Hiding button');
+        }
       }
     }
     
     // Show/hide based on device type if specified
-    if ((settings.mobileOnly && !isMobileDevice()) || 
-        (settings.desktopOnly && isMobileDevice())) {
+    // Only apply these restrictions if the button would otherwise be visible
+    if (isVisible && ((settings.mobileOnly && !isMobile) || 
+        (settings.desktopOnly && isMobile))) {
       button.classList.add('modern-jump-top--hidden');
       button.classList.remove('modern-jump-top--visible');
+      if (settings.debug) {
+        console.log('Hiding due to device restrictions');
+      }
     }
     
     prevScrollPos = currentScrollPos;
     ticking = false;
   };
+  
+  // Initial check for visibility (in case page loads already scrolled)
+  updateButtonVisibility();
   
   window.addEventListener('scroll', () => {
     if (!ticking) {
@@ -213,7 +239,8 @@ function createModernJumpToTop(options = {}) {
   
   // Helper to detect mobile device
   function isMobileDevice() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+           (window.innerWidth <= 768); // Also check viewport width for responsive design
   }
   
   // Helper to get computed color

@@ -236,14 +236,28 @@
 @media (max-width: 768px) {
   .modern-jump-top {
     bottom: 20px;
+    /* Ensure button appears above all content on mobile */
+    z-index: 9999 !important; 
+    /* Improve tap target size */
+    min-width: 45px;
+    min-height: 45px;
+    /* Make sure transitions are snappier on mobile */
+    transition: all 0.2s ease-out;
   }
   
   .modern-jump-top--right {
-    right: 20px;
+    right: 15px;
   }
   
   .modern-jump-top--left {
-    left: 20px;
+    left: 15px;
+  }
+  
+  /* Make visibility transitions more immediate on mobile */
+  .modern-jump-top--visible {
+    opacity: 0.95 !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
   }
   
   /* Make sure labels don't show on mobile */

@@ -15,12 +15,17 @@ document.addEventListener('DOMContentLoaded', function() {
     bookingButton.style.right = "-2px";
     bookingButton.style.top = "30%";
     bookingButton.style.display = "block";
-    bookingButton.style.zIndex = "20000";
+    bookingButton.style.zIndex = "2000"; // Increase z-index to ensure visibility
     bookingButton.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
     bookingButton.style.boxShadow = "0 4px 15px rgba(0,0,0,0.1)";
     bookingButton.style.borderTopLeftRadius = "8px";
     bookingButton.style.borderBottomLeftRadius = "8px";
     bookingButton.style.overflow = "hidden";
+    
+    // Check if current page is coaching page and adjust position if needed
+    if (window.location.pathname.includes('/landing/coaching')) {
+        bookingButton.style.top = "40%"; // Position slightly lower on coaching page
+    }
     
     // Add hover effect with event listeners
     bookingButton.addEventListener('mouseover', function() {

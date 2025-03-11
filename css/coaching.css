@@ -1535,12 +1535,19 @@
 
 /* Setmore Button Styling */
 #Setmore_button_iframe {
-  z-index: 999 !important;
+  z-index: 2000 !important; /* Ensure high z-index to appear above all page elements */
   transition: transform 0.3s ease;
 }
 
 #Setmore_button_iframe:hover {
   transform: scale(1.05);
+}
+
+/* Override any conflicting styles from other components */
+body #Setmore_button_iframe {
+  display: block !important; /* Force display */
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 /* Fix color scheme issues and spacing adjustments */

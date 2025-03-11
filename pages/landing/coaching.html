@@ -181,6 +181,8 @@
     <script src="../../js/footer.js"></script>
     <script src="../../js/coaching.js"></script>
     <script src="../../js/script.js"></script>
+    <!-- Add Setmore widget script -->
+    <script src="../../js/setmore-widget.js"></script>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -225,44 +227,7 @@
                 accessibility: true
             });
 
-            // Animate metrics numbers on scroll
-            const metrics = document.querySelectorAll('.metric-value');
-            if (metrics.length) {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const target = entry.target;
-                            const value = target.getAttribute('data-value');
-                            if (value.includes('+')) {
-                                const numValue = parseInt(value);
-                                animateNumber(target, 0, numValue, 2000);
-                            } else {
-                                animateNumber(target, 0, parseInt(value), 2000);
-                            }
-                            observer.unobserve(target);
-                        }
-                    });
-                }, {threshold: 0.5});
-                
-                metrics.forEach(metric => {
-                    observer.observe(metric);
-                });
-            }
-
-            // Number animation function
-            function animateNumber(element, start, end, duration) {
-                let startTimestamp = null;
-                const step = (timestamp) => {
-                    if (!startTimestamp) startTimestamp = timestamp;
-                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                    const currentValue = Math.floor(progress * (end - start) + start);
-                    element.innerHTML = currentValue + (element.getAttribute('data-value').includes('+') ? '+' : '');
-                    if (progress < 1) {
-                        window.requestAnimationFrame(step);
-                    }
-                };
-                window.requestAnimationFrame(step);
-            }
+            // Remove redundant metrics animation code - now handled by coaching.js
         });
     </script>
 </body>
