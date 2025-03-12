@@ -1,47 +1,205 @@
 /**
- * Simple Ad Injector
- * Injects a beautiful static product card from Shopify into the events page
+ * Enhanced Ad Injector
+ * Intelligently injects product cards from Shopify into the events page,
+ * adapting to filter changes for a fluid user experience
  */
 document.addEventListener('DOMContentLoaded', function() {
     // Use configuration from shopify-config.js
     const SHOPIFY_DOMAIN = SHOPIFY_CONFIG.STORE_DOMAIN;
     const STOREFRONT_ACCESS_TOKEN = SHOPIFY_CONFIG.STOREFRONT_ACCESS_TOKEN;
     
-    // Initialize the ad card
-    const checkEventsInterval = setInterval(() => {
-        const eventsContainer = document.getElementById('events-container');
-        const eventItems = document.querySelectorAll('.event-item:not(.ad-item)');
-        
-        if (eventItems.length > 0) {
-            clearInterval(checkEventsInterval);
-            fetchShopifyProducts().then(products => {
-                if (products && products.length > 0) {
-                    // Insert product card after every third event
-                    insertProductCards(eventsContainer, eventItems, products);
-                }
-            });
-        }
-    }, 500);
+    // Config
+    const AD_INSERTION_INTERVAL = 3; // Show an ad after every N events (when visible)
+    const INITIAL_LOAD_DELAY = 1000; // Wait for events to load
+    const OBSERVER_THROTTLE = 300; // Milliseconds to wait before handling DOM changes
+    
+    // Track ad state
+    let productsCache = null;
+    let throttleTimer = null;
+    let filterChangeObserver = null;
+    
+    // Initialize the ad injection system
+    setTimeout(() => {
+        initAdSystem();
+    }, INITIAL_LOAD_DELAY);
     
     /**
-     * Insert product cards after every third event
+     * Initialize the ad system - fetch products and set up observers
      */
-    function insertProductCards(container, eventItems, products) {
-        const eventsArray = Array.from(eventItems);
+    async function initAdSystem() {
+        // Get event container
+        const eventsContainer = document.getElementById('events-container');
+        if (!eventsContainer) {
+            console.warn('Ad Injector: Events container not found');
+            return;
+        }
         
-        // Insert ad after every third event
-        for (let i = 2; i < eventsArray.length; i += 3) {
-            if (eventsArray[i]) {
-                // Select a random product for each insertion point
-                const randomProduct = getRandomProduct(products);
-                
-                // Create and insert the ad
-                const adCard = createAdCard(randomProduct);
-                eventsArray[i].parentNode.insertBefore(adCard, eventsArray[i].nextSibling);
+        // Fetch products only once and cache them
+        if (!productsCache) {
+            try {
+                productsCache = await fetchShopifyProducts();
+                if (!productsCache || productsCache.length === 0) {
+                    console.warn('Ad Injector: No products available');
+                    return;
+                }
+            } catch (error) {
+                console.error('Ad Injector: Failed to fetch products', error);
+                return;
             }
+        }
+        
+        // Initial injection of ads
+        positionAdsBasedOnVisibleEvents();
+        
+        // Set up observers for filter changes and DOM mutations
+        setupFilterObserver();
+        setupMutationObserver(eventsContainer);
+        
+        console.log('Ad Injector: System initialized');
+    }
+    
+    /**
+     * Set up observer for the filter state changes
+     */
+    function setupFilterObserver() {
+        // Listen for custom event from filter system
+        document.addEventListener('filterStateChanged', function(event) {
+            console.log('Ad Injector: Filter state changed, repositioning ads');
+            // Wait a moment for the DOM to update after filter changes
+            setTimeout(() => {
+                positionAdsBasedOnVisibleEvents();
+            }, 300);
+        });
+        
+        // For backward compatibility, also watch for click events on filter buttons
+        const filterButtons = document.querySelectorAll('.filter-btn, .organizer-btn');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Throttle to prevent multiple rapid executions
+                if (throttleTimer) clearTimeout(throttleTimer);
+                throttleTimer = setTimeout(() => {
+                    console.log('Ad Injector: Filter button clicked, will reposition ads');
+                    setTimeout(() => positionAdsBasedOnVisibleEvents(), 350);
+                }, OBSERVER_THROTTLE);
+            });
+        });
+    }
+    
+    /**
+     * Set up mutation observer to detect when events are added or removed
+     */
+    function setupMutationObserver(container) {
+        if (filterChangeObserver) {
+            filterChangeObserver.disconnect();
+        }
+        
+        filterChangeObserver = new MutationObserver(function(mutations) {
+            // Throttle to prevent multiple rapid executions
+            if (throttleTimer) clearTimeout(throttleTimer);
+            throttleTimer = setTimeout(() => {
+                // Check if the mutations affected event visibility
+                const visibilityChanged = mutations.some(mutation => {
+                    return Array.from(mutation.addedNodes).some(node => 
+                        node.classList && node.classList.contains('event-item')) ||
+                    Array.from(mutation.removedNodes).some(node => 
+                        node.classList && node.classList.contains('event-item')) ||
+                    Array.from(mutation.target.querySelectorAll('.event-item')).some(el => 
+                        mutation.attributeName === 'style' && 
+                        (el.style.display === 'none' || el.style.display === 'block'));
+                });
+                
+                if (visibilityChanged) {
+                    console.log('Ad Injector: Event visibility changed, repositioning ads');
+                    positionAdsBasedOnVisibleEvents();
+                }
+            }, OBSERVER_THROTTLE);
+        });
+        
+        filterChangeObserver.observe(container, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['style']
+        });
+    }
+    
+    /**
+     * Reposition ads based on currently visible events
+     */
+    function positionAdsBasedOnVisibleEvents() {
+        // Remove existing ads first
+        removeExistingAds();
+        
+        // Get visible events (excluding ads)
+        const visibleEvents = Array.from(
+            document.querySelectorAll('.event-item:not(.ad-item)')
+        ).filter(event => {
+            const style = window.getComputedStyle(event);
+            return style.display !== 'none' && style.opacity !== '0';
+        });
+        
+        // If no visible events, don't add ads
+        if (visibleEvents.length === 0) {
+            console.log('Ad Injector: No visible events found, skipping ad insertion');
+            return;
+        }
+        
+        console.log(`Ad Injector: Found ${visibleEvents.length} visible events`);
+        
+        // Calculate insertion points (after every Nth visible event)
+        const insertionPoints = [];
+        for (let i = AD_INSERTION_INTERVAL - 1; i < visibleEvents.length; i += AD_INSERTION_INTERVAL) {
+            insertionPoints.push(visibleEvents[i]);
+        }
+        
+        // Add one more ad at the end if there are enough events and we didn't just add one
+        if (visibleEvents.length >= AD_INSERTION_INTERVAL * 2 && 
+            visibleEvents.length % AD_INSERTION_INTERVAL !== 0) {
+            insertionPoints.push(visibleEvents[visibleEvents.length - 1]);
+        }
+        
+        // Insert ads at calculated positions
+        if (insertionPoints.length > 0) {
+            insertAdsAtPositions(insertionPoints);
         }
     }
     
+    /**
+     * Remove all existing ad cards
+     */
+    function removeExistingAds() {
+        const existingAds = document.querySelectorAll('.event-item.ad-item');
+        existingAds.forEach(ad => ad.parentNode.removeChild(ad));
+        console.log(`Ad Injector: Removed ${existingAds.length} existing ads`);
+    }
+    
+    /**
+     * Insert ads after specified event elements
+     */
+    function insertAdsAtPositions(eventElements) {
+        if (!productsCache || productsCache.length === 0) {
+            console.warn('Ad Injector: No products available for insertion');
+            return;
+        }
+        
+        console.log(`Ad Injector: Inserting ads at ${eventElements.length} positions`);
+        
+        // Insert ad after each specified event
+        eventElements.forEach((event, index) => {
+            // Get a product for this position, avoiding duplicates when possible
+            const product = getRandomProduct(productsCache);
+            
+            // Create and insert the ad
+            const adCard = createAdCard(product);
+            
+            // Add custom attribute to track insertion order for debugging
+            adCard.dataset.adPosition = index + 1;
+            
+            // Insert after the event
+            event.parentNode.insertBefore(adCard, event.nextSibling);
+        });
+    }
+
     /**
      * Get a random product, tracking used products to avoid duplicates
      */
@@ -649,4 +807,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         return newArray;
     }
+    
+    // Expose refresh method for external use
+    window.adInjector = {
+        refreshAds: positionAdsBasedOnVisibleEvents
+    };
 });
