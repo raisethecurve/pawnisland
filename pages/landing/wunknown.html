@@ -1,0 +1,727 @@
+.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WUNKNOWN | Ryan Boudreau | Champion Beatboxer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles with vaporwave-inspired color scheme */
+        :root {
+            --primary: #6B2CBF;      /* Deep purple */
+            --secondary: #00FFFF;    /* Cyan */
+            --accent: #FF00FF;       /* Magenta */
+            --dark: #121212;         /* Near black */
+            --light: #FFFFFF;        /* White */
+            --grid-color: #FC00FF;   /* Grid line color */
+            --gradient-bg: linear-gradient(135deg, #000080, #6B2CBF); /* Deep blue to purple */
+        }
+        
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--light);
+            background-color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            transition: background-color 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        
+        nav.scrolled {
+            background-color: rgba(18, 18, 18, 0.9);
+            box-shadow: 0 2px 20px rgba(0, 255, 255, 0.2);
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            color: var(--light);
+            transition: color 0.3s ease, transform 0.2s ease;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(transparent 0%, rgba(0, 0, 0, 0.5) 100%),
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0 L100 0 L100 100' stroke='%23FC00FF' stroke-width='0.5' fill='none' opacity='0.3'/%3E%3C/svg%3E");
+            background-size: 50px 50px;
+        }
+        
+        .hero-svg {
+            position: absolute;
+            width: 60%;
+            height: auto;
+            opacity: 0.8;
+            z-index: 1;
+            filter: drop-shadow(0 0 15px var(--secondary));
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--light);
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .hero-title {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 8px;
+            text-shadow: 0 0 20px var(--accent);
+            animation: pulse 3s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { text-shadow: 0 0 10px var(--accent); }
+            50% { text-shadow: 0 0 30px var(--accent), 0 0 40px var(--secondary); }
+            100% { text-shadow: 0 0 10px var(--accent); }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            color: var(--secondary);
+            letter-spacing: 2px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, var(--accent), var(--primary));
+            border: 2px solid var(--secondary);
+            border-radius: 30px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 15px var(--secondary);
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            right: -30px;
+            bottom: -30px;
+            background: linear-gradient(45deg, var(--accent), var(--secondary), var(--primary));
+            background-size: 200% 200%;
+            animation: gradient 3s ease infinite;
+            z-index: -1;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4);
+            border-color: transparent;
+        }
+        
+        .cta-button:hover::before {
+            opacity: 1;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Sections */
+        section {
+            padding: 7rem 2rem;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--secondary);
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(to right, var(--accent), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        /* About section */
+        .about {
+            background-color: #0a0a0a;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .about::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-image: radial-gradient(circle at 50% 50%, rgba(107, 44, 191, 0.15) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .about-text {
+            flex: 1;
+            padding-right: 1rem;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.3);
+            transform: rotate(2deg);
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover {
+            transform: rotate(0);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(1.2) contrast(1.1);
+        }
+        
+        /* Performance section */
+        .portfolio {
+            background-color: #080808;
+            position: relative;
+        }
+        
+        .portfolio::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0 L100 0 L100 100 L0 100 Z' stroke='%2300FFFF' stroke-width='0.2' fill='none' opacity='0.05'/%3E%3C/svg%3E");
+            background-size: 30px 30px;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .portfolio-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background-color: rgba(18, 18, 18, 0.8);
+            border: 1px solid rgba(107, 44, 191, 0.3);
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.2);
+            border-color: var(--secondary);
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-item-content {
+            padding: 1.5rem;
+        }
+        
+        .portfolio-item-content h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .portfolio-item-content p {
+            color: #ccc;
+        }
+        
+        /* Stats section */
+        .stats {
+            background: var(--gradient-bg);
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 100 L100 0' stroke='%23FF00FF' stroke-width='0.5' fill='none' opacity='0.2'/%3E%3C/svg%3E");
+            background-size: 20px 20px;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stat-item {
+            padding: 2rem;
+        }
+        
+        .stat-value {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: 'Orbitron', sans-serif;
+            color: var(--light);
+            text-shadow: 0 0 15px var(--accent);
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        /* Contact section */
+        .contact {
+            background-color: #080808;
+            color: var(--light);
+            text-align: center;
+            position: relative;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 5px;
+            color: var(--light);
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            color: var(--light);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .social-icon {
+            font-size: 1.2rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+        
+        .social-icon:hover {
+            color: var(--light);
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .social-icon:hover::before {
+            transform: translateY(0);
+        }
+        
+        .copyright {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+                letter-spacing: 4px;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .stat-value {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="main-nav">
+        <a href="#" class="logo">WUNKNOWN</a>
+        <div class="nav-links">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#portfolio" class="nav-link">Performances</a>
+            <a href="#stats" class="nav-link">Achievements</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="../../images/wunknown/wunknown.svg" alt="Wunknown" class="hero-svg">
+        <div class="hero-content">
+            <h1 class="hero-title">WUNKNOWN</h1>
+            <p class="hero-subtitle">RYAN BOUDREAU | AMERICAN CHAMPION BEATBOXER</p>
+            <a href="#portfolio" class="cta-button">Experience the Sound</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">The Voice Behind the Sound</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Ryan Boudreau, known professionally as <span class="highlight">WUNKNOWN</span>, has established himself as one of America's premier beatboxers, crafting sonic landscapes that push the boundaries of what the human voice can achieve.</p>
+                
+                <p>Rising from the underground beatbox scene to international acclaim, WUNKNOWN has pioneered innovative techniques that blend traditional beatboxing with electronic music production elements, creating a signature sound that's both recognizable and constantly evolving.</p>
+                
+                <p>As a <span class="highlight">multiple championship title holder</span>, his performances combine technical precision with raw emotional energy, transforming stages into immersive audio experiences that leave audiences in awe of what a single human voice can produce.</p>
+                
+                <p>WUNKNOWN's approach transcends mere performance—it's an artistic statement that challenges listeners to reconsider the possibilities of vocal expression and sound design in the digital age.</p>
+            </div>
+            <div class="about-image">
+                <img src="images/wunknown/about-image.jpg" alt="Ryan Boudreau performing" onerror="this.src='https://via.placeholder.com/600x400?text=WUNKNOWN+Performance'">
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio/Performances Section -->
+    <section class="portfolio" id="portfolio">
+        <h2 class="section-title">Notable Performances</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="images/wunknown/work1.jpg" alt="Performance 1" onerror="this.src='https://via.placeholder.com/400x250?text=Grand+Beatbox+Battle'">
+                <div class="portfolio-item-content">
+                    <h3>Grand Beatbox Battle</h3>
+                    <p>International Showcase, Switzerland 2022</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/wunknown/work2.jpg" alt="Performance 2" onerror="this.src='https://via.placeholder.com/400x250?text=Vocal+Alchemy+Tour'">
+                <div class="portfolio-item-content">
+                    <h3>Vocal Alchemy Tour</h3>
+                    <p>North American Headline Tour, 2023</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/wunknown/work3.jpg" alt="Performance 3" onerror="this.src='https://via.placeholder.com/400x250?text=SXSW+Festival'">
+                <div class="portfolio-item-content">
+                    <h3>SXSW Festival</h3>
+                    <p>Featured Artist, Austin 2022</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Stats Section -->
+    <section class="stats" id="stats">
+        <h2 class="section-title">Champion Status</h2>
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-value">3x</div>
+                <div class="stat-label">US Champion</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">12+</div>
+                <div class="stat-label">Major Competitions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">500K</div>
+                <div class="stat-label">Social Followers</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">40+</div>
+                <div class="stat-label">Countries Performed</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Connect</h2>
+        <div class="contact-form">
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#" class="social-icon">IG</a>
+            <a href="#" class="social-icon">YT</a>
+            <a href="#" class="social-icon">SC</a>
+            <a href="#" class="social-icon">TT</a>
+        </div>
+        <p class="copyright">&copy; 2023 WUNKNOWN / Ryan Boudreau. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Enhanced scroll behavior and animations
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links with offset for fixed header
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Optional: Add animation for stat counters when scrolled into view
+        const statValues = document.querySelectorAll('.stat-value');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        statValues.forEach(value => {
+            value.style.opacity = 0;
+            value.style.transform = 'translateY(20px)';
+            value.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(value);
+        });
+    </script>
+</body>
+</html>
