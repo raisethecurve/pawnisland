@@ -1,19 +1,21 @@
-# Main access control
+# Access control for all crawlers
 User-agent: *
+Allow: /
 Disallow: /admin/
 Disallow: /private/
 Disallow: /data/
 
-# Public resources
-Allow: /css/
-Allow: /js/
-Allow: /images/
+# Specific instructions for Bingbot
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+Crawl-delay: 5
 
-# Public pages
-Allow: /index.html
-Allow: /pages/landing/about-me.html
-Allow: /pages/landing/clearinghouse.html
-Allow: /pages/landing/coaching.html
+# Specific instructions for GPTBot (ChatGPT crawler)
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+Crawl-delay: 10
 
-# Sitemap
+# Sitemap location
 Sitemap: https://pawnislandacademy.com/sitemap.xml

@@ -1,12 +1,13 @@
 # Pawn Island Academy
 
-Pawn Island Academy offers personalized chess coaching, unique resources, and community events.
+Pawn Island Academy offers personalized chess coaching, unique resources, and community events in Rhode Island.
 
 ## Table of Contents
 - [Features](#features)
 - [Project Structure](#project-structure)
 - [Setup Instructions](#setup-instructions)
 - [Usage](#usage)
+- [SEO Guidelines](#seo-guidelines)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -14,6 +15,7 @@ Pawn Island Academy offers personalized chess coaching, unique resources, and co
 - **Chess Coaching:** Personalized sessions for all skill levels
 - **Event Clearinghouse:** A curated list of chess events in the Rhode Island area
 - **About Me:** Information about the founder of Pawn Island Academy
+- **Fight With Madi:** Charity chess tournament fundraiser
 
 ## Project Structure
 ```
@@ -73,6 +75,17 @@ pawnisland/
 - **Chess Coaching:** Visit the [Chess Coaching](https://pawnislandacademy.com/pages/landing/coaching.html) page
 - **Clearinghouse:** Visit the [Clearinghouse](https://pawnislandacademy.com/pages/landing/clearinghouse.html) page
 - **Blog:** Read articles on our [Blog](https://chess.com/blog/squarethecurve)
+
+## SEO Guidelines
+When creating or updating pages, follow these guidelines for optimal search engine visibility:
+
+- **Page Titles:** Include location keywords (Rhode Island, Providence) and primary service
+- **Meta Descriptions:** 150-160 characters with core services and location
+- **Keywords:** Include chess-related terms and local Rhode Island keywords
+- **Image Alt Text:** Descriptive alt text with relevant keywords
+- **URL Structure:** Keep URLs short and descriptive
+- **Headings:** Use H1-H6 tags appropriately with keywords
+- **Content:** Create high-quality, unique content that includes relevant keywords naturally
 
 ## Contributing
 1. Fork the Repository

@@ -839,4 +839,26 @@ document.addEventListener("DOMContentLoaded", function() {
             applyMatrixFilters();
         }
     }, 1000); // Give time for events to load
+
+    // Initialize events to show only upcoming
+    initializeEvents();
 });
+
+// Add this function to automatically filter for upcoming events when the page loads
+function initializeEvents() {
+    // Automatically filter to show only upcoming events
+    const events = document.querySelectorAll('.event-item');
+    events.forEach(event => {
+        if (event.classList.contains('past-event')) {
+            event.style.display = 'none';
+        } else {
+            event.style.display = 'block';
+        }
+    });
+}
+
+// Override or modify existing filter function if it exists
+function filterEvents(filterType) {
+    // This function may no longer be needed or can be simplified if it exists
+    // ...existing code...
+}

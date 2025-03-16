@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Clearinghouse - Pawn Island Academy</title>
-    <meta name="description" content="Find upcoming chess events and tournaments in the Greater Rhode Island area.">
-    <meta name="keywords" content="Chess Events, Rhode Island Chess, Chess Tournaments, Pawn Island Academy">
-    <meta property="og:title" content="Chess Events - Pawn Island Academy">
-    <meta property="og:description" content="Find upcoming chess tournaments and events in Rhode Island, Massachusetts, and Connecticut.">
+    <title>Chess Tournaments Rhode Island | Pawn Island Academy</title>
+    <meta name="description" content="Find upcoming chess tournaments and events in Rhode Island and New England. Stay updated on local chess competitions.">
+    <meta name="keywords" content="chess tournaments, Rhode Island chess events, New England chess, Providence chess competitions">
+    <meta property="og:title" content="Chess Tournaments Rhode Island | Pawn Island Academy">
+    <meta property="og:description" content="Find upcoming chess tournaments and events in Rhode Island and New England. Stay updated on local chess competitions.">
     <meta property="og:image" content="https://pawnislandacademy.com/images/brand-icons/logo-light.png">
     <meta property="og:url" content="https://pawnislandacademy.com/pages/landing/clearinghouse.html">
+    <meta property="og:type" content="website">
     <link rel="canonical" href="https://pawnislandacademy.com/pages/landing/clearinghouse.html">
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -97,22 +98,11 @@
 
     <div class="main-content">
         <div class="container">
-            <!-- Unified filter container with improved layout -->
+            <!-- Simplified filter container - removed time filters -->
             <div class="unified-filters" data-aos="fade-up">
-                <!-- Time filters -->
-                <div class="filter-section">
-                    <div class="filter-btn-group">
-                        <!-- Removed "All Events" button -->
-                        <button type="button" class="filter-btn active" data-filter="upcoming">Upcoming</button>
-                        <button type="button" class="filter-btn" data-filter="past">Past</button>
-                    </div>
-                </div>
-                
-                <!-- Visual separator -->
-                <div class="filter-divider"></div>
-                
                 <!-- Organizer filters - now with multi-select capability -->
                 <div class="filter-section organizers-section">
+                    <h1 class="filter-heading text-center mb-4">Rhode Island Chess Tournaments & Events</h1>
                     <div id="organizer-filters" class="organizer-filter-group">
                         <!-- Populated by JavaScript -->
                     </div>
@@ -206,8 +196,8 @@
             
             eventsLoaded.then(() => {
                 document.getElementById('loading-events').style.display = 'none';
-                // Apply the initial "upcoming" filter when events are loaded
-                filterEvents('upcoming');
+                // Filter to show only upcoming events (default display)
+                showUpcomingEvents();
             });
 
             // Initialize the jump-to-top component with custom styling
@@ -223,42 +213,20 @@
                 accessibility: true
             });
 
-            // Filter functionality
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Update active state
-                    document.querySelectorAll('.filter-btn').forEach(b => {
-                        b.classList.remove('active');
-                        b.style.transform = '';
-                    });
-                    this.classList.add('active');
-                    this.style.transform = 'scale(1.05)';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 300);
-
-                    // Filter events using the new logic
-                    filterEvents(this.getAttribute('data-filter'));
-                });
-            });
-
-            // Updated Filter events function (only upcoming and past)
-            function filterEvents(filter) {
+            // Function to show only upcoming events
+            function showUpcomingEvents() {
                 const events = document.querySelectorAll('.event-item');
                 let visibleCount = 0;
 
                 events.forEach((event, index) => {
                     const isPast = event.classList.contains('past-event');
-                    // Only check for 'upcoming' and 'past'
-                    const shouldShow = (filter === 'upcoming' && !isPast) || (filter === 'past' && isPast);
                     
-                    if (shouldShow) {
+                    if (!isPast) {
                         event.style.display = 'block';
                         event.style.animation = `fadeIn 0.3s ease-out ${index * 0.05}s forwards`;
                         visibleCount++;
                     } else {
-                        event.style.animation = 'fadeOut 0.2s ease-out forwards';
-                        setTimeout(() => { event.style.display = 'none'; }, 200);
+                        event.style.display = 'none';
                     }
                 });
 
