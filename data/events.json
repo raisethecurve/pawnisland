@@ -1183,5 +1183,22 @@
         "notes": "This is a very strong chess club within a reasonable distance of Rhode Island. I have personally played here and loved every minute of it. There is a great opportunity here for youths and adults alike to play high-rated (but not underrated) players. Bonus points if you can qualify for the club championship, which is sure to be a feather in your cap.",
         "entry_fee": "$5.00 for the whole tournament, payable upon entry",
         "tournamentId": "brask-2025"
-    }
+    },
+    {
+        "name": "Fight With Madi - Lichess Charity Tournament",
+        "startdate": "2025-03-22",
+        "days": "1",
+        "image": "../../images/madison/madison-hero.webp",
+        "largeImage": true,
+        "organizer": "Ocean State Chess Association",
+        "location": "Lichess.org (Online)",
+        "format": "Lichess Arena, 2-hour duration",
+        "time_control": "Blitz G/3",
+        "entry_fee": "Suggested GoFundMe donation",
+        "round_times": "12:00 PM EST",
+        "prizes": "$20 to first place",
+        "ages": "All ages",
+        "link": "https://pawnislandacademy.com/pages/landing/fight-with-madi.html",
+        "notes": "Join us in supporting Madison Brodeur, a courageous 14-year-old battling stage IV nasopharyngeal cancer. Madison is the daughter of proud veteran Shane Brodeur and despite her diagnosis, she maintains her passion for marine biology, volleyball, football, and surfing.<p>At just 14 years old, Madison is an unstoppable force. She's fierce on the football field, powerful on the volleyball court, and full of life, laughter, and strength beyond her years. But now, she's facing her toughest opponent yet—a rare form of cancer.<p>Despite this unimaginable challenge, Madi continues to fight with the same determination that makes her a standout athlete. Her spirit is unbreakable, but she needs a team behind her.<p>Your participation and donations will help provide support for her family and the resources she needs to focus on healing.<p>Let's rally behind this incredible young warrior. Every contribution makes a difference in her battle. Join Team Madi today and help her win this fight! #FightWithMadi"
+  }
 ]
