@@ -15,7 +15,7 @@
         "address": "661 Park Ave, Cranston, RI 02910",
         "entry_fee": "$5.00 each week for the main tournament<p>Donations appreciated, put towards club equipment",
         "format": "4-round Swiss System played at a rate of one game per week",
-        "time_control": "G/60;d10",
+        "time_control": "G/45;d10",
         "sections": "Traditionally one section, although we're trying to split into Open and u1200 if we can gather enough scholastic interest.",
         "round_times": "07:00 PM",
         "prizes": "Cash and Trophies",
