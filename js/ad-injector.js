@@ -146,17 +146,26 @@ document.addEventListener('DOMContentLoaded', function() {
         
         console.log(`Ad Injector: Found ${visibleEvents.length} visible events`);
         
-        // Calculate insertion points (after every Nth visible event)
+        // Calculate insertion points - improved algorithm to ensure coverage
         const insertionPoints = [];
+        
+        // Start from the first insertion point and continue throughout all events
         for (let i = AD_INSERTION_INTERVAL - 1; i < visibleEvents.length; i += AD_INSERTION_INTERVAL) {
-            insertionPoints.push(visibleEvents[i]);
+            if (i < visibleEvents.length) {
+                insertionPoints.push(visibleEvents[i]);
+            }
         }
         
-        // Add one more ad at the end if there are enough events and we didn't just add one
-        if (visibleEvents.length >= AD_INSERTION_INTERVAL * 2 && 
-            visibleEvents.length % AD_INSERTION_INTERVAL !== 0) {
-            insertionPoints.push(visibleEvents[visibleEvents.length - 1]);
+        // Always add an ad after the last event if we haven't just added one
+        // and there are enough events to warrant an ad
+        const lastEventIndex = visibleEvents.length - 1;
+        if (visibleEvents.length >= 2 && 
+            lastEventIndex % AD_INSERTION_INTERVAL !== AD_INSERTION_INTERVAL - 1 &&
+            !insertionPoints.includes(visibleEvents[lastEventIndex])) {
+            insertionPoints.push(visibleEvents[lastEventIndex]);
         }
+        
+        console.log(`Ad Injector: Will insert ads at ${insertionPoints.length} positions`);
         
         // Insert ads at calculated positions
         if (insertionPoints.length > 0) {
@@ -218,10 +227,18 @@ document.addEventListener('DOMContentLoaded', function() {
         let availableProducts = products.filter(p => !window.usedProductIds.has(p.id));
         
         // If we've used all products or too few remain, reset and allow all products again
-        if (availableProducts.length === 0 || availableProducts.length < Math.max(2, Math.floor(products.length * 0.3))) {
+        // Changed the condition to be more lenient - reset when we've used 70% of products
+        if (availableProducts.length === 0 || availableProducts.length <= Math.floor(products.length * 0.3)) {
             console.log('Resetting product tracking - all products have been used or too few remain');
             window.usedProductIds.clear();
             availableProducts = products;
+        }
+        
+        // If for some reason we still have no products, use emergency fallback
+        if (availableProducts.length === 0) {
+            console.error('Critical error: No products available even after reset');
+            // Create an emergency product as last resort
+            return createEmergencyProduct();
         }
         
         // Sort by "staleness" - products not shown recently get priority
@@ -248,6 +265,26 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log(`Selected product: "${selectedProduct.name}" (ID: ${selectedProduct.id})`);
         
         return selectedProduct;
+    }
+    
+    /**
+     * Emergency fallback to create a product when all else fails
+     */
+    function createEmergencyProduct() {
+        // Generate a random ID to avoid overwriting existing products
+        const randomId = 'emergency-' + Math.random().toString(36).substr(2, 9);
+        
+        return {
+            id: randomId,
+            name: "Chess Equipment & Supplies",
+            images: [
+                "https://cdn.shopify.com/s/files/1/0712/3686/2656/files/chess-equipment.jpg",
+                "https://cdn.shopify.com/s/files/1/0712/3686/2656/files/chess-supplies.jpg"
+            ],
+            price: "$29.99",
+            description: "Essential chess equipment for players of all levels.",
+            url: `https://${SHOPIFY_DOMAIN}/collections/all`
+        };
     }
     
     /**
@@ -683,7 +720,8 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             
             if (!response.ok) {
-                throw new Error(`Shopify API request failed: ${response.statusText}`);
+                console.error(`Shopify API request failed with status: ${response.status}`);
+                return fallbackToStaticProducts();
             }
             
             const data = await response.json();
@@ -694,19 +732,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 return fallbackToStaticProducts();
             }
             
+            // Check if we got a valid products array
+            if (!data.data?.products?.edges || !Array.isArray(data.data.products.edges)) {
+                console.error('Shopify API returned unexpected data structure:', data);
+                return fallbackToStaticProducts();
+            }
+            
             // Extract and format product data with multiple images
             const products = data.data.products.edges.map(edge => {
                 const product = edge.node;
                 
                 // Extract all images into an array
-                const images = product.images.edges.map(img => img.node.originalSrc);
+                const images = product.images?.edges?.map(img => img.node.originalSrc) || [];
                 
                 // If no images, use placeholder
                 if (images.length === 0) {
                     images.push('https://cdn.shopify.com/s/files/1/0712/3686/2656/files/placeholder-product.jpg');
                 }
                 
-                const price = product.priceRange.minVariantPrice.amount;
+                const price = product.priceRange?.minVariantPrice?.amount || "0.00";
                 const formattedPrice = `$${parseFloat(price).toFixed(2)}`;
                 
                 // Create a shorter description
@@ -716,15 +760,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     : fullDescription;
                 
                 return {
-                    id: product.id,
-                    name: product.title,
+                    id: product.id || `product-${Math.random().toString(36).substring(2, 11)}`,
+                    name: product.title || "Chess Product",
                     images: images, // Array of images instead of single image
                     price: formattedPrice,
                     description: description,
-                    url: `https://${SHOPIFY_DOMAIN}/products/${product.handle}`
+                    url: `https://${SHOPIFY_DOMAIN}/products/${product.handle || "all"}`
                 };
             });
             
+            // Add some error checking if products array is empty
+            if (products.length === 0) {
+                console.warn('No products returned from Shopify API');
+                return fallbackToStaticProducts();
+            }
+            
+            console.log(`Successfully fetched ${products.length} products from Shopify`);
             return shuffleArray(products);
         } catch (error) {
             console.error('Error fetching Shopify products:', error);

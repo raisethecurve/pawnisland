@@ -1086,21 +1086,6 @@
     display: none;
 }
 
-/* Horizontal promo badge instead of diagonal ribbon */
-.promo-badge {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background: linear-gradient(135deg, #2ecc71, #27ae60);
-    color: white;
-    padding: 6px 12px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    z-index: 10;
-}
-
 /* Register button styling - simplified */
 .event-card.promo-card .register-button {
     background: linear-gradient(45deg, #2ecc71, #27ae60);
@@ -1154,4 +1139,97 @@
         left: 200%;
         opacity: 0;
     }
+}
+
+/* Event badges styling */
+.event-badges-container {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 5;
+    max-width: 70%;
+}
+
+.event-badge {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    opacity: 0.95;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(2px);
+}
+
+.event-badge:hover {
+    transform: translateX(3px);
+    opacity: 1;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+
+.event-badge i {
+    margin-right: 5px;
+}
+
+/* Badge color variations */
+.badge-info {
+    background-color: #17a2b8;
+}
+
+.badge-success {
+    background-color: #28a745;  /* This applies to the discount badge */
+}
+
+.badge-primary {
+    background-color: #007bff;
+}
+
+.badge-secondary {
+    background-color: #6c757d;
+}
+
+.badge-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.badge-danger {
+    background-color: #dc3545;
+}
+
+.badge-dark {
+    background-color: #343a40;
+}
+
+/* Responsive adjustments for badges */
+@media (max-width: 576px) {
+    .event-badges-container {
+        top: 10px;
+        left: 10px;
+        max-width: 60%;
+    }
+    
+    .event-badge {
+        padding: 4px 8px;
+        font-size: 0.7rem;
+    }
+    
+    .event-badge i {
+        margin-right: 4px;
+    }
+}
+
+/* Night theme adjustments for badges */
+.night-theme .event-badge {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+.night-theme .badge-warning {
+    color: #212529;
 }

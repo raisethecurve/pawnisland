@@ -10,7 +10,7 @@
             "blitzDates": ["2025-01-30", "2025-05-29", "2025-07-31", "2025-10-30"]
         },
         "image": "../../images/assets/legion-bowl.jpg",
-        "organizer": "In Association with OSCA",
+        "organizer": "Cranston Chess Club",
         "location": "Legion Bowl & Billiards",
         "address": "661 Park Ave, Cranston, RI 02910",
         "entry_fee": "$5.00 each week for the main tournament<p>Donations appreciated, put towards club equipment",
@@ -20,8 +20,7 @@
         "round_times": "07:00 PM",
         "prizes": "Cash and Trophies",
         "ages": "5+ (parental supervision encouraged)",
-        "notes": "Now the premier chess club in Rhode Island, Cranston offers a challenge for all ages and abilities. Jordan Ashton, Frank DelBonis and myself founded this club in order to host quality chess in a friendly atmosphere. Join us for rated games and skittles while the jukebox plays and the pins rattle.<p><p>The main structure is a 4-round classical swiss tournament, played at a rate of one round per week. In January, May, July, and October of 2025, a special big-money blitz tournament will be held on the fifth Thursday with an entry fee of $20.00.<p>Legion Bowl is fun for the whole family, featuring well-maintained duck pin bowling lanes, a large billiards hall, a large arcade, and the fabulous Pub on Park bar and grill which hosts regular events such as karaoke, trivia, and dance classes.<p>USCF membership required for rated games."
-    },
+        "notes": "Now the premier chess club in Rhode Island, Cranston offers a challenge for all ages and abilities. Jordan Ashton, Frank DelBonis and myself founded this club in order to host quality chess in a friendly atmosphere. Join us for rated games and skittles while the jukebox plays and the pins rattle.<p><p>The main structure is a 4-round classical swiss tournament, played at a rate of one round per week. In January, May, July, and October of 2025, a special big-money blitz tournament will be held on the fifth Thursday with an entry fee of $20.00.<p>Legion Bowl is fun for the whole family, featuring well-maintained duck pin bowling lanes, a large billiards hall, a large arcade, and the fabulous Pub on Park bar and grill which hosts regular events such as karaoke, trivia, and dance classes.<p>USCF membership required for rated games."    },
     {
         "name": "Checkmate Cancer: Tomorrow Fund Charity Tournament",
         "startdate": "2025-09-27",
@@ -33,8 +32,8 @@
         "prizes": "Trophies, Medals, and perhaps a Raffle",
         "ages": "All ages",
         "link": "https://oceanstatechess.com/event/chess-tournament",
-        "notes": "The Rhode Island chess community is coming together once again for a tournament that goes beyond the board. The <strong>3rd Annual Tomorrow Fund Chess Tournament</strong> is more than just a competition—it’s a gathering of players, families, and supporters rallying behind a cause that truly matters.<p>Each move played in this tournament helps support children battling cancer. Every entry fee, every donation, every game contributes to <strong>The Tomorrow Fund</strong>, an organization dedicated to providing financial and emotional support to children undergoing treatment at Hasbro Children's Hospital. For three years now, this event has united players from Rhode Island and beyond, proving that the game we love can be a force for good.<p>Players of all levels will have a chance to compete in a <strong>USCF-rated event</strong>, testing their skills while knowing that their participation is making a difference. With trophies, prizes, and the camaraderie that only chess can bring, this tournament has become a staple in the local chess calendar—a <strong>must-play for those who love the game and care about their community</strong>.<p>The board is set, the pieces are in place, and the mission is clear. This is chess with purpose. This is the 3rd Annual Tomorrow Fund Chess Tournament. <strong>Come make your move.</strong>"
-    },
+        "notes": "The Rhode Island chess community is coming together once again for a tournament that goes beyond the board. The <strong>3rd Annual Tomorrow Fund Chess Tournament</strong> is more than just a competition—it’s a gathering of players, families, and supporters rallying behind a cause that truly matters.<p>Each move played in this tournament helps support children battling cancer. Every entry fee, every donation, every game contributes to <strong>The Tomorrow Fund</strong>, an organization dedicated to providing financial and emotional support to children undergoing treatment at Hasbro Children's Hospital. For three years now, this event has united players from Rhode Island and beyond, proving that the game we love can be a force for good.<p>Players of all levels will have a chance to compete in a <strong>USCF-rated event</strong>, testing their skills while knowing that their participation is making a difference. With trophies, prizes, and the camaraderie that only chess can bring, this tournament has become a staple in the local chess calendar—a <strong>must-play for those who love the game and care about their community</strong>.<p>The board is set, the pieces are in place, and the mission is clear. This is chess with purpose. This is the 3rd Annual Tomorrow Fund Chess Tournament. <strong>Come make your move.</strong>",
+        "tags": ["fundraiser"]},
     {
         "name": "Rhode Island Open Scholastic Championship",
         "startdate": "2025-03-15",
@@ -51,8 +50,8 @@
         "prizes": "Trophies, Medals, Team Trophies",
         "ages": "K-12",
         "notes": "The Rhode Island Open Scholastic Championship is the premier scholastic chess event in the state.<p>The event is open to all players regardless of residency. All players are required to have a current USCF membership. If you are new to rated chess, OSCA is offering a special package that includes USCF membership and entry fee.<p>The tournament will feature individual and team prizes, and the top finishers from Rhode Island will qualify for the 2025 Rhode Island Closed Scholastic Championships. The Closed Scholastic Championships comprise three round robin events (High School, Middle School, Elementary School) featuring open championship winners and top players invited based on USCF rating.<p>Winners of these prestigious closed events will be awarded national berths to the Denker, Barber, and Rockefeller championship tournaments where they will proudly represent the state of Rhode Island.",
-        "link": "https://oceanstatechess.com/event/2025-osca-gr-k-12-scholastic-championship"
-    },
+        "link": "https://oceanstatechess.com/event/2025-osca-gr-k-12-scholastic-championship",
+        "tags": ["scholastic"]},
     {
         "name": "Connecticut Speed Champoinships",
         "startdate": "2025-04-05",
@@ -69,7 +68,8 @@
         "ages": "All ages",
         "notes": "Join us for the CT Speed Championships at Connecticut College. This event is open to players of all ages and skill levels. Compete in a fast-paced, exciting environment with cash and trophy prizes up for grabs. USCF membership is required for rated games. Register early to secure your spot and save on the entry fee.",
         "promo_code": "PIMC25",
-        "registration_link": "https://www.events4chess.com/events/?event_ID=2293"
+        "registration_link": "https://www.events4chess.com/events/?event_ID=2293",
+        "tags": ["speed","discount","regional"]
     },
     {
         "name": "53rd Annual World Open",
@@ -93,7 +93,8 @@
         "prestigeLevel": "International",
         "grandPrix": "Enhanced (300 points)",
         "juniorGrandPrix": true,
-        "heritageEvent": true
+        "heritageEvent": true,
+        "tags": ["international"]
     },
     {
         "name": "New England Collegiate Championships",
@@ -113,7 +114,8 @@
         "notes": "A premier collegiate chess event in New England with sections for both college students and qualifying scholastic players.<p>Two sections: Open and U1600, both 4-round Swiss System.<p>Scholastic players in Grades 7-12 with ratings 800+ are welcome and fully prize eligible.<p>Perfect scores decided by Armageddon tiebreak.<p>One half-point bye available for rounds 1-3, zero-point byes available for any round.<p>Team trophies available in the U1600 section.",
         "collegiateEvent": true,
         "promo_code": "PIMC25",
-        "registration_link": "https://www.events4chess.com/events/?event_ID=2311"
+        "registration_link": "https://www.events4chess.com/events/?event_ID=2311",
+        "tags": ["discount", "collegiate", "scholastic", "regional"]
     },
     {
         "name": "Rhode Island Chess Club",
@@ -125,14 +127,15 @@
             "exceptions": []
         },
         "image": "../../images/assets/bos-billiards.png",
-        "organizer": "In Association with OSCA",
+        "organizer": "Rhode Island Chess Club",
         "location": "Bo's Bar & Billiards",
         "address": "33 Lambert Lind Hwy, Warwick, RI 02886",
         "format": "Casual",
         "round_times": "6:45 PM",
         "ages": "Must be 18 Years Old to Attend",
         "notes": "Join us at Bo's for chess and chicken wings.",
-        "isRecurring": true
+        "isRecurring": true,
+        "tags": ["adults-only"]
     },
     {
         "name": "Lou Giarrusso Memorial Cup",
@@ -170,7 +173,8 @@
         "link": "http://svenbraskcc.org/",
         "notes": "This is a very strong chess club within a reasonable distance of Rhode Island. I have personally played here and loved every minute of it. There is a great opportunity here for youths and adults alike to play high-rated (but not underrated) players. Bonus points if you can qualify for the club championship, which is sure to be a feather in your cap.",
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
-        "tournamentId": "brask-2025"
+        "tournamentId": "brask-2025",
+        "tags": ["weekly"]
     },
     {
         "name": "Sven Brask/Howard Cook Memorial - Round 2",
@@ -192,7 +196,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "brask-2025",
         "round": 2,
-        "showAfterDate": "2025-01-08"
+        "showAfterDate": "2025-01-08",
+        "tags": ["weekly"]
     },
     {
         "name": "Sven Brask/Howard Cook Memorial - Round 3",
@@ -214,7 +219,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "brask-2025",
         "round": 3,
-        "showAfterDate": "2025-01-15"
+        "showAfterDate": "2025-01-15",
+        "tags": ["weekly"]
     },
     {
         "name": "Sven Brask/Howard Cook Memorial - Round 4",
@@ -236,7 +242,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "brask-2025",
         "round": 4,
-        "showAfterDate": "2025-01-22"
+        "showAfterDate": "2025-01-22",
+        "tags": ["weekly"]
     },
     {
         "name": "Winter Swiss - Round 1",
@@ -256,7 +263,8 @@
         "link": "http://svenbraskcc.org/",
         "notes": "This is a very strong chess club within a reasonable distance of Rhode Island. I have personally played here and loved every minute of it. There is a great opportunity here for youths and adults alike to play high-rated (but not underrated) players. Bonus points if you can qualify for the club championship, which is sure to be a feather in your cap.",
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
-        "tournamentId": "winter-2025"
+        "tournamentId": "winter-2025",
+        "tags": ["weekly"]
     },
     {
         "name": "Winter Swiss - Round 2",
@@ -278,7 +286,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "winter-2025",
         "round": 2,
-        "showAfterDate": "2025-02-05"
+        "showAfterDate": "2025-02-05",
+        "tags": ["weekly"]
     },
     {
         "name": "Winter Swiss - Round 3",
@@ -300,7 +309,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "winter-2025",
         "round": 3,
-        "showAfterDate": "2025-02-12"
+        "showAfterDate": "2025-02-12",
+        "tags": ["weekly"]
     },
     {
         "name": "Winter Swiss - Round 4",
@@ -322,7 +332,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "winter-2025",
         "round": 4,
-        "showAfterDate": "2025-02-19"
+        "showAfterDate": "2025-02-19",
+        "tags": ["weekly"]
     },
     {
         "name": "Vail Pagliarani Memorial - Round 1",
@@ -342,7 +353,8 @@
         "link": "http://svenbraskcc.org/",
         "notes": "This is a very strong chess club within a reasonable distance of Rhode Island. I have personally played here and loved every minute of it. There is a great opportunity here for youths and adults alike to play high-rated (but not underrated) players. Bonus points if you can qualify for the club championship, which is sure to be a feather in your cap.",
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
-        "tournamentId": "vail-2025"
+        "tournamentId": "vail-2025",
+        "tags": ["weekly"]
     },
     {
         "name": "Vail Pagliarani Memorial - Round 2",
@@ -364,7 +376,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "vail-2025",
         "round": 2,
-        "showAfterDate": "2025-03-05"
+        "showAfterDate": "2025-03-05",
+        "tags": ["weekly"]
     },
     {
         "name": "Vail Pagliarani Memorial - Round 3",
@@ -386,7 +399,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "vail-2025",
         "round": 3,
-        "showAfterDate": "2025-03-12"
+        "showAfterDate": "2025-03-12",
+        "tags": ["weekly"]
     },
     {
         "name": "Vail Pagliarani Memorial - Round 4",
@@ -408,7 +422,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "vail-2025",
         "round": 4,
-        "showAfterDate": "2025-03-19"
+        "showAfterDate": "2025-03-19",
+        "tags": ["weekly"]
     },
     {
         "name": "Club Championship - Round 1",
@@ -428,7 +443,8 @@
         "link": "http://svenbraskcc.org/",
         "notes": "This is a very strong chess club within a reasonable distance of Rhode Island. I have personally played here and loved every minute of it. There is a great opportunity here for youths and adults alike to play high-rated (but not underrated) players. Bonus points if you can qualify for the club championship, which is sure to be a feather in your cap.",
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
-        "tournamentId": "club-2025"
+        "tournamentId": "club-2025",
+        "tags": ["weekly"]
     },
     {
         "name": "Club Championship - Round 2",
@@ -450,7 +466,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "club-2025",
         "round": 2,
-        "showAfterDate": "2025-04-02"
+        "showAfterDate": "2025-04-02",
+        "tags": ["weekly"]
     },
     {
         "name": "Club Championship - Round 3",
@@ -472,7 +489,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "club-2025",
         "round": 3,
-        "showAfterDate": "2025-04-09"
+        "showAfterDate": "2025-04-09",
+        "tags": ["weekly"]
     },
     {
         "name": "Club Championship - Round 4",
@@ -494,7 +512,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "club-2025",
         "round": 4,
-        "showAfterDate": "2025-04-16"
+        "showAfterDate": "2025-04-16",
+        "tags": ["weekly"]
     },
     {
         "name": "Club Championship - Round 5",
@@ -516,7 +535,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "club-2025",
         "round": 5,
-        "showAfterDate": "2025-04-23"
+        "showAfterDate": "2025-04-23",
+        "tags": ["weekly"]
     },
     {
         "name": "Club Championship - Round 6",
@@ -538,7 +558,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "club-2025",
         "round": 6,
-        "showAfterDate": "2025-04-30"
+        "showAfterDate": "2025-04-30",
+        "tags": ["weekly"]
     },
     {
         "name": "Club Championship - Round 7",
@@ -560,7 +581,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "club-2025",
         "round": 7,
-        "showAfterDate": "2025-05-07"
+        "showAfterDate": "2025-05-07",
+        "tags": ["weekly"]
     },
     {
         "name": "Blitz Championship - Round 1",
@@ -580,7 +602,8 @@
         "link": "http://svenbraskcc.org/",
         "notes": "This is a very strong chess club within a reasonable distance of Rhode Island. I have personally played here and loved every minute of it. There is a great opportunity here for youths and adults alike to play high-rated (but not underrated) players. Bonus points if you can qualify for the club championship, which is sure to be a feather in your cap.",
         "entry_fee": "$5.00 for the whole tournament, payable upon entry",
-        "tournamentId": "blitz-2025"
+        "tournamentId": "blitz-2025",
+        "tags": ["speed"]
     },
     {
         "name": "Jim Sfougaris Memorial - Round 1",
@@ -600,7 +623,8 @@
         "link": "http://svenbraskcc.org/",
         "notes": "This is a very strong chess club within a reasonable distance of Rhode Island. I have personally played here and loved every minute of it. There is a great opportunity here for youths and adults alike to play high-rated (but not underrated) players. Bonus points if you can qualify for the club championship, which is sure to be a feather in your cap.",
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
-        "tournamentId": "sfougaris-2025"
+        "tournamentId": "sfougaris-2025",
+        "tags": ["weekly"]
     },
     {
         "name": "Jim Sfougaris Memorial - Round 2",
@@ -622,7 +646,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "sfougaris-2025",
         "round": 2,
-        "showAfterDate": "2025-06-04"
+        "showAfterDate": "2025-06-04",
+        "tags": ["weekly"]
     },
     {
         "name": "Jim Sfougaris Memorial - Round 3",
@@ -644,7 +669,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "sfougaris-2025",
         "round": 3,
-        "showAfterDate": "2025-06-11"
+        "showAfterDate": "2025-06-11",
+        "tags": ["weekly"]
     },
     {
         "name": "Jim Sfougaris Memorial - Round 4",
@@ -666,7 +692,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "sfougaris-2025",
         "round": 4,
-        "showAfterDate": "2025-06-18"
+        "showAfterDate": "2025-06-18",
+        "tags": ["weekly"]
     },
     {
         "name": "George Winsor Memorial - Round 1",
@@ -686,7 +713,8 @@
         "link": "http://svenbraskcc.org/",
         "notes": "This is a very strong chess club within a reasonable distance of Rhode Island. I have personally played here and loved every minute of it. There is a great opportunity here for youths and adults alike to play high-rated (but not underrated) players. Bonus points if you can qualify for the club championship, which is sure to be a feather in your cap.",
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
-        "tournamentId": "winsor-2025"
+        "tournamentId": "winsor-2025",
+        "tags": ["weekly"]
     },
     {
         "name": "George Winsor Memorial - Round 2",
@@ -708,7 +736,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "winsor-2025",
         "round": 2,
-        "showAfterDate": "2025-07-02"
+        "showAfterDate": "2025-07-02",
+        "tags": ["weekly"]
     },
     {
         "name": "George Winsor Memorial - Round 3",
@@ -730,7 +759,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "winsor-2025",
         "round": 3,
-        "showAfterDate": "2025-07-09"
+        "showAfterDate": "2025-07-09",
+        "tags": ["weekly"]
     },
     {
         "name": "George Winsor Memorial - Round 4",
@@ -752,7 +782,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "winsor-2025",
         "round": 4,
-        "showAfterDate": "2025-07-16"
+        "showAfterDate": "2025-07-16",
+        "tags": ["weekly"]
     },
     {
         "name": "George Winsor Memorial - Round 5",
@@ -774,7 +805,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "winsor-2025",
         "round": 5,
-        "showAfterDate": "2025-07-23"
+        "showAfterDate": "2025-07-23",
+        "tags": ["weekly"]
     },
     {
         "name": "August Attack - Round 1",
@@ -794,7 +826,8 @@
         "link": "http://svenbraskcc.org/",
         "notes": "This is a very strong chess club within a reasonable distance of Rhode Island. I have personally played here and loved every minute of it. There is a great opportunity here for youths and adults alike to play high-rated (but not underrated) players. Bonus points if you can qualify for the club championship, which is sure to be a feather in your cap.",
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
-        "tournamentId": "august-2025"
+        "tournamentId": "august-2025",
+        "tags": ["weekly"]
     },
     {
         "name": "August Attack - Round 2",
@@ -816,7 +849,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "august-2025",
         "round": 2,
-        "showAfterDate": "2025-08-06"
+        "showAfterDate": "2025-08-06",
+        "tags": ["weekly"]
     },
     {
         "name": "August Attack - Round 3",
@@ -838,7 +872,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "august-2025",
         "round": 3,
-        "showAfterDate": "2025-08-13"
+        "showAfterDate": "2025-08-13",
+        "tags": ["weekly"]
     },
     {
         "name": "August Attack - Round 4",
@@ -860,7 +895,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "august-2025",
         "round": 4,
-        "showAfterDate": "2025-08-20"
+        "showAfterDate": "2025-08-20",
+        "tags": ["weekly"]
     },
     {
         "name": "9/11 Memorial - Round 1",
@@ -880,7 +916,8 @@
         "link": "http://svenbraskcc.org/",
         "notes": "This is a very strong chess club within a reasonable distance of Rhode Island. I have personally played here and loved every minute of it. There is a great opportunity here for youths and adults alike to play high-rated (but not underrated) players. Bonus points if you can qualify for the club championship, which is sure to be a feather in your cap.",
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
-        "tournamentId": "911-2025"
+        "tournamentId": "911-2025",
+        "tags": ["weekly"]
     },
     {
         "name": "9/11 Memorial - Round 2",
@@ -902,7 +939,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "911-2025",
         "round": 2,
-        "showAfterDate": "2025-09-03"
+        "showAfterDate": "2025-09-03",
+        "tags": ["weekly"]
     },
     {
         "name": "9/11 Memorial - Round 3",
@@ -924,7 +962,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "911-2025",
         "round": 3,
-        "showAfterDate": "2025-09-10"
+        "showAfterDate": "2025-09-10",
+        "tags": ["weekly"]
     },
     {
         "name": "9/11 Memorial - Round 4",
@@ -946,7 +985,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "911-2025",
         "round": 4,
-        "showAfterDate": "2025-09-17"
+        "showAfterDate": "2025-09-17",
+        "tags": ["weekly"]
     },
     {
         "name": "Fall Classic - Round 1",
@@ -966,7 +1006,9 @@
         "link": "http://svenbraskcc.org/",
         "notes": "This is a very strong chess club within a reasonable distance of Rhode Island. I have personally played here and loved every minute of it. There is a great opportunity here for youths and adults alike to play high-rated (but not underrated) players. Bonus points if you can qualify for the club championship, which is sure to be a feather in your cap.",
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
-        "tournamentId": "fall-2025"
+        "tournamentId": "fall-2025",
+        "round": 1,
+        "tags": ["weekly"]
     },
     {
         "name": "Fall Classic - Round 2",
@@ -988,7 +1030,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "fall-2025",
         "round": 2,
-        "showAfterDate": "2025-10-01"
+        "showAfterDate": "2025-10-01",
+        "tags": ["weekly"]
     },
     {
         "name": "Fall Classic - Round 3",
@@ -1010,7 +1053,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "fall-2025",
         "round": 3,
-        "showAfterDate": "2025-10-08"
+        "showAfterDate": "2025-10-08",
+        "tags": ["weekly"]
     },
     {
         "name": "Fall Classic - Round 4",
@@ -1032,7 +1076,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "fall-2025",
         "round": 4,
-        "showAfterDate": "2025-10-15"
+        "showAfterDate": "2025-10-15",
+        "tags": ["weekly"]
     },
     {
         "name": "Fall Classic - Round 5",
@@ -1054,7 +1099,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "fall-2025",
         "round": 5,
-        "showAfterDate": "2025-10-22"
+        "showAfterDate": "2025-10-22",
+        "tags": ["weekly"]
     },
     {
         "name": "Year End Open - Round 1",
@@ -1074,7 +1120,8 @@
         "link": "http://svenbraskcc.org/",
         "notes": "This is a very strong chess club within a reasonable distance of Rhode Island. I have personally played here and loved every minute of it. There is a great opportunity here for youths and adults alike to play high-rated (but not underrated) players. Bonus points if you can qualify for the club championship, which is sure to be a feather in your cap.",
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
-        "tournamentId": "yearend-2025"
+        "tournamentId": "yearend-2025",
+        "tags": ["weekly"]
     },
     {
         "name": "Year End Open - Round 2",
@@ -1096,7 +1143,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "yearend-2025",
         "round": 2,
-        "showAfterDate": "2025-11-12"
+        "showAfterDate": "2025-11-12",
+        "tags": ["weekly"]
     },
     {
         "name": "Year End Open - Round 3",
@@ -1118,7 +1166,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "yearend-2025",
         "round": 3,
-        "showAfterDate": "2025-11-19"
+        "showAfterDate": "2025-11-19",
+        "tags": ["weekly"]
     },
     {
         "name": "Year End Open - Round 4",
@@ -1140,7 +1189,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "yearend-2025",
         "round": 4,
-        "showAfterDate": "2025-11-26"
+        "showAfterDate": "2025-11-26",
+        "tags": ["weekly"]
     },
     {
         "name": "Year End Open - Round 5",
@@ -1162,7 +1212,8 @@
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "yearend-2025",
         "round": 5,
-        "showAfterDate": "2025-12-03"
+        "showAfterDate": "2025-12-03",
+        "tags": ["weekly"]
     },
     {
         "name": "Brask Tournament - Round 1",
@@ -1182,7 +1233,8 @@
         "link": "http://svenbraskcc.org/",
         "notes": "This is a very strong chess club within a reasonable distance of Rhode Island. I have personally played here and loved every minute of it. There is a great opportunity here for youths and adults alike to play high-rated (but not underrated) players. Bonus points if you can qualify for the club championship, which is sure to be a feather in your cap.",
         "entry_fee": "$5.00 for the whole tournament, payable upon entry",
-        "tournamentId": "brask-2025"
+        "tournamentId": "brask-2025",
+        "tags": ["speed"]
     },
     {
         "name": "Fight With Madi - Lichess Charity Tournament",
@@ -1199,6 +1251,110 @@
         "prizes": "$20 to first place",
         "ages": "All ages",
         "link": "https://pawnislandacademy.com/pages/landing/fight-with-madi.html",
-        "notes": "Join us in supporting Madison Brodeur, a courageous 14-year-old battling stage IV nasopharyngeal cancer. Madison is the daughter of proud veteran Shane Brodeur and despite her diagnosis, she maintains her passion for marine biology, volleyball, football, and surfing.<p>At just 14 years old, Madison is an unstoppable force. She's fierce on the football field, powerful on the volleyball court, and full of life, laughter, and strength beyond her years. But now, she's facing her toughest opponent yet—a rare form of cancer.<p>Despite this unimaginable challenge, Madi continues to fight with the same determination that makes her a standout athlete. Her spirit is unbreakable, but she needs a team behind her.<p>Your participation and donations will help provide support for her family and the resources she needs to focus on healing.<p>Let's rally behind this incredible young warrior. Every contribution makes a difference in her battle. Join Team Madi today and help her win this fight! #FightWithMadi"
-  }
+        "notes": "Join us in supporting Madison Brodeur, a courageous 14-year-old battling stage IV nasopharyngeal cancer. Madison is the daughter of proud veteran Shane Brodeur and despite her diagnosis, she maintains her passion for marine biology, volleyball, football, and surfing.<p>At just 14 years old, Madison is an unstoppable force. She's fierce on the football field, powerful on the volleyball court, and full of life, laughter, and strength beyond her years. But now, she's facing her toughest opponent yet—a rare form of cancer.<p>Despite this unimaginable challenge, Madi continues to fight with the same determination that makes her a standout athlete. Her spirit is unbreakable, but she needs a team behind her.<p>Your participation and donations will help provide support for her family and the resources she needs to focus on healing.<p>Let's rally behind this incredible young warrior. Every contribution makes a difference in her battle. Join Team Madi today and help her win this fight! #FightWithMadi",
+        "tags": ["fundraiser", "online", "speed", "free-entry"]
+    },
+    {
+        "name": "Stonehill College Open Championship",
+        "startdate": "2025-03-29",
+        "days": "1",
+        "image": "../../images/assets/stonehill-college.jpg",
+        "largeImage": true,
+        "organizer": "Ocean State Chess Association",
+        "location": "Alumni Hall, Stonehill College",
+        "address": "320 Washington Street, Easton, MA 02357",
+        "sections": "Open<br>Challenger (U1700)<br>Explorer (U1200)<br>Unrated",
+        "format": "4-round Swiss System",
+        "time_control": "Open & U1700: G/45;d5<br>Explorer (U1200) & Unrated: G/30;d5",
+        "entry_fee": "<strong>Open Section:</strong><br>$55 by 3/24, $65 by 3/28, $75 day of event<br><br><strong>Challenger (U1700):</strong><br>$45 by 3/24, $55 by 3/28, $65 day of event<br><br><strong>Explorer (U1200):</strong><br>$35 by 3/24, $45 by 3/28, $55 day of event<br><br><strong>Unrated:</strong><br>$25 by 3/24, $35 by 3/28, $45 day of event<br><br><strong>Free Entry:</strong> GM, IM, WGM, WIM & Stonehill College Students/Faculty<br><br><strong>1st-Time Players (with USCF):</strong><br>Age 3-18: $44 (Includes $24 Youth USCF Membership)<br>Age 19-24: $53 (Includes $33 Young Adult USCF Membership)",
+        "round_times": "<strong>Open & Challenger:</strong><br>Registration: 9:00 AM – 9:30 AM<br>Rounds: 10:00 AM, 11:45 AM, 2:30 PM, 4:15 PM<br><br><strong>Explorer & Unrated:</strong><br>Registration: 10:00 AM – 10:30 AM<br>Rounds: 11:00 AM, 12:15 PM, 2:30 PM, 3:45 PM",
+        "prizes": "$1,800 in Cash & Trophies (based on 50 paid entries)<br><br><strong>Open:</strong> $350-250-150, U2000 trophy<br><strong>Challenger:</strong> $250-150-100, U1400 trophy<br><strong>Explorer:</strong> $125-75-50, U900/U700 trophies<br><strong>Unrated:</strong> Trophy for 1st, medals for 2nd & 3rd",
+        "ages": "All ages",
+        "notes": "Join us for the 2nd Annual Stonehill College Open Championship, a premier chess event hosted in collaboration between Stonehill College and the Ocean State Chess Association.<p>The tournament features four sections catering to players of all skill levels, with $1,800 in guaranteed prizes based on 50 paid entries.<p>Players should bring chess clocks; chess sets are provided. Notation is required for all rated sections except for the Unrated section and children under age 8.<p>A lunch buffet will be available for $5 per person at the college cafeteria during the lunch break from 1:30 PM to 2:30 PM.<p>USCF membership is required for all rated sections. Electronic devices must be powered off and stored in bags or outside the playing hall.",
+        "link": "https://oceanstatechess.com/event/2nd-stonehill-college-open/"    },
+    {
+        "name": "Rhode Island Rapid & Blitz State Championship",
+        "startdate": "2025-04-12",
+        "days": "1",
+        "image": "../../images/assets/la-salle-academy.jpg",
+        "largeImage": true,
+        "organizer": "Ocean State Chess Association",
+        "location": "La Salle Academy",
+        "address": "612 Academy Ave, Providence, RI 02908",
+        "sections": "Open Section (All ratings)<br>U1100 Section",
+        "format": "Rapid: 5-Round Swiss<br>Blitz: 7-Round Swiss (Double)",
+        "time_control": "Rapid: G/10+5<br>Blitz: G/5+5",
+        "entry_fee": "<strong>Open Section:</strong><br>$25 for Rapid<br>$25 for Blitz<br>$40 for both events<br><br><strong>U1100 Section:</strong><br>$15 for Rapid<br>$15 for Blitz<br>$25 for both events",
+        "round_times": "Rapid Championship: 10:00 AM - 12:30 PM<br>Lunch Break: 12:45 PM - 1:15 PM<br>Blitz Championship: 1:30 PM - 3:30 PM",
+        "prizes": "$1,000 Prize Fund (b/35 paid entries)<br><br><strong>Open Section (Each Tournament):</strong><br>1st: $250<br>2nd: $150<br>3rd: $100<br>Trophies for 1st-3rd<br>U1600: Trophy for 1st, medals for 2nd-3rd<br><br><strong>U1100 Section:</strong><br>Trophies for 1st-3rd<br>U700: Trophy for 1st, medals for 2nd-3rd",
+        "ages": "All ages",
+        "notes": "The Paul Gavlick Rhode Island Rapid & Blitz State Championship honors the legacy of Paul W. Gavlick (1935-2012), a dedicated chess player who held the title of Rhode Island Speed Chess Champion for several years.<p>This exciting one-day event features both Rapid and Blitz tournaments, with the option to play in one or both events. Free pizza will be provided during the lunch break for players registered for both tournaments!<p>Winners of the Open Section will be crowned the 2025 Rhode Island Rapid Champion and 2025 Rhode Island Blitz Champion. The tournament is open to out-of-state players, who are eligible to win all trophies, with separate champion trophies for Rhode Island residents.<p>Please bring your own chess clock (sets will be provided). USCF membership is required for all participants, and USCF Rapid and Blitz rules apply.<p>Use the back parking lot and access the rear entrance to La Salle Academy.",
+        "link": "https://oceanstatechess.com/event/paul-gavlick-ri-rapid-blitz/",
+        "tags": ["speed", "regional"]
+    },
+    {
+        "name": "Providence Gambit",
+        "startdate": "2025-03-19",
+        "days": "1",
+        "recurrence": {
+            "frequency": "weekly",
+            "dayOfWeek": 3,
+            "exceptions": []
+        },
+        "image": "../../images/assets/providence-club.jpg",
+        "organizer": "Providence Chess Club",
+        "location": "New Harvest Café",
+        "address": "10 Sims Ave, Providence, RI 02909",
+        "format": "Casual",
+        "round_times": "6:00 PM - 8:00 PM",
+        "prizes": "None",
+        "ages": "All ages",
+        "entry_fee": "Free",
+        "notes": "Join us at the Providence Gambit Chess Club for casual chess games every Wednesday evening. All skill levels are welcome! Bring your own board if you have one, but we'll have extras available.<p>The club offers a friendly, relaxed atmosphere to enjoy games, improve your skills, and meet other chess enthusiasts in the Providence area.<p>For more information, contact Miguel Youngs, Providence Chess Club President, at (401) 633-5751 or follow us on Instagram @TheProvidenceGambit.",
+        "isRecurring": true,
+        "tags": ["free-entry", "weekly"]
+    },
+    {
+        "name": "SuperNationals VIII",
+        "startdate": "2025-05-09",
+        "days": "3",
+        "image": "../../images/assets/supernationals-2025.jpg",
+        "largeImage": true,
+        "organizer": "United States Chess Federation",
+        "location": "Orange County Convention Center",
+        "address": "9800 International Dr, Orlando, FL 32819",
+        "sections": "Multiple sections across divisions:<br>K-12 Championship, K-12 Under 1900, K-12 Under 1600, K-12 Under 1200, K-12 Under 800, K-12 Unrated<br>K-8 Championship, K-8 Under 1700, K-8 Under 1400, K-8 Under 1100, K-8 Under 900, K-8 Under 700, K-8 Unrated<br>K-6 Championship, K-6 Under 1400, K-6 Under 1200, K-6 Under 1000, K-6 Under 800, K-6 Under 600, K-6 Unrated<br>K-5 Championship<br>K-3 Championship, K-3 Under 1000, K-3 Under 600<br>K-1 Championship, K-1 Under 500 & Unrated",
+        "format": "7-round Swiss System<br>K-1 Sections: 7-round Swiss",
+        "time_control": "G/90;d10 for all sections",
+        "entry_fee": "$100 by 3/24/2025<br>$150 by 4/14/2025<br>$225 online only by 4/28/2025<br>$350 online only by 11am 5/7/2025<br>$40 section change fee after 4/14/2025<br>No on-site entries",
+        "round_times": "<strong>Friday, May 9:</strong><br>11:00 AM: Opening Ceremony (all divisions)<br>1:00 PM: Round 1 (HS, MS, ELEM)<br>1:30 PM: Round 1 (K-1)<br>5:30 PM: Round 2 (K-1)<br>6:00 PM: Round 2 (HS, MS, ELEM)<br><br><strong>Saturday, May 10:</strong><br>9:00 AM: Round 3 (HS, MS, ELEM)<br>9:30 AM: Round 3 (K-1)<br>1:30 PM: Round 4 (All divisions)<br>5:30 PM: Round 5 (K-1)<br>6:00 PM: Round 5 (HS, MS, ELEM)<br><br><strong>Sunday, May 11:</strong><br>9:00 AM: Round 6 (HS, MS, ELEM)<br>9:30 AM: Round 6 (K-1)<br>1:30 PM: Round 7 (K-1)<br>2:00 PM: Round 7 (HS, MS, ELEM)<br>5:30 PM: Awards (K-1)<br>6:00 PM: Awards (K-3)<br>6:30 PM: Awards (HS, MS, K-5/K-6)",
+        "prizes": "Championship sections award National Champion titles<br><br><strong>Individual Medals:</strong><br>Top 10-40 individuals in each section (varies by section)<br><br><strong>Team Trophies:</strong><br>Top 5-25 teams in each section (varies by section)<br><br><strong>Class Prizes:</strong><br>Top 3 on tiebreak in various rating classes for Championship sections",
+        "ages": "K-12 (High School), K-8 (Middle School), K-6/K-5 (Elementary), K-3, and K-1 divisions",
+        "notes": "The SuperNationals is a major scholastic chess event held once every four years, combining all five national scholastic championships into one massive tournament.<p>Special events include:<p><strong>National Bughouse Championships:</strong> Thursday at 11 AM. Three sections (K-12, K-8, K-6). $50 per team.<p><strong>National Blitz Championships:</strong> Thursday at 5 PM. Five sections. Time control G/3+2. Entry $50/$80 on-site.<p><strong>National Puzzle Championships:</strong> Thursday at 3 PM. Two sections (K-6, 7-12). Entry $20/$30.<p><strong>Friends & Family Tournament:</strong> Saturday 10:30 AM-4:30 PM. 4SS, G/30 d5. $40 entry.<p>US Chess membership required. April 2025 rating supplement will be used.<p>Up to two half-point byes available if requested by 10 AM on Friday.<p>100% refund if canceled by 11 AM Friday.<p>For more information, visit the US Chess website or email nationalevents@uschess.org.",
+        "link": "https://www.uschess.org/supernationals",
+        "isPrestigiousEvent": true,
+        "prestigeLevel": "National",
+        "juniorGrandPrix": true,
+        "tags": ["scholastic", "national"]
+    },
+    {
+        "name": "Massachusetts G/60 Championship",
+        "startdate": "2025-04-13",
+        "days": "1",
+        "image": "../../images/assets/westford-regency.jpg",
+        "largeImage": true,
+        "organizer": "Massachusetts Chess Association",
+        "location": "Westford Regency Inn & Conference Center",
+        "address": "219 Littleton Road, Westford, MA 01886",
+        "sections": "Championship (2000+)<br>Under 2200<br>Under 2000<br>Under 1800<br>Under 1600<br>Under 1400<br>Under 1200<br>Under 1000",
+        "format": "4-round Swiss System",
+        "time_control": "G/60;d5",
+        "entry_fee": "$45 by 4/7 (mail) or 4/9 (online)<br>$55 by 4/11 (online) or at site<br>$10 discount for U1000 section<br>GMs and IMs free",
+        "round_times": "10:00 AM, 1:00 PM, 3:30 PM, 6:00 PM",
+        "prizes": "$3,000 guaranteed prize fund<br><br><strong>Championship:</strong> $350-175, U2300 $150<br><strong>U2200:</strong> $250-150<br><strong>U2000:</strong> $250-150<br><strong>U1800:</strong> $250-125<br><strong>U1600:</strong> $200-125<br><strong>U1400:</strong> $200-100<br><strong>U1200:</strong> $200-100<br><strong>U1000:</strong> $150-75",
+        "ages": "All ages",
+        "notes": "Registration: 8:00 AM to 9:00 AM on tournament day.<p>Minimum rating of 2000 (official or current) required to play in the Championship section.<p>Unrated prize limits: $50 in U1000, $75 in U1200, $100 in U1400, $125 in U1600, $150 in U1800, $175 in U2000.<p>One bye available in rounds 1-4, must commit before round 2. No half point byes for players receiving full point byes.<p>USCF membership required for all players. MACA membership required for Massachusetts residents.<p>Please bring chess set and clock. No credit cards accepted at site; cash or check only.<p>For questions, contact Bob Messenger at 603-891-2484 or email info@masschess.org. Day of tournament call 603-557-1732.",
+        "link": "http://www.masschess.org/events/Event_Details.aspx?Event_ID=9304",
+        "tags": ["regional"]
+    }
 ]

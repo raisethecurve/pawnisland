@@ -222,6 +222,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 pastEvent.isBlitzEvent = true;
                 pastEvent.entry_fee = "$20.00";
                 pastEvent.time_control = "USCF Blitz";
+                
+                // Add speed tag for fifth Thursday blitz events
+                if (!pastEvent.tags) {
+                    pastEvent.tags = [];
+                }
+                if (!pastEvent.tags.includes("speed")) {
+                    pastEvent.tags.push("speed");
+                }
             }
             
             results.push(pastEvent);
@@ -249,7 +257,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 upcomingBlitz.sort((a, b) => a.date - b.date);
                 const nextBlitz = upcomingBlitz[0];
                 
-                results.push({
+                // Create the blitz event with the speed tag
+                const blitzEvent = {
                     ...event,
                     startdate: nextBlitz.dateStr,
                     name: "Cranston Big Money Blitz Brawl",
@@ -259,7 +268,17 @@ document.addEventListener("DOMContentLoaded", function() {
                     days: getDayName(dayOfWeek),
                     entry_fee: "$20.00",
                     time_control: "USCF Blitz G/5;d0"
-                });
+                };
+                
+                // Add the speed tag
+                if (!blitzEvent.tags) {
+                    blitzEvent.tags = [];
+                }
+                if (!blitzEvent.tags.includes("speed")) {
+                    blitzEvent.tags.push("speed");
+                }
+                
+                results.push(blitzEvent);
             }
         }
         
@@ -319,194 +338,280 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    function createEventCard(event, currentDate) {
-        // Updated: use event.date or fallback to event.startdate
-        const eventDate = parseDateNoOffset(event.startdate);
-        const isPast = eventDate < currentDate;
-        
-        // Format the date nicely
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        const formattedDate = eventDate.toLocaleDateString('en-US', options);
+// Define the badge system with proper ordering
+const BADGE_DEFINITIONS = [
+    { id: 'weekly', label: 'Weekly Event', icon: 'fa-redo-alt', class: 'badge-info' },
+    { id: 'discount', label: 'Discount Available', icon: 'fa-tags', class: 'badge-success' },
+    { id: 'free-entry', label: 'Free Entry', icon: 'fa-ticket-alt', class: 'badge-success' },
+    { id: 'scholastic', label: 'Scholastic', icon: 'fa-graduation-cap', class: 'badge-primary' },
+    { id: 'collegiate', label: 'Collegiate', icon: 'fa-university', class: 'badge-primary' }, // New collegiate badge
+    { id: 'seniors', label: 'Seniors', icon: 'fa-user-clock', class: 'badge-secondary' }, // New seniors badge
+    { id: 'adults-only', label: 'Adults Only', icon: 'fa-users', class: 'badge-danger' },
+    { id: 'broadcast', label: 'Broadcast', icon: 'fa-video', class: 'badge-info' },
+    { id: 'fundraiser', label: 'Fundraiser', icon: 'fa-hand-holding-heart', class: 'badge-warning' },
+    { id: 'online', label: 'Online', icon: 'fa-laptop', class: 'badge-secondary' },
+    { id: 'regional', label: 'Regional', icon: 'fa-map-marker-alt', class: 'badge-secondary' },
+    { id: 'national', label: 'National', icon: 'fa-flag', class: 'badge-primary' },
+    { id: 'international', label: 'International', icon: 'fa-globe', class: 'badge-primary' },
+    { id: 'professional', label: 'Professional', icon: 'fa-chess-queen', class: 'badge-dark' },
+    { id: 'speed', label: 'Speed Chess', icon: 'fa-bolt', class: 'badge-warning' } // Replacing blitz badge
+];
 
-        // Format the date with ordinal suffix
-        const day = eventDate.getUTCDate();
-        const ordinalSuffix = (day) => {
-            if (day > 3 && day < 21) return 'th';
-            switch (day % 10) {
-                case 1: return 'st';
-                case 2: return 'nd';
-                case 3: return 'rd';
-                default: return 'th';
-            }
-        };
-        const formattedDateWithSuffix = `${eventDate.toLocaleString('en-US', { month: 'long' })} ${day}${ordinalSuffix(day)}, ${eventDate.getUTCFullYear()}`;
-        
-        const eventCard = document.createElement('div');
-        eventCard.className = `col-12 mb-4 event-item ${isPast ? 'past-event' : 'upcoming-event'}`;
-        eventCard.setAttribute('data-aos', 'fade-up');
-        eventCard.setAttribute('data-aos-delay', 100);
-        
-        // Check if event has a promo code
-        const hasPromo = event.promo_code ? true : false;
-        
-        const cardThemeClass = 'bg-light text-dark';
-        const mutedClass = 'text-muted';
-        
-        // Parse the start date and determine if it's a multi-day event
-        const eventStartDate = parseDateNoOffset(event.startdate);
-        const isEventPast = eventStartDate < currentDate;
+/* 
+ * AVAILABLE BADGE IDs FOR EVENTS.JSON:
+ * -----------------------------------
+ * To use any of these badges, include a "tags" array in your event with any of these identifiers:
+ * 
+ * - weekly         : For recurring weekly events
+ * - discount       : When discounts are available (automatically added if promo_code exists)
+ * - free-entry     : For events with no entry fee
+ * - scholastic     : For youth/K-12 events
+ * - collegiate     : For university/college events
+ * - seniors        : For events targeting older players (50+, etc.)
+ * - adults-only    : For 18+ or 21+ events
+ * - broadcast      : For events with livestreams/broadcasts
+ * - fundraiser     : For charity or fundraising events
+ * - online         : For virtual events
+ * - regional       : For state or regional championships
+ * - national       : For national championships
+ * - international  : For international events
+ * - professional   : For events with title norms, FIDE rated, etc.
+ * - speed          : For blitz, bullet, or rapid events
+ */
 
-        // Fix the days parsing to ensure proper handling of string values
-        const eventDays = event.days ? parseInt(event.days, 10) : 1;
-        
-        // Format date with ordinal suffix
-        function formatDateWithOrdinal(date) {
-            const day = date.getUTCDate();
-            const month = date.toLocaleString('en-US', { month: 'long' });
-            const year = date.getUTCFullYear();
+// Helper function to detect event badges based solely on event tags
+function detectEventBadges(event) {
+    const badges = [];
+    
+    // Only use explicit tags from the event data
+    // No more context-based detection
+    if (event.tags && Array.isArray(event.tags)) {
+        // Process each tag in the event
+        event.tags.forEach(tag => {
+            // Convert tag to lowercase for case-insensitive matching
+            const normalizedTag = tag.toLowerCase();
             
-            const ordinalSuffix = (day) => {
-            if (day > 3 && day < 21) return 'th';
-            switch (day % 10) {
-                case 1: return 'st';
-                case 2: return 'nd';
-                case 3: return 'rd';
-                default: return 'th';
-            }
-            };
+            // Match tags to badge IDs directly
+            const validBadgeIds = BADGE_DEFINITIONS.map(badge => badge.id);
             
-            return `${month} ${day}${ordinalSuffix(day)}, ${year}`;
-        }
-        
-        // Get day name
-        const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        const dayOfWeek = dayNames[eventStartDate.getUTCDay()];
-        
-        // Use short day names for start and full day names for end
-        const shortDayNames = ["Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat."];
-        const fullDayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-        // Format the date display based on event duration - simplified logic for clarity
-        let dateDisplay = '';
-        // Ensure we only use the multi-day format when days is GREATER THAN 1 (not just different from 1)
-        if (!eventDays || eventDays <= 1) {
-            // Single day event - no date range
-            dateDisplay = `${shortDayNames[eventStartDate.getUTCDay()]} ${formatDateWithOrdinal(eventStartDate)}`;
-        } else {
-            // Multi-day event handling with try/catch
-            try {
-                const eventEndDate = new Date(eventStartDate);
-                eventEndDate.setUTCDate(eventStartDate.getUTCDate() + (eventDays - 1));
-                
-                const startDayShort = shortDayNames[eventStartDate.getUTCDay()];
-                // Changed to use short day name for end date as well
-                const endDayShort = shortDayNames[eventEndDate.getUTCDay()];
-                
-                const startMonth = eventStartDate.toLocaleString('en-US', { month: 'long' });
-                const endMonth = eventEndDate.toLocaleString('en-US', { month: 'long' });
-                
-                const startDay = eventStartDate.getUTCDate();
-                const endDay = eventEndDate.getUTCDate();
-                
-                // Format with ordinal suffixes
-                const startDayWithSuffix = `${startDay}${ordinalSuffix(startDay)}`;
-                const endDayWithSuffix = `${endDay}${ordinalSuffix(endDay)}`;
-                
-                const year = eventStartDate.getUTCFullYear();
-                
-                if (startMonth === endMonth) {
-                    dateDisplay = `${startDayShort} ${startMonth} ${startDayWithSuffix} - ${endDayShort} ${endMonth} ${endDayWithSuffix}, ${year}`;
-                } else {
-                    dateDisplay = `${startDayShort} ${startMonth} ${startDayWithSuffix} - ${endDayShort} ${endMonth} ${endDayWithSuffix}, ${year}`;
-                }
-            } catch(e) {
-                // Fallback in case of any date calculation errors
-                console.error('Date calculation error:', e);
-                dateDisplay = `${shortDayNames[eventStartDate.getUTCDay()]} ${formatDateWithOrdinal(eventStartDate)}`;
+            // If the normalized tag matches a badge ID, add it
+            if (validBadgeIds.includes(normalizedTag)) {
+                badges.push(normalizedTag);
             }
-        }
-        
-        // Format the simple date for display in card
-        const dateLabelOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-        const formattedDateLabel = eventStartDate.toLocaleDateString('en-US', dateLabelOptions);
-        
-        // Conditionally create each section only if data exists
-        let noteSection = event.notes ? `
-            <div class="card-footer bg-light">
-            <strong>Coach's Note:</strong> ${event.notes}
-            </div>
-        ` : '';
-        
-        let organizerSection = event.organizer ? `<h5 class="card-title">${event.organizer}</h5>` : '';
-        let nameSection = event.name ? `<h6 class="card-subtitle mb-2 ${mutedClass}">${event.name}</h6>` : '';
-        let whenSection = `<p class="card-text event-info"><strong>When:</strong> ${dateDisplay}</p>`;
-        let locationSection = event.location ? `<p class="card-text event-info"><strong>Location:</strong> ${event.location}</p>` : '';
-        let addressSection = event.address ? `<p class="card-text event-info"><strong>Address:</strong> <a href="https://maps.google.com/?q=${encodeURIComponent(event.address)}" target="_blank" class="link-prevent-default">${event.address}</a></p>` : '';
-        let sectionsSection = event.sections ? `<p class="card-text event-info"><strong>Sections:</strong> ${event.sections}</p>` : '';
-        let entryFeeSection = event.entry_fee ? `<p class="card-text event-info"><strong>Entry Fee:</strong> ${event.entry_fee}</p>` : '';
-        let timeControlSection = event.time_control ? `<p class="card-text event-info"><strong>Time Control:</strong> ${event.time_control}</p>` : '';
-        let formatSection = event.format ? `<p class="card-text event-info"><strong>Format:</strong> ${event.format}</p>` : '';
-        let roundTimesSection = event.round_times ? `<p class="card-text event-info"><strong>Round Times:</strong> ${event.round_times}</p>` : '';
-        let prizesSection = event.prizes ? `<p class="card-text event-info"><strong>Prizes:</strong> ${event.prizes}</p>` : '';
-        let ageSection = event.ages ? `<p class="card-text event-info"><strong>Age Range:</strong> ${event.ages}</p>` : '';
-        
-        // Only show View Details link if there's no promo code
-        let linkSection = '';
-        if (event.link && !event.promo_code) {
-            linkSection = `<a href="${event.link}" target="_blank" class="btn btn-primary btn-custom organizer-link" onclick="event.stopPropagation();">View Details</a>`;
-        }
-        
-        // Add registration button with promo code if available
-        let registrationSection = '';
-        let promoBadge = ''; // Changed from promoRibbon to promoBadge
-        if (event.promo_code) {
-            const registrationUrl = event.registration_link || event.link || '#';
-            registrationSection = `
-                <div class="mt-3">
-                    <a href="${registrationUrl}" target="_blank" class="btn btn-success btn-custom register-button" onclick="event.stopPropagation();">
-                        <i class="fas fa-ticket-alt mr-2"></i>Register with 10% discount: <strong>${event.promo_code}</strong>
-                    </a>
+        });
+    }
+    
+    // Special case for recurring events that should still keep their weekly badge
+    if (event.isRecurring) {
+        badges.push('weekly');
+    }
+    
+    // Special case for promo code events that should have discount badge
+    if (event.promo_code) {
+        badges.push('discount');
+    }
+    
+    return badges;
+}
+
+// Function to generate badge HTML
+function generateBadgesHTML(event) {
+    const badges = detectEventBadges(event);
+    
+    if (badges.length === 0) {
+        return '';
+    }
+    
+    // Create badges container
+    let badgesHTML = '<div class="event-badges-container">';
+    
+    // Add each badge in order of BADGE_DEFINITIONS
+    BADGE_DEFINITIONS.forEach(badgeDef => {
+        if (badges.includes(badgeDef.id)) {
+            badgesHTML += `
+                <div class="event-badge badge ${badgeDef.class}">
+                    <i class="fas ${badgeDef.icon}"></i>
+                    <span>${badgeDef.label}</span>
                 </div>
             `;
-            
-            // Add horizontal promo badge instead of diagonal ribbon
-            promoBadge = `<div class="promo-badge">10% DISCOUNT</div>`;
         }
+    });
+    
+    badgesHTML += '</div>';
+    return badgesHTML;
+}
 
-        // Add recurring event badge
-        let recurringBadge = '';
-        if (event.isRecurring) {
-            let badgeClass, badgeText, iconClass;
+// Function to create event card, updated with badge system
+function createEventCard(event, currentDate) {
+    // Updated: use event.date or fallback to event.startdate
+    const eventDate = parseDateNoOffset(event.startdate);
+    const isPast = eventDate < currentDate;
+    
+    // Format the date nicely
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = eventDate.toLocaleDateString('en-US', options);
+
+    // Format the date with ordinal suffix
+    const day = eventDate.getUTCDate();
+    const ordinalSuffix = (day) => {
+        if (day > 3 && day < 21) return 'th';
+        switch (day % 10) {
+            case 1: return 'st';
+            case 2: return 'nd';
+            case 3: return 'rd';
+            default: return 'th';
+        }
+    };
+    const formattedDateWithSuffix = `${eventDate.toLocaleString('en-US', { month: 'long' })} ${day}${ordinalSuffix(day)}, ${eventDate.getUTCFullYear()}`;
+    
+    const eventCard = document.createElement('div');
+    eventCard.className = `col-12 mb-4 event-item ${isPast ? 'past-event' : 'upcoming-event'}`;
+    eventCard.setAttribute('data-aos', 'fade-up');
+    eventCard.setAttribute('data-aos-delay', 100);
+    
+    // Check if event has a promo code
+    const hasPromo = event.promo_code ? true : false;
+    
+    const cardThemeClass = 'bg-light text-dark';
+    const mutedClass = 'text-muted';
+    
+    // Parse the start date and determine if it's a multi-day event
+    const eventStartDate = parseDateNoOffset(event.startdate);
+    const isEventPast = eventStartDate < currentDate;
+
+    // Fix the days parsing to ensure proper handling of string values
+    const eventDays = event.days ? parseInt(event.days, 10) : 1;
+    
+    // Format date with ordinal suffix
+    function formatDateWithOrdinal(date) {
+        const day = date.getUTCDate();
+        const month = date.toLocaleString('en-US', { month: 'long' });
+        const year = date.getUTCFullYear();
+        
+        const ordinalSuffix = (day) => {
+        if (day > 3 && day < 21) return 'th';
+        switch (day % 10) {
+            case 1: return 'st';
+            case 2: return 'nd';
+            case 3: return 'rd';
+            default: return 'th';
+        }
+        };
+        
+        return `${month} ${day}${ordinalSuffix(day)}, ${year}`;
+    }
+    
+    // Get day name
+    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const dayOfWeek = dayNames[eventStartDate.getUTCDay()];
+    
+    // Use short day names for start and full day names for end
+    const shortDayNames = ["Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat."];
+    const fullDayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+    // Format the date display based on event duration - simplified logic for clarity
+    let dateDisplay = '';
+    // Ensure we only use the multi-day format when days is GREATER THAN 1 (not just different from 1)
+    if (!eventDays || eventDays <= 1) {
+        // Single day event - no date range
+        dateDisplay = `${shortDayNames[eventStartDate.getUTCDay()]} ${formatDateWithOrdinal(eventStartDate)}`;
+    } else {
+        // Multi-day event handling with try/catch
+        try {
+            const eventEndDate = new Date(eventStartDate);
+            eventEndDate.setUTCDate(eventStartDate.getUTCDate() + (eventDays - 1));
             
-            if (event.isBlitzEvent) {
-            badgeClass = 'badge-warning';
-            badgeText = 'Special Blitz Event';
-            iconClass = 'fa-bolt';
+            const startDayShort = shortDayNames[eventStartDate.getUTCDay()];
+            // Changed to use short day name for end date as well
+            const endDayShort = shortDayNames[eventEndDate.getUTCDay()];
+            
+            const startMonth = eventStartDate.toLocaleString('en-US', { month: 'long' });
+            const endMonth = eventEndDate.toLocaleString('en-US', { month: 'long' });
+            
+            const startDay = eventStartDate.getUTCDate();
+            const endDay = eventEndDate.getUTCDate();
+            
+            // Format with ordinal suffixes
+            const startDayWithSuffix = `${startDay}${ordinalSuffix(startDay)}`;
+            const endDayWithSuffix = `${endDay}${ordinalSuffix(endDay)}`;
+            
+            const year = eventStartDate.getUTCFullYear();
+            
+            if (startMonth === endMonth) {
+                dateDisplay = `${startDayShort} ${startMonth} ${startDayWithSuffix} - ${endDayShort} ${endMonth} ${endDayWithSuffix}, ${year}`;
             } else {
-            badgeClass = 'badge-info';
-            badgeText = 'Weekly Event';
-            iconClass = 'fa-redo-alt';
+                dateDisplay = `${startDayShort} ${startMonth} ${startDayWithSuffix} - ${endDayShort} ${endMonth} ${endDayWithSuffix}, ${year}`;
             }
-            
-            recurringBadge = `
-            <div class="position-absolute" style="top: 15px; left: 15px; z-index: 2;">
-                <span class="badge ${badgeClass}">
-                <i class="fas ${iconClass}"></i> ${badgeText}
-                </span>
-            </div>
-            `;
+        } catch(e) {
+            // Fallback in case of any date calculation errors
+            console.error('Date calculation error:', e);
+            dateDisplay = `${shortDayNames[eventStartDate.getUTCDay()]} ${formatDateWithOrdinal(eventStartDate)}`;
         }
+    }
+    
+    // Format the simple date for display in card
+    const dateLabelOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDateLabel = eventStartDate.toLocaleDateString('en-US', dateLabelOptions);
+    
+    // Conditionally create each section only if data exists
+    let noteSection = event.notes ? `
+        <div class="card-footer bg-light">
+        <strong>Coach's Note:</strong> ${event.notes}
+        </div>
+    ` : '';
+    
+    let organizerSection = event.organizer ? `<h5 class="card-title">${event.organizer}</h5>` : '';
+    let nameSection = event.name ? `<h6 class="card-subtitle mb-2 ${mutedClass}">${event.name}</h6>` : '';
+    let whenSection = `<p class="card-text event-info"><strong>When:</strong> ${dateDisplay}</p>`;
+    let locationSection = event.location ? `<p class="card-text event-info"><strong>Location:</strong> ${event.location}</p>` : '';
+    let addressSection = event.address ? `<p class="card-text event-info"><strong>Address:</strong> <a href="https://maps.google.com/?q=${encodeURIComponent(event.address)}" target="_blank" class="link-prevent-default">${event.address}</a></p>` : '';
+    let sectionsSection = event.sections ? `<p class="card-text event-info"><strong>Sections:</strong> ${event.sections}</p>` : '';
+    let entryFeeSection = event.entry_fee ? `<p class="card-text event-info"><strong>Entry Fee:</strong> ${event.entry_fee}</p>` : '';
+    let timeControlSection = event.time_control ? `<p class="card-text event-info"><strong>Time Control:</strong> ${event.time_control}</p>` : '';
+    let formatSection = event.format ? `<p class="card-text event-info"><strong>Format:</strong> ${event.format}</p>` : '';
+    let roundTimesSection = event.round_times ? `<p class="card-text event-info"><strong>Round Times:</strong> ${event.round_times}</p>` : '';
+    let prizesSection = event.prizes ? `<p class="card-text event-info"><strong>Prizes:</strong> ${event.prizes}</p>` : '';
+    let ageSection = event.ages ? `<p class="card-text event-info"><strong>Age Range:</strong> ${event.ages}</p>` : '';
+    
+    // Only show View Details link if there's no promo code
+    let linkSection = '';
+    if (event.link && !event.promo_code) {
+        linkSection = `<a href="${event.link}" target="_blank" class="btn btn-primary btn-custom organizer-link" onclick="event.stopPropagation();">View Details</a>`;
+    }
+    
+    // Add registration button with promo code if available
+    let registrationSection = '';
+    let promoBadge = ''; // This variable is no longer used for displaying badges
+    if (event.promo_code) {
+        const registrationUrl = event.registration_link || event.link || '#';
+        registrationSection = `
+            <div class="mt-3">
+                <a href="${registrationUrl}" target="_blank" class="btn btn-success btn-custom register-button" onclick="event.stopPropagation();">
+                    <i class="fas fa-ticket-alt mr-2"></i>Register with 10% discount: <strong>${event.promo_code}</strong>
+                </a>
+            </div>
+        `;
+        
+        // Remove the old promo badge - it's now handled by the badge system
+        // promoBadge = `<div class="promo-badge">10% DISCOUNT</div>`;
+    }
 
-        eventCard.innerHTML = `
-            <div class="card event-card h-100 ${isEventPast ? 'bg-light text-dark' : cardThemeClass} ${hasPromo ? 'promo-card' : ''}">
+    // REMOVE OLD recurring event badge completely
+    let recurringBadge = '';
+
+    // Get badges HTML
+    const badgesHTML = generateBadgesHTML(event);
+    
+    // Update event card HTML to include badges in the right position but remove old badges
+    eventCard.innerHTML = `
+        <div class="card event-card h-100 ${isEventPast ? 'bg-light text-dark' : cardThemeClass} ${hasPromo ? 'promo-card' : ''}">
             <div class="position-relative">
-                ${promoBadge}
                 <div class="event-date">${formattedDateLabel}</div>
                 <div class="event-img-container">
-                <img src="${event.image}" class="event-img" alt="${event.name || 'Event'}" loading="lazy">
+                    <img src="${event.image}" class="event-img" alt="${event.name || 'Event'}" loading="lazy">
+                    ${badgesHTML}
                 </div>
                 ${isEventPast ? '<div class="past-event-overlay">Event Passed</div>' : ''}
-                ${recurringBadge}
             </div>
             <div class="card-body">
                 ${organizerSection}
@@ -525,21 +630,90 @@ document.addEventListener("DOMContentLoaded", function() {
                 ${registrationSection}
             </div>
             ${noteSection}
-            </div>
-        `;
-        
-        // Add event listeners after the card is created to ensure links work
-        setTimeout(() => {
-            const links = eventCard.querySelectorAll('a');
-            links.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                });
+        </div>
+    `;
+    
+    // Add event listeners after the card is created to ensure links work
+    setTimeout(() => {
+        const links = eventCard.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.stopPropagation();
             });
-        }, 0);
+        });
+    }, 0);
+    
+    return eventCard;
+}
+
+// Add CSS styling for badges directly to the document to avoid needing a new CSS file
+document.addEventListener('DOMContentLoaded', function() {
+    const styleElement = document.createElement('style');
+    styleElement.textContent = `
+        .event-badges-container {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 5;
+        }
         
-        return eventCard;
-    }
+        .event-badge {
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            opacity: 0.95;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(1px);
+        }
+        
+        .event-badge:hover {
+            transform: translateX(3px);
+            opacity: 1;
+        }
+        
+        .event-badge i {
+            margin-right: 5px;
+        }
+        
+        .badge-info {
+            background-color: #17a2b8;
+        }
+        
+        .badge-success {
+            background-color: #28a745;
+        }
+        
+        .badge-primary {
+            background-color: #007bff;
+        }
+        
+        .badge-secondary {
+            background-color: #6c757d;
+        }
+        
+        .badge-warning {
+            background-color: #ffc107;
+            color: #212529;
+        }
+        
+        .badge-danger {
+            background-color: #dc3545;
+        }
+        
+        .badge-dark {
+            background-color: #343a40;
+        }
+    `;
+    document.head.appendChild(styleElement);
+});
 
         // Helper function to trigger filtering
         function triggerFilter(filter) {
@@ -739,6 +913,16 @@ document.addEventListener("DOMContentLoaded", function() {
             return 'CCA';
         } else if (name.includes('Plainville Chess Club')) {
             return 'Plainville CC';
+        } else if (name.includes('Rhode Island Chess Club')) {
+            return 'Rhode Island CC';
+        } else if (name.includes('Massachusetts Chess Association')) {
+            return 'MACA';
+        } else if (name.includes('Cranston Chess Club')) {
+            return 'Cranston CC';
+        } else if (name.includes('United States Chess Federation')) {
+            return 'USCF';
+        } else if (name.includes('Providence Chess Club')) {
+            return 'Providence CC';
         }
         return name;
     }
