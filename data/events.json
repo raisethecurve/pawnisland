@@ -118,7 +118,7 @@
         "tags": ["discount", "collegiate", "scholastic", "regional"]
     },
     {
-        "name": "Rhode Island Chess Club",
+        "name": "Beers & Boards",
         "startdate": "2024-03-4",
         "days": "1",
         "recurrence": {
@@ -135,7 +135,7 @@
         "ages": "Must be 18 Years Old to Attend",
         "notes": "Join us at Bo's for chess and chicken wings.",
         "isRecurring": true,
-        "tags": ["adults-only"]
+        "tags": ["adults-only", "free-entry"]
     },
     {
         "name": "Lou Giarrusso Memorial Cup",

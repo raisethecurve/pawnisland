@@ -305,6 +305,48 @@
                 margin: 10px 0;
             }
         }
+        
+        /* Special Thanks Section Styles */
+        .special-thanks .card {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .btn-purple {
+            background-color: #6441a5;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-purple:hover {
+            background-color: #7d5bbe;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(100, 65, 165, 0.3);
+        }
+        
+        .dojo-links {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .dojo-links a {
+            transition: all 0.3s ease;
+        }
+        
+        .dojo-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .dojo-links a {
+                width: 100%;
+                margin-right: 0 !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-light text-dark">
@@ -507,6 +549,51 @@
                                     <p>We're thrilled to announce that we've <strong>surpassed our initial $1,000 goal</strong> and have raised an incredible <strong>$1,761</strong> toward our increased goal of $2,400!</p>
                                     <p>The GoFundMe campaign will remain open at least until the fair play check period (7 days from the close of the tournament) has ended and the top 3 finishers have been confirmed and paid their prizes:</p>
                                     <p class="mb-0"><a href="https://lichess.org/api/tournament/zEKFIurS/games" class="btn btn-sm btn-info mt-2">Download All Tournament Games</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Special Thanks Section -->
+        <section class="special-thanks mb-5" data-aos="fade-up">
+            <div class="ribbon">
+                <h3>Special Thanks</h3>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="text-center mb-4">Chess Dojo Community & IM David Pruess</h4>
+                    
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <img src="../../images/assets/chess-dojo-logo.png" alt="Chess Dojo Logo" class="img-fluid rounded mb-3" onerror="this.src='https://via.placeholder.com/300x200?text=Chess+Dojo';this.onerror='';">
+                        </div>
+                        <div class="col-md-8">
+                            <p class="lead">Our heartfelt thanks to the Chess Dojo community and International Master David Pruess for their incredible support!</p>
+                            <p>We're deeply grateful to IM David Pruess and the entire Chess Dojo community for participating in, promoting, and streaming the entire Fight With Madi tournament with expert commentary across their media platforms. Their support significantly amplified our fundraising efforts and helped us reach our goal.</p>
+                            
+                            <div class="mt-4">
+                                <h5 class="text-center">Watch the Tournament Stream</h5>
+                                <div class="text-center">
+                                    <a href="https://www.twitch.tv/videos/2412417608" target="_blank" class="btn btn-purple mb-3">
+                                        <i class="fas fa-play-circle mr-2"></i> Watch Tournament Replay
+                                    </a>
+                                </div>
+                                
+                                <h5 class="mt-3 text-center">Connect with Chess Dojo</h5>
+                                <div class="dojo-links justify-content-center">
+                                    <a href="https://www.chessdojo.club" target="_blank" class="btn btn-outline-dark mb-2 mr-2">
+                                        <i class="fas fa-graduation-cap mr-2"></i> Chess Dojo Training Program
+                                    </a>
+                                    <a href="https://www.youtube.com/c/ChessDojo" target="_blank" class="btn btn-outline-danger mb-2 mr-2">
+                                        <i class="fab fa-youtube mr-2"></i> YouTube Channel
+                                    </a>
+                                    <a href="https://www.twitch.tv/chessdojo" target="_blank" class="btn btn-outline-primary mb-2">
+                                        <i class="fab fa-twitch mr-2"></i> Twitch Stream
+                                    </a>
+                                </div>
                                 </div>
                             </div>
                         </div>
