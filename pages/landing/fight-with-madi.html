@@ -309,6 +309,164 @@
         /* Special Thanks Section Styles */
         .special-thanks .card {
             border: none;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+        }
+        
+        .special-thanks .card-body {
+            padding: 2.5rem;
+        }
+        
+        .special-thanks .card-header {
+            background: #6441a5;
+            color: white;
+            padding: 1.5rem;
+            border-bottom: none;
+        }
+        
+        .special-thanks h4 {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+        
+        .special-thanks h4:after {
+            content: '';
+            position: absolute;
+            left: 25%;
+            bottom: -10px;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(to right, #6441a5, #d9534f);
+            border-radius: 3px;
+        }
+        
+        .stream-container {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            margin: 1.5rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .stream-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stream-container img {
+            transition: all 0.5s ease;
+        }
+        
+        .stream-container:hover img {
+            transform: scale(1.02);
+        }
+        
+        .stream-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .stream-container:hover .stream-overlay {
+            opacity: 1;
+        }
+        
+        .btn-purple {
+            background-color: #6441a5;
+            color: white;
+            transition: all 0.3s ease;
+            border-radius: 50px;
+            padding: 0.6rem 1.5rem;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(100, 65, 165, 0.3);
+        }
+        
+        .btn-purple:hover {
+            background-color: #7d5bbe;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(100, 65, 165, 0.4);
+        }
+        
+        .dojo-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        
+        .dojo-links a {
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            min-width: 220px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            font-weight: 600;
+        }
+        
+        .dojo-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dojo-links a i {
+            font-size: 1.2rem;
+        }
+        
+        .chess-piece-divider {
+            text-align: center;
+            margin: 2rem 0;
+            color: #6441a5;
+            font-size: 1.5rem;
+            position: relative;
+        }
+        
+        .chess-piece-divider::before,
+        .chess-piece-divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(100, 65, 165, 0.5));
+        }
+        
+        .chess-piece-divider::before {
+            left: 0;
+        }
+        
+        .chess-piece-divider::after {
+            right: 0;
+            background: linear-gradient(to left, transparent, rgba(100, 65, 165, 0.5));
+        }
+        
+        @media (max-width: 768px) {
+            .dojo-links a {
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+            
+            .chess-piece-divider::before,
+            .chess-piece-divider::after {
+                width: 25%;
+            }
+        }
+        
+        /* Special Thanks Section Styles */
+        .special-thanks .card {
+            border: none;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             border-radius: 10px;
             overflow: hidden;
@@ -566,40 +724,48 @@
                 <div class="card-body">
                     <h4 class="text-center mb-4">Chess Dojo Community & IM David Pruess</h4>
                     
-                    <div class="row">
+                    <div class="row align-items-center">
                         <div class="col-md-4 mb-4">
-                            <img src="../../images/assets/chess-dojo-logo.png" alt="Chess Dojo Logo" class="img-fluid rounded mb-3" onerror="this.src='https://via.placeholder.com/300x200?text=Chess+Dojo';this.onerror='';">
+                            <div data-aos="zoom-in" data-aos-delay="100">
+                                <img src="../../images/assets/chess-dojo-logo.png" alt="Chess Dojo Logo" class="img-fluid rounded shadow" onerror="this.src='https://via.placeholder.com/300x200?text=Chess+Dojo';this.onerror='';">
+                            </div>
                         </div>
                         <div class="col-md-8">
-                            <p class="lead">Our heartfelt thanks to the Chess Dojo community and International Master David Pruess for their incredible support!</p>
-                            <p>We're deeply grateful to IM David Pruess and the entire Chess Dojo community for participating in, promoting, and streaming the entire Fight With Madi tournament with expert commentary across their media platforms. Their support significantly amplified our fundraising efforts and helped us reach our goal.</p>
+                            <p class="lead" data-aos="fade-up" data-aos-delay="150">Our heartfelt thanks to the Chess Dojo community and International Master David Pruess for their incredible support!</p>
+                            <p data-aos="fade-up" data-aos-delay="200">We're deeply grateful to IM David Pruess and the entire Chess Dojo community for participating in, promoting, and streaming the entire Fight With Madi tournament with expert commentary across their media platforms. Their support significantly amplified our fundraising efforts and helped us reach our goal.</p>
                             
-                            <div class="mt-4">
-                                <h5 class="text-center">Watch the Tournament Stream</h5>
-                                <div class="text-center">
-                                    <a href="https://www.twitch.tv/videos/2412417608" target="_blank" class="btn btn-purple mb-3">
-                                        <i class="fas fa-play-circle mr-2"></i> Watch Tournament Replay
-                                    </a>
-                                    <div class="mt-2 mb-4">
-                                        <img src="../../images/madison/dojo-stream.png" alt="Chess Dojo Tournament Stream" class="img-fluid rounded shadow-sm">
-                                    </div>
-                                </div>
-                                
-                                <h5 class="mt-3 text-center">Connect with Chess Dojo</h5>
-                                <div class="dojo-links justify-content-center">
-                                    <a href="https://www.chessdojo.club" target="_blank" class="btn btn-outline-dark mb-2 mr-2">
-                                        <i class="fas fa-graduation-cap mr-2"></i> Dojo Training Program
-                                    </a>
-                                    <a href="https://www.youtube.com/c/ChessDojo" target="_blank" class="btn btn-outline-danger mb-2 mr-2">
-                                        <i class="fab fa-youtube mr-2"></i> YouTube Channel
-                                    </a>
-                                    <a href="https://www.twitch.tv/chessdojo" target="_blank" class="btn btn-outline-primary mb-2 mr-2">
-                                        <i class="fab fa-twitch mr-2"></i> Twitch Stream
-                                    </a>
-                                    <a href="https://x.com/chessdojo?lang=en" target="_blank" class="btn btn-outline-dark mb-2">
-                                        <i class="fab fa-twitter mr-2"></i> X (Twitter)
+                            <div class="chess-piece-divider" data-aos="fade" data-aos-delay="250">
+                                <i class="fas fa-chess-knight"></i> <i class="fas fa-chess-queen"></i> <i class="fas fa-chess-rook"></i>
+                            </div>
+                            
+                            <h5 class="text-center mb-3" data-aos="fade-up" data-aos-delay="300">Watch the Tournament Stream</h5>
+                            <div class="stream-container" data-aos="zoom-in" data-aos-delay="350">
+                                <img src="../../images/madison/dojo-stream.png" alt="Chess Dojo Tournament Stream" class="img-fluid rounded">
+                                <div class="stream-overlay">
+                                    <a href="https://www.twitch.tv/videos/2412417608" target="_blank" class="btn btn-purple">
+                                        <i class="fas fa-play-circle mr-2"></i> Watch Replay
                                     </a>
                                 </div>
+                            </div>
+                            
+                            <div class="chess-piece-divider" data-aos="fade" data-aos-delay="400">
+                                <i class="fas fa-chess-bishop"></i> <i class="fas fa-chess-king"></i> <i class="fas fa-chess-pawn"></i>
+                            </div>
+                            
+                            <h5 class="text-center mb-3" data-aos="fade-up" data-aos-delay="450">Connect with Chess Dojo</h5>
+                            <div class="dojo-links" data-aos="fade-up" data-aos-delay="500">
+                                <a href="https://www.chessdojo.club" target="_blank" class="btn btn-outline-dark rounded-pill">
+                                    <i class="fas fa-graduation-cap mr-2"></i> Dojo Training Program
+                                </a>
+                                <a href="https://www.youtube.com/c/ChessDojo" target="_blank" class="btn btn-outline-danger rounded-pill">
+                                    <i class="fab fa-youtube mr-2"></i> @ChessDojo YouTube
+                                </a>
+                                <a href="https://www.twitch.tv/chessdojo" target="_blank" class="btn btn-outline-primary rounded-pill">
+                                    <i class="fab fa-twitch mr-2"></i> @ChessDojo Twitch
+                                </a>
+                                <a href="https://x.com/chessdojo" target="_blank" class="btn btn-outline-dark rounded-pill">
+                                    <i class="fab fa-twitter mr-2"></i> @ChessDojo X
+                                </a>
                             </div>
                         </div>
                     </div>
