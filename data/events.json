@@ -1297,7 +1297,8 @@
         "startdate": "2025-03-19",
         "days": "1",
         "recurrence": {
-            "frequency": "weekly",
+            "frequency": "monthly",
+            "weekOfMonth": 3,
             "dayOfWeek": 3,
             "exceptions": []
         },
@@ -1310,9 +1311,9 @@
         "prizes": "None",
         "ages": "All ages",
         "entry_fee": "Free",
-        "notes": "Join us at the Providence Gambit Chess Club for casual chess games every Wednesday evening. All skill levels are welcome! Bring your own board if you have one, but we'll have extras available.<p>The club offers a friendly, relaxed atmosphere to enjoy games, improve your skills, and meet other chess enthusiasts in the Providence area.<p>For more information, contact Miguel Youngs, Providence Chess Club President, at (401) 633-5751 or follow us on Instagram @TheProvidenceGambit.",
+        "notes": "Join us at the Providence Gambit Chess Club for casual chess games on the third Wednesday of each month. All skill levels are welcome! Bring your own board if you have one, but we'll have extras available.<p>The club offers a friendly, relaxed atmosphere to enjoy games, improve your skills, and meet other chess enthusiasts in the Providence area.<p>For more information, contact Miguel Youngs, Providence Chess Club President, at (401) 633-5751 or follow us on Instagram @TheProvidenceGambit.",
         "isRecurring": true,
-        "tags": ["free-entry", "weekly"]
+        "tags": ["free-entry", "monthly"]
     },
     {
         "name": "SuperNationals VIII",

@@ -119,8 +119,10 @@ document.addEventListener("DOMContentLoaded", function() {
         const dayOfWeek = event.recurrence.dayOfWeek; // 0-6, where 0 is Sunday
         const exceptions = new Set(event.recurrence.exceptions || []);
         const isCranstonChess = event.name.includes("Cranston");
+        const isMonthlyEvent = event.recurrence.frequency === "monthly";
+        const weekOfMonth = event.recurrence.weekOfMonth; // For monthly events that occur on specific week
         
-        console.log(`Processing recurring event: ${event.name}, dayOfWeek=${dayOfWeek} (${getDayName(dayOfWeek)})`);
+        console.log(`Processing recurring event: ${event.name}, frequency=${event.recurrence.frequency}, dayOfWeek=${dayOfWeek} (${getDayName(dayOfWeek)})`);
         
         // Function to get day name for logging
         function getDayName(dayIndex) {
@@ -151,6 +153,48 @@ document.addEventListener("DOMContentLoaded", function() {
             return false;
         }
         
+        // Function to check if a date is the nth occurrence of the specified day in its month
+        function isNthOccurrenceInMonth(date, targetDayOfWeek, n) {
+            const year = date.getFullYear();
+            const month = date.getMonth();
+            
+            // Count occurrences of this day in the month
+            let count = 0;
+            let testDate = new Date(year, month, 1);
+            
+            while (testDate.getMonth() === month) {
+                if (testDate.getDay() === targetDayOfWeek) {
+                    count++;
+                    
+                    // If we've found the nth occurrence and it's the same date
+                    if (count === n && testDate.getDate() === date.getDate()) {
+                        return true;
+                    }
+                }
+                testDate.setDate(testDate.getDate() + 1);
+            }
+            
+            return false;
+        }
+        
+        // Function to get the nth occurrence of a day in a given month/year
+        function getNthDayOfMonth(year, month, dayOfWeek, n) {
+            let count = 0;
+            let testDate = new Date(year, month, 1);
+            
+            while (testDate.getMonth() === month) {
+                if (testDate.getDay() === dayOfWeek) {
+                    count++;
+                    if (count === n) {
+                        return new Date(testDate);
+                    }
+                }
+                testDate.setDate(testDate.getDate() + 1);
+            }
+            
+            return null; // Not found (e.g., 5th Wednesday in a month with only 4)
+        }
+        
         // Generate all occurrences within our window
         const startWindow = new Date(currentDate);
         startWindow.setMonth(startWindow.getMonth() - 3); // Look back 3 months
@@ -158,48 +202,84 @@ document.addEventListener("DOMContentLoaded", function() {
         const endWindow = new Date(currentDate);
         endWindow.setFullYear(endWindow.getFullYear() + 1); // Look ahead 1 year
         
-        // Start from base date or earlier to capture all relevant occurrences
-        let checkDate = new Date(baseDate);
-        
-        // If base date is after start window, move back in time until we're before start window
-        while (checkDate > startWindow) {
-            checkDate.setDate(checkDate.getDate() - 7);
-        }
-        
-        // Now move forward until we're in our window
-        while (checkDate < startWindow) {
-            checkDate.setDate(checkDate.getDate() + 7);
-        }
-        
-        // Adjust checkDate so it matches the target day of week before generating occurrences
-        while (checkDate.getDay() !== dayOfWeek) {
-            checkDate.setDate(checkDate.getDate() + 1);
-        }
-        
         const allOccurrences = [];
         
-        // Generate all weekly occurrences within our window
-        console.log(`Generating occurrences from ${checkDate.toDateString()} to ${endWindow.toDateString()}`);
-        while (checkDate <= endWindow) {
-            const dateStr = checkDate.toISOString().split('T')[0];
+        if (isMonthlyEvent && weekOfMonth) {
+            // Handle monthly events that occur on a specific week of the month
+            let checkMonth = new Date(startWindow);
+            // Start from beginning of the month
+            checkMonth.setDate(1);
             
-            // Skip exception dates
-            if (!exceptions.has(dateStr)) {
-                // Check if this is a 5th occurrence of the day in its month
-                const isFifthDay = isFifthOccurrenceInMonth(checkDate, dayOfWeek);
+            while (checkMonth <= endWindow) {
+                // Get the nth occurrence of the day in this month
+                const occurrence = getNthDayOfMonth(
+                    checkMonth.getFullYear(),
+                    checkMonth.getMonth(),
+                    dayOfWeek,
+                    weekOfMonth
+                );
                 
-                allOccurrences.push({
-                    date: new Date(checkDate),
-                    dateStr: dateStr,
-                    isPast: checkDate < currentDate,
-                    isFifthDay: isFifthDay
-                });
+                if (occurrence) {
+                    const dateStr = occurrence.toISOString().split('T')[0];
+                    
+                    // Skip exception dates
+                    if (!exceptions.has(dateStr)) {
+                        allOccurrences.push({
+                            date: new Date(occurrence),
+                            dateStr: dateStr,
+                            isPast: occurrence < currentDate
+                        });
+                        
+                        console.log(`Added monthly: ${occurrence.toDateString()}, isPast=${occurrence < currentDate}`);
+                    }
+                }
                 
-                console.log(`Added ${checkDate.toDateString()}, isPast=${checkDate < currentDate}, isFifthDay=${isFifthDay}`);
+                // Move to next month
+                checkMonth.setMonth(checkMonth.getMonth() + 1);
+            }
+        } else {
+            // Handle weekly events (original logic)
+            // Start from base date or earlier to capture all relevant occurrences
+            let checkDate = new Date(baseDate);
+            
+            // If base date is after start window, move back in time until we're before start window
+            while (checkDate > startWindow) {
+                checkDate.setDate(checkDate.getDate() - 7);
             }
             
-            // Move to next week
-            checkDate.setDate(checkDate.getDate() + 7);
+            // Now move forward until we're in our window
+            while (checkDate < startWindow) {
+                checkDate.setDate(checkDate.getDate() + 7);
+            }
+            
+            // Adjust checkDate so it matches the target day of week before generating occurrences
+            while (checkDate.getDay() !== dayOfWeek) {
+                checkDate.setDate(checkDate.getDate() + 1);
+            }
+            
+            // Generate all weekly occurrences within our window
+            console.log(`Generating occurrences from ${checkDate.toDateString()} to ${endWindow.toDateString()}`);
+            while (checkDate <= endWindow) {
+                const dateStr = checkDate.toISOString().split('T')[0];
+                
+                // Skip exception dates
+                if (!exceptions.has(dateStr)) {
+                    // Check if this is a 5th occurrence of the day in its month
+                    const isFifthDay = isFifthOccurrenceInMonth(checkDate, dayOfWeek);
+                    
+                    allOccurrences.push({
+                        date: new Date(checkDate),
+                        dateStr: dateStr,
+                        isPast: checkDate < currentDate,
+                        isFifthDay: isFifthDay
+                    });
+                    
+                    console.log(`Added weekly: ${checkDate.toDateString()}, isPast=${checkDate < currentDate}, isFifthDay=${isFifthDay}`);
+                }
+                
+                // Move to next week
+                checkDate.setDate(checkDate.getDate() + 7);
+            }
         }
         
         // Find most recent past event (including blitz)
@@ -235,50 +315,67 @@ document.addEventListener("DOMContentLoaded", function() {
             results.push(pastEvent);
         }
         
-        // Find next upcoming regular event
-        const upcomingRegular = allOccurrences.filter(item => !item.isPast && !item.isFifthDay);
-        if (upcomingRegular.length > 0) {
-            upcomingRegular.sort((a, b) => a.date - b.date);
-            const nextRegular = upcomingRegular[0];
+        // For monthly events, add all future occurrences
+        if (isMonthlyEvent) {
+            const futureOccurrences = allOccurrences.filter(item => !item.isPast);
+            futureOccurrences.sort((a, b) => a.date - b.date);
             
-            results.push({
-                ...event,
-                startdate: nextRegular.dateStr,
-                isRecurring: true,
-                isPast: false,
-                days: getDayName(dayOfWeek)
-            });
-        }
-        
-        // If this is Cranston Chess, also find the next blitz event (5th Thursday)
-        if (isCranstonChess) {
-            const upcomingBlitz = allOccurrences.filter(item => !item.isPast && item.isFifthDay);
-            if (upcomingBlitz.length > 0) {
-                upcomingBlitz.sort((a, b) => a.date - b.date);
-                const nextBlitz = upcomingBlitz[0];
-                
-                // Create the blitz event with the speed tag
-                const blitzEvent = {
+            futureOccurrences.forEach(occurrence => {
+                results.push({
                     ...event,
-                    startdate: nextBlitz.dateStr,
-                    name: "Cranston Big Money Blitz Brawl",
+                    startdate: occurrence.dateStr,
                     isRecurring: true,
-                    isBlitzEvent: true,
                     isPast: false,
-                    days: getDayName(dayOfWeek),
-                    entry_fee: "$20.00",
-                    time_control: "USCF Blitz G/5;d0"
-                };
+                    days: getDayName(dayOfWeek)
+                });
+            });
+        } else {
+            // For weekly events, use original logic
+            // Find next upcoming regular event
+            const upcomingRegular = allOccurrences.filter(item => !item.isPast && !item.isFifthDay);
+            if (upcomingRegular.length > 0) {
+                upcomingRegular.sort((a, b) => a.date - b.date);
+                const nextRegular = upcomingRegular[0];
                 
-                // Add the speed tag
-                if (!blitzEvent.tags) {
-                    blitzEvent.tags = [];
+                results.push({
+                    ...event,
+                    startdate: nextRegular.dateStr,
+                    isRecurring: true,
+                    isPast: false,
+                    days: getDayName(dayOfWeek)
+                });
+            }
+            
+            // If this is Cranston Chess, also find the next blitz event (5th Thursday)
+            if (isCranstonChess) {
+                const upcomingBlitz = allOccurrences.filter(item => !item.isPast && item.isFifthDay);
+                if (upcomingBlitz.length > 0) {
+                    upcomingBlitz.sort((a, b) => a.date - b.date);
+                    const nextBlitz = upcomingBlitz[0];
+                    
+                    // Create the blitz event with the speed tag
+                    const blitzEvent = {
+                        ...event,
+                        startdate: nextBlitz.dateStr,
+                        name: "Cranston Big Money Blitz Brawl",
+                        isRecurring: true,
+                        isBlitzEvent: true,
+                        isPast: false,
+                        days: getDayName(dayOfWeek),
+                        entry_fee: "$20.00",
+                        time_control: "USCF Blitz G/5;d0"
+                    };
+                    
+                    // Add the speed tag
+                    if (!blitzEvent.tags) {
+                        blitzEvent.tags = [];
+                    }
+                    if (!blitzEvent.tags.includes("speed")) {
+                        blitzEvent.tags.push("speed");
+                    }
+                    
+                    results.push(blitzEvent);
                 }
-                if (!blitzEvent.tags.includes("speed")) {
-                    blitzEvent.tags.push("speed");
-                }
-                
-                results.push(blitzEvent);
             }
         }
         
@@ -341,6 +438,7 @@ document.addEventListener("DOMContentLoaded", function() {
 // Define the badge system with proper ordering
 const BADGE_DEFINITIONS = [
     { id: 'weekly', label: 'Weekly Event', icon: 'fa-redo-alt', class: 'badge-info' },
+    { id: 'monthly', label: 'Monthly Event', icon: 'fa-calendar-alt', class: 'badge-info' },
     { id: 'discount', label: 'Discount Available', icon: 'fa-tags', class: 'badge-success' },
     { id: 'free-entry', label: 'Free Entry', icon: 'fa-ticket-alt', class: 'badge-success' },
     { id: 'scholastic', label: 'Scholastic', icon: 'fa-graduation-cap', class: 'badge-primary' },
@@ -363,6 +461,7 @@ const BADGE_DEFINITIONS = [
  * To use any of these badges, include a "tags" array in your event with any of these identifiers:
  * 
  * - weekly         : For recurring weekly events
+ * - monthly        : For recurring monthly events
  * - discount       : When discounts are available (automatically added if promo_code exists)
  * - free-entry     : For events with no entry fee
  * - scholastic     : For youth/K-12 events
@@ -401,9 +500,13 @@ function detectEventBadges(event) {
         });
     }
     
-    // Special case for recurring events that should still keep their weekly badge
-    if (event.isRecurring) {
-        badges.push('weekly');
+    // Special case for recurring events based on frequency
+    if (event.isRecurring && event.recurrence) {
+        if (event.recurrence.frequency === "monthly") {
+            badges.push('monthly');
+        } else if (event.recurrence.frequency === "weekly") {
+            badges.push('weekly');
+        }
     }
     
     // Special case for promo code events that should have discount badge
