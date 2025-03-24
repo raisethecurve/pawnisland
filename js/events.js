@@ -29,14 +29,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Filter events based on visibility rules
             const visibleEvents = processedEvents.filter(event => {
-                // If the event is not part of a tournament or is round 1, always show it
+                // Check showAfterDate if it exists
+                if (event.showAfterDate) {
+                    const showAfterDate = parseDateNoOffset(event.showAfterDate);
+                    
+                    // If showAfterDate has not passed yet
+                    if (currentDate < showAfterDate) {
+                        // Only show round 1 events before their showAfterDate
+                        return !event.round || event.round === 1;
+                    }
+                }
+                
+                // If no tournamentId or it's round 1, show it
                 if (!event.tournamentId || !event.round || event.round === 1) {
                     return true;
                 }
                 
                 // For round 2+, check if all previous rounds have passed
-                const allPreviousRoundsPassed = areAllPreviousRoundsPassed(event, events, currentDate);
-                return allPreviousRoundsPassed;
+                return areAllPreviousRoundsPassed(event, events, currentDate);
             });
 
             // Add tournament context info to events
@@ -385,7 +395,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const eventsContainer = document.getElementById('events-container');
         eventsContainer.innerHTML = '';
 
-        // Sort events
+        // Sort events by date
         events.sort((a, b) => {
             const dateA = parseDateNoOffset(a.startdate);
             const dateB = parseDateNoOffset(b.startdate);
@@ -398,34 +408,111 @@ document.addEventListener("DOMContentLoaded", function() {
             return dateA - dateB;
         });
 
-        // Group tournaments together for better display
+        // Completely new tournament grouping logic
         const groupedEvents = [];
-        const processedTournaments = new Set();
+        const processedEventIds = new Set();
         
-        events.forEach(event => {
-            // If event is part of a tournament and not already processed
-            if (event.tournamentId && !processedTournaments.has(event.tournamentId)) {
-                // Find all visible events from this tournament
-                const tournamentEvents = events.filter(e => e.tournamentId === event.tournamentId);
-                
-                if (tournamentEvents.length > 0) {
-                    // Sort by round number if available
-                    tournamentEvents.sort((a, b) => {
-                        if (a.round && b.round) return a.round - b.round;
-                        if (a.round) return -1;
-                        if (b.round) return 1;
-                        return 0;
-                    });
-                    
-                    // Add all tournament events
-                    tournamentEvents.forEach(e => groupedEvents.push(e));
-                    processedTournaments.add(event.tournamentId);
-                }
-            } 
-            // If not part of a tournament or already processed tournament, add normally
-            else if (!event.tournamentId || processedTournaments.has(event.tournamentId)) {
+        // First, identify all tournament IDs and their events
+        const tournamentGroups = {};
+        
+        events.forEach((event, index) => {
+            if (!event.tournamentId) {
+                // Non-tournament events are added directly
                 groupedEvents.push(event);
+                return;
             }
+            
+            // Give each event a unique ID for tracking
+            const eventId = `${index}-${event.name}-${event.startdate}`;
+            
+            // If this tournament hasn't been seen yet, create an entry for it
+            if (!tournamentGroups[event.tournamentId]) {
+                tournamentGroups[event.tournamentId] = [];
+            }
+            
+            // Add this event to its tournament group with its unique ID
+            tournamentGroups[event.tournamentId].push({
+                event: event,
+                eventId: eventId,
+                date: parseDateNoOffset(event.startdate)
+            });
+        });
+        
+        // Process each tournament group
+        Object.keys(tournamentGroups).forEach(tournamentId => {
+            const tournamentEvents = tournamentGroups[tournamentId];
+            
+            // Sort tournament events by date
+            tournamentEvents.sort((a, b) => a.date - b.date);
+            
+            // Group events into proper tournament series based on date proximity
+            const tournamentSeries = [];
+            let currentSeries = [];
+            
+            tournamentEvents.forEach((eventData, index) => {
+                // If this event has already been processed, skip it
+                if (processedEventIds.has(eventData.eventId)) {
+                    return;
+                }
+                
+                // Start a new series or continue the current one
+                if (currentSeries.length === 0) {
+                    currentSeries.push(eventData);
+                } else {
+                    const lastEvent = currentSeries[currentSeries.length - 1];
+                    
+                    // Check if this event is close in time to the last event
+                    // For weekly tournaments, we use 35 days as max gap
+                    const daysBetween = Math.round((eventData.date - lastEvent.date) / (1000 * 60 * 60 * 24));
+                    
+                    if (daysBetween <= 35) {
+                        // Same tournament series
+                        currentSeries.push(eventData);
+                    } else {
+                        // This is a new tournament series
+                        tournamentSeries.push([...currentSeries]);
+                        currentSeries = [eventData];
+                    }
+                }
+                
+                // If this is the last event, add the current series
+                if (index === tournamentEvents.length - 1 && currentSeries.length > 0) {
+                    tournamentSeries.push([...currentSeries]);
+                }
+            });
+            
+            // Process each tournament series
+            tournamentSeries.forEach(series => {
+                // Mark all events in this series as processed
+                series.forEach(eventData => {
+                    processedEventIds.add(eventData.eventId);
+                });
+                
+                // Sort the series by round number if available
+                series.sort((a, b) => {
+                    const roundA = a.event.round || 0;
+                    const roundB = b.event.round || 0;
+                    return roundA - roundB;
+                });
+                
+                // Add all events from this series to the grouped events
+                series.forEach(eventData => {
+                    groupedEvents.push(eventData.event);
+                });
+            });
+        });
+        
+        // Final re-sort to ensure correct chronological order
+        groupedEvents.sort((a, b) => {
+            const dateA = parseDateNoOffset(a.startdate);
+            const dateB = parseDateNoOffset(b.startdate);
+            const aIsPast = dateA < currentDate;
+            const bIsPast = dateB < currentDate;
+            
+            if (aIsPast !== bIsPast) {
+                return aIsPast ? 1 : -1;
+            }
+            return dateA - dateB;
         });
 
         // Display events
