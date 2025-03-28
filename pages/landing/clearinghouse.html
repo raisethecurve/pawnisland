@@ -15,7 +15,6 @@
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href="../../css/navbar.css">
@@ -319,7 +318,7 @@
     <div id="heroCardContainer"></div>
 
     <!-- Enhanced Fight With Madi Promotional Link -->
-    <div class="container mt-4 mb-4" data-aos="fade-up">
+    <div class="container mt-4 mb-4">
         <div class="fight-madi-promo">
             <div class="row align-items-center">
                 <div class="col-md-2 text-center">
@@ -344,8 +343,8 @@
 
     <div class="main-content">
         <div class="container">
-            <!-- Simplified filter container - removed time filters -->
-            <div class="unified-filters" data-aos="fade-up">
+            <!-- Simplified filter container -->
+            <div class="unified-filters">
                 <!-- Organizer filters - now with multi-select capability -->
                 <div class="filter-section organizers-section">
                     <h1 class="filter-heading text-center mb-4">Rhode Island Chess Tournaments & Events</h1>
@@ -381,7 +380,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
     <!-- Hero Card Component -->
     <script src="../../js/components/hero-card.js"></script>
@@ -411,14 +409,6 @@
                 subtitleAnimation: true,
                 height: 'calc(100vh - 80px)', // never exceeds screen minus filter buttons
                 alignment: 'center'
-            });
-            
-            // Initialize AOS with optimized settings
-            AOS.init({
-                duration: 800,
-                once: true,
-                offset: 100,
-                easing: 'ease-out-cubic'
             });
             
             // Hide loading indicator when events are loaded
