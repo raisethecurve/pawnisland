@@ -4,7 +4,17 @@ document.addEventListener("DOMContentLoaded", function() {
         // No need to call updateEventsForTheme - ThemeManager handles this now
     });
     
-    fetch('../../data/events.json')
+    // Add cache-busting parameter to prevent browser caching
+    const cacheBuster = `?cache=${Date.now()}`;
+    
+    fetch(`../../data/events.json${cacheBuster}`, {
+        // Add cache control headers to prevent caching
+        headers: {
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache',
+            'Expires': '0'
+        }
+    })
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
