@@ -87,15 +87,11 @@
         "entry_fee": "$318 by 5/15, $328 by 6/28, $350 at site (varies by section)",
         "round_times": "Multiple schedules:<p>5-day: 7/2 7pm; 7/3-4 11am & 6pm; 7/5-6 10am & 5pm<p>4-day: 7/3 11am, 2:30pm & 6pm; 7/4 11am & 6pm; 7/5-6 10am & 5pm<p>3-day: 7/4 11am, 1:30pm, 3:30pm, 6pm & 8:30pm; 7/5-6 10am & 5pm",
         "prizes": "$208,000 guaranteed across sections<p>Open: $20,000-10,000-5,000-2,500-1,300-1,000-800-700-600-500<p>Under 2200: $12,000-6,000-3,000-1,500-1,000-800-600-500-400-400<p>Additional prizes for rating categories",
+        "prix_points": "Enhanced (300 points)",
         "ages": "All ages",
         "notes": "An American chess classic and Heritage Event! The World Open is one of the most prestigious chess tournaments in the United States.<p><p>Sections include: Open, Under 2200, Under 2000, Under 1800, Under 1600, and Under 1400.<p>The Open section is FIDE rated with GM & IM norm opportunities.<p>Half-point byes available (max 3, limit 2 in last 4 rounds). Must commit before round 4.",
         "link": "https://new.uschess.org/53rd-annual-world-open-top-6-sections-open-through-under-1400-sections",
-        "isPrestigiousEvent": true,
-        "prestigeLevel": "International",
-        "grandPrix": "Enhanced (300 points)",
-        "juniorGrandPrix": true,
-        "heritageEvent": true,
-        "tags": ["international"]
+        "tags": ["international", "gprix"]
     },
     {
         "name": "New England Collegiate Championships",
@@ -1334,9 +1330,6 @@
         "ages": "K-12 (High School), K-8 (Middle School), K-6/K-5 (Elementary), K-3, and K-1 divisions",
         "notes": "The SuperNationals is a major scholastic chess event held once every four years, combining all five national scholastic championships into one massive tournament.<p>Special events include:<p><strong>National Bughouse Championships:</strong> Thursday at 11 AM. Three sections (K-12, K-8, K-6). $50 per team.<p><strong>National Blitz Championships:</strong> Thursday at 5 PM. Five sections. Time control G/3+2. Entry $50/$80 on-site.<p><strong>National Puzzle Championships:</strong> Thursday at 3 PM. Two sections (K-6, 7-12). Entry $20/$30.<p><strong>Friends & Family Tournament:</strong> Saturday 10:30 AM-4:30 PM. 4SS, G/30 d5. $40 entry.<p>US Chess membership required. April 2025 rating supplement will be used.<p>Up to two half-point byes available if requested by 10 AM on Friday.<p>100% refund if canceled by 11 AM Friday.<p>For more information, visit the US Chess website or email nationalevents@uschess.org.",
         "link": "https://www.uschess.org/supernationals",
-        "isPrestigiousEvent": true,
-        "prestigeLevel": "National",
-        "juniorGrandPrix": true,
         "tags": ["scholastic", "national"]
     },
     {
@@ -1377,10 +1370,29 @@
         "ages": "All ages",
         "notes": "The Eastern Class Championships is a prestigious tournament offering seven different class-based sections to accommodate players of all strengths.<p>Both 2-day and 3-day schedule options are available.<p>Half-point byes available (limit 2); must commit before round 2.<p>The Master, Expert, and Class A sections will be FIDE rated.<p>Electronic device policy: Players may not possess cellphones during play.<p>Please bring your own chess set, board, and clock if possible - none supplied!<p>BLITZ TOURNAMENT SATURDAY NIGHT  9:30 pm, enter at site Saturday by 9:10 pm.",
         "link": "https://www.chesstour.com/ecc25.htm",
-        "isPrestigiousEvent": true,
-        "prestigeLevel": "Regional",
-        "grandPrix": "Enhanced (120 points)",
-        "heritageEvent": true,
-        "tags": ["regional"]
-    }
+        "prix_points": "Enhanced (120 points)",
+        "tags": ["regional", "gprix"]
+    },
+    {
+        "name": "The Princeton Open",
+        "startdate": "2025-04-16",
+        "enddate": "2025-04-20",
+        "days": "5",
+        "image": "../../images/assets/princeton-westin.avif",
+        "largeImage": true,
+        "organizer": "Continental Chess Association",
+        "location": "Westin Princeton at Forrestal Village Hotel",
+        "address": "201 Village Blvd, Princeton, NJ 08540",
+        "sections": "Open (FIDE rated), Under 2200 (FIDE rated), Under 2000 (FIDE rated), Under 1800, Under 1600, Under 1400, Under 1100",
+        "format": "9-round Swiss System",
+        "time_control": "40/80, SD/30, d30 (4-Day Option: Rounds 1-2 G/60, d10; 3-Day Option (U1100 only): Rounds 1-9 G/60, d10)",
+        "entry_fee": "$228 online at chessaction.com by 4/14, $250 later online or at site until 1 hour before round 1. See event details for additional fee information and discounts.",
+        "round_times": "5-day: Wed 7 pm; Thu 11 am & 5 pm; Fri 11 am & 5 pm; Sat 10 am & 4 pm; Sun 10 am & 4 pm.<br>4-day: Thu 11 am, 2 pm, & 5 pm; Fri 11 am & 5 pm; Sat 10 am & 4 pm; Sun 10 am & 4 pm.<br>3-day (U1100 only): Fri 11 am, 2 pm, & 5 pm; Sat 10 am, 1 pm, & 4 pm; Sun 10 am, 1 pm, & 4 pm.",
+        "prizes": "Open Section (FIDE rated, GM & IM norms possible): Prizes: $5000-3000-2000-1000-800-600-500-400, clear win or 1st on tiebreak $200 bonus, top FIDE 2250-2399 $2000-1000, top FIDE U2250/Unrated $2000-1000. Minimum prize guarantee if entered online by 4/1 & play all 9 games (no byes): Foreign GM $1000, foreign IM/WGM $500.<br><br>Under 2200 Section (FIDE rated): $3500-2000-1000-700-500-400-300-300.<br><br>Under 2000 Section (FIDE rated): $3500-2000-1000-700-500-400-300-300.<br><br>Under 1800 Section: $3500-2000-1000-700-500-400-300-300.<br><br>Under 1600 Section: $2500-1500-800-600-500-400-300.<br><br>Under 1400 Section: $2500-1500-800-600-500-400-300.<br><br>Under 1100 Section: $1000-700-500-400-300-300-200-200.<br><br>Prize limits:<br><br>1) Players with under 26 lifetime games rated as of April 2025 Official Rating List limited to $600 in U1100, $1000 in U1400, $1400 in U1600. $1800 in U1800.<br><br>2) Unrated players allowed in U2200 and below with prize limits: U1100 $200, U1400 $400, U1600 $600, or U1800 $800.<br><br>3) If any post-event Regular OTB or Regular Online rating posted 4/14/24-4/14/25, or current Online Regular Rating, was above 40 points over section maximum, prize limit $500.<br><br>4) Balance of any limited prize goes to next eligible player(s) in line.<br><br>Mixed Doubles Bonus Prizes: best male/female 2-player team combined score among all sections: $1000-600-400. Team must average under 2200; may play in different sections and schedules; register (no extra fee) before both players begin round 2. Teams including an unrated limited to $400 prize.",
+        "ages": "All ages",
+        "notes": "A new CCA event with a large guaranteed prize fund. Free parking. Players may not possess cellphones during play. See website for complete details.",
+        "link": "https://www.chesstour.com/pro25.htm",
+        "prix_points": "Enhanced (120 points)",
+        "tags": ["regional", "gprix"]
+        }
 ]

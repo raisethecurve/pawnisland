@@ -535,6 +535,7 @@ const BADGE_DEFINITIONS = [
     { id: 'broadcast', label: 'Broadcast', icon: 'fa-video', class: 'badge-info' },
     { id: 'fundraiser', label: 'Fundraiser', icon: 'fa-hand-holding-heart', class: 'badge-warning' },
     { id: 'online', label: 'Online', icon: 'fa-laptop', class: 'badge-secondary' },
+    { id: 'gprix', label: 'Grand Prix', icon: 'fa-coins', class: 'badge-warning' }, // badge indicates grand prix points
     { id: 'regional', label: 'Regional', icon: 'fa-map-marker-alt', class: 'badge-secondary' },
     { id: 'national', label: 'National', icon: 'fa-flag', class: 'badge-primary' },
     { id: 'international', label: 'International', icon: 'fa-globe', class: 'badge-primary' },
@@ -558,6 +559,7 @@ const BADGE_DEFINITIONS = [
  * - broadcast      : For events with livestreams/broadcasts
  * - fundraiser     : For charity or fundraising events
  * - online         : For virtual events
+ * - gprix          : For events that are part of a Grand Prix series
  * - regional       : For state or regional championships
  * - national       : For national championships
  * - international  : For international events
@@ -761,6 +763,7 @@ function createEventCard(event, currentDate) {
     let formatSection = event.format ? `<p class="card-text event-info"><strong>Format:</strong> ${event.format}</p>` : '';
     let roundTimesSection = event.round_times ? `<p class="card-text event-info"><strong>Round Times:</strong> ${event.round_times}</p>` : '';
     let prizesSection = event.prizes ? `<p class="card-text event-info"><strong>Prizes:</strong> ${event.prizes}</p>` : '';
+    let prixPoints = event.prix_points ? `<p class="card-text event-info"><strong>Grand Prix Points:</strong> ${event.prix_points}</p>` : '';
     let ageSection = event.ages ? `<p class="card-text event-info"><strong>Age Range:</strong> ${event.ages}</p>` : '';
     
     // Only show View Details link if there's no promo code
@@ -815,6 +818,7 @@ function createEventCard(event, currentDate) {
                 ${formatSection}
                 ${roundTimesSection}
                 ${prizesSection}
+                ${prixPoints}
                 ${ageSection}
                 ${linkSection}
                 ${registrationSection}
