@@ -550,7 +550,8 @@ const BADGE_DEFINITIONS = [
     { id: 'national', label: 'National', icon: 'fa-flag', class: 'badge-primary' },
     { id: 'international', label: 'International', icon: 'fa-globe', class: 'badge-primary' },
     { id: 'professional', label: 'Professional', icon: 'fa-chess-queen', class: 'badge-dark' },
-    { id: 'speed', label: 'Speed Chess', icon: 'fa-bolt', class: 'badge-warning' } // Replacing blitz badge
+    { id: 'team', label: 'Team Event', icon: 'fa-users', class: 'badge-info' }, // team badge for team events
+    { id: 'memorial', label: 'Memorial', icon: 'fa-ribbon', class: 'badge-primary' }
 ];
 
 /* 

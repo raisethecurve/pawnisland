@@ -150,7 +150,8 @@
         "prizes": "$2,000 Guaranteed and Trophies",
         "ages": "All ages",
         "link": "https://oceanstatechess.com/event/oscas-3rd-lou-giarrusso-centennial-cup-championship-east-greenwich-ri-2000-trophies-biggest-event-of-the-year/",
-        "notes": "In memory of Lou Giarrusso (1923-2024), WWII Veteran and beloved member of the Rhode Island chess community who played regularly at clubs and tournaments well into his 100s. This annual championship honors his legacy and dedication to the game."
+        "notes": "In memory of Lou Giarrusso (1923-2024), WWII Veteran and beloved member of the Rhode Island chess community who played regularly at clubs and tournaments well into his 100s. This annual championship honors his legacy and dedication to the game.",
+        "tags": ["memorial"]
     }, 
     {
         "name": "Sven Brask/Howard Cook Memorial - Round 1",
@@ -171,7 +172,7 @@
         "notes": "This is a very strong chess club within a reasonable distance of Rhode Island. I have personally played here and loved every minute of it. There is a great opportunity here for youths and adults alike to play high-rated (but not underrated) players. Bonus points if you can qualify for the club championship, which is sure to be a feather in your cap.",
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "brask-2025",
-        "tags": ["weekly"]
+        "tags": ["weekly", "memorial"]
     },
     {
         "name": "Sven Brask/Howard Cook Memorial - Round 2",
@@ -194,7 +195,7 @@
         "tournamentId": "brask-2025",
         "round": 2,
         "showAfterDate": "2025-01-08",
-        "tags": ["weekly"]
+        "tags": ["weekly", "memorial"]
     },
     {
         "name": "Sven Brask/Howard Cook Memorial - Round 3",
@@ -217,7 +218,7 @@
         "tournamentId": "brask-2025",
         "round": 3,
         "showAfterDate": "2025-01-15",
-        "tags": ["weekly"]
+        "tags": ["weekly", "memorial"]
     },
     {
         "name": "Sven Brask/Howard Cook Memorial - Round 4",
@@ -240,7 +241,7 @@
         "tournamentId": "brask-2025",
         "round": 4,
         "showAfterDate": "2025-01-22",
-        "tags": ["weekly"]
+        "tags": ["weekly", "memorial"]
     },
     {
         "name": "Winter Swiss - Round 1",
@@ -351,7 +352,7 @@
         "notes": "This is a very strong chess club within a reasonable distance of Rhode Island. I have personally played here and loved every minute of it. There is a great opportunity here for youths and adults alike to play high-rated (but not underrated) players. Bonus points if you can qualify for the club championship, which is sure to be a feather in your cap.",
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "vail-2025",
-        "tags": ["weekly"]
+        "tags": ["weekly", "memorial"]
     },
     {
         "name": "Vail Pagliarani Memorial - Round 2",
@@ -374,7 +375,7 @@
         "tournamentId": "vail-2025",
         "round": 2,
         "showAfterDate": "2025-03-05",
-        "tags": ["weekly"]
+        "tags": ["weekly", "memorial"]
     },
     {
         "name": "Vail Pagliarani Memorial - Round 3",
@@ -397,7 +398,7 @@
         "tournamentId": "vail-2025",
         "round": 3,
         "showAfterDate": "2025-03-12",
-        "tags": ["weekly"]
+        "tags": ["weekly", "memorial"]
     },
     {
         "name": "Vail Pagliarani Memorial - Round 4",
@@ -420,7 +421,7 @@
         "tournamentId": "vail-2025",
         "round": 4,
         "showAfterDate": "2025-03-19",
-        "tags": ["weekly"]
+        "tags": ["weekly", "memorial"]
     },
     {
         "name": "Club Championship - Round 1",
@@ -621,7 +622,7 @@
         "notes": "This is a very strong chess club within a reasonable distance of Rhode Island. I have personally played here and loved every minute of it. There is a great opportunity here for youths and adults alike to play high-rated (but not underrated) players. Bonus points if you can qualify for the club championship, which is sure to be a feather in your cap.",
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "sfougaris-2025",
-        "tags": ["weekly"]
+        "tags": ["weekly", "memorial"]
     },
     {
         "name": "Jim Sfougaris Memorial - Round 2",
@@ -644,7 +645,7 @@
         "tournamentId": "sfougaris-2025",
         "round": 2,
         "showAfterDate": "2025-06-04",
-        "tags": ["weekly"]
+        "tags": ["weekly", "memorial"]
     },
     {
         "name": "Jim Sfougaris Memorial - Round 3",
@@ -667,7 +668,7 @@
         "tournamentId": "sfougaris-2025",
         "round": 3,
         "showAfterDate": "2025-06-11",
-        "tags": ["weekly"]
+        "tags": ["weekly", "memorial"]
     },
     {
         "name": "Jim Sfougaris Memorial - Round 4",
@@ -690,7 +691,7 @@
         "tournamentId": "sfougaris-2025",
         "round": 4,
         "showAfterDate": "2025-06-18",
-        "tags": ["weekly"]
+        "tags": ["weekly", "memorial"]
     },
     {
         "name": "George Winsor Memorial - Round 1",
@@ -711,7 +712,7 @@
         "notes": "This is a very strong chess club within a reasonable distance of Rhode Island. I have personally played here and loved every minute of it. There is a great opportunity here for youths and adults alike to play high-rated (but not underrated) players. Bonus points if you can qualify for the club championship, which is sure to be a feather in your cap.",
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "winsor-2025",
-        "tags": ["weekly"]
+        "tags": ["weekly", "memorial"]
     },
     {
         "name": "George Winsor Memorial - Round 2",
@@ -734,7 +735,7 @@
         "tournamentId": "winsor-2025",
         "round": 2,
         "showAfterDate": "2025-07-02",
-        "tags": ["weekly"]
+        "tags": ["weekly", "memorial"]
     },
     {
         "name": "George Winsor Memorial - Round 3",
@@ -757,7 +758,7 @@
         "tournamentId": "winsor-2025",
         "round": 3,
         "showAfterDate": "2025-07-09",
-        "tags": ["weekly"]
+        "tags": ["weekly", "memorial"]
     },
     {
         "name": "George Winsor Memorial - Round 4",
@@ -780,7 +781,7 @@
         "tournamentId": "winsor-2025",
         "round": 4,
         "showAfterDate": "2025-07-16",
-        "tags": ["weekly"]
+        "tags": ["weekly", "memorial"]
     },
     {
         "name": "George Winsor Memorial - Round 5",
@@ -803,7 +804,7 @@
         "tournamentId": "winsor-2025",
         "round": 5,
         "showAfterDate": "2025-07-23",
-        "tags": ["weekly"]
+        "tags": ["weekly", "memorial"]
     },
     {
         "name": "August Attack - Round 1",
@@ -914,7 +915,7 @@
         "notes": "This is a very strong chess club within a reasonable distance of Rhode Island. I have personally played here and loved every minute of it. There is a great opportunity here for youths and adults alike to play high-rated (but not underrated) players. Bonus points if you can qualify for the club championship, which is sure to be a feather in your cap.",
         "entry_fee": "$20.00 for the whole tournament, payable upon entry",
         "tournamentId": "911-2025",
-        "tags": ["weekly"]
+        "tags": ["weekly", "memorial"]
     },
     {
         "name": "9/11 Memorial - Round 2",
@@ -937,7 +938,7 @@
         "tournamentId": "911-2025",
         "round": 2,
         "showAfterDate": "2025-09-03",
-        "tags": ["weekly"]
+        "tags": ["weekly", "memorial"]
     },
     {
         "name": "9/11 Memorial - Round 3",
@@ -960,7 +961,7 @@
         "tournamentId": "911-2025",
         "round": 3,
         "showAfterDate": "2025-09-10",
-        "tags": ["weekly"]
+        "tags": ["weekly", "memorial"]
     },
     {
         "name": "9/11 Memorial - Round 4",
@@ -983,7 +984,7 @@
         "tournamentId": "911-2025",
         "round": 4,
         "showAfterDate": "2025-09-17",
-        "tags": ["weekly"]
+        "tags": ["weekly", "memorial"]
     },
     {
         "name": "Fall Classic - Round 1",
@@ -1287,7 +1288,7 @@
         "ages": "All ages",
         "notes": "The Paul Gavlick Rhode Island Rapid & Blitz State Championship honors the legacy of Paul W. Gavlick (1935-2012), a dedicated chess player who held the title of Rhode Island Speed Chess Champion for several years.<p>This exciting one-day event features both Rapid and Blitz tournaments, with the option to play in one or both events. Free pizza will be provided during the lunch break for players registered for both tournaments!<p>Winners of the Open Section will be crowned the 2025 Rhode Island Rapid Champion and 2025 Rhode Island Blitz Champion. The tournament is open to out-of-state players, who are eligible to win all trophies, with separate champion trophies for Rhode Island residents.<p>Please bring your own chess clock (sets will be provided). USCF membership is required for all participants, and USCF Rapid and Blitz rules apply.<p>Use the back parking lot and access the rear entrance to La Salle Academy.",
         "link": "https://oceanstatechess.com/event/paul-gavlick-memorial-ri-blitz-rapid-championship/",
-        "tags": ["speed", "regional"]
+        "tags": ["speed", "regional", "memorial"]
     },
     {
         "name": "Providence Gambit",
@@ -1394,5 +1395,47 @@
         "link": "https://www.chesstour.com/pro25.htm",
         "prix_points": "Enhanced (120 points)",
         "tags": ["regional", "gprix"]
+        },
+
+    {
+            "name": "Rhode Island Mixed Team Championship",
+            "startdate": "2025-05-03",
+            "days": "1",
+            "image": "../../images/assets/neit.jpg",
+            "largeImage": true,
+            "organizer": "Ocean State Chess Association",
+            "location": "New England Institute of Technology",
+            "address": "1 New England Tech Blvd., East Greenwich, RI 02818",
+            "sections": "One Open Section (Teams of 4 Players)",
+            "format": "3-round Swiss System, Fixed-Team Roster",
+            "time_control": "G/45+10",
+            "entry_fee": "4-Player Team: $100 by 5/2; Individual: $25 by 5/2; Late Entry: $35 per player on-site",
+            "round_times": "Round 1: 10:00 AM, Round 2: 12:45 PM, Round 3: 2:45 PM",
+            "prizes": "$500 Total in Cash, Trophies, Prizes; 1st Place Team: $200 + 4 Trophies; 2nd Place Team: 4 Medals + 4 Free OSCA Entries (up to $200); 3rd Place Team: 4 Leap Chess Clocks (worth $100+)",
+            "ages": "All ages, mixed adult and scholastic",
+            "notes": "Open to out-of-state players. Teams of 4 players (minimum 3) with any mix of adult, senior, or junior players from any state. Board order based on May 2025 USCF ratings. Individuals can register and will be placed on a team or as substitutes. USCF membership required; tournament is dual-rated. Cafeteria food available 11:30 AM-1:30 PM; no food allowed in tournament rooms. Outside food discouraged; home-brought food must be eaten in cafeteria. Players under 12 must be accompanied by a parent. Clean-up required; no horseplay or running permitted.",
+            "link": "https://oceanstatechess.com/event/mixed-team-championship/",
+            "tags": ["team", "regional"]
+        },
+
+    {
+            "name": "Rhode Island Invitational Scholastic Championship",
+            "startdate": "2025-04-26",
+            "days": "1",
+            "image": "../../images/assets/wheeler-school.jpg",
+            "largeImage": true,
+            "organizer": "Ocean State Chess Association",
+            "location": "The Wheeler School",
+            "address": "216 Hope Street, Providence, RI 02906",
+            "sections": "High School (Grade 9-12), Middle School (Grade 6-8), Elementary School (Grade K-5)",
+            "format": "4-round Swiss System",
+            "time_control": "G/45;d5",
+            "entry_fee": "$35 by 4/24, by invitation only",
+            "round_times": "Round 1: 8:30 AM, subsequent rounds ASAP, lunch break after Round 2",
+            "prizes": "Trophies; Winners qualify to represent Rhode Island at the U.S. National Denker, Barber, and Rockefeller Tournaments in Madison, WI (July 28-31, 2025)",
+            "ages": "Scholastic (K-12), by invitation only",
+            "notes": "Closed invitational for top Rhode Island scholastic players. Qualifiers include top two USCF-rated RI students and 1st, 2nd, 3rd place finishers (including ties) from the 2025 RI Scholastic State Championship (March 15). Event determines representatives for the U.S. National Denker (High School), Barber (Middle School), and Rockefeller (Elementary) Tournaments. USCF membership required; tournament is USCF-rated. Registration closes April 24 at 11:59 PM. Contact frank@oceanstatechess.com for inquiries or if unable to attend.",
+            "link": "https://oceanstatechess.com/event/r-i-closed-championship/",
+            "tags": ["scholastic", "regional"]
         }
 ]
