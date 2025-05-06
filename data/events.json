@@ -1437,5 +1437,27 @@
             "notes": "Closed invitational for top Rhode Island scholastic players. Qualifiers include top two USCF-rated RI students and 1st, 2nd, 3rd place finishers (including ties) from the 2025 RI Scholastic State Championship (March 15). Event determines representatives for the U.S. National Denker (High School), Barber (Middle School), and Rockefeller (Elementary) Tournaments. USCF membership required; tournament is USCF-rated. Registration closes April 24 at 11:59 PM. Contact frank@oceanstatechess.com for inquiries or if unable to attend.",
             "link": "https://oceanstatechess.com/event/r-i-closed-championship/",
             "tags": ["scholastic", "regional"]
+        },
+        {
+            "name": "93rd Massachusetts Open",
+            "startdate": "2025-05-24",
+            "enddate": "2025-05-26",
+            "days": "3",
+            "image": "../../images/assets/westford-regency.jpg",
+            "largeImage": true,
+            "organizer": "Massachusetts Chess Association",
+            "location": "Westford Regency Inn & Conference Center",
+            "address": "219 Littleton Road, Westford, MA 01886",
+            "sections": "Championship (FIDE Rated, open to 1800+ players)<br>Under 2100<br>Under 1800<br>Under 1500<br>Under 1200",
+            "format": "6-round Swiss System",
+            "time_control": "3-day: 40/120, SD/30, d10<br>2-day: G/40, d10 (Rounds 1-3)",
+            "entry_fee": "$90 for 3-day, $89 for 2-day by mail (5/19) or online (5/21). $110 online by 5/22 or onsite. $30 discount for U1200. GMs & IMs free.",
+            "round_times": "3-day: Sat 10:30 & 5, Sun 10:30 & 5, Mon 10 & 4<br>2-day: Sun 10:30, 1, 3, & 5, Mon 10 & 4",
+            "prizes": "$7,500 Guaranteed<br><strong>Championship:</strong> $1,000-500, top U2300 $500<br><strong>U2100:</strong> $800-400, top U1900 $400<br><strong>U1800:</strong> $800-400, top U1600 $400<br><strong>U1500:</strong> $700-350, top U1300 $350<br><strong>U1200:</strong> $400-250, top U1000 $250",
+            "ages": "All ages",
+            "notes": "USCF & MACA membership required for Mass. residents.<p>Championship section is FIDE rated, and FIDE rules apply.<p>Unrated players have prize limits ($400 in U2100, $300 in U1800, etc.).<p>Bring chess set & clock.<p>Payment onsite must be in cash or check.<p>MACA annual meeting Monday 9 a.m.",
+            "link": "http://masschess.org/events/Event_Details.aspx?Event_ID=9319",
+            "tags": ["regional"]
         }
+        
 ]
