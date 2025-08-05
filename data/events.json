@@ -1477,7 +1477,6 @@
             "round_times": "3-day: Sat 10:30 am & 5 pm; Sun 10:30 am & 5 pm; Mon 10 am & 4 pm. 2-day (U2000 & U1500): Sun 10 am, 12:45 pm, 2:45 pm & 5 pm; Mon 10 am & 4 pm",
             "prizes": "Championship: $1,000-600-300, Top U2300 $250. Under 2000: $700-400-250, Top U1700 $200. Under 1500: $600-300-200, Top U1200 $200. $5,000 guaranteed + trophies in every section. Prize limits: Unrated $200 in U2000, $150 in U1500.",
             "notes": "New England Championship title awarded to top New England resident/student in each section. USCF membership required. Lunch buffet available. Please bring clock; phones off.",
-            "grandPrix": "Junior Grand Prix (Enhanced, 50 points)",
             "tags": ["regional","gprix"]
     }
 
@@ -1498,7 +1497,6 @@
     "round_times": "4-day (Prem–U1500): Thu 7 pm; Fri 11 am & 5 pm; Sat–Sun 10 am & 4 pm. 3-day (Prem–U1500): Fri 11 am, 2 pm & 5 pm; merges with 4-day at Fri 5 pm. 2-day (U1300 & U1100): Sat 10 am, 1 pm, 4 pm & 7 pm; Sun 10 am, 1 pm & 4 pm.",
     "prizes": "Premier: $3000-1500-800-400-300 + $100 clear-win/tiebreak bonus; Top U2300: $1300-700. Under 2100/1900/1700: $2000-1000-500-300-200. Under 1500/1300: $1400-800-400-300-200. Under 1100: $800-500-300-200-100. $30,000 guaranteed + trophies. Mixed Doubles: $1000-500-300.",
     "notes": "Cannot play below Online Regular Rating minus 100. World Open rule applies for 2025 U2200 results. Unrated prize limits apply. Free parking. Credit cards OK; no checks. Electronic-device policy enforced. Hotel rate $134 incl. breakfast; reserve by 7/30.",
-    "grandPrix": "Enhanced (150 points)",
     "tags": ["regional","gprix"]
     }
         
@@ -1519,7 +1517,43 @@
     "round_times": "3-day: Fri 7 pm; Sat 11 am & 5 pm; Sun 10 am & 3:30 pm. 2-day: Sat 11 am, 2 pm & 5 pm; Sun 10 am & 3:30 pm",
     "prizes": "Major: $1200-600-300, top U2300 $400-200; Under 2100: $900-500-300, top U1900/unr $400-200; Under 1800: $800-500-300, top U1600 $300-150; Under 1500: $700-400-250, top U1300 $300-150; Under 1200: $400-200-100; $10,000 guaranteed; Mixed Doubles Bonus: $300-150",
     "notes": "Best male/female 2-player team combined score among all sections: register by 2 pm Sat. Cellphones prohibited during play. October USCF ratings used; cannot play below Online Regular minus 100. Entry online only; no checks.",
-    "grandPrix": "Enhanced (60 points)",
     "tags": ["regional","gprix"]
-}
+    }
+    
+    ,{
+    "name": "Fairfield County & Norwalk City Championships",
+    "startdate": "2025-09-06",
+    "days": "1",
+    "image": "../../images/assets/norwalk-library.jpg",
+    "largeImage": true,
+    "organizer": "Connecticut State Chess Association",
+    "location": "Norwalk (Main) Public Library",
+    "address": "1 Belden Avenue, Norwalk, CT 06850",
+    "sections": "Open, U2000, U1500, U1000, NER",
+    "format": "4-round Swiss System",
+    "time_control": "G/30+10",
+    "round_times": "10:00 AM, then ASAP",
+    "entry_fee": "$50 by 8/27; $60 by 9/2; $75 by 9/4; $90 thereafter. GM/IM free if registered by 8/25 (then from prizes). Titled players $20 less. U1500/U800/NER players $15 less. Member/sibling/senior/veteran/hardship discounts (email for code).",
+    "prizes": "Open: $300-150, plus $150 to Top U2300. U2000: $200-100, plus $100 to Top U1700. U1500/U1000/NER: Trophies to Top 3; Top U1200 in U1500; Top U700 in U1000. Trophies to Open & U2000 winners and Top Norwalk resident. Trophies for all who score ≥3.0; medals for others in lower sections. Cash prizes via PayPal.",
+    "ages": "All ages",
+    "tags": ["gprix"]
+    }
+
+    ,{
+    "name": "Connecticut Open",
+    "startdate": "2025-09-20",
+    "days": "1",
+    "image": "../../images/assets/cox-center-bridgeport.jpg",
+    "organizer": "Connecticut State Chess Association",
+    "location": "University of Bridgeport, Cox Student Center",
+    "address": "244 Park Ave, Bridgeport, CT 06604",
+    "sections": "Open, U2100, U1700, U1200, U700, NER",
+    "format": "4-round Swiss System",
+    "time_control": "Open/U2100/U1700/U1200: G/45+10; U700/NER: G/25+5",
+    "round_times": "11:00 AM, then ASAP",
+    "entry_fee": "$98 by 9/10; $108 by 9/16; $128 by 9/18; $160 thereafter. U1200/U800/NER: $40 less. GM/IM free if registered by 9/8 (then from prizes).",
+    "prizes": "Open: $1,000-600-400, plus $250 to Top U2300. U2100: $700-400-300, plus $200 to Top U1800. U1700: $500-300-200, plus $150 to Top U1400. U1200: Trophies to Top 3; Top U900. U700: Trophies to Top 3; Top U400. NER: Trophies to Top 3. Trophies to Open/U2100/U1700 winners. Trophies for all who score ≥ 3.0; medals for others in lower sections. Cash prizes via PayPal.",
+    "ages": "All ages",
+    "tags": ["regional", "gprix"]
+    }
 ]
