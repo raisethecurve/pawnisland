@@ -1478,7 +1478,48 @@
             "prizes": "Championship: $1,000-600-300, Top U2300 $250. Under 2000: $700-400-250, Top U1700 $200. Under 1500: $600-300-200, Top U1200 $200. $5,000 guaranteed + trophies in every section. Prize limits: Unrated $200 in U2000, $150 in U1500.",
             "notes": "New England Championship title awarded to top New England resident/student in each section. USCF membership required. Lunch buffet available. Please bring clock; phones off.",
             "grandPrix": "Junior Grand Prix (Enhanced, 50 points)",
-            "tags": ["regional","grandprix"]
+            "tags": ["regional","gprix"]
+    }
+
+    ,{
+    "name": "55th Annual Continental Open",
+    "startdate": "2025-08-14",
+    "enddate": "2025-08-17",
+    "days": "4",
+    "image": "../../images/assets/best-western-marlborough.jpg",
+    "largeImage": true,
+    "organizer": "Continental Chess Association",
+    "location": "Best Western Royal Plaza Hotel",
+    "address": "181 Boston Post Road W, Marlborough, MA 01752",
+    "sections": "Premier Section (FIDE rated, 2000+/above), Under 2100 (FIDE rated), Under 1900, Under 1700, Under 1500, Under 1300, Under 1100",
+    "format": "7-round Swiss System; 3-day and 2-day schedule options for certain sections",
+    "time_control": "40/80, SD/30, d30 (4-day & 3-day); G/60, d10 (2-day U1300 & U1100)",
+    "entry_fee": "Top 6 sections: $158 online by 8/12; $180 later online or at site (until 1 hr before Round 1); GMs free. Under 1100: $40 less. $5 online discount for MACA members. Re-entry $80 (general), $60 (U1100).",
+    "round_times": "4-day (Prem–U1500): Thu 7 pm; Fri 11 am & 5 pm; Sat–Sun 10 am & 4 pm. 3-day (Prem–U1500): Fri 11 am, 2 pm & 5 pm; merges with 4-day at Fri 5 pm. 2-day (U1300 & U1100): Sat 10 am, 1 pm, 4 pm & 7 pm; Sun 10 am, 1 pm & 4 pm.",
+    "prizes": "Premier: $3000-1500-800-400-300 + $100 clear-win/tiebreak bonus; Top U2300: $1300-700. Under 2100/1900/1700: $2000-1000-500-300-200. Under 1500/1300: $1400-800-400-300-200. Under 1100: $800-500-300-200-100. $30,000 guaranteed + trophies. Mixed Doubles: $1000-500-300.",
+    "notes": "Cannot play below Online Regular Rating minus 100. World Open rule applies for 2025 U2200 results. Unrated prize limits apply. Free parking. Credit cards OK; no checks. Electronic-device policy enforced. Hotel rate $134 incl. breakfast; reserve by 7/30.",
+    "grandPrix": "Enhanced (150 points)",
+    "tags": ["regional","gprix"]
     }
         
+    ,{
+    "name": "14th Annual Hartford Open",
+    "startdate": "2025-10-10",
+    "enddate": "2025-10-12",
+    "days": "3",
+    "image": "../../images/assets/sheraton-hartford.webp",
+    "largeImage": true,
+    "organizer": "Continental Chess Association",
+    "location": "Sheraton Hartford Hotel at Bradley Airport",
+    "address": "1 Bradley Airport, Windsor Locks, CT 06096",
+    "sections": "Major (FIDE rated, 1900+), Under 2100 (FIDE rated), Under 1800, Under 1500, Under 1200",
+    "format": "5-round Swiss System; 2-day option (rounds 1-2 G/60, d10)",
+    "time_control": "40/80, SD/30, d30; G/60, d10 (2-day Rounds 1-2)",
+    "entry_fee": "Top 4 sections: $93 online by 10/7; $110 later online or onsite until 1 hr before round 1; Under 1200: $30 less; GMs $80 from prize; $3 online discount for CSCA/WMCA members; Re-entry $50",
+    "round_times": "3-day: Fri 7 pm; Sat 11 am & 5 pm; Sun 10 am & 3:30 pm. 2-day: Sat 11 am, 2 pm & 5 pm; Sun 10 am & 3:30 pm",
+    "prizes": "Major: $1200-600-300, top U2300 $400-200; Under 2100: $900-500-300, top U1900/unr $400-200; Under 1800: $800-500-300, top U1600 $300-150; Under 1500: $700-400-250, top U1300 $300-150; Under 1200: $400-200-100; $10,000 guaranteed; Mixed Doubles Bonus: $300-150",
+    "notes": "Best male/female 2-player team combined score among all sections: register by 2 pm Sat. Cellphones prohibited during play. October USCF ratings used; cannot play below Online Regular minus 100. Entry online only; no checks.",
+    "grandPrix": "Enhanced (60 points)",
+    "tags": ["regional","gprix"]
+}
 ]
