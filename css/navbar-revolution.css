@@ -1,0 +1,901 @@
+/* ============================================================================
+   PAWN ISLAND ACADEMY - REVOLUTIONARY NAVBAR SYSTEM 2025
+   Ultra-Modern Design with Advanced Animations & Cutting-Edge UX
+   ============================================================================ */
+
+/* CSS Custom Properties - Advanced Color System */
+:root {
+    /* Core Brand Palette - Enhanced */
+    --pi-primary: #2c5aa0;
+    --pi-primary-dark: #1e3a8a;
+    --pi-primary-light: #3b82f6;
+    --pi-accent-gold: #ffd700;
+    --pi-accent-amber: #ffed4a;
+    --pi-accent-copper: #d4a574;
+    
+    /* Advanced Color Variables */
+    --pi-surface: rgba(44, 90, 160, 0.08);
+    --pi-surface-hover: rgba(44, 90, 160, 0.15);
+    --pi-overlay: rgba(0, 0, 0, 0.4);
+    --pi-glass: rgba(255, 255, 255, 0.1);
+    --pi-glass-border: rgba(255, 255, 255, 0.2);
+    --pi-shadow-premium: 0 20px 60px rgba(44, 90, 160, 0.15);
+    --pi-shadow-intense: 0 25px 80px rgba(0, 0, 0, 0.25);
+    
+    /* Typography System */
+    --font-primary: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-brand: 'Cinzel', 'Times New Roman', serif;
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
+    /* Advanced Animation System */
+    --ease-premium: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --duration-fast: 200ms;
+    --duration-medium: 400ms;
+    --duration-slow: 600ms;
+    --duration-epic: 1200ms;
+    
+    /* Responsive Breakpoints */
+    --breakpoint-mobile: 480px;
+    --breakpoint-tablet: 768px;
+    --breakpoint-desktop: 1024px;
+    --breakpoint-wide: 1440px;
+    
+    /* Spacing System */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    
+    /* Border Radius System */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-full: 50%;
+}
+
+/* Dark Mode Enhanced Variables */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --pi-surface: rgba(30, 58, 138, 0.12);
+        --pi-surface-hover: rgba(30, 58, 138, 0.20);
+        --pi-glass: rgba(255, 255, 255, 0.08);
+        --pi-glass-border: rgba(255, 237, 74, 0.15);
+    }
+}
+
+/* ============================================================================
+   REVOLUTIONARY NAVBAR FOUNDATION
+   ============================================================================ */
+
+.navbar-revolution {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    width: 100vw;
+    max-width: 100vw;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    
+    /* Advanced Background System */
+    background: linear-gradient(
+        135deg,
+        rgba(44, 90, 160, 0.08) 0%,
+        rgba(44, 90, 160, 0.12) 50%,
+        rgba(255, 237, 74, 0.08) 100%
+    );
+    
+    /* Premium Glassmorphism */
+    backdrop-filter: blur(40px) saturate(180%) brightness(1.1);
+    -webkit-backdrop-filter: blur(40px) saturate(180%) brightness(1.1);
+    
+    /* Advanced Border System */
+    border-bottom: 1px solid var(--pi-glass-border);
+    border-image: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--pi-accent-amber) 50%,
+        transparent 100%
+    ) 1;
+    
+    /* Premium Shadow Stack */
+    box-shadow: 
+        0 4px 30px rgba(44, 90, 160, 0.1),
+        0 1px 0 rgba(255, 255, 255, 0.1) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.05) inset;
+    
+    /* Smooth Transitions */
+    transition: all var(--duration-medium) var(--ease-premium);
+    will-change: transform, background, box-shadow;
+    
+    /* Advanced Typography */
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-medium);
+    
+    /* Responsive Height */
+    height: clamp(60px, 8vh, 80px);
+}
+
+/* Enhanced Scroll State */
+.navbar-revolution.scrolled {
+    background: linear-gradient(
+        135deg,
+        rgba(44, 90, 160, 0.15) 0%,
+        rgba(44, 90, 160, 0.18) 50%,
+        rgba(255, 237, 74, 0.12) 100%
+    );
+    
+    backdrop-filter: blur(60px) saturate(200%) brightness(1.2);
+    -webkit-backdrop-filter: blur(60px) saturate(200%) brightness(1.2);
+    
+    box-shadow: 
+        0 8px 50px rgba(44, 90, 160, 0.2),
+        0 2px 0 rgba(255, 237, 74, 0.3) inset,
+        0 -2px 0 rgba(0, 0, 0, 0.1) inset;
+    
+    transform: translateY(0);
+}
+
+/* Enhanced state for light backgrounds */
+.navbar-revolution.on-light-bg {
+    background: linear-gradient(
+        135deg,
+        rgba(44, 90, 160, 0.95) 0%,
+        rgba(30, 58, 138, 0.98) 50%,
+        rgba(44, 90, 160, 0.95) 100%
+    );
+    
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    
+    box-shadow: 
+        0 4px 30px rgba(0, 0, 0, 0.15),
+        0 1px 0 rgba(255, 255, 255, 0.2) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.1) inset;
+}
+
+/* Combined scrolled + light background state */
+.navbar-revolution.scrolled.on-light-bg {
+    background: linear-gradient(
+        135deg,
+        rgba(30, 58, 138, 0.98) 0%,
+        rgba(44, 90, 160, 0.98) 50%,
+        rgba(30, 58, 138, 0.98) 100%
+    );
+    
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    
+    box-shadow: 
+        0 8px 50px rgba(0, 0, 0, 0.25),
+        0 2px 0 rgba(255, 255, 255, 0.15) inset,
+        0 -2px 0 rgba(0, 0, 0, 0.15) inset;
+}
+
+/* Hidden State for Advanced Scroll Behavior */
+.navbar-revolution.hidden {
+    transform: translateY(-100%);
+    opacity: 0.95;
+}
+
+/* ============================================================================
+   CONTAINER & LAYOUT SYSTEM
+   ============================================================================ */
+
+.navbar-container-revolution {
+    max-width: 100vw;
+    width: 100%;
+    margin: 0;
+    padding: 0 clamp(0.5rem, 2vw, var(--space-xl));
+    height: 100%;
+    box-sizing: border-box;
+    
+    display: grid;
+    grid-template-columns: minmax(0, auto) minmax(0, 1fr) minmax(0, auto);
+    grid-template-areas: "brand navigation actions";
+    align-items: center;
+    gap: clamp(0.25rem, 2vw, var(--space-lg));
+    
+    position: relative;
+    overflow: hidden;
+}
+
+/* ============================================================================
+   REVOLUTIONARY BRAND SECTION
+   ============================================================================ */
+
+.brand-section-revolution {
+    grid-area: brand;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    min-width: 0;
+    flex-shrink: 0;
+    max-width: 40vw;
+}
+
+.brand-link-revolution {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    text-decoration: none;
+    color: white;
+    
+    /* Premium Interactive Surface */
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-lg);
+    background: transparent;
+    
+    /* Advanced Hover Effects */
+    transition: all var(--duration-medium) var(--ease-bounce);
+    position: relative;
+    overflow: hidden;
+    
+    /* Accessibility */
+    outline-offset: 4px;
+}
+
+.brand-link-revolution::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 237, 74, 0.1) 0%,
+        transparent 50%,
+        rgba(255, 215, 0, 0.1) 100%
+    );
+    opacity: 0;
+    transition: opacity var(--duration-medium) var(--ease-premium);
+}
+
+.brand-link-revolution:hover::before,
+.brand-link-revolution:focus::before {
+    opacity: 1;
+}
+
+.brand-link-revolution:hover,
+.brand-link-revolution:focus {
+    transform: translateY(-2px) scale(1.02);
+    color: var(--pi-accent-amber);
+}
+
+/* Revolutionary Brand Icon */
+.brand-icon-revolution {
+    width: clamp(32px, 5vw, 48px);
+    height: clamp(32px, 5vw, 48px);
+    
+    /* Clean transparent background */
+    background: transparent;
+    border-radius: var(--radius-full);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    
+    /* No shadow or border */
+    box-shadow: none;
+    
+    transition: all var(--duration-medium) var(--ease-bounce);
+    position: relative;
+    overflow: hidden;
+}
+
+.brand-link-revolution:hover .brand-icon-revolution,
+.brand-link-revolution:focus .brand-icon-revolution {
+    transform: rotate(15deg) scale(1.1);
+}
+
+.brand-svg-revolution {
+    width: 70%;
+    height: 70%;
+    filter: invert(1);
+    transition: all var(--duration-medium) var(--ease-premium);
+}
+
+/* Premium Brand Typography */
+.brand-text-revolution {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+    font-family: var(--font-brand);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+}
+
+/* Full Brand Text (Default) */
+.brand-text-full {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-line-1-revolution {
+    font-size: clamp(0.8rem, 1.2vw, 1rem);
+    color: white;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: all var(--duration-medium) var(--ease-premium);
+}
+
+.brand-line-2-revolution {
+    font-size: clamp(0.65rem, 1vw, 0.8rem);
+    background: linear-gradient(135deg, white, #f8d948);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 8px rgba(248, 217, 72, 0.3);
+    margin-top: 2px;
+    transition: all var(--duration-medium) var(--ease-premium);
+}
+
+/* Compact Brand Text (Hidden by default) */
+.brand-text-compact {
+    display: none;
+}
+
+.brand-compact-revolution {
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    color: white;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, white, #f8d948);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: all var(--duration-medium) var(--ease-premium);
+}
+
+/* ============================================================================
+   ULTRA-MODERN NAVIGATION SYSTEM
+   ============================================================================ */
+
+.nav-system-revolution {
+    grid-area: navigation;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    flex-shrink: 1;
+    
+    /* Clean Container */
+    background: transparent;
+    border-radius: var(--radius-xl);
+    padding: var(--space-xs) var(--space-sm);
+    
+    transition: all var(--duration-medium) var(--ease-premium);
+    overflow: hidden;
+}
+
+.nav-links-revolution {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.25rem, 1.5vw, var(--space-md));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    flex-wrap: nowrap;
+}
+
+/* Revolutionary Navigation Links */
+.nav-link-revolution {
+    position: relative;
+    display: block;
+    padding: clamp(0.25rem, 1vw, var(--space-sm)) clamp(0.375rem, 1.5vw, var(--space-md));
+    
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: clamp(0.7rem, 1.2vw, 0.95rem);
+    font-weight: var(--font-weight-semibold);
+    
+    border-radius: var(--radius-md);
+    transition: all var(--duration-medium) var(--ease-premium);
+    
+    /* Advanced Typography */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+    min-width: 0;
+    flex-shrink: 1;
+    
+    /* Accessibility */
+    outline-offset: 3px;
+}
+
+/* Hide Current Page Link */
+.nav-link-revolution.current-page {
+    display: none;
+}
+
+/* Advanced Hover Effects */
+.nav-link-revolution::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 237, 74, 0.1) 0%,
+        rgba(255, 215, 0, 0.05) 100%
+    );
+    border-radius: var(--radius-md);
+    opacity: 0;
+    transition: opacity var(--duration-fast) var(--ease-premium);
+}
+
+.nav-link-revolution::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        var(--pi-accent-gold) 0%,
+        var(--pi-accent-amber) 100%
+    );
+    border-radius: 1px;
+    transform: translateX(-50%);
+    transition: width var(--duration-medium) var(--ease-bounce);
+    box-shadow: 0 0 8px rgba(255, 237, 74, 0.6);
+}
+
+.nav-link-revolution:hover,
+.nav-link-revolution:focus {
+    color: var(--pi-accent-amber);
+    transform: translateY(-1px);
+}
+
+.nav-link-revolution:hover::before,
+.nav-link-revolution:focus::before {
+    opacity: 1;
+}
+
+.nav-link-revolution:hover::after,
+.nav-link-revolution:focus::after {
+    width: 80%;
+}
+
+/* ============================================================================
+   REVOLUTIONARY CTA SYSTEM
+   ============================================================================ */
+
+.cta-system-revolution {
+    grid-area: actions;
+    display: flex;
+    align-items: center;
+    gap: clamp(0.25rem, 1vw, var(--space-sm));
+    min-width: 0;
+    flex-shrink: 0;
+    max-width: 35vw;
+}
+
+.cta-button-revolution {
+    position: relative;
+    display: block;
+    padding: clamp(0.25rem, 1vw, var(--space-sm)) clamp(0.375rem, 1.5vw, var(--space-md));
+    
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+    font-weight: var(--font-weight-semibold);
+    
+    border-radius: var(--radius-md);
+    transition: all var(--duration-medium) var(--ease-premium);
+    
+    /* Advanced Typography */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+    min-width: 0;
+    flex-shrink: 1;
+    
+    /* Accessibility */
+    outline-offset: 3px;
+}
+
+/* Advanced Hover Effects for CTA Buttons */
+.cta-button-revolution::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 237, 74, 0.1) 0%,
+        rgba(255, 215, 0, 0.05) 100%
+    );
+    border-radius: var(--radius-md);
+    opacity: 0;
+    transition: opacity var(--duration-fast) var(--ease-premium);
+}
+
+.cta-button-revolution::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        var(--pi-accent-gold) 0%,
+        var(--pi-accent-amber) 100%
+    );
+    border-radius: 1px;
+    transform: translateX(-50%);
+    transition: width var(--duration-medium) var(--ease-bounce);
+    box-shadow: 0 0 8px rgba(255, 237, 74, 0.6);
+}
+
+.cta-button-revolution:hover,
+.cta-button-revolution:focus {
+    color: var(--pi-accent-amber);
+    transform: translateY(-1px);
+}
+
+.cta-button-revolution:hover::before,
+.cta-button-revolution:focus::before {
+    opacity: 1;
+}
+
+.cta-button-revolution:hover::after,
+.cta-button-revolution:focus::after {
+    width: 80%;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN SYSTEM
+   ============================================================================ */
+
+/* Mobile Optimization - Ultra-tight spacing for all elements visible */
+@media (max-width: 480px) {
+    .navbar-container-revolution {
+        grid-template-columns: minmax(0, auto) minmax(0, 1fr) minmax(0, auto);
+        grid-template-areas: "brand navigation actions";
+        gap: 0.125rem;
+        padding: 0.25rem 0.375rem;
+    }
+    
+    .brand-section-revolution {
+        max-width: 30vw;
+        gap: 0.25rem;
+    }
+    
+    .nav-system-revolution {
+        justify-self: center;
+        padding: 0;
+        max-width: 40vw;
+    }
+    
+    .nav-links-revolution {
+        gap: 0.125rem;
+    }
+    
+    .nav-link-revolution {
+        padding: 0.25rem 0.3rem;
+        font-size: 0.65rem;
+        letter-spacing: -0.025em;
+    }
+    
+    /* Show compact brand text on mobile */
+    .brand-text-full {
+        display: none;
+    }
+    
+    .brand-text-compact {
+        display: block;
+    }
+    
+    .cta-system-revolution {
+        gap: 0.125rem;
+        flex-direction: row;
+        max-width: 30vw;
+    }
+    
+    .cta-button-revolution {
+        padding: 0.25rem 0.3rem;
+        font-size: 0.65rem;
+        min-width: auto;
+        letter-spacing: -0.025em;
+    }
+}
+
+/* Extra Small Mobile - Ultra-compact for very small screens */
+@media (max-width: 360px) {
+    .navbar-container-revolution {
+        padding: 0.125rem 0.25rem;
+        gap: 0.1rem;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    }
+    
+    .brand-section-revolution {
+        max-width: 25vw;
+    }
+    
+    .nav-system-revolution {
+        max-width: 50vw;
+    }
+    
+    .nav-link-revolution {
+        padding: 0.125rem 0.2rem;
+        font-size: 0.6rem;
+    }
+    
+    .cta-system-revolution {
+        max-width: 25vw;
+    }
+    
+    .cta-button-revolution {
+        padding: 0.125rem 0.2rem;
+        font-size: 0.6rem;
+    }
+    
+    .brand-icon-revolution {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .brand-compact-revolution {
+        font-size: 0.7rem;
+    }
+    
+    /* Ensure CTA buttons don't overflow */
+    .cta-system-revolution {
+        justify-content: flex-end;
+        min-width: 0;
+    }
+    
+    /* Make brand area more compact */
+    .brand-section-revolution {
+        min-width: 0;
+        justify-content: flex-start;
+    }
+    
+    /* Center navigation with minimal width */
+    .nav-system-revolution {
+        min-width: 0;
+        justify-self: center;
+    }
+}
+
+/* Small Mobile - Progressive enhancement for 360px to 480px */
+@media (min-width: 361px) and (max-width: 480px) {
+    .navbar-container-revolution {
+        padding: 0.25rem 0.375rem;
+        gap: 0.1875rem;
+    }
+    
+    .nav-link-revolution {
+        padding: 0.1875rem 0.3125rem;
+        font-size: 0.6875rem;
+    }
+    
+    .cta-button-revolution {
+        padding: 0.1875rem 0.3125rem;
+        font-size: 0.6875rem;
+    }
+}
+
+/* Tablet Optimization - Balanced spacing */
+@media (min-width: 481px) and (max-width: 768px) {
+    .navbar-container-revolution {
+        gap: var(--space-sm);
+        padding: var(--space-sm) var(--space-md);
+    }
+    
+    /* Show compact text on smaller tablets */
+    .brand-text-full {
+        display: none;
+    }
+    
+    .brand-text-compact {
+        display: block;
+    }
+    
+    .nav-links-revolution {
+        gap: var(--space-sm);
+    }
+    
+    .nav-link-revolution {
+        padding: var(--space-sm) var(--space-md);
+        font-size: 0.85rem;
+    }
+    
+    .cta-button-revolution {
+        padding: var(--space-sm) var(--space-md);
+        font-size: 0.85rem;
+    }
+}
+
+/* Large tablets and small desktops - Show full brand text */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .brand-text-full {
+        display: flex;
+    }
+    
+    .brand-text-compact {
+        display: none;
+    }
+    
+    .brand-line-1-revolution {
+        font-size: 0.85rem;
+    }
+    
+    .brand-line-2-revolution {
+        font-size: 0.7rem;
+    }
+}
+
+/* Desktop Optimization */
+@media (min-width: 1025px) {
+    /* Ensure full brand text is shown on desktop */
+    .brand-text-full {
+        display: flex;
+    }
+    
+    .brand-text-compact {
+        display: none;
+    }
+    
+    .navbar-revolution:hover {
+        background: linear-gradient(
+            135deg,
+            rgba(44, 90, 160, 0.12) 0%,
+            rgba(44, 90, 160, 0.15) 50%,
+            rgba(255, 237, 74, 0.1) 100%
+        );
+    }
+}
+
+/* ============================================================================
+   ACCESSIBILITY & PERFORMANCE
+   ============================================================================ */
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .navbar-revolution,
+    .brand-link-revolution,
+    .brand-icon-revolution,
+    .nav-link-revolution,
+    .cta-button-revolution {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .navbar-revolution {
+        border-bottom: 3px solid var(--pi-accent-gold);
+        background: var(--pi-primary-dark);
+    }
+    
+    .nav-link-revolution::after {
+        height: 3px;
+    }
+    
+    .cta-button-revolution {
+        border-width: 3px;
+    }
+}
+
+/* Focus Management */
+.brand-link-revolution:focus,
+.nav-link-revolution:focus,
+.cta-button-revolution:focus {
+    outline: 3px solid var(--pi-accent-amber);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px rgba(255, 237, 74, 0.2);
+}
+
+/* Print Styles */
+@media print {
+    .navbar-revolution {
+        display: none;
+    }
+}
+
+/* ============================================================================
+   ADVANCED ANIMATIONS & MICRO-INTERACTIONS
+   ============================================================================ */
+
+/* Page Load Animation */
+@keyframes navbarEnter {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.navbar-revolution {
+    animation: navbarEnter var(--duration-slow) var(--ease-bounce);
+}
+
+/* Glow Pulse for CTA Buttons */
+@keyframes glowPulse {
+    0%, 100% {
+        box-shadow: 
+            0 6px 25px rgba(255, 215, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        box-shadow: 
+            0 8px 35px rgba(255, 215, 0, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+}
+
+/* Shimmer Effect */
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.nav-system-revolution::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+/* ============================================================================
+   ULTRA-WIDE SCREEN SUPPORT
+   ============================================================================ */
+
+@media (min-width: 1800px) {
+    .navbar-container-revolution {
+        max-width: 1800px;
+        padding: 0 var(--space-2xl);
+    }
+    
+    .brand-icon-revolution {
+        width: 54px;
+        height: 54px;
+    }
+    
+    .brand-line-1-revolution {
+        font-size: 1.1rem;
+    }
+    
+    .brand-line-2-revolution {
+        font-size: 0.9rem;
+    }
+    
+    .nav-link-revolution {
+        font-size: 1rem;
+        padding: var(--space-md) var(--space-lg);
+    }
+    
+    .cta-button-revolution {
+        font-size: 0.9rem;
+        padding: var(--space-md) var(--space-xl);
+    }
+}

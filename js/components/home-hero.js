@@ -30,7 +30,7 @@ function createHomeHero(containerId, options = {}) {
     // Merge defaults with provided options
     const config = Object.assign({}, defaults, options);
     
-    // Create hero HTML
+    // Create hero HTML with integrated navbar overlay
     const heroHTML = `
         <header class="hero" style="background-image: url('${config.bgImage}');">
             <div class="hero-content" data-aos="fade-up">

@@ -155,9 +155,9 @@ body {
     z-index: 3;
 }
 
-/* Hero row with top padding to clear navbar */
+/* Hero row with minimal top padding */
 .hero-row {
-    padding-top: 120px;
+    padding-top: 40px; /* Reduced from 120px to remove buffer */
 }
 
 /* Hero content area styling */
@@ -1673,7 +1673,7 @@ body {
 /* Medium Screens (768px to 991px) */
 @media (min-width: 768px) and (max-width: 991px) {
     .hero-row {
-        padding-top: 100px;
+        padding-top: 30px; /* Reduced from 100px */
     }
     
     .hero-title {
@@ -1730,7 +1730,7 @@ body {
     }
     
     .hero-row {
-        padding-top: 90px;
+        padding-top: 25px; /* Reduced from 90px */
     }
     
     .hero-title {
@@ -1909,7 +1909,7 @@ body {
     }
     
     .hero-row {
-        padding-top: 80px;
+        padding-top: 20px; /* Reduced from 80px */
         min-height: auto;
     }
     

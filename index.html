@@ -20,12 +20,21 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
-	<!-- Removed modern jump-to-top component CSS -->
+	<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<!-- Add modern jump-to-top component CSS -->
+	<link rel="stylesheet" href="css/components/modernJumpToTop.css">
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="images/brand-icons/favicon.png">
+	<!-- Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-T12VEHM2PY"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-T12VEHM2PY');
+	</script>
 </head>
 <body class="bg-light text-dark">
-	
-	
 	<!-- Hero Container - Will be populated by home-hero.js -->
 	<div id="heroContainer"></div>
 
@@ -92,7 +101,8 @@
     <!-- Load scripts in correct order -->
     <script src="js/script.js"></script>
     <script src="js/footer.js"></script>
-    <!-- Removed modern jump-to-top component script -->
+    <!-- Add modern jump-to-top component script -->
+    <script src="js/components/modernJumpToTop.js"></script>
 	<script>
 		AOS.init({
 			duration: 800,
@@ -103,7 +113,18 @@
             // Initialize home hero
             createHomeHero('heroContainer');
             
-            // Removed modern jump-to-top button initialization
+            // Initialize modern jump-to-top with stunning design
+            createModernJumpToTop({
+                theme: 'gradient',
+                color: '#3498db',
+                position: 'right',
+                size: 'medium',
+                shape: 'circle',
+                animation: 'bounce',
+                showAfter: 300,
+                zIndex: 1500,
+                accessibility: true
+            });
         });
 	</script>
 </body>

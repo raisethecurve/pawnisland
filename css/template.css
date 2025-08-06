@@ -1,0 +1,575 @@
+/* ========================================
+   PAWN ISLAND ACADEMY TEMPLATE STYLES
+   ======================================== */
+
+/* ========================================
+   CSS CUSTOM PROPERTIES (BRAND SYSTEM)
+   ======================================== */
+:root {
+    /* Primary Brand Colors */
+    --pi-primary-color: #2c5aa0;
+    --pi-primary-dark: #1e3a8a;
+    --pi-primary-light: #3b82f6;
+    
+    /* Secondary Brand Colors */
+    --pi-secondary-color: #343a40;
+    --pi-accent-color: #f8d948;
+    --pi-accent-gold: #ffd700;
+    --pi-accent-red: #dd3649;
+    
+    /* Text Colors */
+    --pi-text-dark: #2c3e50;
+    --pi-text-muted: #6c757d;
+    --pi-text-light: #ffffff;
+    
+    /* Background Colors */
+    --pi-bg-light: #f8f9fa;
+    --pi-bg-white: #ffffff;
+    --pi-bg-overlay: rgba(255, 255, 255, 0.95);
+    --pi-bg-dark-overlay: rgba(44, 90, 160, 0.9);
+    
+    /* Brand Gradients */
+    --pi-gradient-primary: linear-gradient(135deg, var(--pi-primary-color), var(--pi-primary-dark));
+    --pi-gradient-accent: linear-gradient(45deg, var(--pi-accent-color), var(--pi-accent-gold));
+    --pi-gradient-hero: linear-gradient(135deg, rgba(44, 90, 160, 0.9) 0%, rgba(30, 58, 138, 0.8) 100%);
+    --pi-gradient-text: linear-gradient(45deg, #ffffff, var(--pi-accent-color));
+    --pi-gradient-button: linear-gradient(45deg, var(--pi-primary-color), var(--pi-primary-light));
+    
+    /* Shadow System */
+    --pi-shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.08);
+    --pi-shadow-md: 0 5px 20px rgba(0, 0, 0, 0.12);
+    --pi-shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
+    --pi-shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.2);
+    --pi-shadow-hero: 0 25px 50px rgba(0, 0, 0, 0.25);
+    --pi-shadow-card: 0 8px 25px rgba(44, 90, 160, 0.1);
+    
+    /* Border Radius System */
+    --pi-border-radius: 12px;
+    --pi-border-radius-lg: 20px;
+    --pi-border-radius-xl: 30px;
+    --pi-border-radius-full: 50px;
+    
+    /* Transition System */
+    --pi-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --pi-transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    --pi-transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Spacing System */
+    --pi-spacing-xs: 0.5rem;
+    --pi-spacing-sm: 1rem;
+    --pi-spacing-md: 1.5rem;
+    --pi-spacing-lg: 2rem;
+    --pi-spacing-xl: 3rem;
+    --pi-spacing-xxl: 4rem;
+    
+    /* Typography System */
+    --pi-font-primary: 'Raleway', sans-serif;
+    --pi-font-display: 'Cinzel', serif;
+    --pi-font-size-sm: 0.875rem;
+    --pi-font-size-base: 1rem;
+    --pi-font-size-lg: 1.125rem;
+    --pi-font-size-xl: 1.25rem;
+    --pi-font-size-2xl: 1.5rem;
+    --pi-font-size-3xl: 2rem;
+    --pi-font-size-4xl: 2.5rem;
+    --pi-font-size-5xl: 3rem;
+    --pi-font-size-6xl: 4rem;
+}
+
+/* ========================================
+   HERO SECTION STYLES
+   ======================================== */
+
+/* Template Hero Section */
+.template-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: var(--pi-gradient-primary);
+    color: var(--pi-text-light);
+    overflow: hidden;
+}
+
+/* Hero background container */
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Hero overlay for better text readability */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--pi-gradient-hero);
+    z-index: 2;
+}
+
+/* Hero background image */
+.hero-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+    animation: subtle-parallax 20s ease-in-out infinite alternate;
+}
+
+/* Subtle parallax animation */
+@keyframes subtle-parallax {
+    0% { 
+        transform: scale(1) translateY(0px); 
+    }
+    100% { 
+        transform: scale(1.05) translateY(-20px); 
+    }
+}
+
+/* Hero content container */
+.hero-container {
+    position: relative;
+    z-index: 3;
+}
+
+/* Hero badge styling */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--pi-spacing-xs);
+    padding: var(--pi-spacing-xs) var(--pi-spacing-md);
+    background: rgba(248, 217, 72, 0.2);
+    border: 1px solid var(--pi-accent-color);
+    border-radius: var(--pi-border-radius-xl);
+    font-size: var(--pi-font-size-sm);
+    font-weight: 600;
+    margin-bottom: var(--pi-spacing-md);
+    backdrop-filter: blur(10px);
+}
+
+/* Hero title styling */
+.hero-title {
+    font-family: var(--pi-font-display);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 700;
+    margin-bottom: var(--pi-spacing-md);
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    background: var(--pi-gradient-text);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Hero description */
+.hero-description {
+    font-size: clamp(1.125rem, 2vw, 1.25rem);
+    font-weight: 300;
+    margin-bottom: var(--pi-spacing-xl);
+    line-height: 1.6;
+    opacity: 0.95;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Hero actions container */
+.hero-actions {
+    display: flex;
+    gap: var(--pi-spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ========================================
+   BUTTON SYSTEM
+   ======================================== */
+
+/* Primary Hero Button */
+.btn-hero-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--pi-spacing-xs);
+    padding: 1rem 2rem;
+    background: var(--pi-gradient-button);
+    color: var(--pi-text-light);
+    text-decoration: none;
+    border-radius: var(--pi-border-radius-xl);
+    font-weight: 600;
+    font-size: var(--pi-font-size-lg);
+    box-shadow: var(--pi-shadow-lg);
+    transition: var(--pi-transition);
+    border: 2px solid transparent;
+}
+
+.btn-hero-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--pi-shadow-xl);
+    text-decoration: none;
+    color: var(--pi-text-light);
+}
+
+/* Secondary Hero Button */
+.btn-hero-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--pi-spacing-xs);
+    padding: 1rem 2rem;
+    background: transparent;
+    color: var(--pi-text-light);
+    text-decoration: none;
+    border-radius: var(--pi-border-radius-xl);
+    font-weight: 600;
+    font-size: var(--pi-font-size-lg);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    transition: var(--pi-transition);
+}
+
+.btn-hero-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--pi-accent-color);
+    text-decoration: none;
+    color: var(--pi-text-light);
+}
+
+/* Primary Custom Button */
+.btn-primary-custom {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--pi-spacing-xs);
+    padding: 0.75rem 1.5rem;
+    background: var(--pi-gradient-button);
+    color: var(--pi-text-light);
+    text-decoration: none;
+    border-radius: var(--pi-border-radius);
+    font-weight: 600;
+    box-shadow: var(--pi-shadow-md);
+    transition: var(--pi-transition);
+}
+
+.btn-primary-custom:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--pi-shadow-lg);
+    text-decoration: none;
+    color: var(--pi-text-light);
+}
+
+/* CTA Buttons */
+.btn-cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--pi-spacing-xs);
+    padding: 1rem 2rem;
+    background: var(--pi-accent-color);
+    color: var(--pi-text-dark);
+    text-decoration: none;
+    border-radius: var(--pi-border-radius-xl);
+    font-weight: 700;
+    font-size: var(--pi-font-size-lg);
+    box-shadow: var(--pi-shadow-lg);
+    transition: var(--pi-transition);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-cta-primary:hover {
+    background: var(--pi-accent-gold);
+    transform: translateY(-3px);
+    box-shadow: var(--pi-shadow-xl);
+    text-decoration: none;
+    color: var(--pi-text-dark);
+}
+
+.btn-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--pi-spacing-xs);
+    padding: 1rem 2rem;
+    background: transparent;
+    color: var(--pi-primary-color);
+    text-decoration: none;
+    border-radius: var(--pi-border-radius-xl);
+    font-weight: 600;
+    font-size: var(--pi-font-size-lg);
+    border: 2px solid var(--pi-primary-color);
+    transition: var(--pi-transition);
+}
+
+.btn-cta-secondary:hover {
+    background: var(--pi-primary-color);
+    color: var(--pi-text-light);
+    text-decoration: none;
+}
+
+/* ========================================
+   SECTION STYLES
+   ======================================== */
+
+/* Main content section */
+.main-content-section {
+    padding: var(--pi-spacing-xxl) 0;
+    background: var(--pi-bg-light);
+}
+
+/* Features section */
+.features-section {
+    padding: var(--pi-spacing-xxl) 0;
+    background: var(--pi-bg-white);
+}
+
+/* CTA banner section */
+.cta-banner {
+    padding: var(--pi-spacing-xxl) 0;
+    background: var(--pi-gradient-primary);
+    color: var(--pi-text-light);
+    text-align: center;
+}
+
+.cta-banner h2 {
+    font-family: var(--pi-font-display);
+    font-size: var(--pi-font-size-4xl);
+    margin-bottom: var(--pi-spacing-md);
+    font-weight: 700;
+}
+
+.cta-banner p {
+    font-size: var(--pi-font-size-xl);
+    margin-bottom: var(--pi-spacing-xl);
+    opacity: 0.9;
+}
+
+.cta-actions {
+    display: flex;
+    gap: var(--pi-spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ========================================
+   CARD STYLES
+   ======================================== */
+
+/* Section header */
+.section-header {
+    margin-bottom: var(--pi-spacing-xxl);
+}
+
+.section-header h2 {
+    font-family: var(--pi-font-display);
+    font-size: var(--pi-font-size-4xl);
+    color: var(--pi-text-dark);
+    margin-bottom: var(--pi-spacing-md);
+    font-weight: 700;
+}
+
+.section-subtitle {
+    font-size: var(--pi-font-size-xl);
+    color: var(--pi-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Content card */
+.content-card {
+    background: var(--pi-bg-white);
+    border-radius: var(--pi-border-radius-lg);
+    box-shadow: var(--pi-shadow-card);
+    overflow: hidden;
+    transition: var(--pi-transition);
+}
+
+.content-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--pi-shadow-lg);
+}
+
+.content-card .card-header {
+    background: var(--pi-gradient-primary);
+    color: var(--pi-text-light);
+    padding: var(--pi-spacing-lg);
+}
+
+.content-card .card-header h3 {
+    font-family: var(--pi-font-display);
+    font-size: var(--pi-font-size-2xl);
+    margin: 0;
+    font-weight: 600;
+}
+
+.content-card .card-body {
+    padding: var(--pi-spacing-xl);
+}
+
+.content-card .card-body p {
+    font-size: var(--pi-font-size-lg);
+    line-height: 1.7;
+    color: var(--pi-text-dark);
+    margin-bottom: var(--pi-spacing-lg);
+}
+
+/* CTA section within cards */
+.cta-section {
+    text-align: center;
+    margin-top: var(--pi-spacing-xl);
+}
+
+/* Feature cards */
+.feature-card {
+    background: var(--pi-bg-white);
+    border-radius: var(--pi-border-radius-lg);
+    padding: var(--pi-spacing-xl);
+    text-align: center;
+    box-shadow: var(--pi-shadow-md);
+    transition: var(--pi-transition);
+    height: 100%;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--pi-shadow-lg);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--pi-spacing-lg);
+    background: var(--pi-gradient-primary);
+    border-radius: var(--pi-border-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--pi-font-size-3xl);
+    color: var(--pi-text-light);
+}
+
+.feature-card h4 {
+    font-family: var(--pi-font-display);
+    font-size: var(--pi-font-size-xl);
+    color: var(--pi-text-dark);
+    margin-bottom: var(--pi-spacing-md);
+    font-weight: 600;
+}
+
+.feature-card p {
+    color: var(--pi-text-muted);
+    line-height: 1.6;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-description {
+        font-size: 1.125rem;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-hero-primary,
+    .btn-hero-secondary,
+    .btn-cta-primary,
+    .btn-cta-secondary {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+    
+    .section-header h2 {
+        font-size: var(--pi-font-size-3xl);
+    }
+    
+    .cta-banner h2 {
+        font-size: var(--pi-font-size-3xl);
+    }
+    
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        font-size: var(--pi-font-size-2xl);
+    }
+}
+
+@media (max-width: 576px) {
+    .main-content-section,
+    .features-section,
+    .cta-banner {
+        padding: var(--pi-spacing-xl) 0;
+    }
+    
+    .content-card .card-body {
+        padding: var(--pi-spacing-lg);
+    }
+    
+    .feature-card {
+        padding: var(--pi-spacing-lg);
+    }
+}
+
+/* ========================================
+   LOADING STATES
+   ======================================== */
+
+.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.loading i {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ========================================
+   ACCESSIBILITY IMPROVEMENTS
+   ======================================== */
+
+/* Focus states for better keyboard navigation */
+.btn-hero-primary:focus,
+.btn-hero-secondary:focus,
+.btn-primary-custom:focus,
+.btn-cta-primary:focus,
+.btn-cta-secondary:focus {
+    outline: 3px solid var(--pi-accent-color);
+    outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .hero-bg-image {
+        animation: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --pi-primary-color: #000080;
+        --pi-accent-color: #FFD700;
+        --pi-text-dark: #000000;
+        --pi-bg-white: #FFFFFF;
+    }
+}
