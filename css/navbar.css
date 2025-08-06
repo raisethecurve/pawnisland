@@ -1,0 +1,358 @@
+/* Navbar Styles - Mobile-First Responsive Design */
+
+/* CSS Custom Properties for Theme Support */
+:root {
+    --navbar-height: 60px;
+    --navbar-padding: 1rem;
+    --brand-icon-size: 32px;
+    --transition-speed: 0.3s;
+    --brand-font-size: 0.75rem;
+    --nav-font-size: 0.9rem;
+    
+    /* Light theme (default) */
+    --navbar-text: #333333;
+    --navbar-text-hover: #000000;
+    --navbar-border: rgba(51, 51, 51, 0.1);
+    --navbar-shadow: rgba(0, 0, 0, 0.1);
+    
+    /* Brand colors */
+    --brand-primary: #8B4513;
+    --brand-secondary: #D2691E;
+}
+
+/* Dark theme overrides */
+[data-theme="dark"], 
+.dark-theme,
+.night-theme {
+    --navbar-text: #f8f9fa;
+    --navbar-text-hover: #ffffff;
+    --navbar-border: rgba(248, 249, 250, 0.1);
+    --navbar-shadow: rgba(255, 255, 255, 0.1);
+}
+
+/* Navbar Base Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: var(--navbar-height);
+    background: transparent;
+    transition: all var(--transition-speed) ease;
+    animation: navbar-pulse 4s ease-in-out infinite;
+}
+
+/* Navbar Pulsing Animation */
+@keyframes navbar-pulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 var(--navbar-shadow);
+    }
+    50% {
+        box-shadow: 0 0 0 2px var(--navbar-shadow);
+    }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .navbar,
+    .brand-icon,
+    .nav-link,
+    .cta-button,
+    .brand-svg {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Navbar Container */
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--navbar-padding);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+/* Brand Section */
+.navbar-brand {
+    flex-shrink: 0;
+}
+
+.brand-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--navbar-text);
+    transition: color var(--transition-speed) ease;
+}
+
+.brand-link:hover,
+.brand-link:focus {
+    color: var(--navbar-text-hover);
+    text-decoration: none;
+}
+
+/* Brand Icon */
+.brand-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--brand-icon-size);
+    height: var(--brand-icon-size);
+    transition: transform var(--transition-speed) ease;
+}
+
+.brand-icon:hover {
+    animation: brand-rock 0.6s ease-in-out;
+}
+
+@keyframes brand-rock {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+}
+
+.brand-svg {
+    width: 100%;
+    height: 100%;
+    transition: filter var(--transition-speed) ease;
+    display: block;
+}
+
+/* SVG/Image color inversion for dark backgrounds */
+.navbar.dark-background .brand-svg {
+    filter: invert(1) brightness(0.9);
+}
+
+.navbar.light-background .brand-svg {
+    filter: none;
+}
+
+/* Brand Text */
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+    font-size: var(--brand-font-size);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.brand-line-1,
+.brand-line-2 {
+    display: block;
+    transition: opacity var(--transition-speed) ease;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex: 1;
+    justify-content: center;
+}
+
+.nav-link {
+    position: relative;
+    color: var(--navbar-text);
+    text-decoration: none;
+    font-size: var(--nav-font-size);
+    font-weight: 500;
+    padding: 0.25rem 0;
+    transition: all var(--transition-speed) ease;
+    white-space: nowrap;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--navbar-text);
+    transition: width var(--transition-speed) ease;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: var(--navbar-text-hover);
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+.nav-link:hover::after,
+.nav-link:focus::after {
+    width: 100%;
+}
+
+/* Call to Action Buttons */
+.cta-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.cta-button {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--navbar-text);
+    border-radius: 4px;
+    color: var(--navbar-text);
+    text-decoration: none;
+    font-size: var(--nav-font-size);
+    font-weight: 500;
+    background: transparent;
+    transition: all var(--transition-speed) ease;
+    white-space: nowrap;
+}
+
+.cta-button:hover,
+.cta-button:focus {
+    background: var(--navbar-text);
+    color: var(--navbar-bg, #ffffff);
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px var(--navbar-shadow);
+}
+
+/* Background Detection & Contrast Adaptation */
+.navbar.light-background {
+    --navbar-text: #333333;
+    --navbar-text-hover: #000000;
+    --navbar-border: rgba(51, 51, 51, 0.1);
+    --navbar-shadow: rgba(0, 0, 0, 0.1);
+    --navbar-bg: #ffffff;
+}
+
+.navbar.dark-background {
+    --navbar-text: #f8f9fa;
+    --navbar-text-hover: #ffffff;
+    --navbar-border: rgba(248, 249, 250, 0.1);
+    --navbar-shadow: rgba(255, 255, 255, 0.1);
+    --navbar-bg: #000000;
+}
+
+/* Mobile-First Responsive Design */
+
+/* Small screens: Hide brand text, keep icon */
+@media (max-width: 768px) {
+    :root {
+        --navbar-height: 50px;
+        --navbar-padding: 0.75rem;
+        --brand-icon-size: 28px;
+        --brand-font-size: 0;
+        --nav-font-size: 0.85rem;
+    }
+    
+    .brand-text {
+        display: none;
+    }
+    
+    .nav-links {
+        gap: 1rem;
+    }
+    
+    .cta-buttons {
+        gap: 0.5rem;
+    }
+    
+    .cta-button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Extra small screens: Compact layout */
+@media (max-width: 480px) {
+    :root {
+        --navbar-padding: 0.5rem;
+        --brand-icon-size: 24px;
+        --nav-font-size: 0.8rem;
+    }
+    
+    .navbar-container {
+        gap: 0.5rem;
+    }
+    
+    .nav-links {
+        gap: 0.75rem;
+    }
+    
+    .nav-link {
+        font-size: 0.8rem;
+    }
+    
+    .cta-button {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Medium and larger screens: Full layout */
+@media (min-width: 769px) {
+    :root {
+        --navbar-height: 70px;
+        --navbar-padding: 1.5rem;
+        --brand-icon-size: 36px;
+        --brand-font-size: 0.8rem;
+        --nav-font-size: 1rem;
+    }
+    
+    .nav-links {
+        gap: 2rem;
+    }
+    
+    .cta-buttons {
+        gap: 1rem;
+    }
+}
+
+/* Large screens: Enhanced spacing */
+@media (min-width: 1200px) {
+    :root {
+        --navbar-padding: 2rem;
+        --nav-font-size: 1.1rem;
+    }
+    
+    .nav-links {
+        gap: 2.5rem;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .navbar {
+        border-bottom: 2px solid var(--navbar-text);
+    }
+    
+    .nav-link::after {
+        height: 3px;
+    }
+    
+    .cta-button {
+        border-width: 2px;
+    }
+}
+
+/* Focus management for accessibility */
+.nav-link:focus,
+.cta-button:focus,
+.brand-link:focus {
+    outline: 2px solid var(--navbar-text);
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    .navbar {
+        display: none;
+    }
+}
