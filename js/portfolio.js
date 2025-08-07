@@ -94,8 +94,20 @@ document.addEventListener('DOMContentLoaded', function() {
                         project.categories.push('ai');
                     }
                     
-                    if (project.keywords.some(kw => ['community', 'education', 'collaboration'].includes(kw.toLowerCase()))) {
-                        project.categories.push('community');
+                    if (project.keywords.some(kw => ['web', 'website', 'frontend', 'backend', 'fullstack'].includes(kw.toLowerCase()))) {
+                        project.categories.push('web');
+                    }
+                    
+                    if (project.keywords.some(kw => ['mobile', 'ios', 'android', 'app'].includes(kw.toLowerCase()))) {
+                        project.categories.push('mobile');
+                    }
+                    
+                    if (project.keywords.some(kw => ['community', 'education', 'collaboration', 'teaching'].includes(kw.toLowerCase()))) {
+                        project.categories.push('education');
+                    }
+                    
+                    if (project.keywords.some(kw => ['ecommerce', 'e-commerce', 'shop', 'store', 'commerce'].includes(kw.toLowerCase()))) {
+                        project.categories.push('e-commerce');
                     }
                     
                     if (project.keywords.some(kw => ['poetry', 'literary', 'creativity', 'writing', 'blog'].includes(kw.toLowerCase()))) {
@@ -103,15 +115,25 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
                 
-                // If no categories were assigned, add 'other'
+                // Default to 'web' if no categories were assigned
                 if (project.categories.length === 0) {
-                    project.categories.push('other');
+                    project.categories.push('web');
                 }
             }
             
             // Ensure we have at least a description if overview is missing
             if (!project.overview && project.description) {
                 project.overview = project.description;
+            }
+            
+            // Set default status to 'active' if not specified and not 'development'
+            if (!project.status) {
+                project.status = 'active';
+            }
+            
+            // Remove 'concept' and 'other' statuses - convert to active
+            if (project.status === 'concept' || project.status === 'other') {
+                project.status = 'active';
             }
         });
     }
@@ -125,11 +147,21 @@ document.addEventListener('DOMContentLoaded', function() {
             all: allProjects.length
         };
         
+        // Excluded categories that we don't want to show
+        const excludedCategories = ['other', 'concept'];
+        
         allProjects.forEach(project => {
             if (project.categories) {
                 project.categories.forEach(category => {
-                    categoryCounts[category] = (categoryCounts[category] || 0) + 1;
+                    if (!excludedCategories.includes(category.toLowerCase())) {
+                        categoryCounts[category] = (categoryCounts[category] || 0) + 1;
+                    }
                 });
+            }
+            
+            // Also count by single category field if it exists
+            if (project.category && !excludedCategories.includes(project.category.toLowerCase())) {
+                categoryCounts[project.category] = (categoryCounts[project.category] || 0) + 1;
             }
         });
         
@@ -138,29 +170,46 @@ document.addEventListener('DOMContentLoaded', function() {
             const category = btn.getAttribute('data-filter');
             const count = categoryCounts[category] || 0;
             
-            // Add count badge to button
-            if (btn.querySelector('.badge') === null) {
-                const badgeSpan = document.createElement('span');
-                badgeSpan.className = 'badge badge-light ml-2';
-                badgeSpan.textContent = count;
-                btn.appendChild(badgeSpan);
+            // Only show filter buttons that have projects
+            if (count > 0 || category === 'all') {
+                btn.style.display = 'inline-flex';
+                
+                // Add count badge to button
+                if (btn.querySelector('.badge') === null) {
+                    const badgeSpan = document.createElement('span');
+                    badgeSpan.className = 'badge badge-light ml-2';
+                    badgeSpan.textContent = count;
+                    btn.appendChild(badgeSpan);
+                } else {
+                    btn.querySelector('.badge').textContent = count;
+                }
             } else {
-                btn.querySelector('.badge').textContent = count;
+                btn.style.display = 'none';
             }
         });
     }
     
     /**
-     * Filter and display projects with infinite scroll
+     * Filter and display projects with enhanced loading
      */
     function filterProjects() {
         const filteredProjects = activeFilter === 'all' 
             ? allProjects 
-            : allProjects.filter(project => project.categories && project.categories.includes(activeFilter));
+            : allProjects.filter(project => {
+                // Improved filter logic - check both category and categories array
+                if (project.category && project.category.toLowerCase() === activeFilter) {
+                    return true;
+                }
+                if (project.categories && project.categories.some(cat => cat.toLowerCase() === activeFilter)) {
+                    return true;
+                }
+                return false;
+            });
         
         // Show/hide no results message
         if (filteredProjects.length === 0) {
             projectsContainer.innerHTML = '';
+            projectsContainer.style.display = 'none';
             noProjectsMessage.style.display = 'block';
         } else {
             noProjectsMessage.style.display = 'none';
@@ -169,20 +218,42 @@ document.addEventListener('DOMContentLoaded', function() {
             visibleCount = 0;
             projectsContainer.innerHTML = '';
             
-            // Create row for grid system
-            const row = document.createElement('div');
-            row.className = 'row project-grid';
-            projectsContainer.appendChild(row);
+            // Show skeleton loading first
+            showSkeletonCards(Math.min(filteredProjects.length, loadIncrement));
             
-            // Add sentinel element at the bottom to trigger loading
+            // Add sentinel element for infinite scroll
             const sentinel = document.createElement('div');
             sentinel.id = 'scroll-sentinel';
             sentinel.style.height = '10px';
             sentinel.style.marginTop = '20px';
             projectsContainer.appendChild(sentinel);
             
-            // Load initial batch of projects
-            loadMoreProjects(filteredProjects);
+            // Load initial batch with delay for better UX
+            setTimeout(() => {
+                // Remove skeletons
+                const skeletons = projectsContainer.querySelectorAll('.project-skeleton');
+                skeletons.forEach(skeleton => skeleton.remove());
+                
+                // Load initial projects
+                loadMoreProjects(filteredProjects);
+            }, 500); // Reduced delay for better responsiveness
+        }
+    }
+    
+    /**
+     * Show skeleton loading cards
+     */
+    function showSkeletonCards(count) {
+        for (let i = 0; i < count; i++) {
+            const skeleton = document.createElement('div');
+            skeleton.className = 'project-skeleton';
+            skeleton.setAttribute('data-aos', 'fade-in');
+            skeleton.setAttribute('data-aos-duration', '400');
+            projectsContainer.appendChild(skeleton);
+        }
+        
+        if (projectsContainer.style.display === 'none') {
+            projectsContainer.style.display = 'grid';
         }
     }
     
@@ -201,7 +272,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (entry.isIntersecting && !isLoading) {
                     const filteredProjects = activeFilter === 'all' 
                         ? allProjects 
-                        : allProjects.filter(project => project.categories && project.categories.includes(activeFilter));
+                        : allProjects.filter(project => {
+                            // Improved filter logic - check both category and categories array
+                            if (project.category && project.category.toLowerCase() === activeFilter) {
+                                return true;
+                            }
+                            if (project.categories && project.categories.some(cat => cat.toLowerCase() === activeFilter)) {
+                                return true;
+                            }
+                            return false;
+                        });
                     
                     if (visibleCount < filteredProjects.length) {
                         loadMoreProjects(filteredProjects);
@@ -223,7 +303,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     /**
-     * Load more projects with staggered animation
+     * Load more projects with enhanced animations
      */
     function loadMoreProjects(filteredProjects) {
         if (isLoading) return;
@@ -236,14 +316,26 @@ document.addEventListener('DOMContentLoaded', function() {
             loadingMore = document.createElement('div');
             loadingMore.id = 'loading-more';
             loadingMore.className = 'text-center py-3';
-            loadingMore.innerHTML = '<div class="spinner-border text-primary" role="status"><span class="sr-only">Loading more projects...</span></div>';
+            loadingMore.style.cssText = `
+                color: var(--chess-gold);
+                font-family: 'Cinzel', serif;
+                font-weight: 600;
+                margin: 2rem 0;
+            `;
+            loadingMore.innerHTML = `
+                <div style="display: flex; align-items: center; justify-content: center; gap: 1rem;">
+                    <div class="spinner-border text-warning" role="status" style="width: 2rem; height: 2rem;">
+                        <span class="sr-only">Loading more projects...</span>
+                    </div>
+                    <span>Loading more amazing projects...</span>
+                </div>
+            `;
             projectsContainer.insertBefore(loadingMore, document.getElementById('scroll-sentinel'));
         }
         loadingMore.style.display = 'block';
         
         // Add a small delay for visual effect
         setTimeout(() => {
-            const row = document.querySelector('.project-grid');
             const startIdx = visibleCount;
             const endIdx = Math.min(visibleCount + loadIncrement, filteredProjects.length);
             
@@ -254,14 +346,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Apply initial styles for animation
                 projectCard.style.opacity = '0';
-                projectCard.style.transform = 'translateY(30px)';
+                projectCard.style.transform = 'translateY(50px) scale(0.9)';
                 
-                row.appendChild(projectCard);
+                // Insert before the sentinel
+                projectsContainer.insertBefore(projectCard, document.getElementById('scroll-sentinel'));
                 
                 // Trigger animation after a small delay
                 setTimeout(() => {
                     projectCard.style.opacity = '1';
-                    projectCard.style.transform = 'translateY(0)';
+                    projectCard.style.transform = 'translateY(0) scale(1)';
                 }, (i - startIdx) * 150); // Staggered delay
             }
             
@@ -271,8 +364,10 @@ document.addEventListener('DOMContentLoaded', function() {
             // Hide loading indicator
             loadingMore.style.display = 'none';
             
-            // Initialize lazy loading for new images
-            lazyLoadProjectImages();
+            // Initialize AOS animations for new cards
+            if (typeof AOS !== 'undefined') {
+                AOS.refresh();
+            }
             
             // Mark as not loading
             isLoading = false;
@@ -302,60 +397,175 @@ document.addEventListener('DOMContentLoaded', function() {
         const imageSrc = project.thumbnail || project.image || '../../images/placeholders/project-placeholder.jpg';
         
         // Create card element
-        const col = document.createElement('div');
-        col.className = 'col-12 mb-4 project-item';
-        col.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'project-card';
+        cardDiv.setAttribute('data-category', project.category || 'other');
+        cardDiv.setAttribute('data-status', project.status || 'concept');
+        cardDiv.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         
-        // Determine the card text (use description or shortened overview)
-        let cardText = project.description || '';
-        if (!cardText && project.overview) {
-            cardText = project.overview.length > 250 
-                ? project.overview.substring(0, 250) + '...'
+        // Determine the card description (use description or shortened overview)
+        let cardDescription = project.description || '';
+        if (!cardDescription && project.overview) {
+            cardDescription = project.overview.length > 150 
+                ? project.overview.substring(0, 150) + '...'
                 : project.overview;
         }
         
-        // Create tech tags HTML
+        // Create tech tags HTML - smaller size
         const techTags = project.technologies && project.technologies.length
-            ? `<div class="tech-tags">
-                ${project.technologies.slice(0, 5).map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
-                ${project.technologies.length > 5 ? `<span class="tech-tag">+${project.technologies.length - 5} more</span>` : ''}
-              </div>`
+            ? project.technologies.slice(0, 4).map(tech => `<span class="project-tag">${tech}</span>`).join('')
             : '';
         
-        col.innerHTML = `
-            <div class="card project-card h-100">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <div class="card-img-container h-100">
-                            <img src="${imageSrc}" class="card-img h-100 w-100" alt="${project.title}" style="object-fit: cover;">
-                            ${project.featured ? '<span class="featured-badge"><i class="fas fa-star"></i> Featured</span>' : ''}
-                        </div>
+        // Calculate difficulty level (1-5 dots)
+        const difficultyLevel = project.difficulty || 3;
+        const difficultyDots = Array.from({length: 5}, (_, i) => 
+            `<div class="difficulty-dot ${i < difficultyLevel ? 'active' : ''}"></div>`
+        ).join('');
+        
+        // Determine status class and text - only show active and development
+        const shouldShowStatus = project.status === 'development';
+        const statusClass = project.status === 'development' ? 'status-development' : 'status-active';
+        const statusText = project.status === 'development' ? 'In Progress' : 'Live';
+        
+        // Create links HTML
+        const primaryLink = project.details?.links?.[0] || 
+                           (project.demoUrl ? {url: project.demoUrl, label: 'View Live', icon: 'fa-external-link-alt'} : null);
+        const secondaryLink = project.details?.links?.[1] || 
+                             (project.githubUrl ? {url: project.githubUrl, label: 'Code', icon: 'fab fa-github'} : null);
+        
+        const linksHTML = `
+            ${primaryLink ? `
+                <a href="${primaryLink.url}" class="project-link" target="_blank" rel="noopener">
+                    <i class="fas ${primaryLink.icon || 'fa-external-link-alt'}"></i>
+                    ${primaryLink.label || 'View Live'}
+                </a>
+            ` : ''}
+            ${secondaryLink ? `
+                <a href="${secondaryLink.url}" class="project-link secondary" target="_blank" rel="noopener">
+                    <i class="${secondaryLink.icon || 'fab fa-github'}"></i>
+                    ${secondaryLink.label || 'Code'}
+                </a>
+            ` : ''}
+        `;
+        
+        // Determine overlay icon based on project type
+        const overlayIcon = project.category === 'web' ? 'fa-globe' :
+                           project.category === 'mobile' ? 'fa-mobile-alt' :
+                           project.category === 'education' ? 'fa-graduation-cap' :
+                           project.category === 'e-commerce' ? 'fa-shopping-cart' :
+                           project.category === 'chess' ? 'fa-chess' :
+                           project.category === 'ai' ? 'fa-brain' :
+                           'fa-expand-arrows-alt';
+        
+        cardDiv.innerHTML = `
+            <div class="project-image-container">
+                <img src="${imageSrc}" alt="${project.title}" class="project-image" loading="lazy">
+                <div class="project-overlay">
+                    <div class="project-overlay-content">
+                        <i class="fas ${overlayIcon} overlay-icon"></i>
+                        <div class="overlay-text">View Details</div>
                     </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">${project.title}</h5>
-                            <div class="project-meta mb-2">
-                                ${project.role ? `<span class="mr-3"><i class="fas fa-user-tie mr-1"></i>${project.role}</span>` : ''}
-                                ${project.duration || project.date ? `<span><i class="fas fa-calendar-alt mr-1"></i>${project.duration || formatDate(project.date)}</span>` : ''}
-                            </div>
-                            <p class="card-text">${cardText}</p>
-                            ${techTags}
-                            <div class="mt-3">
-                                <button class="btn btn-primary btn-sm view-details" data-project-id="${project.id}">
-                                    <i class="fas fa-info-circle mr-1"></i>View Details
-                                </button>
-                                ${project.details && project.details.links && project.details.links.length > 0 ? 
-                                    `<a href="${project.details.links[0].url}" class="btn btn-sm btn-outline-primary ml-2" target="_blank">
-                                        <i class="fas ${project.details.links[0].icon || 'fa-external-link-alt'} mr-1"></i> ${project.details.links[0].label}
-                                    </a>` : ''}
-                            </div>
+                </div>
+                ${shouldShowStatus ? `<div class="project-status ${statusClass}">${statusText}</div>` : ''}
+                <div class="project-category">${project.category || 'Web'}</div>
+            </div>
+            <div class="project-content">
+                <div class="project-header">
+                    <h3 class="project-title">${project.title}</h3>
+                    <p class="project-description">${cardDescription}</p>
+                </div>
+                <div class="project-tags">
+                    ${techTags}
+                </div>
+                <div class="project-footer">
+                    <div class="project-links">
+                        ${linksHTML}
+                    </div>
+                    <div class="project-stats">
+                        <div class="project-difficulty" title="Difficulty Level">
+                            ${difficultyDots}
                         </div>
                     </div>
                 </div>
             </div>
         `;
         
-        return col;
+        // Add click handler for project details
+        cardDiv.addEventListener('click', (e) => {
+            // Don't trigger if clicking on a link
+            if (e.target.closest('.project-link')) return;
+            
+            // Add ripple effect
+            createRippleEffect(e, cardDiv);
+            
+            // Small delay for visual feedback
+            setTimeout(() => {
+                showProjectDetails(project.id);
+            }, 150);
+        });
+        
+        // Add hover sound effect (optional)
+        cardDiv.addEventListener('mouseenter', () => {
+            cardDiv.style.cursor = 'pointer';
+        });
+        
+        // Add AOS animation
+        cardDiv.setAttribute('data-aos', 'fade-up');
+        cardDiv.setAttribute('data-aos-delay', (index * 100).toString());
+        cardDiv.setAttribute('data-aos-duration', '800');
+        
+        return cardDiv;
+    }
+    
+    /**
+     * Create ripple effect on card click
+     */
+    function createRippleEffect(event, element) {
+        const ripple = document.createElement('div');
+        const rect = element.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = event.clientX - rect.left - size / 2;
+        const y = event.clientY - rect.top - size / 2;
+        
+        ripple.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            left: ${x}px;
+            top: ${y}px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10;
+            animation: ripple-animation 0.6s ease-out forwards;
+        `;
+        
+        // Add ripple animation keyframes if not already present
+        if (!document.querySelector('#ripple-styles')) {
+            const style = document.createElement('style');
+            style.id = 'ripple-styles';
+            style.textContent = `
+                @keyframes ripple-animation {
+                    0% {
+                        transform: scale(0);
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: scale(1);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        element.style.position = 'relative';
+        element.appendChild(ripple);
+        
+        // Remove ripple after animation
+        setTimeout(() => {
+            ripple.remove();
+        }, 600);
     }
     
     /**

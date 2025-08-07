@@ -11,22 +11,27 @@
     <meta property="og:image" content="https://pawnislandacademy.com/images/brand-icons/logo-light.png">
     <meta property="og:url" content="https://pawnislandacademy.com/pages/landing/projects.html">
     <link rel="canonical" href="https://pawnislandacademy.com/pages/landing/projects.html">
+    
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href="../../css/navbar-revolution.css">
     <link rel="stylesheet" href="../../css/footer.css">
     <link rel="stylesheet" href="../../css/buttons.css">
-    <link rel="stylesheet" href="../../css/portfolio.css">
-    <!-- Explicitly include the jump-to-top component CSS -->
-    <link rel="stylesheet" href="../../css/components/jump-to-top.css">
-    <!-- Add modern jump-to-top component CSS -->
     <link rel="stylesheet" href="../../css/components/modernJumpToTop.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../../images/brand-icons/favicon.png">
+    
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T12VEHM2PY"></script>
     <script>
@@ -35,96 +40,1102 @@
         gtag('js', new Date());
         gtag('config', 'G-T12VEHM2PY');
     </script>
-    <!-- Remove jump-to-top component script -->
+    
+    <style>
+        /* Dark Chess Theme Variables - Consistent with index.html */
+        :root {
+            --chess-black: #1a1a1a;
+            --chess-dark-gray: #2d2d2d;
+            --chess-medium-gray: #404040;
+            --chess-light-gray: #666666;
+            --chess-gold: #ffd700;
+            --chess-amber: #ffed4a;
+            --chess-blue: #2c5aa0;
+            --chess-white: #ffffff;
+            --chess-shadow: rgba(0, 0, 0, 0.8);
+        }
+        
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--chess-white);
+            background: var(--chess-black);
+            overflow-x: hidden;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(45, 45, 45, 0.95) 100%), 
+                        url('../../images/headers-pages/portfolio.webp') center/cover;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 90vw;
+        }
+        
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--chess-white) 0%, var(--chess-gold) 50%, var(--chess-amber) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-weight: 300;
+            color: var(--chess-light-gray);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            background: var(--chess-black);
+            padding: 5rem 0;
+        }
+        
+        /* Section Styling */
+        .section {
+            margin-bottom: 5rem;
+        }
+        
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 600;
+            color: var(--chess-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--chess-gold), var(--chess-amber));
+            border-radius: 2px;
+        }
+        
+        /* Timeline Styles */
+        .section-subtitle {
+            text-align: center;
+            color: var(--chess-light-gray);
+            font-size: 1.2rem;
+            margin-bottom: 4rem;
+            font-style: italic;
+        }
+        
+        .timeline-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--chess-gold), var(--chess-amber));
+            transform: translateX(-50%);
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            background: linear-gradient(135deg, var(--chess-dark-gray) 0%, var(--chess-medium-gray) 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 2px solid var(--chess-medium-gray);
+            position: relative;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-10px);
+            border-color: var(--chess-gold);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border: 15px solid transparent;
+            transform: translateY(-50%);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -30px;
+            border-left-color: var(--chess-medium-gray);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -30px;
+            border-right-color: var(--chess-medium-gray);
+        }
+        
+        .timeline-content:hover::before {
+            border-left-color: var(--chess-gold);
+            border-right-color: var(--chess-gold);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: var(--chess-gold);
+            border-radius: 50%;
+            border: 4px solid var(--chess-black);
+            box-shadow: 0 0 0 4px var(--chess-gold), 0 0 20px rgba(255, 215, 0, 0.4);
+            z-index: 10;
+        }
+        
+        .timeline-year {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--chess-black);
+            color: var(--chess-gold);
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 2px solid var(--chess-gold);
+            top: -15px;
+            z-index: 11;
+        }
+        
+        .project-header {
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--chess-white);
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+        
+        .project-role {
+            color: var(--chess-gold);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-duration {
+            color: var(--chess-light-gray);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        
+        .project-description {
+            color: #c0c0c0;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+        
+        .project-technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tech-tag {
+            background: rgba(255, 215, 0, 0.15);
+            color: var(--chess-gold);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .tech-tag:hover {
+            background: rgba(255, 215, 0, 0.25);
+            border-color: var(--chess-gold);
+            transform: translateY(-2px);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            border: 2px solid var(--chess-medium-gray);
+            transition: all 0.4s ease;
+        }
+        
+        .timeline-content:hover .project-image {
+            border-color: var(--chess-gold);
+            transform: scale(1.02);
+        }
+        
+        .project-achievements {
+            margin-top: 1.5rem;
+        }
+        
+        .achievements-title {
+            color: var(--chess-gold);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .achievement-item {
+            color: var(--chess-light-gray);
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+        
+        .achievement-item::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--chess-gold);
+            font-weight: bold;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 2rem;
+            }
+            
+            .timeline-item {
+                flex-direction: row !important;
+                padding-left: 4rem;
+            }
+            
+            .timeline-item:nth-child(even) {
+                flex-direction: row !important;
+            }
+            
+            .timeline-content {
+                width: 100%;
+            }
+            
+            .timeline-content::before {
+                left: -30px !important;
+                right: auto !important;
+                border-right-color: var(--chess-medium-gray) !important;
+                border-left-color: transparent !important;
+            }
+            
+            .timeline-content:hover::before {
+                border-right-color: var(--chess-gold) !important;
+                border-left-color: transparent !important;
+            }
+            
+            .timeline-dot {
+                left: 2rem;
+            }
+            
+            .timeline-year {
+                left: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .timeline-container {
+                padding: 1rem 0;
+            }
+            
+            .timeline-content {
+                padding: 1.5rem;
+            }
+            
+            .project-title {
+                font-size: 1.3rem;
+            }
+            
+            .project-image {
+                height: 150px;
+            }
+        }
+        
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .project-card {
+            background: linear-gradient(135deg, var(--chess-dark-gray) 0%, var(--chess-medium-gray) 100%);
+            border-radius: 25px;
+            overflow: hidden;
+            border: 2px solid var(--chess-medium-gray);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            cursor: pointer;
+            height: 550px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(255, 215, 0, 0.05) 50%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+        }
+        
+        .project-card:hover::before {
+            opacity: 1;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            border-color: var(--chess-gold);
+            box-shadow: 0 25px 50px rgba(255, 215, 0, 0.3);
+        }
+        
+        .project-image-container {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.15);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                45deg,
+                rgba(0, 0, 0, 0.7) 0%,
+                rgba(0, 0, 0, 0.3) 50%,
+                rgba(255, 215, 0, 0.2) 100%
+            );
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .project-overlay-content {
+            text-align: center;
+            transform: translateY(20px);
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-overlay-content {
+            transform: translateY(0);
+        }
+        
+        .overlay-icon {
+            font-size: 3rem;
+            color: var(--chess-gold);
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .overlay-text {
+            color: var(--chess-white);
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+        
+        .project-category {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: linear-gradient(135deg, var(--chess-gold) 0%, var(--chess-amber) 100%);
+            color: var(--chess-black);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+            z-index: 3;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover .project-category {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+        }
+        
+        .project-status {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--chess-white);
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 3;
+            backdrop-filter: blur(10px);
+        }
+        
+        .status-active {
+            border: 2px solid #4CAF50;
+            color: #4CAF50;
+        }
+        
+        .status-development {
+            border: 2px solid #FF9800;
+            color: #FF9800;
+        }
+        
+        .status-concept {
+            border: 2px solid #9C27B0;
+            color: #9C27B0;
+        }
+        
+        .project-content {
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .project-header {
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--chess-white);
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .project-description {
+            color: #c0c0c0;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            height: 4.5rem;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 2rem;
+        }
+        
+        .project-tag {
+            background: rgba(255, 215, 0, 0.15);
+            color: var(--chess-gold);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        
+        .project-tag:hover {
+            background: rgba(255, 215, 0, 0.25);
+            border-color: var(--chess-gold);
+            transform: translateY(-2px);
+        }
+        
+        .project-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .project-link {
+            background: linear-gradient(135deg, var(--chess-gold) 0%, var(--chess-amber) 100%);
+            color: var(--chess-black);
+            text-decoration: none;
+            padding: 0.7rem 1.4rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .project-link:hover::before {
+            left: 100%;
+        }
+        
+        .project-link:hover {
+            color: var(--chess-black);
+            text-decoration: none;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+        }
+        
+        .project-link.secondary {
+            background: transparent;
+            color: var(--chess-gold);
+            border: 2px solid var(--chess-gold);
+        }
+        
+        .project-link.secondary:hover {
+            background: var(--chess-gold);
+            color: var(--chess-black);
+        }
+        
+        .project-stats {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.5rem;
+        }
+        
+        .project-difficulty {
+            display: flex;
+            gap: 0.3rem;
+        }
+        
+        .difficulty-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--chess-medium-gray);
+            transition: all 0.3s ease;
+        }
+        
+        .difficulty-dot.active {
+            background: var(--chess-gold);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        
+        /* Enhanced hover effects */
+        .project-card:hover .project-title {
+            color: var(--chess-gold);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+        
+        .project-card:hover .project-tags .project-tag {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+        }
+        
+        /* Loading skeleton */
+        .project-skeleton {
+            background: linear-gradient(135deg, var(--chess-dark-gray) 0%, var(--chess-medium-gray) 100%);
+            border-radius: 25px;
+            height: 550px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-skeleton::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            animation: skeleton-loading 2s infinite;
+        }
+        
+        @keyframes skeleton-loading {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Project Modal Enhancements */
+        .modal-content {
+            background: linear-gradient(135deg, var(--chess-dark-gray) 0%, var(--chess-medium-gray) 100%);
+            border: 2px solid var(--chess-gold);
+            border-radius: 20px;
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, var(--chess-gold) 0%, var(--chess-amber) 100%);
+            color: var(--chess-black);
+            border-radius: 18px 18px 0 0;
+            border-bottom: none;
+        }
+        
+        .modal-title {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+        }
+        
+        .modal-body {
+            color: var(--chess-white);
+        }
+        
+        .close {
+            color: var(--chess-black);
+            opacity: 0.8;
+            text-shadow: none;
+        }
+        
+        .close:hover {
+            color: var(--chess-black);
+            opacity: 1;
+        }
+        
+        /* Enhanced Responsive Design */
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .project-card {
+                height: auto;
+                min-height: 450px;
+            }
+            
+            .project-image-container {
+                height: 180px;
+            }
+            
+            .project-content {
+                padding: 1.5rem;
+            }
+            
+            .project-title {
+                font-size: 1.3rem;
+            }
+            
+            .project-links {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            
+            .project-link {
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .project-footer {
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: stretch;
+            }
+            
+            .project-stats {
+                align-items: center;
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+            .project-difficulty {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                margin-top: 2rem;
+            }
+            
+            .project-card {
+                min-height: 400px;
+            }
+            
+            .project-image-container {
+                height: 160px;
+            }
+            
+            .project-content {
+                padding: 1.2rem;
+            }
+            
+            .project-category {
+                font-size: 0.7rem;
+                padding: 0.4rem 0.8rem;
+            }
+            
+            .project-status {
+                font-size: 0.7rem;
+                padding: 0.4rem 0.8rem;
+            }
+            
+            .project-tag {
+                font-size: 0.6rem;
+                padding: 0.15rem 0.5rem;
+                border-radius: 10px;
+            }
+        }
+        
+        /* Store Section */
+        .store-section {
+            background: linear-gradient(135deg, var(--chess-medium-gray) 0%, var(--chess-dark-gray) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 2px solid var(--chess-medium-gray);
+            margin: 5rem 0;
+        }
+        
+        .store-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .store-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.6s ease;
+        }
+        
+        .store-section:hover .store-image img {
+            transform: scale(1.05);
+        }
+        
+        .store-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--chess-white);
+            margin-bottom: 1.5rem;
+        }
+        
+        .store-description {
+            font-size: 1.2rem;
+            color: var(--chess-light-gray);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        /* Button Styles */
+        .btn-chess {
+            background: linear-gradient(135deg, var(--chess-gold) 0%, var(--chess-amber) 100%);
+            color: var(--chess-black);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-chess::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-chess:hover::before {
+            left: 100%;
+        }
+        
+        .btn-chess:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+            color: var(--chess-black);
+            text-decoration: none;
+        }
+        
+        /* Loading Animation */
+        .loading-container {
+            text-align: center;
+            padding: 4rem;
+        }
+        
+        .loading-spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--chess-medium-gray);
+            border-top: 4px solid var(--chess-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* No Results Message */
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--chess-dark-gray) 0%, var(--chess-medium-gray) 100%);
+            border-radius: 20px;
+            border: 2px solid var(--chess-medium-gray);
+        }
+        
+        .no-results i {
+            color: var(--chess-gold);
+            font-size: 4rem;
+            margin-bottom: 2rem;
+        }
+        
+        .no-results h3 {
+            color: var(--chess-white);
+            margin-bottom: 1rem;
+        }
+        
+        .no-results p {
+            color: var(--chess-light-gray);
+            margin-bottom: 2rem;
+        }
+        
+        /* Modal Styles */
+        .modal-content {
+            background: linear-gradient(135deg, var(--chess-dark-gray) 0%, var(--chess-medium-gray) 100%);
+            border: 2px solid var(--chess-medium-gray);
+            border-radius: 20px;
+        }
+        
+        .modal-header {
+            border-bottom: 1px solid var(--chess-medium-gray);
+        }
+        
+        .modal-title {
+            font-family: 'Cinzel', serif;
+            color: var(--chess-white);
+        }
+        
+        .modal-body {
+            color: var(--chess-light-gray);
+        }
+        
+        .modal-footer {
+            border-top: 1px solid var(--chess-medium-gray);
+        }
+        
+        .close {
+            color: var(--chess-gold);
+            font-size: 2rem;
+            opacity: 1;
+        }
+        
+        .close:hover {
+            color: var(--chess-amber);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 100vh;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .store-section {
+                padding: 2rem;
+            }
+            
+            .project-links {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
-<body class="bg-light text-dark">
-
-    <!-- Hero Card Container - Will be populated by hero-card.js -->
-    <div id="heroCardContainer"></div>
+<body>
+    <!-- Navigation Placeholder -->
+    <div id="navbar-placeholder"></div>
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <h1 class="hero-title">My Portfolio</h1>
+            <p class="hero-subtitle">A Collection of Projects & Initiatives</p>
+            <a href="#projects-section" class="btn-chess">
+                <i class="fas fa-rocket"></i> Explore Projects
+            </a>
+        </div>
+    </section>
 
     <!-- Main Content -->
-    <div class="main-container">
-        <div class="container py-5">
-            <!-- Filter and Projects Section -->
-            <section class="projects-showcase-section mb-5">
-                <!-- Filter Controls -->
-                <div class="filter-controls mb-4 p-4 bg-white shadow-sm rounded mt-5" data-aos="fade-up">
-                    <div class="d-flex justify-content-center">
-                        <div class="filter-group">
-                            <label class="mb-3 d-block text-center h5">Filter Projects By Category</label>
-                            <div class="btn-group btn-group-sm filter-buttons" role="group" id="categoryFilter">
-                                <button type="button" class="btn btn-primary active" data-filter="all">All</button>
-                                <button type="button" class="btn btn-outline-primary" data-filter="chess">Chess</button>
-                                <button type="button" class="btn btn-outline-primary" data-filter="ai">AI/Tech</button>
-                                <button type="button" class="btn btn-outline-primary" data-filter="community">Community</button>
-                                <button type="button" class="btn btn-outline-primary" data-filter="creative">Creative</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="filter-tags mt-2 d-flex flex-wrap justify-content-center" id="active-filters">
-                        <!-- Active filters will be displayed here -->
-                    </div>
-                </div>
-
-                <!-- Projects Section -->
-                <section class="projects-section">
-                    <!-- Loading indicator -->
-                    <div class="col-12 text-center py-5" id="loading-projects">
-                        <div class="loading-animation">
-                            <div class="spinner-grow text-primary" role="status">
-                                <span class="sr-only">Loading projects...</span>
-                            </div>
-                            <div class="spinner-grow text-secondary" role="status">
-                                <span class="sr-only">Loading projects...</span>
-                            </div>
-                            <div class="spinner-grow text-success" role="status">
-                                <span class="sr-only">Loading projects...</span>
-                            </div>
-                        </div>
-                        <p class="mt-3">Loading amazing projects...</p>
-                    </div>
-                    
-                    <!-- Projects container -->
-                    <div id="projects-container" class="projects-grid">
+    <main class="main-content">
+        <div class="container">
+            <!-- Projects Timeline Section -->
+            <section id="projects-section" class="section" data-aos="fade-up">
+                <h2 class="section-title">Project Timeline</h2>
+                <p class="section-subtitle">A chronological journey through my work and achievements</p>
+                
+                <!-- Timeline Container -->
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    <div id="timeline-projects">
                         <!-- Projects will be loaded here dynamically -->
                     </div>
-                    
-                    <!-- No results message (hidden by default) -->
-                    <div id="no-projects-message" class="text-center py-5 bg-white shadow-sm rounded" style="display: none;">
-                        <i class="fas fa-search fa-3x text-muted mb-3"></i>
-                        <h3>No matching projects found</h3>
-                        <p>Try changing your filter criteria or view all projects.</p>
-                        <button class="btn btn-primary mt-3" onclick="resetFilters()">
-                            <i class="fas fa-redo mr-2"></i>Reset Filters
-                        </button>
-                    </div>
-                </section>
+                </div>
             </section>
 
             <!-- Shopify Store Section -->
-            <section id="shopify-store" class="store-section mb-5" data-aos="fade-up">
-                <div class="card shadow-sm">
-                    <div class="card-body p-4">
-                        <div class="row align-items-center">
-                            <div class="col-lg-5 mb-4 mb-lg-0">
-                                <img src="../../images/assets/shopify-store.png" alt="Pawn Island Store" class="img-fluid rounded">
-                            </div>
-                            <div class="col-lg-7">
-                                <h2 class="card-title">Pawn Island Store</h2>
-                                <p class="card-text lead">Discover unique apparel and accessories featuring original designs created with AI tools and inspired by chess themes.</p>
-                                <p class="text-muted">Our store offers high-quality products that combine creative expression with modern technology, all while maintaining a playful chess-inspired aesthetic.</p>
-                                <div class="mt-4">
-                                    <a href="#" class="btn btn-primary btn-lg" id="shopify-store-link">
-                                        <i class="fas fa-shopping-cart mr-2"></i>Visit Store
-                                    </a>
-                                </div>
-                            </div>
+            <section class="store-section" data-aos="fade-up">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 mb-4 mb-lg-0">
+                        <div class="store-image">
+                            <img src="../../images/assets/shopify-store.png" alt="Pawn Island Store" class="img-fluid">
                         </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <h2 class="store-title">Pawn Island Store</h2>
+                        <p class="store-description">
+                            Discover unique apparel and accessories featuring original designs created with AI tools and inspired by chess themes.
+                        </p>
+                        <p style="color: var(--chess-light-gray); margin-bottom: 2rem;">
+                            Our store offers high-quality products that combine creative expression with modern technology, 
+                            all while maintaining a playful chess-inspired aesthetic.
+                        </p>
+                        <a href="#" class="btn-chess" id="shopify-store-link">
+                            <i class="fas fa-shopping-cart"></i> Visit Store
+                        </a>
                     </div>
                 </div>
             </section>
         </div>
-    </div>
+    </main>
 
     <!-- Project Detail Modal -->
     <div class="modal fade" id="projectDetailModal" tabindex="-1" role="dialog" aria-labelledby="projectDetailModalLabel" aria-hidden="true">
@@ -140,85 +1151,43 @@
                     <!-- Project details will be inserted here -->
                 </div>
                 <div class="modal-footer">
-                    <div class="col-auto">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
+                    <button type="button" class="btn-chess" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer placeholder -->
-    <div class="footer-placeholder"></div>
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
 
-    <!-- JavaScript Libraries - Load jQuery first -->
+    <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     
-    <!-- Components and Custom Scripts -->
-    <script src="../../js/components/hero-card.js"></script>
+    <!-- Custom Scripts -->
     <script src="../../js/navbar-revolution.js"></script>
-    <script src="../../js/theme-manager.js"></script>
     <script src="../../js/footer.js"></script>
-    <script src="../../js/script.js"></script>
-    <script src="../../js/portfolio.js"></script>
+    <script src="../../js/timeline-portfolio.js"></script>
     <script src="../../js/shopify-config.js"></script>
-    <!-- Add Modern Jump-to-Top Component -->
     <script src="../../js/components/modernJumpToTop.js"></script>
+    <script src="../../js/script.js"></script>
     
-    <!-- Initialize components -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize hero card with adjusted settings
-            createHeroCard('heroCardContainer', {
-                bgImage: '../../images/headers-pages/portfolio.webp',
-                title: 'My Portfolio',
-                subtitle: 'A Collection of Projects & Initiatives',
-                overlayOpacity: 0.7,
-                overlayColor: '22, 28, 45',
-                height: '65vh',  // Increased height
-                minHeight: '500px', // Increased min height
-                parallaxIntensity: 0.2,
-                separatorColor: '#3498db',
-                buttonText: 'Explore Projects',
-                buttonLink: '#projects-container', // Direct link to projects
-                buttonStyle: 'fill',
-                buttonColor: '#3498db'
-            });
-            
-            // Initialize AOS
+            // Initialize AOS animations
             AOS.init({
                 duration: 800,
                 once: true,
-                delay: 100
+                offset: 100,
+                easing: 'ease-out-cubic'
             });
             
-            // Set up Shopify store link
-            const shopifyLink = document.getElementById('shopify-store-link');
-            if (shopifyLink && typeof SHOPIFY_CONFIG !== 'undefined') {
-                shopifyLink.href = `https://${SHOPIFY_CONFIG.STORE_DOMAIN}`;
-            }
-
-            // Update total projects count when loaded
-            const observer = new MutationObserver(function(mutations) {
-                mutations.forEach(function(mutation) {
-                    if (mutation.type === 'childList' && !document.getElementById('loading-projects').style.display) {
-                        const projectCards = document.querySelectorAll('#projects-container .project-card');
-                        if (projectCards.length > 0) {
-                            document.getElementById('total-projects').textContent = allProjects ? allProjects.length : projectCards.length;
-                            observer.disconnect();
-                        }
-                    }
-                });
-            });
-            observer.observe(document.getElementById('projects-container'), { childList: true, subtree: true });
-
-            // Initialize modern jump-to-top button with custom styling
+            // Initialize modern jump-to-top
             createModernJumpToTop({
                 theme: 'gradient',
-                color: '#3498db',
+                color: '#ffd700',
                 position: 'right',
                 size: 'medium',
                 shape: 'circle',
@@ -226,6 +1195,26 @@
                 showAfter: 300,
                 zIndex: 1500,
                 accessibility: true
+            });
+            
+            // Set up Shopify store link
+            const shopifyLink = document.getElementById('shopify-store-link');
+            if (shopifyLink && typeof SHOPIFY_CONFIG !== 'undefined') {
+                shopifyLink.href = `https://${SHOPIFY_CONFIG.STORE_DOMAIN}`;
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
             });
         });
     </script>

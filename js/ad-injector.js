@@ -1,7 +1,12 @@
 /**
- * Enhanced Ad Injector
- * Intelligently injects product cards from Shopify into the events page,
- * adapting to filter changes for a fluid user experience
+ * Enhanced Ad Injector for Clearinghouse Page
+ * 
+ * Features:
+ * - Ensures minimum of 1 ad when events are present
+ * - Maximum of 1 ad every 3 event cards
+ * - Intelligent positioning based on visible events
+ * - Adaptive to filter changes for fluid user experience
+ * - Respects accessibility and performance guidelines
  */
 document.addEventListener('DOMContentLoaded', function() {
     // Use configuration from shopify-config.js
@@ -146,23 +151,39 @@ document.addEventListener('DOMContentLoaded', function() {
         
         console.log(`Ad Injector: Found ${visibleEvents.length} visible events`);
         
-        // Calculate insertion points - improved algorithm to ensure coverage
+        // Debug logging for testing
+        console.log('Ad Injector Debug:', {
+            totalEvents: visibleEvents.length,
+            adInterval: AD_INSERTION_INTERVAL,
+            expectedAdPositions: visibleEvents.length > 0 ? 
+                Math.max(1, Math.floor(visibleEvents.length / AD_INSERTION_INTERVAL)) : 0
+        });
+        
+        // Calculate insertion points - ensure minimum of 1 ad, maximum of 1 ad every 3 events
         const insertionPoints = [];
         
-        // Start from the first insertion point and continue throughout all events
-        for (let i = AD_INSERTION_INTERVAL - 1; i < visibleEvents.length; i += AD_INSERTION_INTERVAL) {
-            if (i < visibleEvents.length) {
-                insertionPoints.push(visibleEvents[i]);
+        // Ensure we always have at least one ad if there are events
+        if (visibleEvents.length >= 1) {
+            // For 1-2 events: place ad after the last event
+            if (visibleEvents.length <= 2) {
+                insertionPoints.push(visibleEvents[visibleEvents.length - 1]);
+            } else {
+                // For 3+ events: place ads after every 3rd event, starting from the 3rd
+                for (let i = AD_INSERTION_INTERVAL - 1; i < visibleEvents.length; i += AD_INSERTION_INTERVAL) {
+                    insertionPoints.push(visibleEvents[i]);
+                }
+                
+                // If the last ad isn't close to the end, add one more ad after the last event
+                const lastInsertionIndex = insertionPoints.length > 0 
+                    ? visibleEvents.indexOf(insertionPoints[insertionPoints.length - 1])
+                    : -1;
+                const lastEventIndex = visibleEvents.length - 1;
+                
+                // Add a final ad if there are at least 2 events after the last ad position
+                if (lastEventIndex - lastInsertionIndex >= 2) {
+                    insertionPoints.push(visibleEvents[lastEventIndex]);
+                }
             }
-        }
-        
-        // Always add an ad after the last event if we haven't just added one
-        // and there are enough events to warrant an ad
-        const lastEventIndex = visibleEvents.length - 1;
-        if (visibleEvents.length >= 2 && 
-            lastEventIndex % AD_INSERTION_INTERVAL !== AD_INSERTION_INTERVAL - 1 &&
-            !insertionPoints.includes(visibleEvents[lastEventIndex])) {
-            insertionPoints.push(visibleEvents[lastEventIndex]);
         }
         
         console.log(`Ad Injector: Will insert ads at ${insertionPoints.length} positions`);
@@ -859,8 +880,24 @@ document.addEventListener('DOMContentLoaded', function() {
         return newArray;
     }
     
-    // Expose refresh method for external use
+    // Expose refresh method for external use and debugging
     window.adInjector = {
-        refreshAds: positionAdsBasedOnVisibleEvents
+        refreshAds: positionAdsBasedOnVisibleEvents,
+        getStats: function() {
+            const visibleEvents = Array.from(
+                document.querySelectorAll('.event-item:not(.ad-item)')
+            ).filter(event => {
+                const style = window.getComputedStyle(event);
+                return style.display !== 'none' && style.opacity !== '0';
+            });
+            const adCount = document.querySelectorAll('.event-item.ad-item').length;
+            
+            return {
+                visibleEvents: visibleEvents.length,
+                currentAds: adCount,
+                adInterval: AD_INSERTION_INTERVAL,
+                productsAvailable: productsCache ? productsCache.length : 0
+            };
+        }
     };
 });

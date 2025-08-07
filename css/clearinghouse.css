@@ -771,32 +771,101 @@
     }
 }
 
-/* Redesigned unified filter container */
+/* Redesigned unified filter container with dark glass morphism effect */
 .unified-filters {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    padding: 1.25rem;
-    margin: 2rem 0 3rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+    background: rgba(30, 35, 45, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 4px 16px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    margin: 2rem auto 3rem;
+    max-width: 1200px;
     position: relative;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Add a subtle animated gradient background for dark theme */
+.unified-filters::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(221, 54, 73, 0.08) 0%,
+        rgba(45, 55, 70, 0.1) 25%,
+        rgba(79, 172, 254, 0.08) 50%,
+        rgba(45, 55, 70, 0.1) 75%,
+        rgba(221, 54, 73, 0.08) 100%
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Ensure content appears above the background animation */
+.unified-filters > * {
+    position: relative;
+    z-index: 1;
 }
 
 /* Each filter section */
 .filter-section {
     flex: 1;
-    min-width: 280px;
+    min-width: 300px;
+    padding: 0 1rem;
+}
+
+/* Enhanced filter heading for dark theme */
+.filter-heading {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: 2.2rem;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.filter-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(135deg, #dd3649, #e74c3c);
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(221, 54, 73, 0.3);
 }
 
 /* Time filter buttons group */
 .filter-btn-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    gap: 1rem;
     justify-content: center;
+    margin-bottom: 1.5rem;
 }
 
 /* Organizers section can grow more */
@@ -808,158 +877,186 @@
 .organizer-filter-group {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    gap: 1rem;
     justify-content: center;
 }
 
-/* Visual divider between filter types */
-.filter-divider {
-    width: 1px;
-    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1) 20%, rgba(0,0,0,0.1) 80%, transparent);
-    margin: 0 0.5rem;
-}
-
-/* Filter buttons styling */
+/* Enhanced filter buttons styling with dark theme and high contrast */
 .filter-btn, .organizer-btn {
     border: none;
-    background-color: #f8f9fa;
-    color: #495057;
-    padding: 0.6rem 1.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
     border-radius: 50px;
     font-weight: 500;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+    font-size: 0.95rem;
+    font-family: 'Raleway', sans-serif;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.2),
+        0 2px 5px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
     white-space: nowrap;
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(0,0,0,0.05);
-    font-size: 0.95rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    transform: translateY(0);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Add a subtle glow effect for dark theme */
+.filter-btn::before, .organizer-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: left 0.6s ease;
+    z-index: 1;
+}
+
+.filter-btn:hover::before, .organizer-btn:hover::before {
+    left: 100%;
+}
+
+/* Ensure text appears above the shine effect */
+.filter-btn span, .organizer-btn span {
+    position: relative;
+    z-index: 2;
 }
 
 .filter-btn:hover, .organizer-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-    background-color: #f0f0f0;
+    transform: translateY(-3px);
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        0 4px 10px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .filter-btn.active, .organizer-btn.active {
     background: linear-gradient(135deg, #dd3649, #e74c3c);
     color: white;
-    box-shadow: 0 4px 12px rgba(221, 54, 73, 0.3);
+    box-shadow: 
+        0 6px 20px rgba(221, 54, 73, 0.4),
+        0 3px 10px rgba(221, 54, 73, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
     border-color: transparent;
+    transform: translateY(-2px);
 }
 
-/* Ripple effect */
-.filter-btn::after, .organizer-btn::after {
+.filter-btn.active:hover, .organizer-btn.active:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+        0 8px 25px rgba(221, 54, 73, 0.5),
+        0 4px 12px rgba(221, 54, 73, 0.3);
+    background: linear-gradient(135deg, #e6394c, #f15866);
+}
+
+/* Add pulse animation for active state */
+.filter-btn.active::after, .organizer-btn.active::after {
     content: '';
     position: absolute;
-    width: 100%;
-    height: 100%;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50px;
+    border: 2px solid rgba(221, 54, 73, 0.6);
+    animation: pulse 2s infinite;
     pointer-events: none;
-    background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
-    background-repeat: no-repeat;
-    background-position: 50%;
-    transform: scale(10, 10);
-    opacity: 0;
-    transition: transform .5s, opacity 1s;
 }
 
-.filter-btn:active::after, .organizer-btn:active::after {
-    transform: scale(0, 0);
-    opacity: .3;
-    transition: 0s;
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.1);
+        opacity: 0;
+    }
 }
 
-/* Responsive adjustments */
+/* Focus states for accessibility with dark theme */
+.filter-btn:focus, .organizer-btn:focus {
+    outline: none;
+    box-shadow: 
+        0 0 0 3px rgba(221, 54, 73, 0.5),
+        0 4px 15px rgba(0, 0, 0, 0.2),
+        0 2px 5px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+/* Responsive adjustments for dark theme */
 @media (max-width: 992px) {
     .unified-filters {
         flex-direction: column;
-        padding: 1rem;
-        gap: 1.25rem;
-    }
-    
-    .filter-divider {
-        width: 100%;
-        height: 1px;
-        background: linear-gradient(to right, transparent, rgba(0,0,0,0.1) 20%, rgba(0,0,0,0.1) 80%, transparent);
-        margin: 0;
+        padding: 1.5rem;
+        gap: 1.5rem;
+        margin: 1.5rem 0 2.5rem;
+        background: rgba(25, 30, 40, 0.95);
     }
     
     .filter-section {
         min-width: 100%;
+        padding: 0;
+    }
+    
+    .filter-heading {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        color: #ffffff;
+    }
+    
+    .filter-btn, .organizer-btn {
+        padding: 0.7rem 1.3rem;
+        font-size: 0.9rem;
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
     }
 }
 
 @media (max-width: 576px) {
     .unified-filters {
-        padding: 1rem 0.75rem;
-        margin: 1.5rem 0 2rem;
+        padding: 1.25rem 1rem;
+        margin: 1rem 0 2rem;
+        border-radius: 16px;
+        background: rgba(20, 25, 35, 0.95);
+    }
+    
+    .filter-heading {
+        font-size: 1.6rem;
+        margin-bottom: 1.25rem;
+        color: #ffffff;
     }
     
     .filter-btn, .organizer-btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.875rem;
+        padding: 0.65rem 1.1rem;
+        font-size: 0.85rem;
+        min-width: 120px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
     }
     
-    .filter-btn-group, .organizer-filter-group {
-        gap: 0.5rem;
+    .filter-btn-group,
+    .organizer-filter-group {
+        gap: 0.75rem;
+        justify-content: center;
     }
-}
-
-/* Filter button styling - updated to handle multi-select */
-.filter-btn, .organizer-btn {
-    border: none;
-    background-color: #f8f9fa;
-    color: #495057;
-    padding: 0.6rem 1.2rem;
-    border-radius: 50px;
-    font-weight: 500;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.06);
-    white-space: nowrap;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(0,0,0,0.05);
-    font-size: 0.95rem;
-}
-
-.filter-btn:hover, .organizer-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-    background-color: #f0f0f0;
-}
-
-.filter-btn.active, .organizer-btn.active {
-    background: linear-gradient(135deg, #dd3649, #e74c3c);
-    color: white;
-    box-shadow: 0 4px 12px rgba(221, 54, 73, 0.3);
-    border-color: transparent;
-}
-
-/* Modified multi-select animation */
-@keyframes pulse-multi {
-    0% { box-shadow: 0 0 0 0 rgba(221, 54, 73, 0.2); }
-    70% { box-shadow: 0 0 0 5px rgba(221, 54, 73, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(221, 54, 73, 0); }
-}
-
-.organizer-btn.active {
-    animation: pulse-multi 1.5s infinite;
-}
-
-/* Improved visual feedback for multi-selected organizers */
-.organizer-btn.active::after {
-    content: '';
-    position: absolute;
-    bottom: 5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 25%;
-    height: 2px;
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 2px;
 }
 
 /* Promo Code Event Card Styling */

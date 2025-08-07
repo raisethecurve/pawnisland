@@ -15,7 +15,7 @@
     
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     
     <!-- Custom CSS -->
@@ -23,8 +23,12 @@
     <link rel="stylesheet" href="../../css/navbar-revolution.css">
     <link rel="stylesheet" href="../../css/footer.css">
     <link rel="stylesheet" href="../../css/buttons.css">
-    <link rel="stylesheet" href="../../css/about-me.css">
     <link rel="stylesheet" href="../../css/components/modernJumpToTop.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../../images/brand-icons/favicon.png">
@@ -37,65 +41,791 @@
         gtag('js', new Date());
         gtag('config', 'G-T12VEHM2PY');
     </script>
+    
+    <style>
+        /* Dark Chess Theme Variables - Consistent with index.html */
+        :root {
+            --chess-black: #1a1a1a;
+            --chess-dark-gray: #2d2d2d;
+            --chess-medium-gray: #404040;
+            --chess-light-gray: #666666;
+            --chess-gold: #ffd700;
+            --chess-amber: #ffed4a;
+            --chess-blue: #2c5aa0;
+            --chess-white: #ffffff;
+            --chess-shadow: rgba(0, 0, 0, 0.8);
+        }
+        
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--chess-white);
+            background: var(--chess-black);
+            overflow-x: hidden;
+        }
+        
+        /* Navigation Breadcrumb */
+        .nav-breadcrumb {
+            background: var(--chess-dark-gray);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--chess-medium-gray);
+        }
+        
+        .breadcrumb {
+            background: transparent;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .breadcrumb-item {
+            color: var(--chess-light-gray);
+            font-weight: 500;
+        }
+        
+        .breadcrumb-item.active {
+            color: var(--chess-gold);
+        }
+        
+        .breadcrumb-item + .breadcrumb-item::before {
+            content: ">";
+            color: var(--chess-medium-gray);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            min-height: 80vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(45, 45, 45, 0.95) 100%), 
+                        url('../../images/headers-pages/freeman-3.jpg') center/cover;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--chess-white) 0%, var(--chess-gold) 50%, var(--chess-amber) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--chess-gold);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--chess-light-gray);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        /* Profile Card */
+        .profile-card {
+            background: linear-gradient(135deg, var(--chess-dark-gray) 0%, var(--chess-medium-gray) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 2px solid var(--chess-medium-gray);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .profile-card:hover::before {
+            left: 100%;
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1.5rem;
+            border: 4px solid var(--chess-gold);
+            position: relative;
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .achievement-badge {
+            background: linear-gradient(135deg, var(--chess-gold) 0%, var(--chess-amber) 100%);
+            color: var(--chess-black);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Stats */
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--chess-gold);
+            display: block;
+        }
+        
+        .stat-label {
+            color: var(--chess-light-gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Section Styling */
+        .section {
+            padding: 5rem 0;
+            position: relative;
+        }
+        
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 600;
+            color: var(--chess-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--chess-gold), var(--chess-amber));
+            border-radius: 2px;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--chess-gold), var(--chess-amber));
+        }
+        
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+        
+        .timeline-content {
+            background: linear-gradient(135deg, var(--chess-dark-gray) 0%, var(--chess-medium-gray) 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid var(--chess-medium-gray);
+            position: relative;
+        }
+        
+        .timeline-content h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--chess-gold);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .timeline-content p {
+            color: var(--chess-light-gray);
+            line-height: 1.6;
+        }
+        
+        .timeline-icon {
+            position: absolute;
+            top: 50%;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--chess-gold) 0%, var(--chess-amber) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--chess-black);
+            font-size: 1.2rem;
+            z-index: 10;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-icon {
+            right: -25px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-icon {
+            left: -25px;
+        }
+        
+        /* Experience Grid */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .experience-card {
+            background: linear-gradient(135deg, var(--chess-dark-gray) 0%, var(--chess-medium-gray) 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid var(--chess-medium-gray);
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .experience-card:hover::before {
+            left: 100%;
+        }
+        
+        .experience-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--chess-gold);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            color: var(--chess-gold);
+            margin-bottom: 1rem;
+        }
+        
+        .experience-card h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--chess-white);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .experience-card p {
+            color: var(--chess-light-gray);
+            margin-bottom: 1rem;
+        }
+        
+        .achievement {
+            background: rgba(255, 215, 0, 0.1);
+            color: var(--chess-gold);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        /* Philosophy Section */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .philosophy-pillar {
+            background: linear-gradient(135deg, var(--chess-dark-gray) 0%, var(--chess-medium-gray) 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid var(--chess-medium-gray);
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+        
+        .philosophy-pillar:hover {
+            transform: translateY(-5px);
+            border-color: var(--chess-gold);
+        }
+        
+        .pillar-icon {
+            font-size: 3rem;
+            color: var(--chess-gold);
+            margin-bottom: 1rem;
+        }
+        
+        .philosophy-pillar h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--chess-white);
+            margin-bottom: 1rem;
+        }
+        
+        .philosophy-pillar p {
+            color: var(--chess-light-gray);
+            line-height: 1.6;
+        }
+        
+        /* Quote */
+        .philosophy-quote {
+            background: linear-gradient(135deg, var(--chess-medium-gray) 0%, var(--chess-dark-gray) 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            margin-top: 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .philosophy-quote blockquote {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--chess-white);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .philosophy-quote cite {
+            color: var(--chess-gold);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        /* FAQ Section */
+        .faq-item {
+            background: linear-gradient(135deg, var(--chess-dark-gray) 0%, var(--chess-medium-gray) 100%);
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            border: 2px solid var(--chess-medium-gray);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            border-color: var(--chess-gold);
+        }
+        
+        .faq-header-item {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-header-item h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--chess-white);
+            margin: 0;
+            flex: 1;
+            font-size: 1.2rem;
+        }
+        
+        .faq-header-item i {
+            color: var(--chess-gold);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-content {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--chess-light-gray);
+            line-height: 1.6;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-content {
+            max-height: 200px;
+        }
+        
+        .faq-item.active .faq-header-item i {
+            transform: rotate(180deg);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--chess-medium-gray) 0%, var(--chess-dark-gray) 100%);
+            border-radius: 20px;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-icon {
+            font-size: 4rem;
+            color: var(--chess-gold);
+            margin-bottom: 2rem;
+        }
+        
+        .cta-section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--chess-white);
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            color: var(--chess-light-gray);
+            margin-bottom: 2rem;
+        }
+        
+        .cta-features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--chess-gold);
+            font-weight: 600;
+        }
+        
+        /* Button Styles */
+        .btn-chess {
+            background: linear-gradient(135deg, var(--chess-gold) 0%, var(--chess-amber) 100%);
+            color: var(--chess-black);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-chess::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-chess:hover::before {
+            left: 100%;
+        }
+        
+        .btn-chess:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+            color: var(--chess-black);
+            text-decoration: none;
+        }
+        
+        .btn-chess-secondary {
+            background: transparent;
+            color: var(--chess-gold);
+            border: 2px solid var(--chess-gold);
+        }
+        
+        .btn-chess-secondary:hover {
+            background: var(--chess-gold);
+            color: var(--chess-black);
+        }
+        
+        /* Service Cards */
+        .service-card {
+            background: linear-gradient(135deg, var(--chess-dark-gray) 0%, var(--chess-medium-gray) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 2px solid var(--chess-medium-gray);
+            margin-bottom: 2rem;
+            transition: all 0.4s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--chess-gold);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.2);
+        }
+        
+        .service-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--chess-gold);
+            margin-right: 1rem;
+        }
+        
+        .service-header h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--chess-white);
+            margin: 0;
+        }
+        
+        .student-type, .lesson-component {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid var(--chess-gold);
+        }
+        
+        .student-type i, .lesson-component i {
+            color: var(--chess-gold);
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .student-type h4 {
+            color: var(--chess-white);
+            margin: 0 0 0.5rem 0;
+        }
+        
+        .student-type p {
+            color: var(--chess-light-gray);
+            margin: 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                text-align: left;
+                padding-left: 60px;
+            }
+            
+            .timeline-item .timeline-icon {
+                left: -25px !important;
+            }
+            
+            .hero-stats {
+                justify-content: center;
+            }
+            
+            .cta-features {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Easter Egg Styles */
+        .easter-dot {
+            cursor: pointer;
+            opacity: 0.4;
+            transition: all 0.3s ease;
+        }
+        
+        .easter-dot.clicked {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+        
+        .easter-dot.revealed {
+            animation: pulse 1s ease-in-out;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+        
+        .secret-portal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--chess-gold), var(--chess-amber));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--chess-black);
+            font-size: 1.2rem;
+            text-decoration: none;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0);
+            transition: all 0.5s ease;
+        }
+        
+        .secret-portal.revealed {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            animation: portalGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes portalGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.8); }
+        }
+    </style>
 </head>
-<body class="bg-light text-dark">
-
-    <!-- Modern Hero Section -->
-    <section class="modern-hero">
-        <div class="hero-background">
-            <div class="hero-overlay"></div>
-            <img src="../../images/headers-pages/freeman-3.jpg" alt="Matthew Freeman Chess Coach" class="hero-bg-image">
+<body>
+    <!-- Navigation Placeholder -->
+    <div id="navbar-placeholder"></div>
+    
+    <!-- Navigation Breadcrumb -->
+    <nav class="nav-breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../../index.html" style="color: var(--chess-light-gray);">Home</a></li>
+                <li class="breadcrumb-item active">About Matthew Freeman</li>
+            </ol>
         </div>
-        <div class="container hero-container">
-            <div class="row align-items-center min-vh-100 hero-row">
-                <div class="col-lg-6 hero-content" data-aos="fade-right">
-                    <h1 class="hero-title">Matthew Freeman</h1>
-                    <div class="hero-subtitle">2024-25 RI State Champion</div>
-                    <p class="hero-description">
-                        My mission is to help people understand how their minds work through decision-making theory in chess. When you master one thing, you can master anything!
-                    </p>
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">20+</div>
-                            <div class="stat-label">Years Experience</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7" data-aos="fade-right">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Matthew Freeman</h1>
+                        <div class="hero-subtitle">2024-25 RI State Champion</div>
+                        <p class="hero-description">
+                            My mission is to help people understand how their minds work through decision-making theory in chess. 
+                            When you master one thing, you can master anything!
+                        </p>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" data-value="25">0</span>
+                                <div class="stat-label">Years of Chess</div>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-value="500">0</span>
+                                <div class="stat-label">Students Coached</div>
+                            </div>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-number">500+</div>
-                            <div class="stat-label">Students Coached</div>
+                        <div style="margin-top: 2rem;">
+                            <a href="https://pawnisland.setmore.com/" target="_blank" class="btn-chess">
+                                <i class="fas fa-calendar-alt"></i> Book a Session
+                            </a>
+                            <a href="#story" class="btn-chess btn-chess-secondary">
+                                <i class="fas fa-chevron-down"></i> Learn More
+                            </a>
                         </div>
-                    </div>
-                    <div class="hero-actions">
-                        <a href="https://pawnisland.setmore.com/" target="_blank" class="btn-hero-primary">
-                            <i class="fas fa-calendar-alt"></i>
-                            Book a Session
-                        </a>
-                        <a href="#story" class="btn-hero-secondary">
-                            <i class="fas fa-chevron-down"></i>
-                            Learn More
-                        </a>
                     </div>
                 </div>
-                <div class="col-lg-6 hero-image-container" data-aos="fade-left">
-                    <div class="floating-card coach-card">
-                        <div class="coach-image">
-                            <img src="../../images/headers-pages/freeman-2.jpg" alt="Matthew Freeman Profile" class="profile-img">
-                            <div class="achievement-badge">
-                                <i class="fas fa-crown"></i>
-                                <span>The King of Pawn Island</span>
-                            </div>
+                <div class="col-lg-5" data-aos="fade-left">
+                    <div class="profile-card">
+                        <div class="profile-image">
+                            <img src="../../images/headers-pages/freeman-2.jpg" alt="Matthew Freeman Profile">
                         </div>
-                        <div class="coach-info">
-                            <h3>Matthew Freeman</h3>
-                            <div class="credentials">
-                                <div class="credential">
-                                    <i class="fas fa-medal"></i>
-                                    <span>2024-25 RI State Champion</span>
-                                </div>
-                                <div class="credential">
-                                    <i class="fas fa-graduation-cap"></i>
-                                    <span>20+ Years Teaching</span>
-                                </div>
-                            </div>
+                        <div class="achievement-badge">
+                            <i class="fas fa-crown"></i> The King of Pawn Island
                         </div>
                     </div>
                 </div>
@@ -103,396 +833,353 @@
         </div>
     </section>
 
-    <!-- Story Section -->
-    <section id="story" class="story-section">
+    <!-- Main Content -->
+    <main style="background: var(--chess-black); padding: 5rem 0;">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-10 mx-auto" data-aos="fade-up">
-                    <div class="story-card">
-                        <div class="story-header">
-                            <h2 class="story-title-desktop">From Late Starter to State Champion</h2>
-                            <p class="story-lead">A journey of persistence, mentorship, and the transformative power of decision-making</p>
+            <!-- Story Section -->
+            <section id="story" class="section" data-aos="fade-up">
+                <h2 class="section-title">From Late Starter to State Champion</h2>
+                <div class="timeline">
+                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
+                        <div class="timeline-icon">
+                            <i class="fas fa-play"></i>
                         </div>
-                        <div class="story-content">
-                            <div class="story-timeline">
-                                <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
-                                    <div class="timeline-icon">
-                                        <i class="fas fa-play"></i>
-                                    </div>
-                                    <div class="timeline-content">
-                                        <h4>The Beginning (2001-2003)</h4>
-                                        <p>Started playing chess online in July 2001, then competed in my first USCF tournament in January 2002 with an initial USCF rating of 1642. Within just one year, I won the Virginia Grade 12 Scholastic Championship in 2003.</p>
-                                    </div>
-                                </div>
-                                <div class="timeline-item" data-aos="fade-left" data-aos-delay="200">
-                                    <div class="timeline-icon">
-                                        <i class="fas fa-chess-king"></i>
-                                    </div>
-                                    <div class="timeline-content">
-                                        <h4>Breaking Barriers (2006)</h4>
-                                        <p>Defeated an International Master in a FIDE classical tournament—proof that with the right mindset and approach, any goal is achievable.</p>
-                                    </div>
-                                </div>
-                                <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
-                                    <div class="timeline-icon">
-                                        <i class="fas fa-trophy"></i>
-                                    </div>
-                                    <div class="timeline-content">
-                                        <h4>A New Frontier (2022-2024)</h4>
-                                        <p>After relocating to Rhode Island, I quickly established dominance by winning multiple East Providence Chess Club and Cranston Chess Club monthly championships, culminating in winning the 2024-25 Rhode Island State Championship.</p>
-                                    </div>
-                                </div>
-                                <div class="timeline-item" data-aos="fade-left" data-aos-delay="400">
-                                    <div class="timeline-icon">
-                                        <i class="fas fa-chalkboard-teacher"></i>
-                                    </div>
-                                    <div class="timeline-content">
-                                        <h4>Paying It Forward</h4>
-                                        <p>Despite stops, starts, and long absences from chess, I reached my goals while mastering myself in the process. Blessed with wise coaching and mentorship, I now dedicate myself to paying that forward to others on their journey.</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="timeline-content">
+                            <h4>The Beginning (2001-2003)</h4>
+                            <p>Started playing chess online in July 2001, then competed in my first USCF tournament in January 2002 with an initial USCF rating of 1642. Within just one year, I won the Virginia Grade 12 Scholastic Championship in 2003.</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Grid -->
-    <section class="experience-grid-section">
-        <div class="container">
-            <div class="section-header text-center" data-aos="fade-up">
-                <h2>Coaching Excellence Across Institutions</h2>
-                <p>Building champions at every level of education</p>
-            </div>
-            <div class="experience-grid">
-                <div class="experience-card" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="card-icon">
-                        <i class="fas fa-school"></i>
-                    </div>
-                    <h3>The Met High School</h3>
-                    <p>Chess Instructor, Spring & Fall 2023</p>
-                    <div class="achievement">Providence, RI</div>
-                </div>
-                <div class="experience-card" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="card-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h3>Classical High School</h3>
-                    <p>Varsity Coach, 2022-24</p>
-                    <div class="achievement">High School Nationals</div>
-                </div>
-                <div class="experience-card" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="card-icon">
-                        <i class="fas fa-chess-board"></i>
-                    </div>
-                    <h3>The Wheeler School</h3>
-                    <p>Head Coach | Lower, Middle, Upper</p>
-                    <div class="achievement">League & State Championships</div>
-                </div>
-                <div class="experience-card" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="card-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3>Rhode Island Chess School</h3>
-                    <p>Guest Instructor, Fall 2024</p>
-                    <div class="achievement">Advanced Student Programs</div>
-                </div>
-                <div class="experience-card" data-aos="zoom-in" data-aos-delay="500">
-                    <div class="card-icon">
-                        <i class="fas fa-gamepad"></i>
-                    </div>
-                    <h3>Iona University</h3>
-                    <p>eSports Chess Team Head Coach, 2024</p>
-                    <div class="achievement">Collegiate Competition</div>
-                </div>
-                <div class="experience-card" data-aos="zoom-in" data-aos-delay="600">
-                    <div class="card-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>Chess Max Academy</h3>
-                    <p>Upcoming Charter School Program</p>
-                    <div class="achievement">Achievement First Schools</div>
-                </div>
-            </div>
-            <div class="legacy-highlight" data-aos="fade-up" data-aos-delay="700">
-                <div class="legacy-content">
-                    <i class="fas fa-star"></i>
-                    <h3>Remarkable Results in Rhode Island</h3>
-                    <p>My scholastic students have achieved multiple league, state, and national championships! Incredible progress!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Philosophy Section -->
-    <section class="philosophy-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 mx-auto">
-                    <div class="philosophy-container" data-aos="fade-up">
-                        <div class="philosophy-header text-center">
-                            <h2>The Four Pillars of Decision-Making</h2>
-                            <p>I teach a decision-making method that transforms how you approach a chess position:</p>
-                        </div>
-                        <div class="philosophy-grid">
-                            <div class="philosophy-pillar" data-aos="fade-up" data-aos-delay="100">
-                                <div class="pillar-icon">
-                                    <i class="fas fa-eye"></i>
-                                </div>
-                                <h3>Observation</h3>
-                                <p>Elemental analysis of a position which informs evaluation. Use classical principles and modern insights to see what's truly important.</p>
-                            </div>
-                            <div class="philosophy-pillar" data-aos="fade-up" data-aos-delay="200">
-                                <div class="pillar-icon">
-                                    <i class="fas fa-balance-scale"></i>
-                                </div>
-                                <h3>Evaluation</h3>
-                                <p>Form natural language opinions as the basis for candidate selection. Transform your earlier observations into actionable insights.</p>
-                            </div>
-                            <div class="philosophy-pillar" data-aos="fade-up" data-aos-delay="300">
-                                <div class="pillar-icon">
-                                    <i class="fas fa-list-ol"></i>
-                                </div>
-                                <h3>Three Candidates</h3>
-                                <p>The human mind is a difference engine which must be given multiple options to function.</p>
-                            </div>
-                            <div class="philosophy-pillar" data-aos="fade-up" data-aos-delay="400">
-                                <div class="pillar-icon">
-                                    <i class="fas fa-filter"></i>
-                                </div>
-                                <h3>Deduction</h3>
-                                <p>Learn to eliminate flawed candidates until one remains. Build up a robust repertoire of static and dynamic patterns to aid in the process.</p>
-                            </div>
-                        </div>
-                        <div class="philosophy-quote" data-aos="fade-up" data-aos-delay="500">
-                            <blockquote>
-                                "My method is stylistically agnostic while simultaneously encouraging character development and expression. Students achieve fantastic results through this system of analysis, feedback, realization, and refinement."
-                            </blockquote>
-                            <cite>— Matthew Freeman</cite>
-                            <!-- Hidden Easter Egg - Disguised as decorative element -->
-                            <div class="quote-decoration">
-                                <div class="decorative-dots">
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot easter-dot" data-secret="true"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Overview -->
-    <section class="services-overview">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 mb-5" data-aos="fade-right">
-                    <div class="service-card">
-                        <div class="service-header">
-                            <div class="service-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <h3>Who I Teach</h3>
-                        </div>
-                        <div class="service-content">
-                            <div class="student-types">
-                                <div class="student-type">
-                                    <i class="fas fa-chess-pawn"></i>
-                                    <div>
-                                        <h4>Beginners</h4>
-                                        <p>Fundamentals of chess and inspiring fascination</p>
-                                    </div>
-                                </div>
-                                <div class="student-type">
-                                    <i class="fas fa-chess-bishop"></i>
-                                    <div>
-                                        <h4>Novices</h4>
-                                        <p>Mastering the basics and building confidence</p>
-                                    </div>
-                                </div>
-                                <div class="student-type">
-                                    <i class="fas fa-trophy"></i>
-                                    <div>
-                                        <h4>Competitive Youth</h4>
-                                        <p>Tournament preparation and advanced training</p>
-                                    </div>
-                                </div>
-                                <div class="student-type">
-                                    <i class="fas fa-user-tie"></i>
-                                    <div>
-                                        <h4>Adult Learners</h4>
-                                        <p>Strategic thinking for business and personal growth</p>
-                                    </div>
-                                </div>
-                                <div class="student-type">
-                                    <i class="fas fa-heart"></i>
-                                    <div>
-                                        <h4>Seniors</h4>
-                                        <p>Cognitive stimulation and social engagement</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mb-5" data-aos="fade-left">
-                    <div class="service-card">
-                        <div class="service-header">
-                            <div class="service-icon">
-                                <i class="fas fa-chess-board"></i>
-                            </div>
-                            <h3>Lesson Options</h3>
-                        </div>
-                        <div class="service-content">
-                            <div class="lesson-structure">
-                                <div class="structure-item">
-                                    <div class="time-marker">Online</div>
-                                    <div class="structure-content">
-                                        <h4>1-Hour Online Lessons</h4>
-                                        <p>Comfort of your home, cost-effective, access to purpose-built software</p>
-                                    </div>
-                                </div>
-                                <div class="structure-item">
-                                    <div class="time-marker">Meetup</div>
-                                    <div class="structure-content">
-                                        <h4>1-Hour In-Person Lessons</h4>
-                                        <p>More subtle feedback, friendly environments, physical board experience</p>
-                                    </div>
-                                </div>
-                                <div class="structure-item">
-                                    <div class="time-marker">Parents</div>
-                                    <div class="structure-content">
-                                        <h4>Parent Education Sessions</h4>
-                                        <p>Learn how to support your child's chess journey effectively</p>
-                                    </div>
-                                </div>
-                                <div class="lesson-components">
-                                    <div class="component">
-                                        <i class="fas fa-comments"></i>
-                                        <span>5-minute catch-up conversation</span>
-                                    </div>
-                                    <div class="component">
-                                        <i class="fas fa-dumbbell"></i>
-                                        <span>10-minute warm-up exercises</span>
-                                    </div>
-                                    <div class="component">
-                                        <i class="fas fa-chess-king"></i>
-                                        <span>Main topic with model games</span>
-                                    </div>
-                                    <div class="component">
-                                        <i class="fas fa-question-circle"></i>
-                                        <span>5-minute wrap-up and Q&A</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq-modern">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <div class="faq-header text-center" data-aos="fade-up">
-                        <h2>Frequently Asked Questions</h2>
-                        <p>Everything you need to know about chess coaching</p>
-                    </div>
-                    <div class="faq-accordion" data-aos="fade-up" data-aos-delay="200">
-                        <div class="faq-item active">
-                            <div class="faq-header-item">
-                                <h3>What resources will I gain access to while working with you?</h3>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-content">
-                                <p>I maintain a library of over 3,000 chess books and have extensive experience with world-class engines, database software, and web-based tools. You'll receive access to opening manual snippets, software recommendations, and materials tailored to your specific needs and goals.</p>
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-header-item">
-                                <h3>Can I contact you outside of our meetings?</h3>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-content">
-                                <p>Absolutely! I make myself available for all serious questions via email or phone between sessions. These quick conversations are vital for your peace of mind and often provide incredible insight for future lesson material.</p>
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-header-item">
-                                <h3>How quickly will I see improvement?</h3>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-content">
-                                <p>My goal is for you to explode on the rating charts! Many students notice improvement within just a few sessions. I want you to succeed so well that we'll eventually hunt for your next coach to take you even further. My goal is to fill my appointment book, not empty your wallet.</p>
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-header-item">
-                                <h3>Do you offer discounts for regular students?</h3>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-content">
-                                <p>What I desire most from students is dedication—the first ingredient to success in chess. For my dedicated students, I offer a 4-lesson bundle that saves $30! And for my most dedicated students, the savings don't stop there. Your success is my success!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-modern">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <div class="cta-content" data-aos="zoom-in">
-                        <div class="cta-icon">
+                    <div class="timeline-item" data-aos="fade-left" data-aos-delay="200">
+                        <div class="timeline-icon">
                             <i class="fas fa-chess-king"></i>
                         </div>
-                        <h2>Ready to Master Your Mind?</h2>
-                        <p>Join hundreds of students who have transformed their strategic thinking through chess.</p>
-                        <div class="cta-features">
-                            <div class="feature">
-                                <i class="fas fa-medal"></i>
-                                <span>2024-25 RI State Champion</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-clock"></i>
-                                <span>20+ Years Experience</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-users"></i>
-                                <span>All Skill Levels Welcome</span>
-                            </div>
+                        <div class="timeline-content">
+                            <h4>Breaking Barriers (2006)</h4>
+                            <p>Defeated an International Master in a FIDE classical tournament—proof that with the right mindset and approach, any goal is achievable.</p>
                         </div>
-                        <div class="cta-actions">
-                            <a href="https://pawnisland.setmore.com/" target="_blank" class="btn-cta-primary">
-                                <i class="fas fa-calendar-alt"></i>
-                                Schedule Your First Lesson
-                            </a>
-                            <a href="mailto:info@pawnislandacademy.com" class="btn-cta-secondary">
-                                <i class="fas fa-envelope"></i>
-                                Ask a Question
-                            </a>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
+                        <div class="timeline-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>A New Frontier (2022-2024)</h4>
+                            <p>After relocating to Rhode Island, I quickly established dominance by winning multiple East Providence Chess Club and Cranston Chess Club monthly championships, culminating in winning the 2024-25 Rhode Island State Championship.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-aos="fade-left" data-aos-delay="400">
+                        <div class="timeline-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h4>Paying It Forward</h4>
+                            <p>Despite stops, starts, and long absences from chess, I reached my goals while mastering myself in the process. Blessed with wise coaching and mentorship, I now dedicate myself to paying that forward to others on their journey.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Footer placeholder -->
-    <div class="footer-placeholder"></div>
+            <!-- Experience Section -->
+            <section class="section" data-aos="fade-up">
+                <h2 class="section-title">Coaching Excellence Across Institutions</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--chess-light-gray); margin-bottom: 3rem;">
+                    Building champions at every level of education
+                </p>
+                <div class="experience-grid">
+                    <div class="experience-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="card-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <h3>The Met High School</h3>
+                        <p>Chess Instructor, Spring & Fall 2023</p>
+                        <div class="achievement">Providence, RI</div>
+                    </div>
+                    <div class="experience-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="card-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>Classical High School</h3>
+                        <p>Varsity Coach, 2022-24</p>
+                        <div class="achievement">High School Nationals</div>
+                    </div>
+                    <div class="experience-card" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="card-icon">
+                            <i class="fas fa-chess-board"></i>
+                        </div>
+                        <h3>The Wheeler School</h3>
+                        <p>Head Coach | Lower, Middle, Upper</p>
+                        <div class="achievement">League & State Championships</div>
+                    </div>
+                    <div class="experience-card" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="card-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>Rhode Island Chess School</h3>
+                        <p>Guest Instructor, Fall 2024</p>
+                        <div class="achievement">Advanced Student Programs</div>
+                    </div>
+                    <div class="experience-card" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="card-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3>Iona University</h3>
+                        <p>eSports Chess Team Head Coach, 2024</p>
+                        <div class="achievement">Collegiate Competition</div>
+                    </div>
+                    <div class="experience-card" data-aos="zoom-in" data-aos-delay="600">
+                        <div class="card-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Chess Max Academy</h3>
+                        <p>Upcoming Charter School Program</p>
+                        <div class="achievement">Achievement First Schools</div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: rgba(255, 215, 0, 0.1); border-radius: 15px; border-left: 4px solid var(--chess-gold);" data-aos="fade-up" data-aos-delay="700">
+                    <i class="fas fa-star" style="color: var(--chess-gold); font-size: 2rem; margin-bottom: 1rem;"></i>
+                    <h3 style="color: var(--chess-white); margin-bottom: 1rem;">Remarkable Results in Rhode Island</h3>
+                    <p style="color: var(--chess-light-gray); margin: 0;">My scholastic students have achieved multiple league, state, and national championships! Incredible progress!</p>
+                </div>
+            </section>
+
+            <!-- Philosophy Section -->
+            <section class="section" data-aos="fade-up">
+                <h2 class="section-title">The Four Pillars of Decision-Making</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--chess-light-gray); margin-bottom: 3rem;">
+                    I teach a decision-making method that transforms how you approach a chess position:
+                </p>
+                <div class="philosophy-grid">
+                    <div class="philosophy-pillar" data-aos="fade-up" data-aos-delay="100">
+                        <div class="pillar-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Observation</h3>
+                        <p>Elemental analysis of a position which informs evaluation. Use classical principles and modern insights to see what's truly important.</p>
+                    </div>
+                    <div class="philosophy-pillar" data-aos="fade-up" data-aos-delay="200">
+                        <div class="pillar-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3>Evaluation</h3>
+                        <p>Form natural language opinions as the basis for candidate selection. Transform your earlier observations into actionable insights.</p>
+                    </div>
+                    <div class="philosophy-pillar" data-aos="fade-up" data-aos-delay="300">
+                        <div class="pillar-icon">
+                            <i class="fas fa-list-ol"></i>
+                        </div>
+                        <h3>Three Candidates</h3>
+                        <p>The human mind is a difference engine which must be given multiple options to function.</p>
+                    </div>
+                    <div class="philosophy-pillar" data-aos="fade-up" data-aos-delay="400">
+                        <div class="pillar-icon">
+                            <i class="fas fa-filter"></i>
+                        </div>
+                        <h3>Deduction</h3>
+                        <p>Learn to eliminate flawed candidates until one remains. Build up a robust repertoire of static and dynamic patterns to aid in the process.</p>
+                    </div>
+                </div>
+                <div class="philosophy-quote" data-aos="fade-up" data-aos-delay="500">
+                    <blockquote>
+                        "My method is stylistically agnostic while simultaneously encouraging character development and expression. Students achieve fantastic results through this system of analysis, feedback, realization, and refinement."
+                    </blockquote>
+                    <cite>— Matthew Freeman</cite>
+                    <!-- Hidden Easter Egg -->
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <div style="display: inline-flex; gap: 0.5rem;">
+                            <span style="width: 8px; height: 8px; background: var(--chess-gold); border-radius: 50%; opacity: 0.4;"></span>
+                            <span style="width: 8px; height: 8px; background: var(--chess-gold); border-radius: 50%; opacity: 0.4;"></span>
+                            <span class="easter-dot" style="width: 8px; height: 8px; background: var(--chess-gold); border-radius: 50%; opacity: 0.4;" data-secret="true"></span>
+                            <span style="width: 8px; height: 8px; background: var(--chess-gold); border-radius: 50%; opacity: 0.4;"></span>
+                            <span style="width: 8px; height: 8px; background: var(--chess-gold); border-radius: 50%; opacity: 0.4;"></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Overview -->
+            <section class="section" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="service-card" data-aos="fade-right">
+                            <div class="service-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h3>Who I Teach</h3>
+                            </div>
+                            <div class="student-type">
+                                <i class="fas fa-chess-pawn"></i>
+                                <div>
+                                    <h4>Beginners</h4>
+                                    <p>Fundamentals of chess and inspiring fascination</p>
+                                </div>
+                            </div>
+                            <div class="student-type">
+                                <i class="fas fa-chess-bishop"></i>
+                                <div>
+                                    <h4>Novices</h4>
+                                    <p>Mastering the basics and building confidence</p>
+                                </div>
+                            </div>
+                            <div class="student-type">
+                                <i class="fas fa-trophy"></i>
+                                <div>
+                                    <h4>Competitive Youth</h4>
+                                    <p>Tournament preparation and advanced training</p>
+                                </div>
+                            </div>
+                            <div class="student-type">
+                                <i class="fas fa-user-tie"></i>
+                                <div>
+                                    <h4>Adult Learners</h4>
+                                    <p>Strategic thinking for business and personal growth</p>
+                                </div>
+                            </div>
+                            <div class="student-type">
+                                <i class="fas fa-heart"></i>
+                                <div>
+                                    <h4>Seniors</h4>
+                                    <p>Cognitive stimulation and social engagement</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="service-card" data-aos="fade-left">
+                            <div class="service-header">
+                                <div class="service-icon">
+                                    <i class="fas fa-chess-board"></i>
+                                </div>
+                                <h3>Lesson Options</h3>
+                            </div>
+                            <div class="student-type">
+                                <i class="fas fa-laptop"></i>
+                                <div>
+                                    <h4>1-Hour Online Lessons</h4>
+                                    <p>Comfort of your home, cost-effective, access to purpose-built software</p>
+                                </div>
+                            </div>
+                            <div class="student-type">
+                                <i class="fas fa-handshake"></i>
+                                <div>
+                                    <h4>1-Hour In-Person Lessons</h4>
+                                    <p>More subtle feedback, friendly environments, physical board experience</p>
+                                </div>
+                            </div>
+                            <div class="student-type">
+                                <i class="fas fa-family"></i>
+                                <div>
+                                    <h4>Parent Education Sessions</h4>
+                                    <p>Learn how to support your child's chess journey effectively</p>
+                                </div>
+                            </div>
+                            <div style="margin-top: 1.5rem;">
+                                <h4 style="color: var(--chess-gold); margin-bottom: 1rem;">Lesson Structure:</h4>
+                                <div class="lesson-component">
+                                    <i class="fas fa-comments"></i>
+                                    <span>5-minute catch-up conversation</span>
+                                </div>
+                                <div class="lesson-component">
+                                    <i class="fas fa-dumbbell"></i>
+                                    <span>10-minute warm-up exercises</span>
+                                </div>
+                                <div class="lesson-component">
+                                    <i class="fas fa-chess-king"></i>
+                                    <span>Main topic with model games</span>
+                                </div>
+                                <div class="lesson-component">
+                                    <i class="fas fa-question-circle"></i>
+                                    <span>5-minute wrap-up and Q&A</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="section" data-aos="fade-up">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p style="text-align: center; font-size: 1.2rem; color: var(--chess-light-gray); margin-bottom: 3rem;">
+                    Everything you need to know about chess coaching
+                </p>
+                <div class="faq-accordion" style="max-width: 800px; margin: 0 auto;">
+                    <div class="faq-item active">
+                        <div class="faq-header-item">
+                            <h3>What resources will I gain access to while working with you?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-content">
+                            <p>I maintain a library of over 3,000 chess books and have extensive experience with world-class engines, database software, and web-based tools. You'll receive access to opening manual snippets, software recommendations, and materials tailored to your specific needs and goals.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-header-item">
+                            <h3>Can I contact you outside of our meetings?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-content">
+                            <p>Absolutely! I make myself available for all serious questions via email or phone between sessions. These quick conversations are vital for your peace of mind and often provide incredible insight for future lesson material.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-header-item">
+                            <h3>How quickly will I see improvement?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-content">
+                            <p>My goal is for you to explode on the rating charts! Many students notice improvement within just a few sessions. I want you to succeed so well that we'll eventually hunt for your next coach to take you even further. My goal is to fill my appointment book, not empty your wallet.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-header-item">
+                            <h3>Do you offer discounts for regular students?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-content">
+                            <p>What I desire most from students is dedication—the first ingredient to success in chess. For my dedicated students, I offer a 4-lesson bundle that saves $30! And for my most dedicated students, the savings don't stop there. Your success is my success!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section" data-aos="zoom-in">
+                <div class="cta-content">
+                    <div class="cta-icon">
+                        <i class="fas fa-chess-king"></i>
+                    </div>
+                    <h2>Ready to Master Your Mind?</h2>
+                    <p>Join hundreds of students who have transformed their strategic thinking through chess.</p>
+                    <div class="cta-features">
+                        <div class="feature">
+                            <i class="fas fa-medal"></i>
+                            <span>2024-25 RI State Champion</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-clock"></i>
+                            <span>20+ Years Experience</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <span>All Skill Levels Welcome</span>
+                        </div>
+                    </div>
+                    <div style="margin-top: 2rem;">
+                        <a href="https://pawnisland.setmore.com/" target="_blank" class="btn-chess">
+                            <i class="fas fa-calendar-alt"></i> Schedule Your First Lesson
+                        </a>
+                        <a href="mailto:info@pawnislandacademy.com" class="btn-chess btn-chess-secondary">
+                            <i class="fas fa-envelope"></i> Ask a Question
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -500,17 +1187,15 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     
-    <!-- Components and Custom Scripts -->
+    <!-- Custom Scripts -->
     <script src="../../js/components/modernJumpToTop.js"></script>
     <script src="../../js/navbar-revolution.js"></script>
-    <script src="../../js/theme-manager.js"></script>
     <script src="../../js/footer.js"></script>
     <script src="../../js/script.js"></script>
     
-    <!-- Initialize components -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize AOS
+            // Initialize AOS animations
             AOS.init({
                 duration: 800,
                 once: true,
@@ -521,16 +1206,14 @@
             // Initialize modern jump-to-top button
             createModernJumpToTop({
                 theme: 'gradient',
-                color: '#2c5aa0',
+                color: '#ffd700',
                 position: 'right',
                 size: 'medium',
                 shape: 'circle',
                 animation: 'bounce',
                 showAfter: 300,
-                mobileShowAfter: 100,
-                zIndex: 9999,
-                accessibility: true,
-                mobileMargin: 15
+                zIndex: 1500,
+                accessibility: true
             });
 
             // FAQ functionality
@@ -571,75 +1254,46 @@
                 });
             });
 
-            // Interactive stats animation
-            const observerOptions = {
-                threshold: 0.7,
-                rootMargin: '0px 0px -100px 0px'
+            // Animated stats counters
+            const animateCounters = () => {
+                const counters = document.querySelectorAll('.stat-number');
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-value'));
+                    const duration = 2000;
+                    const startTime = performance.now();
+                    
+                    const animate = (currentTime) => {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const current = Math.floor(progress * target);
+                        
+                        counter.textContent = current + (target >= 100 ? '+' : '');
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(animate);
+                        }
+                    };
+                    
+                    requestAnimationFrame(animate);
+                });
             };
 
+            // Start counter animation when stats section is in view
             const statsObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        const statNumbers = entry.target.querySelectorAll('.stat-number');
-                        statNumbers.forEach(stat => {
-                            const finalValue = stat.textContent;
-                            animateNumber(stat, finalValue);
-                        });
+                        animateCounters();
                         statsObserver.unobserve(entry.target);
                     }
                 });
-            }, observerOptions);
+            }, { threshold: 0.5 });
 
             const heroStats = document.querySelector('.hero-stats');
             if (heroStats) {
                 statsObserver.observe(heroStats);
             }
 
-            function animateNumber(element, finalValue) {
-                const isPlus = finalValue.includes('+');
-                const numValue = parseInt(finalValue.replace('+', ''));
-                let currentValue = 0;
-                const increment = numValue / 30;
-                const timer = setInterval(() => {
-                    currentValue += increment;
-                    if (currentValue >= numValue) {
-                        element.textContent = finalValue;
-                        clearInterval(timer);
-                    } else {
-                        element.textContent = Math.floor(currentValue) + (isPlus ? '+' : '');
-                    }
-                }, 50);
-            }
-
-            // Responsive image loading optimization
-            const images = document.querySelectorAll('img');
-            images.forEach(img => {
-                img.loading = 'lazy';
-                img.addEventListener('error', function() {
-                    this.style.display = 'none';
-                });
-            });
-            
-            // Responsive font sizing based on viewport
-            function adjustFontSizes() {
-                const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-                const heroTitle = document.querySelector('.hero-title');
-                
-                if (heroTitle) {
-                    if (vw < 380) {
-                        heroTitle.style.fontSize = '1.8rem';
-                    } else if (vw < 480) {
-                        heroTitle.style.fontSize = '2rem';
-                    } else {
-                        heroTitle.style.fontSize = '';
-                    }
-                }
-            }
-            
-            adjustFontSizes();
-            window.addEventListener('resize', adjustFontSizes);
-            
-            // Secret Easter Egg Discovery Sequence
+            // Easter Egg functionality
             let easterEggClicks = 0;
             let clickTimer = null;
             const easterDot = document.querySelector('.easter-dot');
@@ -656,7 +1310,6 @@
                     
                     // Add visual feedback
                     this.classList.add('clicked');
-                    this.setAttribute('data-clicks', easterEggClicks);
                     
                     setTimeout(() => {
                         this.classList.remove('clicked');
@@ -664,16 +1317,16 @@
                     
                     // Progressive revelation
                     if (easterEggClicks === 1) {
-                        this.setAttribute('data-tooltip', '🤔 Curious...');
+                        this.style.opacity = '0.6';
                         this.classList.add('revealed');
                         setTimeout(() => this.classList.remove('revealed'), 2000);
                     } else if (easterEggClicks === 2) {
-                        this.setAttribute('data-tooltip', '🧩 Keep exploring...');
+                        this.style.opacity = '0.8';
                         this.classList.add('revealed');
                         setTimeout(() => this.classList.remove('revealed'), 2500);
                     } else if (easterEggClicks >= 3) {
                         // Final reveal
-                        this.setAttribute('data-tooltip', '🔮 Portal discovered!');
+                        this.style.opacity = '1';
                         this.classList.add('revealed');
                         
                         // Create the secret portal
@@ -699,7 +1352,7 @@
                     // Reset counter after 5 seconds of inactivity
                     clickTimer = setTimeout(() => {
                         easterEggClicks = 0;
-                        this.removeAttribute('data-clicks');
+                        this.style.opacity = '0.4';
                         this.classList.remove('revealed');
                         
                         // Remove portal if it exists

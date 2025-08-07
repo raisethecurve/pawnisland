@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Setmore widget disabled by user request
+    console.log('Setmore widget disabled');
+    return;
+    
     // Create the script element with the exact Setmore source URL
     const script = document.createElement('script');
     script.id = "setmore_script";

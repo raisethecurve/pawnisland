@@ -14,7 +14,9 @@
     <link rel="canonical" href="https://pawnislandacademy.com/pages/landing/clearinghouse.html">
     <!-- CSS Libraries -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href="../../css/navbar-revolution.css">
@@ -24,6 +26,11 @@
     <link rel="stylesheet" href="../../css/product-card.css">
     <!-- Add modern jump-to-top component CSS -->
     <link rel="stylesheet" href="../../css/components/modernJumpToTop.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../../images/brand-icons/favicon.png">
     <!-- Google Analytics -->
@@ -35,6 +42,33 @@
         gtag('config', 'G-T12VEHM2PY');
     </script>
     <style>
+        /* Dark Chess Theme Variables */
+        :root {
+            --chess-black: #1a1a1a;
+            --chess-dark-gray: #2d2d2d;
+            --chess-medium-gray: #404040;
+            --chess-light-gray: #666666;
+            --chess-gold: #ffd700;
+            --chess-amber: #ffed4a;
+            --chess-blue: #2c5aa0;
+            --chess-white: #ffffff;
+            --chess-shadow: rgba(0, 0, 0, 0.8);
+        }
+        
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--chess-white);
+            background: var(--chess-black);
+            overflow-x: hidden;
+        }
+        
         html, body {
             min-height: 100%;
             margin: 0;
@@ -44,21 +78,76 @@
         }
         
         .main-content {
-            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIgLAAAEDklEQVRIiZXWhZajvBIF4D2IOyTuvP+DtlwCM73/7q6zF3RVwU/IffjvSDe5LEuTxLFhFz3N/8cjbf7xfLSxzYVS7OM/+GnclN0opTQVilIxjY3ySf9anw9UcpQqIJGKZUWxnMrP+ptcFsGYmEIg0AxSCdVmJazov3i4dZLSFCgno+EQCJCByNC0Tf+t15I1KdNQWkWxMpRmNJEKpJA2ZOmfdK1Z02KKqEDRChQJGy0lLUQYNJ8f9Wfb9iQtZxDLaQZIRARpUiN5or/Qn1FsGYY0ozlijVJJpLKiIPU/9ZNryaWisrYxfDBSqCwVy6hch/51PYvUIg6GsNRKaRYFGaT/xL9ek0JQ2UMvo4hQvCgKMv5Z/+onrTAUCmGG8QEskSibiv9Tj3QylXURKwgNRrycBdW0nf9MLxQXWv0AySBlcEOhKJxqf9EFEuVo6CKcIIzc1sMR4li2LKnU+1+aQUthJJGCB5EwXMZjYRgUcMoKS6XZCvGJUabyqcqliI9PjBOGcdk2jDESFT2Sgdqxlk1VRqONxy6MJ2LMcj4mhlL1M4ySQkXTEJ6Gu75nw4hwrwfyncTTnMbGCClkPXJlkEotSsOW3qQQDTweHGGcv8/j3DdsWastRguhyOwyiGV0HDS1fXOX107OSOy207x+HJa5b6aNJWs3YkMnlUrGjDYnvp9bA0l1X5yM6eObTzsPLNtyZK02mmopZMQyBTxTX5WSRnR9W9yR4/SY+mFgQ9cxH0WpGaI0klkzv3ZDXxhK6Zpu6PrRIBzfXTdWtl6HkZl9MAllGSoaWa9AXCsRdpgmZsz2ZhzGcRxOp/Mlt9kYOxojyO06YZQJZje2/ZwTD7d9bsrvfr9nqrBVVvhktrXMaC97aXphsYe78+n8EGbnbtqkyM4Lnbc6l0arq+1ls6215s3p9bLkNvf9NUfKbZc3TaO11iprTcpVbnsZ+rtbhyGfRzeM3bgeh13TwDZNowK9Sb3PSS/ZNl5jeXCX/Ikvj3yJnaoq9bpSVRn8A7lg4fzGB/R+FZt116uqLh2b5wHVLBSFrhs8dlfetIPRdTOI7zxB7sPIWLu7IBmJzTvVwSQceFGUvK7ifKesJ5PPE+fhn3EJZDa3WavjusqLyntT27JLJVwpPm73jdow9ibeam+KEFRZeJfrKICCvikpqfxV7p9iLmaFdybXrqhg5rzSTTmIVPCiasr6KvOscoKHfYZw7dq69L4tHXA+dJPklNB5U+Xt9vqDRQFWlvX2ptpKSbsxILOyrJ1zzvFSgTIH510JaQz7uvjJQ7fnxaVt2/pSOl8qbCnLOoe08NX94BH9D9c/UTz+V+0YAAAAAElFTkSuQmCC');
-            background-repeat: repeat;
-            background-attachment: fixed;
-            background-size: 50px;
-            background-color: rgba(248, 249, 250, 0.7);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            min-height: 100vh;
+            flex: 1;
+            position: relative;
         }
         
-        /* Enhanced Fight With Madi Promo Styling */
+        /* Events Section - Modern Dark Textured Background */
+        .events-section {
+            background: 
+                /* Subtle noise texture */
+                radial-gradient(circle at 25% 25%, rgba(255, 215, 0, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(44, 90, 160, 0.02) 0%, transparent 50%),
+                /* Grid pattern */
+                linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+                /* Base gradient */
+                linear-gradient(135deg, 
+                    var(--chess-black) 0%, 
+                    rgba(26, 26, 26, 0.98) 25%, 
+                    rgba(45, 45, 45, 0.95) 50%, 
+                    rgba(26, 26, 26, 0.98) 75%, 
+                    var(--chess-black) 100%
+                );
+            background-size: 200px 200px, 150px 150px, 20px 20px, 20px 20px, 100% 100%;
+            background-attachment: fixed, fixed, fixed, fixed, scroll;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .events-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                /* Animated chess pattern overlay */
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 40px,
+                    rgba(255, 215, 0, 0.008) 40px,
+                    rgba(255, 215, 0, 0.008) 41px
+                ),
+                repeating-linear-gradient(
+                    -45deg,
+                    transparent,
+                    transparent 40px,
+                    rgba(44, 90, 160, 0.005) 40px,
+                    rgba(44, 90, 160, 0.005) 41px
+                );
+            animation: textureShift 60s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes textureShift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 40px); }
+        }
+        
+        /* Enhanced Fight With Madi Promo Styling - Dark Theme */
         .fight-madi-promo {
-            background: linear-gradient(135deg, #fff0f5, #ffe4e8);
-            border: 1px solid rgba(255, 105, 180, 0.3);
-            border-left: 5px solid #ff69b4;
-            border-radius: 10px;
+            background: linear-gradient(135deg, var(--chess-dark-gray), var(--chess-medium-gray));
+            border: 2px solid var(--chess-medium-gray);
+            border-left: 5px solid var(--chess-gold);
+            border-radius: 20px;
             padding: 25px;
-            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.2);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
@@ -72,13 +161,14 @@
             width: 100%;
             height: 100%;
             background: url('../../images/headers-pages/heart-background.jpg') repeat;
-            opacity: 0.2;
+            opacity: 0.1;
             z-index: 0;
         }
         
         .fight-madi-promo:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(255, 105, 180, 0.25);
+            border-color: var(--chess-gold);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.3);
         }
         
         .fight-madi-promo .row {
@@ -87,15 +177,15 @@
         }
         
         .fight-madi-promo h4 {
-            color: #d9534f;
+            color: var(--chess-gold);
             margin-bottom: 8px;
             font-weight: 700;
             font-size: 1.4rem;
-            text-shadow: 0 1px 1px rgba(0,0,0,0.05);
+            text-shadow: 0 1px 1px rgba(0,0,0,0.5);
         }
         
         .fight-madi-promo p {
-            color: #555;
+            color: var(--chess-light-gray);
             margin-bottom: 0;
             font-size: 1.05rem;
             line-height: 1.5;
@@ -122,16 +212,16 @@
             position: absolute;
             width: 80px;
             height: 80px;
-            background: rgba(255, 255, 255, 0); /* Changed to fully transparent */
+            background: rgba(255, 215, 0, 0.1);
             border-radius: 50%;
             z-index: 1;
-            box-shadow: 0 0 25px rgba(255, 105, 180, 0); /* Added subtle glow instead */
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
             animation: pulse-circle 2s infinite;
         }
         
         .pulse-heart {
             animation: pulse-heart 2s infinite;
-            filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.6)); /* Enhanced shadow for better effect */
+            filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.6));
         }
         
         @keyframes pulse-heart {
@@ -147,7 +237,7 @@
         }
         
         .btn-madi {
-            background: linear-gradient(135deg, #ff69b4, #d9534f);
+            background: linear-gradient(135deg, #ff69b4, var(--chess-gold));
             color: white;
             border: none;
             padding: 12px 25px;
@@ -195,13 +285,14 @@
         
         .success-badge {
             display: inline-block;
-            background-color: #28a745;
-            color: white;
+            background-color: var(--chess-gold);
+            color: var(--chess-black);
             font-size: 0.75rem;
             padding: 3px 10px;
             border-radius: 12px;
             margin-bottom: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            font-weight: 600;
         }
         
         @media (max-width: 767.98px) {
@@ -222,15 +313,15 @@
             }
         }
         
-        /* Additional styles for the filter buttons */
+        /* Filter Styles - Dark Theme */
         .filter-groups {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Raleway', sans-serif;
         }
         
         .filter-heading {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #333;
+            color: var(--chess-white);
             margin-bottom: 0.75rem;
             position: relative;
             padding-left: 1rem;
@@ -244,7 +335,7 @@
             transform: translateY(-50%);
             height: 1rem;
             width: 4px;
-            background: linear-gradient(to bottom, #dd3649, #ff9191);
+            background: linear-gradient(to bottom, var(--chess-gold), var(--chess-amber));
             border-radius: 2px;
         }
         
@@ -255,29 +346,48 @@
         }
         
         .filter-btn, .organizer-btn {
-            border: none;
-            background-color: #f0f0f0;
-            color: #555;
+            border: 2px solid var(--chess-medium-gray);
+            background: linear-gradient(135deg, rgba(45, 45, 45, 0.9) 0%, rgba(26, 26, 26, 0.9) 100%);
+            color: var(--chess-light-gray);
             padding: 0.5rem 1rem;
             border-radius: 30px;
             font-weight: 500;
             font-size: 0.9rem;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .filter-btn::before, .organizer-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+            transition: left 0.5s;
         }
         
         .filter-btn:hover, .organizer-btn:hover {
-            background-color: #e5e5e5;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+            transform: translateY(-2px) scale(1.05);
+            border-color: var(--chess-gold);
+            color: var(--chess-white);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+        }
+        
+        .filter-btn:hover::before, .organizer-btn:hover::before {
+            left: 100%;
         }
         
         .filter-btn.active, .organizer-btn.active {
-            background: linear-gradient(to right, #dd3649, #ff9191);
-            color: white;
-            border-color: #dd3649;
-            box-shadow: 0 4px 12px rgba(221, 54, 73, 0.3);
+            background: linear-gradient(135deg, var(--chess-gold), var(--chess-amber));
+            color: var(--chess-black);
+            border-color: var(--chess-gold);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+            font-weight: 600;
         }
         
         .organizer-filter-group {
@@ -298,6 +408,237 @@
             font-size: 0.8rem;
         }
         
+        /* Container styling for dark theme */
+        .container {
+            color: var(--chess-white);
+        }
+        
+        .container h1 {
+            color: var(--chess-gold);
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* No events message - dark theme */
+        .no-events {
+            background: linear-gradient(135deg, var(--chess-dark-gray), var(--chess-medium-gray)) !important;
+            color: var(--chess-white) !important;
+            border: 2px solid var(--chess-medium-gray);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .no-events h3 {
+            color: var(--chess-gold);
+            margin-bottom: 1rem;
+        }
+        
+        .no-events i {
+            color: var(--chess-gold);
+        }
+        
+        /* Loading indicator - dark theme */
+        .loading-container {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--chess-medium-gray);
+            border-top: 4px solid var(--chess-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Tightened Event Cards - Modern Dark Theme */
+        .event-item {
+            background: linear-gradient(135deg, 
+                rgba(45, 45, 45, 0.95) 0%, 
+                rgba(26, 26, 26, 0.95) 100%
+            );
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .event-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--chess-gold), var(--chess-amber));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .event-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 215, 0, 0.3);
+            box-shadow: 
+                0 16px 48px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(255, 215, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .event-item:hover::before {
+            opacity: 1;
+        }
+        
+        /* Event Card Headers - Simplified */
+        .event-item h3 {
+            color: var(--chess-white);
+            font-family: 'Cinzel', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+        
+        .event-item h4 {
+            color: var(--chess-gold);
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Event Details - Condensed */
+        .event-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .event-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--chess-light-gray);
+        }
+        
+        .event-detail-item i {
+            color: var(--chess-gold);
+            width: 16px;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+        
+        /* Event Description - Tightened */
+        .event-description {
+            color: var(--chess-light-gray);
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        /* Event Actions - Minimized */
+        .event-actions {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .event-btn {
+            background: linear-gradient(135deg, var(--chess-gold), var(--chess-amber));
+            color: var(--chess-black);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .event-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+            color: var(--chess-black);
+            text-decoration: none;
+        }
+        
+        .event-btn i {
+            font-size: 0.75rem;
+        }
+        
+        /* Event Status Badges - Compact */
+        .event-status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .event-status.upcoming {
+            background: rgba(255, 215, 0, 0.2);
+            color: var(--chess-gold);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .event-status.past {
+            background: rgba(102, 102, 102, 0.2);
+            color: var(--chess-light-gray);
+            border: 1px solid rgba(102, 102, 102, 0.3);
+        }
+        
+        /* Responsive adjustments for event cards */
+        @media (max-width: 768px) {
+            .event-item {
+                padding: 1.25rem;
+                margin-bottom: 1.25rem;
+            }
+            
+            .event-details {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+            
+            .event-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .event-btn {
+                justify-content: center;
+            }
+        }
+        
         @media (max-width: 768px) {
             .filter-btn, .organizer-btn {
                 font-size: 0.8rem;
@@ -310,7 +651,7 @@
         }
     </style>
 </head>
-<body class="bg-light text-dark">
+<body>
 
     <!-- Hero Card Container -->
     <div id="heroCardContainer"></div>
@@ -341,7 +682,6 @@
 
     <div class="main-content">
         <div class="container">
-            <!-- Simplified filter container -->
             <div class="unified-filters">
                 <!-- Organizer filters - now with multi-select capability -->
                 <div class="filter-section organizers-section">
@@ -351,22 +691,27 @@
                     </div>
                 </div>
             </div>
+        </div>
+        
+        <!-- Events Section with Modern Dark Textured Background -->
+        <div class="events-section">
+            <div class="container">
+                <!-- Loading indicator -->
+                <div id="loading-events" class="loading-container">
+                    <div class="loading-spinner"></div>
+                </div>
 
-            <!-- Loading indicator -->
-            <div id="loading-events" class="loading-container">
-                <div class="loading-spinner"></div>
-            </div>
+                <!-- No events message -->
+                <div id="no-events-message" class="no-events">
+                    <h3><i class="fas fa-calendar-times mb-3" style="font-size: 2.5rem;"></i></h3>
+                    <h3>No events found</h3>
+                    <p>Check back later for upcoming chess events in your area!</p>
+                </div>
 
-            <!-- No events message -->
-            <div id="no-events-message" class="no-events bg-light text-dark">
-                <h3><i class="fas fa-calendar-times mb-3" style="font-size: 2.5rem;"></i></h3>
-                <h3>No events found</h3>
-                <p>Check back later for upcoming chess events in your area!</p>
-            </div>
-
-            <!-- Events container -->
-            <div id="events-container" class="row">
-                <!-- Events will be dynamically loaded here -->
+                <!-- Events container -->
+                <div id="events-container" class="row">
+                    <!-- Events will be dynamically loaded here -->
+                </div>
             </div>
         </div>
     </div>
@@ -378,6 +723,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
     <!-- Hero Card Component -->
     <script src="../../js/components/hero-card.js"></script>
@@ -392,6 +738,13 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS (Animate On Scroll)
+            AOS.init({
+                duration: 1000,
+                once: true,
+                offset: 100
+            });
+            
             // Initialize hero card with enhanced options
             createHeroCard('heroCardContainer', {
                 bgImage: '../../images/headers-pages/clearinghouse.webp',
@@ -405,7 +758,7 @@
                 parallaxIntensity: 0.12, // Slightly lower intensity
                 titleAnimation: true,
                 subtitleAnimation: true,
-                height: 'calc(100vh - 80px)', // never exceeds screen minus filter buttons
+                height: '100vh', // Full viewport height
                 alignment: 'center'
             });
             
@@ -480,6 +833,5 @@
     <script src="../../js/events.js"></script>
     <script src="../../js/ad-injector.js"></script>
     <script src="../../js/theme-manager.js"></script>
-    <script src="../../js/setmore-widget.js"></script>
 </body>
 </html>

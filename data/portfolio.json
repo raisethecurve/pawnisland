@@ -42,7 +42,7 @@
             "title": "OSCA: Consulting and Community Building",
             "image": "../../images/assets/osca.jpg",
             "role": "Consultant, Tournament Director",
-            "duration": "Since 2022",
+            "duration": "2022-Present",
             "date": "2022-01-01",
             "overview": "Since 2022, I have contributed to the Ocean State Chess Association’s strategic direction as a consultant. Working collaboratively, I helped propose and organize a centennial celebration for a local centenarian, which has since evolved into a memorial tournament honoring their legacy. OSCA’s recognition as the official US Chess Rhode Island State Affiliate reflects its growing influence and impact, supported by initiatives aimed at expanding access to chess education and events.",
             "contributions": [
@@ -75,7 +75,7 @@
             "title": "US Chess Tournament Director: Facilitating Competitive Play",
             "image": "../../images/assets/uschess.png",
             "role": "Tournament Director",
-            "duration": "Since 2022",
+            "duration": "2022-Present",
             "date": "2022-01-01",
             "overview": "As a certified Tournament Director with the United States Chess Federation (US Chess), I have been responsible for organizing and overseeing chess tournaments that adhere to national standards. My role encompasses enforcing rules and regulations, managing tournament pairings, tracking scores, and ensuring fair play. This position requires a comprehensive understanding of chess regulations, strong organizational skills, and the ability to arbitrate disputes impartially. Through this work, I have contributed to the development of the chess community by providing structured and competitive environments for players to engage in the game.",
             "contributions": [
@@ -244,12 +244,12 @@
             "seoDescription": "Managing a widely recognized poetry blog to engage a global literary audience."
         },
         {
-            "id": "StaticWebsite",
+            "id": "PawnIslandWebsite",
             "title": "Personal Website Development",
             "image": "../../images/assets/pawn-island.png",
             "role": "Developer and Designer",
-            "duration": "2 Days",
-            "date": "2023-10-15",
+            "duration": "2024-Present",
+            "date": "2024-10-15",
             "overview": "Developed a fully static website hosted on GitHub Pages using VS Code, HTML, CSS, and JavaScript, with collaborative help from GitHub Copilot. The site leverages a modular responsive design, engaging animations and visuals, and an innovative ad-injector technology to dynamically manage content.",
             "contributions": [
                 "Designed and implemented a modular, responsive layout to ensure optimal performance across devices.",
@@ -289,7 +289,7 @@
                 "title": "Pawn Island Shopify Store: Apparel & Art",
                 "image": "../../images/assets/shopify-store.png",
                 "role": "Founder and Designer",
-                "duration": "2024-2025",
+                "duration": "2024-Present",
                 "date": "2024-10-01",
                 "overview": "Launched a Shopify store on pawnisland.myshopify.com, featuring apparel and other items adorned with original designs. The visuals, created with collaborative AI tools like ChatGPT, Midjourney, and Grok, then refined using Paint.net, share a unique style, sense of humor, and Christian inspiration.",
                 "contributions": [
