@@ -70,36 +70,9 @@
             overflow-x: hidden;
         }
         
-        /* Navigation Breadcrumb */
-        .nav-breadcrumb {
-            background: var(--chess-dark-gray);
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--chess-medium-gray);
-        }
-        
-        .breadcrumb {
-            background: transparent;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .breadcrumb-item {
-            color: var(--chess-light-gray);
-            font-weight: 500;
-        }
-        
-        .breadcrumb-item.active {
-            color: var(--chess-gold);
-        }
-        
-        .breadcrumb-item + .breadcrumb-item::before {
-            content: ">";
-            color: var(--chess-medium-gray);
-        }
-        
         /* Hero Section */
         .hero-section {
-            min-height: 80vh;
+            min-height: 100vh;
             position: relative;
             display: flex;
             align-items: center;
@@ -776,16 +749,6 @@
 <body>
     <!-- Navigation Placeholder -->
     <div id="navbar-placeholder"></div>
-    
-    <!-- Navigation Breadcrumb -->
-    <nav class="nav-breadcrumb">
-        <div class="container">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="../../index.html" style="color: var(--chess-light-gray);">Home</a></li>
-                <li class="breadcrumb-item active">About Matthew Freeman</li>
-            </ol>
-        </div>
-    </nav>
 
     <!-- Hero Section -->
     <section class="hero-section">
