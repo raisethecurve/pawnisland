@@ -97,6 +97,8 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            /* Add padding for navbar on mobile/tablet */
+            padding-top: var(--navbar-height-mobile, 70px);
         }
         
         .hero-content {
@@ -110,6 +112,7 @@
             height: 100%;
             display: flex;
             align-items: center;
+            justify-content: center;
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
@@ -139,7 +142,7 @@
                 height: auto;
                 min-height: 100vh;
                 min-height: 100dvh; /* Dynamic viewport height for better mobile support */
-                padding: 1.5rem 0.5rem;
+                padding: calc(var(--navbar-height-mobile, 70px) + 1.5rem) 0.5rem 1.5rem 0.5rem;
                 width: 100%;
                 max-width: 100vw;
             }
@@ -188,7 +191,7 @@
         @media (min-width: 769px) and (max-width: 1024px) {
             .hero-section {
                 height: 100vh;
-                padding: 0 2rem 0;
+                padding: var(--navbar-height-tablet, 80px) 2rem 0;
             }
             
             .hero-content {
@@ -201,11 +204,19 @@
             .hero-section {
                 height: 100vh;
                 background-attachment: fixed;
-                padding-top: 0;
+                padding-top: 0; /* Remove navbar padding on desktop for full centering */
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
             
             .hero-content {
                 max-width: 100%;
+            }
+            
+            .hero-section .container {
+                align-items: center;
+                justify-content: center;
             }
         }
         
@@ -785,7 +796,7 @@
                 min-height: 100vh;
                 min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
                 background-attachment: scroll; /* Fixed background can cause issues on mobile */
-                padding: 2rem 1rem;
+                padding: calc(var(--navbar-height-mobile, 70px) + 2rem) 1rem 2rem 1rem;
                 width: 100%;
                 max-width: 100vw;
             }
@@ -798,7 +809,7 @@
             
             .hero-content {
                 text-align: center;
-                padding: 2rem 0;
+                padding: 1rem 0;
                 width: 100%;
                 max-width: 100%;
             }
@@ -1008,7 +1019,7 @@
                                 <div class="stat-label">Students Coached</div>
                             </div>
                         </div>
-                        <div style="margin-top: 2rem;">
+                        <div style="margin-top: 2rem; text-align: center;">
                            <!--- <a href="https://pawnisland.setmore.com/" target="_blank" class="btn-chess">
                                 <i class="fas fa-calendar-alt"></i> Book a Session
                             </a> --->
