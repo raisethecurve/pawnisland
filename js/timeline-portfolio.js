@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
      */
     function showError() {
         timelineContainer.innerHTML = `
-            <div style="text-align: center; padding: 4rem; color: var(--chess-light-gray);">
+            <div style="text-align: center; padding: 4rem; color: var(--chess-white);">
                 <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--chess-gold); margin-bottom: 1rem;"></i>
                 <h3>Failed to load projects</h3>
                 <p>Please try again later.</p>

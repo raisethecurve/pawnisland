@@ -20,7 +20,7 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../../css/styles.css">
-    <link rel="stylesheet" href="../../css/navbar-revolution.css">
+    <link rel="stylesheet" href="../../css/navbar-chess.css">
     <link rel="stylesheet" href="../../css/footer.css">
     <link rel="stylesheet" href="../../css/buttons.css">
     <link rel="stylesheet" href="../../css/components/modernJumpToTop.css">
@@ -48,12 +48,17 @@
             --chess-black: #1a1a1a;
             --chess-dark-gray: #2d2d2d;
             --chess-medium-gray: #404040;
-            --chess-light-gray: #666666;
+            --chess-light-gray: #ffffff;
             --chess-gold: #ffd700;
             --chess-amber: #ffed4a;
             --chess-blue: #2c5aa0;
             --chess-white: #ffffff;
             --chess-shadow: rgba(0, 0, 0, 0.8);
+            
+            /* Navbar Height Variables */
+            --navbar-height-mobile: 70px;
+            --navbar-height-tablet: 80px;
+            --navbar-height-desktop: 90px;
         }
         
         /* Global Styles */
@@ -72,18 +77,40 @@
         
         /* Hero Section */
         .hero-section {
-            min-height: 100vh;
+            height: calc(100vh - var(--navbar-height-mobile));
+            width: 100vw;
             position: relative;
             display: flex;
             align-items: center;
             background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(45, 45, 45, 0.95) 100%), 
                         url('../../images/headers-pages/freeman-3.jpg') center/cover;
             overflow: hidden;
+            margin: 0;
+            padding-top: 0; /* No longer needed since we're using calc for height */
+            padding-bottom: 0;
+            padding-left: 0;
+            padding-right: 0;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
         
         .hero-content {
             position: relative;
             z-index: 10;
+            width: 100%;
+            padding: 2rem 0;
+        }
+        
+        .hero-section .container {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
         }
         
         .hero-title {
@@ -99,11 +126,46 @@
         }
         
         @media (max-width: 480px) {
+            .hero-section {
+                height: calc(100vh - var(--navbar-height-mobile));
+                height: calc(100dvh - var(--navbar-height-mobile)); /* Dynamic viewport height for better mobile support */
+                padding: 0 0.5rem 0; /* No longer needed since we're using calc for height */
+            }
+            
             .hero-title {
                 font-size: 2rem;
                 word-break: break-word;
                 white-space: normal;
                 line-height: 1.1;
+            }
+            
+            .hero-content {
+                padding: 1rem 0;
+            }
+        }
+        
+        /* Tablet specific styles */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-section {
+                height: calc(100vh - var(--navbar-height-tablet));
+                padding: 0 2rem 0; /* No longer needed since we're using calc for height */
+            }
+            
+            .hero-content {
+                max-width: 90%;
+            }
+        }
+        
+        /* Desktop specific styles */
+        @media (min-width: 1025px) {
+            .hero-section {
+                height: calc(100vh - var(--navbar-height-desktop));
+                background-attachment: fixed;
+                padding-top: 0; /* No longer needed since we're using calc for height */
+            }
+            
+            .hero-content {
+                max-width: 100%;
             }
         }
         
@@ -477,16 +539,19 @@
         }
         
         .faq-content {
-            padding: 0 1.5rem 1.5rem;
+            padding: 0 1.5rem;
             color: var(--chess-light-gray);
             line-height: 1.6;
             max-height: 0;
             overflow: hidden;
-            transition: all 0.3s ease;
+            opacity: 0;
+            transition: all 0.4s ease;
         }
         
         .faq-item.active .faq-content {
-            max-height: 200px;
+            max-height: 300px;
+            padding: 0 1.5rem 1.5rem;
+            opacity: 1;
         }
         
         .faq-item.active .faq-header-item i {
@@ -669,6 +734,18 @@
         
         /* Responsive Design */
         @media (max-width: 768px) {
+            .hero-section {
+                height: calc(100vh - var(--navbar-height-mobile));
+                height: calc(100dvh - var(--navbar-height-mobile)); /* Dynamic viewport height for mobile browsers */
+                background-attachment: scroll; /* Fixed background can cause issues on mobile */
+                padding: 0 1rem 0; /* No longer needed since we're using calc for height */
+            }
+            
+            .hero-content {
+                text-align: center;
+                padding: 2rem 0;
+            }
+            
             .timeline::before {
                 left: 20px;
             }
@@ -952,7 +1029,7 @@
                 </div>
                 <div class="philosophy-quote" data-aos="fade-up" data-aos-delay="500">
                     <blockquote>
-                        "My method is stylistically agnostic while simultaneously encouraging character development and expression. Students achieve fantastic results through this system of analysis, feedback, realization, and refinement."
+                        "My method is a simple feedback engine. It helps you notice what matters, compare moves, and choose with confidence. It never forces a style. With practice, you discover and develop your own way to play."
                     </blockquote>
                     <cite>— Matthew Freeman</cite>
                     <!-- Hidden Easter Egg -->
@@ -1076,7 +1153,7 @@
                     Everything you need to know about chess coaching
                 </p>
                 <div class="faq-accordion" style="max-width: 800px; margin: 0 auto;">
-                    <div class="faq-item active">
+                    <div class="faq-item">
                         <div class="faq-header-item">
                             <h3>What resources will I gain access to while working with you?</h3>
                             <i class="fas fa-chevron-down"></i>
@@ -1161,7 +1238,7 @@
     
     <!-- Custom Scripts -->
     <script src="../../js/components/modernJumpToTop.js"></script>
-    <script src="../../js/navbar-revolution.js"></script>
+    <script src="../../js/navbar-chess.js"></script>
     <script src="../../js/footer.js"></script>
     <script src="../../js/script.js"></script>
     

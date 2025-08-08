@@ -19,7 +19,7 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../../css/styles.css">
-    <link rel="stylesheet" href="../../css/navbar-revolution.css">
+    <link rel="stylesheet" href="../../css/navbar-chess.css">
     <link rel="stylesheet" href="../../css/footer.css">
     <link rel="stylesheet" href="../../css/buttons.css">
     <link rel="stylesheet" href="../../css/components/modernJumpToTop.css">
@@ -47,12 +47,17 @@
             --chess-black: #1a1a1a;
             --chess-dark-gray: #2d2d2d;
             --chess-medium-gray: #404040;
-            --chess-light-gray: #666666;
+            --chess-light-gray: #ffffff;
             --chess-gold: #ffd700;
             --chess-amber: #ffed4a;
             --chess-blue: #2c5aa0;
             --chess-white: #ffffff;
             --chess-shadow: rgba(0, 0, 0, 0.8);
+            
+            /* Navbar Height Variables */
+            --navbar-height-mobile: 70px;
+            --navbar-height-tablet: 80px;
+            --navbar-height-desktop: 90px;
         }
         
         /* Global Styles */
@@ -71,7 +76,7 @@
         
         /* Hero Section */
         .hero-section {
-            height: 100vh;
+            height: calc(100vh - var(--navbar-height-mobile));
             position: relative;
             display: flex;
             align-items: center;
@@ -1057,7 +1062,7 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero-section {
-                height: 100vh;
+                height: calc(100vh - var(--navbar-height-mobile));
             }
             
             .projects-grid {
@@ -1075,6 +1080,20 @@
             
             .project-links {
                 flex-direction: column;
+            }
+        }
+        
+        /* Tablet Responsive */
+        @media (min-width: 768px) {
+            .hero-section {
+                height: calc(100vh - var(--navbar-height-tablet));
+            }
+        }
+        
+        /* Desktop Responsive */
+        @media (min-width: 1024px) {
+            .hero-section {
+                height: calc(100vh - var(--navbar-height-desktop));
             }
         }
     </style>
@@ -1167,7 +1186,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     
     <!-- Custom Scripts -->
-    <script src="../../js/navbar-revolution.js"></script>
+    <script src="../../js/navbar-chess.js"></script>
     <script src="../../js/footer.js"></script>
     <script src="../../js/timeline-portfolio.js"></script>
     <script src="../../js/shopify-config.js"></script>

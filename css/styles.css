@@ -14,6 +14,26 @@ body {
     color: #212529;
     font-family: 'Cinzel', serif;
     transition: background-color 0.3s, color 0.3s;
+    /* Add padding to account for fixed navbar */
+    padding-top: 70px; /* Mobile navbar height */
+}
+
+/* Responsive navbar padding */
+@media (min-width: 768px) {
+    body {
+        padding-top: 80px; /* Tablet navbar height */
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        padding-top: 90px; /* Desktop navbar height */
+    }
+}
+
+/* Special handling for index page with full viewport hero */
+body.index-page {
+    padding-top: 0;
 }
 
 .pi-body a:hover, 

@@ -1,105 +1,529 @@
-/* General Footer Styles */
-.footer {
-    background-color: #f8f9fa;
-    color: #212529;
-    padding: 40px 20px;
+/* ============================================================================
+   PAWN ISLAND ACADEMY - CHESS THEMED FOOTER WITH GLASSMORPHISM 2025
+   Dark Chess Theme with Advanced Animations & Cutting-Edge UX
+   ============================================================================ */
+
+/* Chess Footer Variables */
+:root {
+    /* Dark Chess Color Palette */
+    --chess-black: #1a1a1a;
+    --chess-dark-gray: #2d2d2d;
+    --chess-medium-gray: #404040;
+    --chess-light-gray: #ffffff;
+    --chess-gold: #ffd700;
+    --chess-amber: #ffed4a;
+    --chess-blue: #2c5aa0;
+    --chess-white: #ffffff;
+    --chess-shadow: rgba(0, 0, 0, 0.8);
+    
+    /* Glassmorphism Variables */
+    --glass-bg: rgba(26, 26, 26, 0.9);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-blur: blur(20px);
+    --glass-shadow: 0 -8px 32px rgba(0, 0, 0, 0.4);
+    
+    /* Typography */
+    --font-primary: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-brand: 'Cinzel', 'Times New Roman', serif;
+    
+    /* Animation */
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --duration-medium: 400ms;
+    --duration-slow: 600ms;
+}
+
+/* ============================================================================
+   MAIN FOOTER STYLES
+   ============================================================================ */
+
+.chess-footer {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 50%, #404040 100%);
+    font-family: var(--font-primary);
+    overflow: hidden;
+    padding: 3rem 0 2rem;
+}
+
+/* Glassmorphism Background */
+.footer-glass-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-top: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+
+/* Animated Chess Pattern */
+.footer-chess-pattern {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    opacity: 0.08;
+    background: 
+        radial-gradient(circle at 25% 25%, var(--chess-blue) 2px, transparent 2px),
+        radial-gradient(circle at 75% 75%, var(--chess-gold) 1px, transparent 1px),
+        linear-gradient(45deg, transparent 48%, var(--chess-medium-gray) 49%, var(--chess-medium-gray) 51%, transparent 52%);
+    background-size: 60px 60px, 40px 40px, 120px 120px;
+    animation: patternShift 120s linear infinite;
+}
+
+@keyframes patternShift {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(-60px, -60px) rotate(360deg); }
+}
+
+/* Floating Chess Pieces */
+.footer-chess-pieces {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.chess-piece {
+    position: absolute;
+    font-size: 2rem;
+    color: var(--chess-medium-gray);
+    opacity: 0.2;
+    animation: float 20s ease-in-out infinite;
+}
+
+.chess-piece:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+.chess-piece:nth-child(2) { top: 20%; right: 10%; animation-delay: 4s; }
+.chess-piece:nth-child(3) { bottom: 30%; left: 15%; animation-delay: 8s; }
+.chess-piece:nth-child(4) { bottom: 15%; right: 5%; animation-delay: 12s; }
+.chess-piece:nth-child(5) { top: 60%; left: 8%; animation-delay: 16s; }
+.chess-piece:nth-child(6) { top: 40%; right: 12%; animation-delay: 20s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-15px) rotate(5deg); }
+    50% { transform: translateY(-10px) rotate(-3deg); }
+    75% { transform: translateY(-20px) rotate(8deg); }
+}
+
+/* Main Container */
+.footer-container {
+    position: relative;
+    z-index: 10;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
     text-align: center;
+}
+
+/* ============================================================================
+   FOOTER BRAND SECTION
+   ============================================================================ */
+
+.footer-brand {
     display: flex;
     flex-direction: column;
     align-items: center;
-    animation: slideUp 0.6s ease-out;
-    font-family: 'Cinzel', serif;
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
-.footer p {
-    margin: 10px 0;
-    font-size: 16px;
+.footer-logo {
+    width: 64px;
+    height: 64px;
+    filter: drop-shadow(0 0 15px var(--chess-gold));
 }
 
-/* Social Icons */
-.footer .social-icons {
+.footer-logo-img {
+    width: 100%;
+    height: 100%;
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(45deg);
+}
+
+.spinning-logo {
+    animation: spinClockwise 12s linear infinite;
+}
+
+@keyframes spinClockwise {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+}
+
+.footer-brand-text {
+    text-align: center;
+}
+
+.footer-title {
+    font-family: var(--font-brand);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, 
+        var(--chess-white) 0%, 
+        var(--chess-gold) 50%, 
+        var(--chess-amber) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+.footer-subtitle {
+    color: var(--chess-light-gray);
+    font-size: 1rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ============================================================================
+   SOCIAL LINKS SECTION
+   ============================================================================ */
+
+.footer-social {
+    margin-bottom: 2rem;
+}
+
+.social-title {
+    font-family: var(--font-brand);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--chess-gold);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.social-icons {
     display: flex;
-    justify-content: center; /* Center the icons */
-    gap: 5px; /* Reduced gap from 10px to 5px */
-    margin-top: 15px;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
-.footer .social-icon {
-    width: 50px; /* Uniform width */
-    transition: transform 0.3s, opacity 0.3s;
-    opacity: 0.8;
-    padding: 5px; /* Ensure consistent padding */
-    display: flex; /* Center the icon */
-    align-items: center; /* Vertically center */
-    justify-content: center; /* Horizontally center */
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: rgba(45, 45, 45, 0.6);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    color: var(--chess-white);
+    text-decoration: none;
+    transition: all var(--duration-medium) var(--ease-smooth);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
 }
 
-.footer .social-icon img {
-    max-width: 100%;
-    height: auto; /* Maintain aspect ratio */
-    display: inline-block !important;
+.social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+    transition: left var(--duration-slow) var(--ease-smooth);
 }
 
-.footer .social-icon:not(:last-child) {
-    padding-right: 0px; /* Removed padding-right for uniform spacing */
+.social-link:hover::before {
+    left: 100%;
 }
 
-.footer .social-icon:hover {
+.social-link:hover,
+.social-link:focus {
+    transform: translateY(-4px) scale(1.1);
+    border-color: var(--chess-gold);
+    color: var(--chess-gold);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+}
+
+.social-link i {
+    font-size: 1.2rem;
+    transition: transform var(--duration-medium) var(--ease-smooth);
+    z-index: 10;
+    position: relative;
+}
+
+.social-link:hover i {
     transform: scale(1.2);
-    opacity: 1;
 }
 
-/* Responsive Scaling for Social Icons */
-@media (max-width: 1200px) {
-    .footer .social-icon {
-        width: 45px;
+/* ============================================================================
+   FOOTER LINKS SECTION
+   ============================================================================ */
+
+.footer-links {
+    margin-bottom: 2rem;
+}
+
+.links-title {
+    font-family: var(--font-brand);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--chess-gold);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.footer-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    color: var(--chess-white);
+    background: rgba(45, 45, 45, 0.4);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    transition: all var(--duration-medium) var(--ease-smooth);
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    width: fit-content;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+    transition: left var(--duration-slow) var(--ease-smooth);
+}
+
+.footer-link:hover::before {
+    left: 100%;
+}
+
+.footer-link:hover,
+.footer-link:focus {
+    transform: translateX(8px);
+    border-color: var(--chess-gold);
+    color: var(--chess-gold);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+}
+
+.footer-link i {
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
+    transition: transform var(--duration-medium) var(--ease-smooth);
+    z-index: 10;
+    position: relative;
+}
+
+.footer-link:hover i {
+    transform: scale(1.1);
+}
+
+/* ============================================================================
+   COPYRIGHT SECTION
+   ============================================================================ */
+
+.footer-copyright {
+    border-top: 1px solid var(--glass-border);
+    padding-top: 2rem;
+    margin-top: 1rem;
+}
+
+.copyright-text {
+    color: var(--chess-light-gray);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.copyright-text p {
+    margin: 0.25rem 0;
+}
+
+.copyright-text .subtitle {
+    font-weight: 500;
+    color: var(--chess-white);
+}
+
+.copyright-text .rights {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+/* Tablet */
+@media (min-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        text-align: left;
+        padding: 0 2rem;
+    }
+    
+    .footer-brand {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    
+    .footer-logo {
+        width: 80px;
+        height: 80px;
+        margin-right: 2rem;
+    }
+    
+    .footer-title {
+        font-size: 2.2rem;
+    }
+    
+    .footer-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .social-icons {
+        justify-content: flex-start;
+        gap: 1.25rem;
+    }
+    
+    .footer-nav {
+        align-items: flex-start;
+    }
+    
+    .footer-copyright {
+        grid-column: 1 / -1;
+        text-align: center;
     }
 }
 
-@media (max-width: 992px) {
-    .footer .social-icon {
-        width: 40px;
+/* Desktop */
+@media (min-width: 1024px) {
+    .footer-container {
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 4rem;
+        padding: 0 3rem;
+    }
+    
+    .footer-brand {
+        grid-column: 1;
+        flex-direction: column;
+        text-align: left;
+        align-items: flex-start;
+        margin-bottom: 0;
+    }
+    
+    .footer-logo {
+        width: 96px;
+        height: 96px;
+        margin-right: 0;
+        margin-bottom: 1.5rem;
+    }
+    
+    .footer-title {
+        font-size: 2.5rem;
+    }
+    
+    .footer-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .footer-social {
+        margin-bottom: 0;
+    }
+    
+    .footer-links {
+        margin-bottom: 0;
+    }
+    
+    .social-icons {
+        justify-content: flex-start;
+        gap: 1.5rem;
+    }
+    
+    .social-link {
+        width: 52px;
+        height: 52px;
+    }
+    
+    .footer-nav {
+        gap: 1rem;
+    }
+    
+    .footer-copyright {
+        grid-column: 1 / -1;
+        margin-top: 2rem;
     }
 }
 
-@media (max-width: 768px) {
-    .footer .social-icon {
-        width: 35px;
-        padding-right: 3px; /* Adjust padding for smaller icons */
+/* Large Desktop */
+@media (min-width: 1440px) {
+    .footer-container {
+        padding: 0 4rem;
+        gap: 5rem;
+    }
+    
+    .footer-logo {
+        width: 112px;
+        height: 112px;
+    }
+    
+    .footer-title {
+        font-size: 2.8rem;
     }
 }
 
-@media (max-width: 576px) {
-    .footer .social-icon {
-        width: 30px;
-        padding-right: 2px; /* Further adjust padding for very small icons */
+/* ============================================================================
+   ACCESSIBILITY & MOTION
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }
 
-.footer .footer-text {
-    color: black;
+.social-link:focus,
+.footer-link:focus {
+    outline: 2px solid var(--chess-gold);
+    outline-offset: 2px;
 }
 
-/* Ensure all child elements inherit text color */
-.footer a,
-.footer p,
-.footer li,
-.footer h1,
-.footer h2,
-.footer h3,
-.footer h4,
-.footer h5,
-.footer h6 {
-    color: inherit; /* Inherit text color based on the theme */
-}
-
-/* Specific Styling for Copyright Text */
-.footer .copyright {
-    color: inherit; /* Ensure it inherits the text color from the theme */
-}
-
-/* Keyframes for Animations */
-@keyframes slideUp {
-    from { transform: translateY(50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+/* Print Styles */
+@media print {
+    .chess-footer {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .footer-chess-pattern,
+    .footer-chess-pieces,
+    .footer-glass-bg {
+        display: none;
+    }
 }

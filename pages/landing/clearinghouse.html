@@ -19,7 +19,7 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../../css/styles.css">
-    <link rel="stylesheet" href="../../css/navbar-revolution.css">
+    <link rel="stylesheet" href="../../css/navbar-chess.css">
     <link rel="stylesheet" href="../../css/footer.css">
     <link rel="stylesheet" href="../../css/buttons.css">
     <link rel="stylesheet" href="../../css/clearinghouse.css">
@@ -47,12 +47,17 @@
             --chess-black: #1a1a1a;
             --chess-dark-gray: #2d2d2d;
             --chess-medium-gray: #404040;
-            --chess-light-gray: #666666;
+            --chess-light-gray: #ffffff;
             --chess-gold: #ffd700;
             --chess-amber: #ffed4a;
             --chess-blue: #2c5aa0;
             --chess-white: #ffffff;
             --chess-shadow: rgba(0, 0, 0, 0.8);
+            
+            /* Navbar Height Variables */
+            --navbar-height-mobile: 70px;
+            --navbar-height-tablet: 80px;
+            --navbar-height-desktop: 90px;
         }
         
         /* Global Styles */
@@ -77,9 +82,54 @@
             flex-direction: column;
         }
         
+        /* Hero Section - Similar to About Me page */
+        .hero-section {
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(45, 45, 45, 0.95) 100%), 
+                        url('../../images/headers-pages/clearinghouse.webp') center/cover;
+            background-attachment: fixed;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 90vw;
+            color: var(--chess-white);
+        }
+        
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--chess-white) 0%, var(--chess-gold) 50%, var(--chess-amber) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            letter-spacing: 2px;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            font-weight: 300;
+            color: var(--chess-light-gray);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
         .main-content {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
-            min-height: 100vh;
+            min-height: auto;
             flex: 1;
             position: relative;
         }
@@ -408,6 +458,39 @@
             font-size: 0.8rem;
         }
         
+        /* Event Cards - Compact Design with 1.2 Line Spacing */
+        .event-card {
+            line-height: 1.2;
+        }
+        
+        .event-card .card-body {
+            padding: 1rem;
+            line-height: 1.2;
+        }
+        
+        .event-card .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+        
+        .event-card .card-subtitle {
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+        
+        .event-card .card-text {
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            font-size: 0.9rem;
+        }
+        
+        .event-card .event-info {
+            line-height: 1.2;
+        }
+        
         /* Container styling for dark theme */
         .container {
             color: var(--chess-white);
@@ -649,12 +732,41 @@
                 font-size: 1rem;
             }
         }
+        
+        /* Tablet Responsive */
+        @media (min-width: 768px) {
+            #heroCardContainer {
+                min-height: 100vh;
+            }
+            
+            .hero-section {
+                height: 100vh;
+            }
+        }
+        
+        /* Desktop Responsive */
+        @media (min-width: 1024px) {
+            #heroCardContainer {
+                min-height: 100vh;
+            }
+            
+            .hero-section {
+                height: 100vh;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Navigation Placeholder -->
+    <div id="navbar-placeholder"></div>
 
-    <!-- Hero Card Container -->
-    <div id="heroCardContainer"></div>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <h1 class="hero-title">Coach's Clearinghouse</h1>
+            <p class="hero-subtitle">Greater Rhode Island<br>RI, MA, and CT</p>
+        </div>
+    </section>
 
     <!-- Enhanced Fight With Madi Promotional Link -->
     <div class="container mt-4 mb-4">
@@ -669,7 +781,7 @@
                 <div class="col-md-7">
                     <div class="success-badge"><i class="fas fa-check mr-1"></i>Fundraiser Complete</div>
                     <h4>Fight With Madi Charity Tournament</h4>
-                    <p>View the amazing results of our charity tournament that raised over <strong>$3,600</strong> for Madison's battle against cancer. Thanks to all participants and donors!</p>
+                    <p>View the amazing results of our charity tournament that raised over <strong>$4,166</strong> for Madison's battle against cancer. Thanks to all participants and donors!</p>
                 </div>
                 <div class="col-md-3 text-center">
                     <a href="../../pages/landing/fight-with-madi.html" class="btn btn-madi">
@@ -717,7 +829,7 @@
     </div>
 
     <!-- Footer placeholder -->
-    <div class="footer-placeholder"></div>
+    <div id="footer-placeholder"></div>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -729,7 +841,7 @@
     <script src="../../js/components/hero-card.js"></script>
     
     <!-- Navbar Script -->
-    <script src="../../js/navbar-revolution.js"></script>
+    <script src="../../js/navbar-chess.js"></script>
     
     <!-- Shopify Configuration -->
     <script src="../../js/shopify-config.js"></script>
@@ -743,23 +855,6 @@
                 duration: 1000,
                 once: true,
                 offset: 100
-            });
-            
-            // Initialize hero card with enhanced options
-            createHeroCard('heroCardContainer', {
-                bgImage: '../../images/headers-pages/clearinghouse.webp',
-                title: 'COACH\'S CLEARINGHOUSE',
-                subtitle: 'GREATER RHODE ISLAND<br>RI, MA, and CT',
-                altText: 'Event Background',
-                overlayOpacity: 0.7,
-                overlayColor: '34, 34, 34', // Dark gray overlay
-                overlayGradient: true,
-                parallaxEffect: true,
-                parallaxIntensity: 0.12, // Slightly lower intensity
-                titleAnimation: true,
-                subtitleAnimation: true,
-                height: '100vh', // Full viewport height
-                alignment: 'center'
             });
             
             // Hide loading indicator when events are loaded

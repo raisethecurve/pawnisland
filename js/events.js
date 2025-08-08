@@ -763,8 +763,8 @@ function createEventCard(event, currentDate) {
         </div>
     ` : '';
     
-    let organizerSection = event.organizer ? `<h5 class="card-title">${event.organizer}</h5>` : '';
-    let nameSection = event.name ? `<h6 class="card-subtitle mb-2 ${mutedClass}">${event.name}</h6>` : '';
+    let organizerSection = event.organizer ? `<h6 class="card-subtitle mb-2 text-muted">${event.organizer}</h6>` : '';
+    let nameSection = event.name ? `<h5 class="card-title">${event.name}</h5>` : '';
     let whenSection = `<p class="card-text event-info"><strong>When:</strong> ${dateDisplay}</p>`;
     let locationSection = event.location ? `<p class="card-text event-info"><strong>Location:</strong> ${event.location}</p>` : '';
     let addressSection = event.address ? `<p class="card-text event-info"><strong>Address:</strong> <a href="https://maps.google.com/?q=${encodeURIComponent(event.address)}" target="_blank" class="link-prevent-default">${event.address}</a></p>` : '';
@@ -818,8 +818,8 @@ function createEventCard(event, currentDate) {
                 ${isEventPast ? '<div class="past-event-overlay">Event Passed</div>' : ''}
             </div>
             <div class="card-body">
-                ${organizerSection}
                 ${nameSection}
+                ${organizerSection}
                 ${whenSection}
                 ${locationSection}
                 ${addressSection}

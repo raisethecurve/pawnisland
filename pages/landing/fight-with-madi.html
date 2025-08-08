@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../../css/styles.css">
-    <link rel="stylesheet" href="../../css/navbar-revolution.css">
+    <link rel="stylesheet" href="../../css/navbar-chess.css">
     <link rel="stylesheet" href="../../css/footer.css">
     <link rel="stylesheet" href="../../css/buttons.css">
     <!-- Add modern jump-to-top component CSS -->
@@ -34,6 +34,32 @@
         gtag('config', 'G-T12VEHM2PY');
     </script>
     <style>
+        /* Dark Chess Theme Variables - Consistent with other pages */
+        :root {
+            --chess-black: #1a1a1a;
+            --chess-dark-gray: #2d2d2d;
+            --chess-medium-gray: #404040;
+            --chess-light-gray: #ffffff;
+            --chess-gold: #ffd700;
+            --chess-amber: #ffed4a;
+            --chess-blue: #2c5aa0;
+            --chess-white: #ffffff;
+            --chess-shadow: rgba(0, 0, 0, 0.8);
+            
+            /* Navbar Height Variables */
+            --navbar-height-mobile: 70px;
+            --navbar-height-tablet: 80px;
+            --navbar-height-desktop: 90px;
+        }
+        
+        /* Hero Section Full Viewport */
+        #heroCardContainer {
+            height: calc(100vh - var(--navbar-height-mobile));
+            min-height: 500px;
+            width: 100vw;
+            position: relative;
+        }
+        
         .charity-section {
             padding: 4rem 0;
             background-color: #f8f9fa;
@@ -505,9 +531,25 @@
                 margin-right: 0 !important;
             }
         }
+        
+        /* Tablet Responsive */
+        @media (min-width: 768px) {
+            #heroCardContainer {
+                height: calc(100vh - var(--navbar-height-tablet));
+            }
+        }
+        
+        /* Desktop Responsive */
+        @media (min-width: 1024px) {
+            #heroCardContainer {
+                height: calc(100vh - var(--navbar-height-desktop));
+            }
+        }
     </style>
 </head>
 <body class="bg-light text-dark">
+    <!-- Navigation Placeholder -->
+    <div id="navbar-placeholder"></div>
 
     <!-- Hero Card Container -->
     <div id="heroCardContainer"></div>
@@ -608,7 +650,7 @@
                     <h4 class="text-center mb-4">Madison Cancer Charity Arena - Complete</h4>
                     
                     <div class="alert alert-success">
-                        <p class="mb-0"><strong>Thank you to all participants!</strong> Together we've raised <strong>$3,816</strong> through 46 donations!</p>
+                        <p class="mb-0"><strong>Thank you to all participants!</strong> Together we've raised <strong>$4,166</strong> through 46 donations!</p>
                     </div>
                     
                     <div class="row mb-4">
@@ -702,7 +744,7 @@
                                     <h5 class="mb-0">Prize & Fundraising Information</h5>
                                 </div>
                                 <div class="card-body">
-                                    <p>We're thrilled to announce that we've <strong>surpassed our initial $1,000 goal</strong> and have raised an incredible <strong>$3,816</strong> which blows away our stretch goal of $2,400!</p>
+                                    <p>We're thrilled to announce that we've <strong>surpassed our initial $1,000 goal</strong> and have raised an incredible <strong>$4,166</strong> which blows away our stretch goal of $2,400!</p>
                                     <p>The GoFundMe campaign will remain open at least until the fair play check period (7 days from the close of the tournament) has ended and the top 3 finishers have been confirmed and paid their prizes:</p>
                                     <p class="mb-0"><a href="https://lichess.org/api/tournament/zEKFIurS/games" class="btn btn-sm btn-info mt-2">Download All Tournament Games</a></p>
                                 </div>
@@ -846,7 +888,7 @@
     </main>
 
     <!-- Footer placeholder -->
-    <div class="footer-placeholder"></div>
+    <div id="footer-placeholder"></div>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -856,7 +898,7 @@
 
     <!-- Components and Custom Scripts -->
     <script src="../../js/components/hero-card.js"></script>
-    <script src="../../js/navbar-revolution.js"></script>
+    <script src="../../js/navbar-chess.js"></script>
     <script src="../../js/theme-manager.js"></script>
     <script src="../../js/footer.js"></script>
     <script src="../../js/components/modernJumpToTop.js"></script>
@@ -877,7 +919,8 @@
                 parallaxIntensity: 0.1,
                 titleAnimation: true,
                 subtitleAnimation: true,
-                height: '60vh',
+                height: '100%', // Use full container height (which is calc(100vh - navbar))
+                minHeight: '500px',
                 buttonText: 'Donate Now',
                 buttonLink: 'https://www.gofundme.com/f/help-madison-fight-stage-4-cancer',
                 buttonClass: 'btn-donate btn-lg mt-4'
