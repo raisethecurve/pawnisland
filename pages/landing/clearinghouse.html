@@ -1269,6 +1269,7 @@
             function applyOrganizerFilter() {
                 const eventCards = document.querySelectorAll('.event-item');
                 let visibleCount = 0;
+                let visibleIndex = 0;
 
                 eventCards.forEach(eventCard => {
                     // Skip past events (they should remain hidden)
@@ -1291,8 +1292,13 @@
 
                     if (shouldShow) {
                         eventCard.style.display = 'block';
-                        eventCard.style.animation = `fadeIn 0.3s ease-out forwards`;
+                        
+                        // Reset AOS attributes for proper animation on filter
+                        eventCard.classList.remove('aos-animate');
+                        eventCard.setAttribute('data-aos-delay', Math.min(visibleIndex * 50, 800));
+                        
                         visibleCount++;
+                        visibleIndex++;
                     } else {
                         eventCard.style.display = 'none';
                     }
@@ -1300,6 +1306,13 @@
 
                 // Update no events message
                 updateNoEventsMessage(visibleCount);
+                
+                // Refresh AOS after filtering
+                setTimeout(() => {
+                    if (typeof AOS !== 'undefined') {
+                        AOS.refresh();
+                    }
+                }, 50);
             }
 
             /**
@@ -1341,38 +1354,76 @@
             window.refreshOrganizerFilter = function() {
                 // Apply current filter to newly loaded events
                 applyOrganizerFilter();
+                
+                // Ensure AOS is properly initialized for new elements
+                setTimeout(() => {
+                    if (typeof AOS !== 'undefined') {
+                        AOS.refresh();
+                    }
+                }, 100);
             };
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize AOS (Animate On Scroll)
+            // Initialize AOS (Animate On Scroll) with improved settings
             AOS.init({
-                duration: 1000,
+                duration: 600,
                 once: true,
-                offset: 100
+                offset: 120,
+                easing: 'ease-out-cubic',
+                disable: false,
+                startEvent: 'DOMContentLoaded',
+                useClassNames: false,
+                disableMutationObserver: false,
+                debounceDelay: 50,
+                throttleDelay: 99
             });
             
-            // Hide loading indicator when events are loaded
-            const eventsLoaded = new Promise((resolve) => {
-                const checkEvents = setInterval(() => {
-                    const events = document.querySelectorAll('.event-item');
-                    if (events.length > 0) {
-                        clearInterval(checkEvents);
-                        resolve();
-                    }
-                }, 100);
+            // Improved event loading detection with better timing
+            let eventsLoadingAttempts = 0;
+            const maxLoadingAttempts = 50; // 5 seconds with 100ms intervals
+            
+            const waitForEvents = () => {
+                return new Promise((resolve) => {
+                    const checkEvents = () => {
+                        const events = document.querySelectorAll('.event-item');
+                        const eventsContainer = document.getElementById('events-container');
+                        
+                        if (events.length > 0 || eventsLoadingAttempts >= maxLoadingAttempts) {
+                            resolve(events.length > 0);
+                            return;
+                        }
+                        
+                        eventsLoadingAttempts++;
+                        setTimeout(checkEvents, 100);
+                    };
+                    
+                    checkEvents();
+                });
+            };
+            
+            // Enhanced event loading handler
+            waitForEvents().then((eventsLoaded) => {
+                // Hide loading indicator
+                const loadingElement = document.getElementById('loading-events');
+                if (loadingElement) {
+                    loadingElement.style.display = 'none';
+                }
                 
-                // Timeout after 5 seconds in case of error
-                setTimeout(() => {
-                    clearInterval(checkEvents);
-                    resolve();
-                }, 5000);
-            });
-            
-            eventsLoaded.then(() => {
-                document.getElementById('loading-events').style.display = 'none';
-                // Show only upcoming events by default
-                showUpcomingEvents();
+                if (eventsLoaded) {
+                    // Show only upcoming events by default
+                    showUpcomingEvents();
+                    
+                    // Refresh AOS to detect newly loaded elements
+                    setTimeout(() => {
+                        AOS.refresh();
+                    }, 100);
+                    
+                    // Set up intersection observer for better scroll handling
+                    setupScrollOptimization();
+                } else {
+                    console.warn('Events failed to load within expected timeframe');
+                }
             });
 
             // Initialize the jump-to-top component with custom styling
@@ -1388,7 +1439,7 @@
                 accessibility: true
             });
 
-            // Function to show only upcoming events
+            // Enhanced function to show only upcoming events with better animation
             function showUpcomingEvents() {
                 const events = document.querySelectorAll('.event-item');
                 let visibleCount = 0;
@@ -1398,7 +1449,8 @@
                     
                     if (!isPast) {
                         event.style.display = 'block';
-                        event.style.animation = `fadeIn 0.3s ease-out ${index * 0.05}s forwards`;
+                        // Add progressive delay for smoother loading animation
+                        event.setAttribute('data-aos-delay', Math.min(index * 50, 800));
                         visibleCount++;
                     } else {
                         event.style.display = 'none';
@@ -1409,9 +1461,42 @@
                 const noEventsMessage = document.getElementById('no-events-message');
                 if (visibleCount === 0) {
                     noEventsMessage.style.display = 'block';
-                    noEventsMessage.style.animation = 'fadeIn 0.5s ease-out forwards';
                 } else {
                     noEventsMessage.style.display = 'none';
+                }
+                
+                // Refresh AOS after visibility changes
+                setTimeout(() => {
+                    AOS.refresh();
+                }, 50);
+            }
+
+            // Setup intersection observer for scroll optimization
+            function setupScrollOptimization() {
+                if ('IntersectionObserver' in window) {
+                    const eventCards = document.querySelectorAll('.event-item');
+                    
+                    const cardObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                // Ensure the card is properly visible and animated
+                                const card = entry.target;
+                                if (!card.classList.contains('aos-animate')) {
+                                    // Trigger AOS animation manually if needed
+                                    setTimeout(() => {
+                                        AOS.refresh();
+                                    }, 10);
+                                }
+                            }
+                        });
+                    }, {
+                        rootMargin: '50px 0px',
+                        threshold: 0.1
+                    });
+                    
+                    eventCards.forEach(card => {
+                        cardObserver.observe(card);
+                    });
                 }
             }
 

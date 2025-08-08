@@ -514,9 +514,9 @@ document.addEventListener("DOMContentLoaded", function() {
             return dateA - dateB;
         });
 
-        // Display events
-        groupedEvents.forEach(event => {
-            const eventCard = createEventCard(event, currentDate);
+        // Display events with improved AOS setup
+        groupedEvents.forEach((event, index) => {
+            const eventCard = createEventCard(event, currentDate, index);
             eventsContainer.appendChild(eventCard);
         });
         
@@ -524,6 +524,13 @@ document.addEventListener("DOMContentLoaded", function() {
         if (typeof window.refreshOrganizerFilter === 'function') {
             window.refreshOrganizerFilter();
         }
+        
+        // Ensure AOS is refreshed after all events are loaded
+        setTimeout(() => {
+            if (typeof AOS !== 'undefined') {
+                AOS.refresh();
+            }
+        }, 100);
     }
 
 // Define the badge system with proper ordering
@@ -639,7 +646,7 @@ function generateBadgesHTML(event) {
 }
 
 // Function to create event card, updated with badge system
-function createEventCard(event, currentDate) {
+function createEventCard(event, currentDate, cardIndex = 0) {
     // Updated: use event.date or fallback to event.startdate
     const eventDate = parseDateNoOffset(event.startdate);
     const isPast = eventDate < currentDate;
@@ -663,8 +670,17 @@ function createEventCard(event, currentDate) {
     
     const eventCard = document.createElement('div');
     eventCard.className = `col-12 mb-4 event-item ${isPast ? 'past-event' : 'upcoming-event'}`;
+    
+    // Improved AOS setup with progressive delays
     eventCard.setAttribute('data-aos', 'fade-up');
-    eventCard.setAttribute('data-aos-delay', 100);
+    
+    // Calculate progressive delay, capping at reasonable maximum
+    const delay = Math.min(cardIndex * 50, 800);
+    eventCard.setAttribute('data-aos-delay', delay);
+    
+    // Add additional AOS attributes for better control
+    eventCard.setAttribute('data-aos-duration', '600');
+    eventCard.setAttribute('data-aos-easing', 'ease-out-cubic');
     
     // Add organizer data attribute for filtering
     if (event.organizer) {
