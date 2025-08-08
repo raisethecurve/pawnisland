@@ -363,101 +363,6 @@
             }
         }
         
-        /* Filter Styles - Dark Theme */
-        .filter-groups {
-            font-family: 'Raleway', sans-serif;
-        }
-        
-        .filter-heading {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--chess-white);
-            margin-bottom: 0.75rem;
-            position: relative;
-            padding-left: 1rem;
-        }
-        
-        .filter-heading:before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            height: 1rem;
-            width: 4px;
-            background: linear-gradient(to bottom, var(--chess-gold), var(--chess-amber));
-            border-radius: 2px;
-        }
-        
-        .filter-btn-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        
-        .filter-btn, .organizer-btn {
-            border: 2px solid var(--chess-medium-gray);
-            background: linear-gradient(135deg, rgba(45, 45, 45, 0.9) 0%, rgba(26, 26, 26, 0.9) 100%);
-            color: var(--chess-white);
-            padding: 0.5rem 1rem;
-            border-radius: 30px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-        }
-        
-        .filter-btn::before, .organizer-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        .filter-btn:hover, .organizer-btn:hover {
-            transform: translateY(-2px) scale(1.05);
-            border-color: var(--chess-gold);
-            color: var(--chess-white);
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
-        }
-        
-        .filter-btn:hover::before, .organizer-btn:hover::before {
-            left: 100%;
-        }
-        
-        .filter-btn.active, .organizer-btn.active {
-            background: linear-gradient(135deg, var(--chess-gold), var(--chess-amber));
-            color: var(--chess-black);
-            border-color: var(--chess-gold);
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
-            font-weight: 600;
-        }
-        
-        .organizer-filter-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            max-width: 100%;
-        }
-        
-        .organizer-btn {
-            margin-bottom: 0.5rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .organizer-btn i {
-            font-size: 0.8rem;
-        }
-        
         /* Event Cards - Compact Design with 1.2 Line Spacing */
         .event-card {
             line-height: 1.2;
@@ -722,17 +627,6 @@
             }
         }
         
-        @media (max-width: 768px) {
-            .filter-btn, .organizer-btn {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.8rem;
-            }
-            
-            .filter-heading {
-                font-size: 1rem;
-            }
-        }
-        
         /* Tablet Responsive */
         @media (min-width: 768px) {
             #heroCardContainer {
@@ -752,6 +646,318 @@
             
             .hero-section {
                 height: 100vh;
+            }
+        }
+        
+        /* Organizer Filter Styling */
+        .organizer-filter-container {
+            margin: 2rem 0 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, 
+                rgba(26, 26, 26, 0.95) 0%, 
+                rgba(45, 45, 45, 0.98) 50%, 
+                rgba(26, 26, 26, 0.95) 100%
+            );
+            border-radius: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .organizer-filter-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 20px,
+                    rgba(255, 215, 0, 0.01) 20px,
+                    rgba(255, 215, 0, 0.01) 21px
+                );
+            pointer-events: none;
+        }
+        
+        .filter-section {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .organizer-btn {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            text-transform: capitalize;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            /* Improved touch targets for mobile */
+            min-height: 44px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .organizer-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                rgba(255,255,255,0) 0%, 
+                rgba(255,255,255,0.1) 50%, 
+                rgba(255,255,255,0) 100%);
+            transition: left 0.5s ease;
+        }
+        
+        .organizer-btn:hover::before {
+            left: 100%;
+        }
+        
+        /* Large "All Organizers" button */
+        .organizer-btn-large {
+            background: linear-gradient(135deg, var(--chess-gold) 0%, var(--chess-amber) 100%);
+            color: var(--chess-black);
+            font-size: 1.2rem;
+            padding: 1rem 2.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .organizer-btn-large:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        }
+        
+        .organizer-btn-large.active {
+            background: linear-gradient(135deg, var(--chess-amber) 0%, var(--chess-gold) 100%);
+            box-shadow: 0 6px 25px rgba(255, 215, 0, 0.5);
+        }
+        
+        .organizer-btn-large i {
+            margin-right: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Individual organizer buttons */
+        .organizer-buttons-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            align-items: stretch;
+        }
+        
+        .organizer-btn-small {
+            background: linear-gradient(135deg, var(--chess-dark-gray) 0%, var(--chess-medium-gray) 100%);
+            color: var(--chess-white);
+            font-size: 0.9rem;
+            padding: 0.7rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-width: 140px;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex: 0 1 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Smooth transition for text changes */
+            transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1), width 0.2s ease;
+        }
+        
+        .organizer-btn-small:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, var(--chess-medium-gray) 0%, var(--chess-dark-gray) 100%);
+            border-color: rgba(255, 215, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .organizer-btn-small.active {
+            background: linear-gradient(135deg, var(--chess-blue) 0%, #1e4a8c 100%);
+            border-color: var(--chess-blue);
+            color: var(--chess-white);
+            box-shadow: 0 6px 20px rgba(44, 90, 160, 0.4);
+        }
+        
+        .organizer-btn-small.active:hover {
+            background: linear-gradient(135deg, #1e4a8c 0%, var(--chess-blue) 100%);
+            box-shadow: 0 8px 25px rgba(44, 90, 160, 0.5);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .organizer-filter-container {
+                margin: 1.5rem 0 2rem 0;
+                padding: 1.5rem 1rem;
+            }
+            
+            .organizer-btn-large {
+                font-size: 1rem;
+                padding: 0.8rem 2rem;
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .organizer-btn-small {
+                font-size: 0.8rem;
+                padding: 0.6rem 1.2rem;
+                min-width: 80px; /* Reduced for abbreviated text */
+                flex: 1 1 calc(50% - 0.3rem);
+                max-width: calc(50% - 0.3rem);
+            }
+            
+            .organizer-buttons-grid {
+                gap: 0.6rem;
+                justify-content: space-between;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .organizer-filter-container {
+                margin: 1rem 0 1.5rem 0;
+                padding: 1rem 0.75rem;
+            }
+            
+            .organizer-btn-large {
+                font-size: 0.9rem;
+                padding: 0.7rem 1.5rem;
+                width: 100%;
+                min-height: 48px;
+            }
+            
+            .organizer-buttons-grid {
+                justify-content: stretch;
+                gap: 0.5rem;
+            }
+            
+            .organizer-btn-small {
+                flex: 1;
+                min-width: 60px; /* Further reduced for very short abbreviations */
+                margin: 0;
+                font-size: 0.75rem;
+                padding: 0.5rem 0.6rem; /* Reduced horizontal padding */
+                max-width: none;
+                min-height: 44px;
+                /* Handle long organizer names on mobile */
+                word-break: normal; /* Changed since we're using abbreviations */
+                hyphens: none; /* Disabled since abbreviations shouldn't break */
+                line-height: 1.2;
+            }
+        }
+        
+        /* Extra small screens (very small phones) */
+        @media (max-width: 360px) {
+            .organizer-filter-container {
+                padding: 0.75rem 0.5rem;
+                margin: 0.75rem 0 1rem 0;
+            }
+            
+            .organizer-btn-large {
+                font-size: 0.85rem;
+                padding: 0.65rem 1.25rem;
+                min-height: 46px;
+            }
+            
+            .organizer-btn-small {
+                font-size: 0.7rem;
+                padding: 0.45rem 0.6rem;
+                min-height: 42px;
+                border-radius: 10px;
+            }
+            
+            .organizer-buttons-grid {
+                gap: 0.4rem;
+            }
+        }
+        
+        /* Medium screens (tablets) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .organizer-filter-container {
+                padding: 1.75rem 1.5rem;
+            }
+            
+            .organizer-btn-large {
+                font-size: 1.1rem;
+                padding: 0.9rem 2.25rem;
+            }
+            
+            .organizer-btn-small {
+                font-size: 0.85rem;
+                padding: 0.65rem 1.3rem;
+                min-width: 130px;
+                flex: 0 1 auto;
+            }
+            
+            .organizer-buttons-grid {
+                gap: 0.7rem;
+                justify-content: center;
+            }
+        }
+        
+        /* Large screens (desktop) */
+        @media (min-width: 1025px) {
+            .organizer-filter-container {
+                padding: 2rem;
+            }
+            
+            .organizer-btn-large {
+                font-size: 1.2rem;
+                padding: 1rem 2.5rem;
+            }
+            
+            .organizer-btn-small {
+                font-size: 0.9rem;
+                padding: 0.7rem 1.5rem;
+                min-width: 140px;
+                flex: 0 1 auto;
+            }
+            
+            .organizer-buttons-grid {
+                gap: 0.8rem;
+                justify-content: center;
+                max-width: 1000px;
+                margin: 0 auto;
+            }
+        }
+        
+        /* Extra large screens */
+        @media (min-width: 1200px) {
+            .organizer-filter-container {
+                padding: 2.5rem;
+                max-width: 1200px;
+                margin: 2rem auto 3rem auto;
+            }
+            
+            .organizer-btn-large {
+                font-size: 1.3rem;
+                padding: 1.1rem 3rem;
+            }
+            
+            .organizer-btn-small {
+                font-size: 0.95rem;
+                padding: 0.75rem 1.75rem;
+                min-width: 160px;
+            }
+            
+            .organizer-buttons-grid {
+                gap: 1rem;
+                max-width: 1100px;
             }
         }
     </style>
@@ -794,13 +1000,18 @@
 
     <div class="main-content">
         <div class="container">
-            <div class="unified-filters">
-                <!-- Organizer filters - now with multi-select capability -->
-                <div class="filter-section organizers-section">
-                    <h1 class="filter-heading text-center mb-4">Rhode Island Chess Tournaments & Events</h1>
-                    <div id="organizer-filters" class="organizer-filter-group">
-                        <!-- Populated by JavaScript -->
-                    </div>
+            <h1 class="text-center mb-4" style="color: var(--chess-gold); font-family: 'Cinzel', serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 2rem;">Rhode Island Chess Tournaments & Events</h1>
+            
+            <!-- Organizer Filter Bar -->
+            <div id="organizer-filter-container" class="organizer-filter-container">
+                <div class="filter-section">
+                    <button id="all-organizers-btn" class="organizer-btn organizer-btn-large active">
+                        <i class="fas fa-globe-americas"></i>
+                        All Organizers
+                    </button>
+                </div>
+                <div id="organizer-buttons-container" class="organizer-buttons-grid">
+                    <!-- Individual organizer buttons will be dynamically added here -->
                 </div>
             </div>
         </div>
@@ -849,6 +1060,290 @@
     <script src="../../js/components/modernJumpToTop.js"></script>
     
     <script>
+        /**
+         * Organizer Filter System
+         * Provides client-side filtering of events by organizer with multi-select capability
+         */
+        function initializeOrganizerFilter() {
+            let selectedOrganizers = new Set();
+            let allEvents = [];
+            let uniqueOrganizers = [];
+
+            // Load events data to extract organizers
+            loadEventsDataForFilter();
+
+            /**
+             * Loads events.json to extract unique organizers and initialize filter buttons
+             */
+            function loadEventsDataForFilter() {
+                const cacheBuster = `?cache=${Date.now()}`;
+                
+                fetch(`../../data/events.json${cacheBuster}`)
+                    .then(response => response.json())
+                    .then(events => {
+                        allEvents = events;
+                        
+                        // Extract unique organizers
+                        const organizerSet = new Set();
+                        events.forEach(event => {
+                            if (event.organizer && event.organizer.trim()) {
+                                organizerSet.add(event.organizer.trim());
+                            }
+                        });
+                        
+                        uniqueOrganizers = Array.from(organizerSet).sort();
+                        
+                        // Generate filter buttons
+                        generateOrganizerButtons();
+                        
+                        // Set up event listeners
+                        setupFilterEventListeners();
+                    })
+                    .catch(error => {
+                        console.error('Error loading events for filter:', error);
+                        // Hide filter container if we can't load data
+                        const filterContainer = document.getElementById('organizer-filter-container');
+                        if (filterContainer) {
+                            filterContainer.style.display = 'none';
+                        }
+                    });
+            }
+
+            /**
+             * Dynamically generates organizer filter buttons
+             */
+            function generateOrganizerButtons() {
+                const container = document.getElementById('organizer-buttons-container');
+                if (!container) return;
+
+                // Clear existing buttons
+                container.innerHTML = '';
+
+                // Create buttons for each unique organizer
+                uniqueOrganizers.forEach(organizer => {
+                    const button = document.createElement('button');
+                    button.className = 'organizer-btn organizer-btn-small';
+                    button.setAttribute('data-organizer', organizer);
+                    
+                    // Set both full name and abbreviated name
+                    const abbreviatedName = getAbbreviatedOrganizerName(organizer);
+                    button.setAttribute('data-full-name', organizer);
+                    button.setAttribute('data-abbreviated-name', abbreviatedName);
+                    
+                    // Set initial text based on current viewport
+                    button.textContent = shouldUseAbbreviation() ? abbreviatedName : organizer;
+                    
+                    // Add click event listener
+                    button.addEventListener('click', () => toggleOrganizerFilter(organizer, button));
+                    
+                    container.appendChild(button);
+                });
+
+                // Set up responsive text switching
+                setupResponsiveButtonText();
+            }
+
+            /**
+             * Returns abbreviated name for known organizers, otherwise returns original name
+             * @param {string} organizer - Full organizer name
+             * @returns {string} - Abbreviated name or original name
+             */
+            function getAbbreviatedOrganizerName(organizer) {
+                const abbreviations = {
+                    'Connecticut State Chess Association': 'CSCA',
+                    'Continental Chess Association': 'CCA',
+                    'Cranston Chess Club': 'Cranston',
+                    'Massachusetts Chess Association': 'MACA',
+                    'Ocean State Chess Association': 'OSCA',
+                    'Plainville Chess Club': 'Plainville',
+                    'Providence Chess Club': 'Providence',
+                    'Rhode Island Chess Club': 'RI Club',
+                    'United States Chess Federation': 'USCF'
+                };
+
+                return abbreviations[organizer] || organizer;
+            }
+
+            /**
+             * Determines if abbreviations should be used based on viewport width
+             * @returns {boolean} - True if viewport is mobile-sized
+             */
+            function shouldUseAbbreviation() {
+                return window.innerWidth <= 768;
+            }
+
+            /**
+             * Sets up responsive text switching for organizer buttons
+             */
+            function setupResponsiveButtonText() {
+                let resizeTimeout;
+                
+                function updateButtonText() {
+                    const useAbbreviation = shouldUseAbbreviation();
+                    const buttons = document.querySelectorAll('.organizer-btn-small');
+                    
+                    buttons.forEach(button => {
+                        const fullName = button.getAttribute('data-full-name');
+                        const abbreviatedName = button.getAttribute('data-abbreviated-name');
+                        
+                        if (fullName && abbreviatedName) {
+                            button.textContent = useAbbreviation ? abbreviatedName : fullName;
+                        }
+                    });
+                }
+
+                // Debounced resize handler to avoid excessive calls
+                function handleResize() {
+                    clearTimeout(resizeTimeout);
+                    resizeTimeout = setTimeout(updateButtonText, 150);
+                }
+
+                // Add resize listener
+                window.addEventListener('resize', handleResize);
+                
+                // Initial update
+                updateButtonText();
+            }
+
+            /**
+             * Sets up event listeners for filter functionality
+             */
+            function setupFilterEventListeners() {
+                // "All Organizers" button listener
+                const allOrganizersBtn = document.getElementById('all-organizers-btn');
+                if (allOrganizersBtn) {
+                    allOrganizersBtn.addEventListener('click', resetToAllOrganizers);
+                }
+            }
+
+            /**
+             * Toggles an individual organizer filter on/off
+             * @param {string} organizer - The organizer name to toggle
+             * @param {HTMLElement} button - The button element that was clicked
+             */
+            function toggleOrganizerFilter(organizer, button) {
+                // Toggle organizer in selected set
+                if (selectedOrganizers.has(organizer)) {
+                    selectedOrganizers.delete(organizer);
+                    button.classList.remove('active');
+                } else {
+                    selectedOrganizers.add(organizer);
+                    button.classList.add('active');
+                }
+
+                // Update "All Organizers" button state
+                const allOrganizersBtn = document.getElementById('all-organizers-btn');
+                if (selectedOrganizers.size === 0) {
+                    allOrganizersBtn.classList.add('active');
+                } else {
+                    allOrganizersBtn.classList.remove('active');
+                }
+
+                // Apply filter to visible events
+                applyOrganizerFilter();
+            }
+
+            /**
+             * Resets filter to show all organizers
+             */
+            function resetToAllOrganizers() {
+                // Clear all selected organizers
+                selectedOrganizers.clear();
+
+                // Update button states
+                const allOrganizersBtn = document.getElementById('all-organizers-btn');
+                allOrganizersBtn.classList.add('active');
+
+                // Remove active state from all organizer buttons
+                const organizerButtons = document.querySelectorAll('.organizer-btn-small');
+                organizerButtons.forEach(btn => btn.classList.remove('active'));
+
+                // Show all events
+                applyOrganizerFilter();
+            }
+
+            /**
+             * Applies the current organizer filter to visible events
+             * Uses OR logic - shows events matching ANY selected organizer
+             */
+            function applyOrganizerFilter() {
+                const eventCards = document.querySelectorAll('.event-item');
+                let visibleCount = 0;
+
+                eventCards.forEach(eventCard => {
+                    // Skip past events (they should remain hidden)
+                    if (eventCard.classList.contains('past-event')) {
+                        return;
+                    }
+
+                    let shouldShow = false;
+
+                    if (selectedOrganizers.size === 0) {
+                        // No organizers selected = show all events
+                        shouldShow = true;
+                    } else {
+                        // Check if event organizer matches any selected organizer
+                        const eventOrganizer = eventCard.getAttribute('data-organizer');
+                        if (eventOrganizer && selectedOrganizers.has(eventOrganizer)) {
+                            shouldShow = true;
+                        }
+                    }
+
+                    if (shouldShow) {
+                        eventCard.style.display = 'block';
+                        eventCard.style.animation = `fadeIn 0.3s ease-out forwards`;
+                        visibleCount++;
+                    } else {
+                        eventCard.style.display = 'none';
+                    }
+                });
+
+                // Update no events message
+                updateNoEventsMessage(visibleCount);
+            }
+
+            /**
+             * Updates the "no events" message based on filter results
+             * @param {number} visibleCount - Number of visible events after filtering
+             */
+            function updateNoEventsMessage(visibleCount) {
+                const noEventsMessage = document.getElementById('no-events-message');
+                if (!noEventsMessage) return;
+
+                if (visibleCount === 0) {
+                    // Customize message based on filter state
+                    if (selectedOrganizers.size > 0) {
+                        const organizerList = Array.from(selectedOrganizers).join(', ');
+                        noEventsMessage.innerHTML = `
+                            <h3><i class="fas fa-filter mb-3" style="font-size: 2.5rem;"></i></h3>
+                            <h3>No events found</h3>
+                            <p>No upcoming events found for: <strong>${organizerList}</strong></p>
+                            <p>Try selecting different organizers or click "All Organizers" to see all events.</p>
+                        `;
+                    } else {
+                        noEventsMessage.innerHTML = `
+                            <h3><i class="fas fa-calendar-times mb-3" style="font-size: 2.5rem;"></i></h3>
+                            <h3>No events found</h3>
+                            <p>Check back later for upcoming chess events in your area!</p>
+                        `;
+                    }
+                    noEventsMessage.style.display = 'block';
+                    noEventsMessage.style.animation = 'fadeIn 0.5s ease-out forwards';
+                } else {
+                    noEventsMessage.style.display = 'none';
+                }
+            }
+
+            /**
+             * Public method to refresh filter after events are loaded
+             * Called by events.js after events are rendered
+             */
+            window.refreshOrganizerFilter = function() {
+                // Apply current filter to newly loaded events
+                applyOrganizerFilter();
+            };
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize AOS (Animate On Scroll)
             AOS.init({
@@ -876,7 +1371,7 @@
             
             eventsLoaded.then(() => {
                 document.getElementById('loading-events').style.display = 'none';
-                // Filter to show only upcoming events (default display)
+                // Show only upcoming events by default
                 showUpcomingEvents();
             });
 
@@ -919,6 +1414,9 @@
                     noEventsMessage.style.display = 'none';
                 }
             }
+
+            // Initialize organizer filter functionality
+            initializeOrganizerFilter();
         });
     </script>
 

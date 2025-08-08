@@ -76,17 +76,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
 
-            // Extract all unique organizers for filtering
-            const organizers = [...new Set(visibleEvents
-                .filter(event => event.organizer)
-                .map(event => event.organizer))];
-            
-            // Sort organizers alphabetically
-            organizers.sort();
-            
-            // Create organizer filters
-            createOrganizerFilters(organizers);
-            
             // Sort and display events
             displayEvents(visibleEvents, currentDate);
         })
@@ -530,6 +519,11 @@ document.addEventListener("DOMContentLoaded", function() {
             const eventCard = createEventCard(event, currentDate);
             eventsContainer.appendChild(eventCard);
         });
+        
+        // Refresh organizer filter after events are loaded
+        if (typeof window.refreshOrganizerFilter === 'function') {
+            window.refreshOrganizerFilter();
+        }
     }
 
 // Define the badge system with proper ordering
@@ -671,6 +665,11 @@ function createEventCard(event, currentDate) {
     eventCard.className = `col-12 mb-4 event-item ${isPast ? 'past-event' : 'upcoming-event'}`;
     eventCard.setAttribute('data-aos', 'fade-up');
     eventCard.setAttribute('data-aos-delay', 100);
+    
+    // Add organizer data attribute for filtering
+    if (event.organizer) {
+        eventCard.setAttribute('data-organizer', event.organizer.trim());
+    }
     
     // Check if event has a promo code
     const hasPromo = event.promo_code ? true : false;
@@ -920,38 +919,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.head.appendChild(styleElement);
 });
 
-        // Helper function to trigger filtering
-        function triggerFilter(filter) {
-        const eventCards = document.querySelectorAll('.event-item');
-        let visibleCount = 0;
-        
-        eventCards.forEach(card => {
-            const isPast = card.classList.contains('past-event');
-            
-            if (filter === 'all' || 
-            (filter === 'upcoming' && !isPast) || 
-            (filter === 'past' && isPast)) {
-            card.style.display = 'block';
-            visibleCount++;
-            } else {
-            card.style.display = 'none';
-            }
-        });
-        
-        // Show/hide no events message
-        const noEventsMessage = document.getElementById('no-events-message');
-        if (noEventsMessage) {
-            if (visibleCount === 0) {
-            noEventsMessage.style.display = 'block';
-            } else {
-            noEventsMessage.style.display = 'none';
-            }
-        }
-        }
-        
-        // The triggerFilter and updateEventsForTheme functions are referenced elsewhere
-        // in the codebase, so we're keeping them for compatibility
-
         function parseDateNoOffset(dateString) {
         const [year, month, day] = dateString.split('-');
         // Set time to noon UTC to avoid timezone issues affecting the displayed day
@@ -963,257 +930,6 @@ document.addEventListener('DOMContentLoaded', function() {
         ));
         }
 
-    /**
-     * Creates filter buttons for each organizer
-     */
-    function createOrganizerFilters(organizers) {
-        const organizerContainer = document.getElementById('organizer-filters');
-        if (!organizerContainer) return;
-        
-        // Clear existing filters
-        organizerContainer.innerHTML = '';
-        
-        // Create a filter state object to manage the filter state separately from UI
-        window.filterState = {
-            timeFilter: 'upcoming', // Default to upcoming
-            organizerFilters: new Set(['all']), // Default to all organizers
-            
-            // Method to check if an event meets the filter criteria
-            meetsFilterCriteria: function(event) {
-                const isPast = event.classList.contains('past-event');
-                const organizerElement = event.querySelector('.card-title');
-                const organizer = organizerElement ? organizerElement.textContent.trim() : '';
-                
-                // Time filter check
-                const meetsTimeFilter = 
-                    (this.timeFilter === 'upcoming' && !isPast) || 
-                    (this.timeFilter === 'past' && isPast);
-                
-                // Organizer filter check
-                const meetsOrganizerFilter = 
-                    this.organizerFilters.has('all') || 
-                    this.organizerFilters.has(organizer);
-                
-                return meetsTimeFilter && meetsOrganizerFilter;
-            },
-            
-            // Method to update the UI based on current filter state
-            updateUI: function() {
-                // Update time filter buttons
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    const filterValue = btn.getAttribute('data-filter');
-                    btn.classList.toggle('active', filterValue === this.timeFilter);
-                });
-                
-                // Update organizer filter buttons
-                document.querySelectorAll('.organizer-btn').forEach(btn => {
-                    const organizerValue = btn.getAttribute('data-organizer');
-                    btn.classList.toggle('active', this.organizerFilters.has(organizerValue));
-                });
-                
-                // Apply the filters to the events
-                applyCurrentFilters();
-                
-                // Dispatch custom event for ad injector to detect
-                const filterEvent = new CustomEvent('filterStateChanged', {
-                    detail: {
-                        timeFilter: this.timeFilter,
-                        organizerFilters: Array.from(this.organizerFilters)
-                    }
-                });
-                document.dispatchEvent(filterEvent);
-            },
-            
-            // Method to set a time filter
-            setTimeFilter: function(filter) {
-                this.timeFilter = filter;
-                this.updateUI();
-            },
-            
-            // Method to toggle an organizer filter
-            toggleOrganizerFilter: function(organizer) {
-                if (organizer === 'all') {
-                    // When clicking "All", clear other selections
-                    this.organizerFilters.clear();
-                    this.organizerFilters.add('all');
-                } else {
-                    // When clicking a specific organizer
-                    if (this.organizerFilters.has(organizer)) {
-                        // If already selected, unselect it
-                        this.organizerFilters.delete(organizer);
-                        
-                        // If no organizers are left selected, reactivate "All"
-                        if (this.organizerFilters.size === 0 || 
-                            (this.organizerFilters.size === 1 && this.organizerFilters.has('all'))) {
-                            this.organizerFilters.clear();
-                            this.organizerFilters.add('all');
-                        }
-                    } else {
-                        // If not selected, add it and remove "All" if present
-                        this.organizerFilters.add(organizer);
-                        this.organizerFilters.delete('all');
-                    }
-                }
-                
-                // Update the UI to reflect the new state
-                this.updateUI();
-            },
-            
-            // Reset all filters to default state
-            resetFilters: function() {
-                this.timeFilter = 'upcoming';
-                this.organizerFilters.clear();
-                this.organizerFilters.add('all');
-                this.updateUI();
-            }
-        };
-        
-        // Add "All Organizers" button
-        const allButton = document.createElement('button');
-        allButton.className = 'organizer-btn active';
-        allButton.setAttribute('data-organizer', 'all');
-        allButton.textContent = 'All Organizers';
-        organizerContainer.appendChild(allButton);
-        
-        // Add button for each organizer
-        organizers.forEach(organizer => {
-            const button = document.createElement('button');
-            button.className = 'organizer-btn';
-            button.setAttribute('data-organizer', organizer);
-            button.textContent = shortenOrganizerName(organizer);
-            organizerContainer.appendChild(button);
-        });
-        
-        // Add event listeners for time filter buttons using the state manager
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const filterValue = this.getAttribute('data-filter');
-                window.filterState.setTimeFilter(filterValue);
-            });
-        });
-        
-        // Add event listeners for organizer filter buttons using the state manager
-        document.querySelectorAll('.organizer-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const organizerValue = this.getAttribute('data-organizer');
-                window.filterState.toggleOrganizerFilter(organizerValue);
-            });
-        });
-        
-        // Initialize filters with default state
-        window.filterState.resetFilters();
-    }
-
-    /**
-     * Shortens long organizer names for better display in filter buttons
-     */
-    function shortenOrganizerName(name) {
-        if (name.includes('Association with OSCA')) {
-            return 'OSCA Affiliated';
-        } else if (name.includes('Ocean State Chess Association')) {
-            return 'OSCA';
-        } else if (name.includes('Connecticut State Chess Association')) {
-            return 'CSCA';
-        } else if (name.includes('Continental Chess Association')) {
-            return 'CCA';
-        } else if (name.includes('Plainville Chess Club')) {
-            return 'Plainville CC';
-        } else if (name.includes('Rhode Island Chess Club')) {
-            return 'Rhode Island CC';
-        } else if (name.includes('Massachusetts Chess Association')) {
-            return 'MACA';
-        } else if (name.includes('Cranston Chess Club')) {
-            return 'Cranston CC';
-        } else if (name.includes('United States Chess Federation')) {
-            return 'USCF';
-        } else if (name.includes('Providence Chess Club')) {
-            return 'Providence CC';
-        }
-        return name;
-    }
-    
-    /**
-     * Apply the current filters and update the event display
-     */
-    function applyCurrentFilters() {
-        if (!window.filterState) return;
-        
-        const events = document.querySelectorAll('.event-item');
-        let visibleCount = 0;
-        
-        console.log(`Applying filters - Time: ${window.filterState.timeFilter}, Organizers: ${Array.from(window.filterState.organizerFilters).join(', ')}`);
-        
-        // Collect events that meet filter criteria
-        const visibleUpcomingEvents = [];
-        const visiblePastEvents = [];
-        
-        events.forEach(event => {
-            // Skip ad items from the filtering logic
-            if (event.classList.contains('ad-item')) return;
-            
-            // Check if the event meets the current filter criteria
-            if (window.filterState.meetsFilterCriteria(event)) {
-                if (event.classList.contains('past-event')) {
-                    visiblePastEvents.push(event);
-                } else {
-                    visibleUpcomingEvents.push(event);
-                }
-                visibleCount++;
-            } else {
-                // Hide events that don't meet criteria
-                event.style.animation = 'fadeOut 0.2s ease-out forwards';
-                setTimeout(() => {
-                    event.style.display = 'none';
-                }, 200);
-            }
-        });
-        
-        // Sort upcoming events chronologically (earliest first)
-        visibleUpcomingEvents.sort((a, b) => {
-            const dateA = new Date(a.querySelector('.event-date').textContent);
-            const dateB = new Date(b.querySelector('.event-date').textContent);
-            return dateA - dateB;
-        });
-        
-        // Sort past events reverse chronologically (newest first)
-        visiblePastEvents.sort((a, b) => {
-            const dateA = new Date(a.querySelector('.event-date').textContent);
-            const dateB = new Date(b.querySelector('.event-date').textContent);
-            return dateB - dateA;
-        });
-        
-        // Display all visible events with proper animation
-        [...visibleUpcomingEvents, ...visiblePastEvents].forEach((event, index) => {
-            event.style.display = 'block';
-            event.style.animation = `fadeIn 0.3s ease-out ${index * 0.05}s forwards`;
-        });
-        
-        // Don't hide ads - they should always be visible
-        document.querySelectorAll('.event-item.ad-item').forEach(ad => {
-            ad.style.display = 'block';
-        });
-        
-        // Show/hide no events message
-        const noEventsMessage = document.getElementById('no-events-message');
-        if (noEventsMessage) {
-            if (visibleCount === 0) {
-                noEventsMessage.style.display = 'block';
-                noEventsMessage.style.animation = 'fadeIn 0.5s ease-out forwards';
-            } else {
-                noEventsMessage.style.display = 'none';
-            }
-        }
-        
-        console.log(`Filter applied - showing ${visibleCount} events`);
-        
-        // After filters are applied, notify the ad injector if available
-        setTimeout(() => {
-            if (window.adInjector && window.adInjector.refreshAds) {
-                window.adInjector.refreshAds();
-            }
-        }, 400);
-    }
-
     // Add global handler to fix link clicking issues
     document.body.addEventListener('click', function(e) {
         if (e.target.tagName === 'A' || e.target.closest('a')) {
@@ -1223,14 +939,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Run initial filtering when events are loaded
     setTimeout(() => {
-        // Check if events are loaded and apply initial filter
+        // Check if events are loaded and show only upcoming events
         if (document.querySelectorAll('.event-item').length > 0) {
-            applyMatrixFilters();
+            initializeEvents();
         }
     }, 1000); // Give time for events to load
-
-    // Initialize events to show only upcoming
-    initializeEvents();
 });
 
 // Add this function to automatically filter for upcoming events when the page loads
@@ -1244,10 +957,4 @@ function initializeEvents() {
             event.style.display = 'block';
         }
     });
-}
-
-// Override or modify existing filter function if it exists
-function filterEvents(filterType) {
-    // This function may no longer be needed or can be simplified if it exists
-    // ...existing code...
 }
