@@ -127,9 +127,10 @@
         
         @media (max-width: 480px) {
             .hero-section {
-                height: calc(100vh - var(--navbar-height-mobile));
-                height: calc(100dvh - var(--navbar-height-mobile)); /* Dynamic viewport height for better mobile support */
-                padding: 0 0.5rem 0; /* No longer needed since we're using calc for height */
+                height: auto;
+                min-height: calc(100vh - var(--navbar-height-mobile));
+                min-height: calc(100dvh - var(--navbar-height-mobile)); /* Dynamic viewport height for better mobile support */
+                padding: 1.5rem 0.5rem;
             }
             
             .hero-title {
@@ -141,6 +142,24 @@
             
             .hero-content {
                 padding: 1rem 0;
+            }
+            
+            .profile-card {
+                margin-bottom: 2rem;
+                padding: 1.5rem;
+            }
+            
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .hero-stats {
+                gap: 0.5rem;
+            }
+            
+            .stat-item {
+                min-width: 100px;
             }
         }
         
@@ -735,15 +754,27 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero-section {
-                height: calc(100vh - var(--navbar-height-mobile));
-                height: calc(100dvh - var(--navbar-height-mobile)); /* Dynamic viewport height for mobile browsers */
+                height: auto;
+                min-height: calc(100vh - var(--navbar-height-mobile));
+                min-height: calc(100dvh - var(--navbar-height-mobile)); /* Dynamic viewport height for mobile browsers */
                 background-attachment: scroll; /* Fixed background can cause issues on mobile */
-                padding: 0 1rem 0; /* No longer needed since we're using calc for height */
+                padding: 2rem 1rem;
             }
             
             .hero-content {
                 text-align: center;
                 padding: 2rem 0;
+            }
+            
+            /* Fix for profile card overlap */
+            .profile-card {
+                margin-bottom: 3rem;
+            }
+            
+            /* Ensure navbar is visible */
+            #navbar-placeholder {
+                z-index: 1050 !important;
+                position: relative;
             }
             
             .timeline::before {
@@ -763,6 +794,12 @@
             
             .hero-stats {
                 justify-content: center;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .stat-item {
+                min-width: 120px;
             }
             
             .cta-features {
@@ -776,6 +813,24 @@
             
             .philosophy-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            /* Mobile button adjustments */
+            .btn-chess {
+                display: block;
+                margin: 0.5rem auto;
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            /* Mobile hero section layout fix */
+            .hero-section .container .row {
+                align-items: stretch;
+            }
+            
+            .hero-section .col-lg-7,
+            .hero-section .col-lg-5 {
+                margin-bottom: 2rem;
             }
         }
         
