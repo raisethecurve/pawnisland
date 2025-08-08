@@ -36,6 +36,11 @@ body.index-page {
     padding-top: 0;
 }
 
+/* Special handling for about-me page with full viewport hero */
+body.about-me-page {
+    padding-top: 0;
+}
+
 .pi-body a:hover, 
 .pi-body button:hover {
   transition: 0.3s;

@@ -77,7 +77,7 @@
         
         /* Hero Section */
         .hero-section {
-            height: calc(100vh - var(--navbar-height-mobile));
+            height: 100vh;
             width: 100vw;
             position: relative;
             display: flex;
@@ -86,7 +86,7 @@
                         url('../../images/headers-pages/freeman-3.jpg') center/cover;
             overflow: hidden;
             margin: 0;
-            padding-top: 0; /* No longer needed since we're using calc for height */
+            padding-top: 0;
             padding-bottom: 0;
             padding-left: 0;
             padding-right: 0;
@@ -128,8 +128,8 @@
         @media (max-width: 480px) {
             .hero-section {
                 height: auto;
-                min-height: calc(100vh - var(--navbar-height-mobile));
-                min-height: calc(100dvh - var(--navbar-height-mobile)); /* Dynamic viewport height for better mobile support */
+                min-height: 100vh;
+                min-height: 100dvh; /* Dynamic viewport height for better mobile support */
                 padding: 1.5rem 0.5rem;
             }
             
@@ -166,8 +166,8 @@
         /* Tablet specific styles */
         @media (min-width: 769px) and (max-width: 1024px) {
             .hero-section {
-                height: calc(100vh - var(--navbar-height-tablet));
-                padding: 0 2rem 0; /* No longer needed since we're using calc for height */
+                height: 100vh;
+                padding: 0 2rem 0;
             }
             
             .hero-content {
@@ -178,9 +178,9 @@
         /* Desktop specific styles */
         @media (min-width: 1025px) {
             .hero-section {
-                height: calc(100vh - var(--navbar-height-desktop));
+                height: 100vh;
                 background-attachment: fixed;
-                padding-top: 0; /* No longer needed since we're using calc for height */
+                padding-top: 0;
             }
             
             .hero-content {
@@ -232,7 +232,7 @@
         .profile-image {
             width: 200px;
             height: 200px;
-            border-radius: 50%;
+            border-radius: 20px;
             overflow: hidden;
             margin: 0 auto 1.5rem;
             border: 4px solid var(--chess-gold);
@@ -755,8 +755,8 @@
         @media (max-width: 768px) {
             .hero-section {
                 height: auto;
-                min-height: calc(100vh - var(--navbar-height-mobile));
-                min-height: calc(100dvh - var(--navbar-height-mobile)); /* Dynamic viewport height for mobile browsers */
+                min-height: 100vh;
+                min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
                 background-attachment: scroll; /* Fixed background can cause issues on mobile */
                 padding: 2rem 1rem;
             }
@@ -769,12 +769,6 @@
             /* Fix for profile card overlap */
             .profile-card {
                 margin-bottom: 3rem;
-            }
-            
-            /* Ensure navbar is visible */
-            #navbar-placeholder {
-                z-index: 1050 !important;
-                position: relative;
             }
             
             .timeline::before {
@@ -887,10 +881,10 @@
         }
     </style>
 </head>
-<body>
+<body class="about-me-page">
     <!-- Navigation Placeholder -->
     <div id="navbar-placeholder"></div>
-
+    
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
@@ -914,9 +908,9 @@
                             </div>
                         </div>
                         <div style="margin-top: 2rem;">
-                            <a href="https://pawnisland.setmore.com/" target="_blank" class="btn-chess">
+                           <!--- <a href="https://pawnisland.setmore.com/" target="_blank" class="btn-chess">
                                 <i class="fas fa-calendar-alt"></i> Book a Session
-                            </a>
+                            </a> --->
                             <a href="#story" class="btn-chess btn-chess-secondary">
                                 <i class="fas fa-chevron-down"></i> Learn More
                             </a>
