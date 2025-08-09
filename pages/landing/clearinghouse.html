@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="../../css/buttons.css">
     <link rel="stylesheet" href="../../css/clearinghouse.css">
     <link rel="stylesheet" href="../../css/product-card.css">
+    <link rel="stylesheet" href="../../css/enhanced-ad-cards.css">
     <!-- Add modern jump-to-top component CSS -->
     <link rel="stylesheet" href="../../css/components/modernJumpToTop.css">
     
@@ -363,37 +364,111 @@
             }
         }
         
-        /* Event Cards - Compact Design with 1.2 Line Spacing */
+        /* Event Cards styled like index.html nav-card */
         .event-card {
-            line-height: 1.2;
+            line-height: 1.4;
+            background: linear-gradient(135deg, rgba(45, 45, 45, 0.9) 0%, rgba(26, 26, 26, 0.9) 100%);
+            border: 2px solid var(--chess-medium-gray);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            backdrop-filter: blur(10px);
+            color: var(--chess-white);
+        }
+
+        /* Sweep shine like nav-card */
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+            transition: left 0.5s;
+            pointer-events: none;
+        }
+
+        /* Radial pulse like nav-card */
+        .event-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: all 0.6s ease;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .event-card:hover::before {
+            left: 100%;
+        }
+
+        .event-card:hover::after {
+            width: 300px;
+            height: 300px;
+            animation: gentlePulse 3s ease-in-out infinite;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: var(--chess-gold);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.3);
         }
         
         .event-card .card-body {
-            padding: 1rem;
-            line-height: 1.2;
+            padding: 1.5rem 1.75rem;
+            line-height: 1.4;
+            position: relative;
+            z-index: 2;
         }
         
         .event-card .card-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            line-height: 1.2;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+            color: var(--chess-white);
+            font-family: 'Cinzel', serif;
         }
         
         .event-card .card-subtitle {
-            font-size: 0.9rem;
-            margin-bottom: 0.75rem;
-            line-height: 1.2;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
         }
         
         .event-card .card-text {
-            margin-bottom: 0.5rem;
-            line-height: 1.2;
-            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+            font-size: 0.95rem;
+            color: var(--chess-white);
+        }
+        
+        /* Ensure nested paragraphs inherit proper styling */
+        .event-card .card-text p {
+            color: var(--chess-white);
+            margin: 0;
+            line-height: inherit;
+            font-size: inherit;
         }
         
         .event-card .event-info {
-            line-height: 1.2;
+            line-height: 1.4;
+        }
+        
+        .event-card .event-info p {
+            color: var(--chess-white);
+            margin: 0;
+            line-height: inherit;
+            font-size: inherit;
         }
         
         /* Container styling for dark theme */
@@ -431,7 +506,12 @@
             color: var(--chess-gold);
         }
         
-        /* Loading indicator - dark theme */
+    /* Loading indicator - dark theme */
+        /* Gentle pulse animation reused from index */
+        @keyframes gentlePulse {
+            0%, 100% { opacity: 0.1; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.2; transform: translate(-50%, -50%) scale(1.1); }
+        }
         .loading-container {
             text-align: center;
             padding: 3rem 0;
@@ -451,179 +531,385 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* Tightened Event Cards - Modern Dark Theme */
+        /* Simplified Event Container - No Secondary Surface */
         .event-item {
-            background: linear-gradient(135deg, 
-                rgba(45, 45, 45, 0.95) 0%, 
-                rgba(26, 26, 26, 0.95) 100%
-            );
-            border: 1px solid rgba(255, 215, 0, 0.1);
-            border-radius: 16px;
-            padding: 1.5rem;
+            padding: 0;
             margin-bottom: 1.5rem;
-            box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: transparent;
+            border: none;
+            border-radius: 0;
             position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
+            transition: none;
+            box-shadow: none;
         }
         
-        .event-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--chess-gold), var(--chess-amber));
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        /* Remove secondary decorative effects */
+        .event-item::before,
+        .event-item::after {
+            display: none;
         }
         
         .event-item:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 215, 0, 0.3);
-            box-shadow: 
-                0 16px 48px rgba(0, 0, 0, 0.4),
-                0 0 30px rgba(255, 215, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform: none;
+            background: transparent;
+            border: none;
+            box-shadow: none;
         }
         
-        .event-item:hover::before {
-            opacity: 1;
-        }
+        /* Removed old animation keyframes - using simplified design */
         
-        /* Event Card Headers - Simplified */
+        /* Modern Typography and Visual Hierarchy */
         .event-item h3 {
             color: var(--chess-white);
             font-family: 'Cinzel', serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            line-height: 1.3;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--chess-white) 0%, var(--chess-gold) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+        
+        .event-item h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--chess-gold), var(--chess-amber));
+            border-radius: 2px;
+            transition: width 0.6s ease;
+        }
+        
+        .event-item:hover h3::after {
+            width: 120px;
         }
         
         .event-item h4 {
             color: var(--chess-gold);
-            font-size: 1rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
         }
         
-        /* Event Details - Condensed */
+        .event-item:hover h4 {
+            opacity: 1;
+        }
+        
+        /* Modern Grid Layout for Event Details */
         .event-details {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            transition: all 0.4s ease;
+        }
+        
+        .event-details:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 215, 0, 0.1);
         }
         
         .event-detail-item {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--chess-white);
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+            padding: 0.5rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .event-detail-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 215, 0, 0.1) 50%, 
+                transparent 100%);
+            transition: left 0.6s ease;
+        }
+        
+        .event-detail-item:hover::before {
+            left: 100%;
+        }
+        
+        .event-detail-item:hover {
+            background: rgba(255, 255, 255, 0.03);
+            transform: translateX(4px);
         }
         
         .event-detail-item i {
             color: var(--chess-gold);
-            width: 16px;
-            text-align: center;
-            font-size: 0.8rem;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 50%;
+            font-size: 0.85rem;
+            transition: all 0.4s ease;
         }
         
-        /* Event Description - Tightened */
+        .event-detail-item:hover i {
+            background: rgba(255, 215, 0, 0.2);
+            transform: scale(1.1);
+        }
+        
+        /* Enhanced Event Description */
         .event-description {
-            color: var(--chess-white);
-            font-size: 0.9rem;
-            line-height: 1.4;
-            margin-bottom: 1rem;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            line-clamp: 2;
-            -webkit-box-orient: vertical;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            padding: 1.25rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            border-left: 4px solid var(--chess-gold);
+            position: relative;
             overflow: hidden;
         }
         
-        /* Event Actions - Minimized */
+        .event-description::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(255, 215, 0, 0.02) 0%, 
+                transparent 50%, 
+                rgba(44, 90, 160, 0.02) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .event-item:hover .event-description::before {
+            opacity: 1;
+        }
+        
+        /* Modern Action Buttons Layout */
         .event-actions {
             display: flex;
-            gap: 0.75rem;
+            gap: 1rem;
             align-items: center;
             flex-wrap: wrap;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
         
         .event-btn {
-            background: linear-gradient(135deg, var(--chess-gold), var(--chess-amber));
+            background: linear-gradient(135deg, var(--chess-gold) 0%, var(--chess-amber) 100%);
             color: var(--chess-black);
             border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.85rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            min-width: 120px;
+            justify-content: center;
+            font-family: 'Raleway', sans-serif;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        .event-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.3) 50%, 
+                transparent 100%);
+            transition: left 0.6s ease;
+        }
+        
+        .event-btn:hover::before {
+            left: 100%;
         }
         
         .event-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 32px rgba(255, 215, 0, 0.3);
             color: var(--chess-black);
             text-decoration: none;
+            background: linear-gradient(135deg, var(--chess-amber) 0%, var(--chess-gold) 100%);
+        }
+        
+        .event-btn:active {
+            transform: translateY(-1px) scale(1.02);
         }
         
         .event-btn i {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
         }
         
-        /* Event Status Badges - Compact */
+        .event-btn:hover i {
+            transform: scale(1.1);
+        }
+        
+        /* Modern Status Badges with Glass Effect */
         .event-status {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
-            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .event-status::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.1) 50%, 
+                transparent 100%);
+            transition: left 0.8s ease;
+        }
+        
+        .event-status:hover::before {
+            left: 100%;
         }
         
         .event-status.upcoming {
-            background: rgba(255, 215, 0, 0.2);
+            background: rgba(255, 215, 0, 0.15);
             color: var(--chess-gold);
-            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-color: rgba(255, 215, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.1);
+        }
+        
+        .event-status.upcoming:hover {
+            background: rgba(255, 215, 0, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.2);
         }
         
         .event-status.past {
-            background: rgba(102, 102, 102, 0.2);
-            color: var(--chess-white);
-            border: 1px solid rgba(102, 102, 102, 0.3);
+            background: rgba(128, 128, 128, 0.15);
+            color: rgba(255, 255, 255, 0.7);
+            border-color: rgba(128, 128, 128, 0.3);
+            box-shadow: 0 4px 12px rgba(128, 128, 128, 0.1);
         }
         
-        /* Responsive adjustments for event cards */
+        .event-status.past:hover {
+            background: rgba(128, 128, 128, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(128, 128, 128, 0.15);
+        }
+        
+        /* Enhanced Responsive Design for Modern Cards */
         @media (max-width: 768px) {
             .event-item {
-                padding: 1.25rem;
                 margin-bottom: 1.25rem;
+            }
+            
+            .event-card .card-body {
+                padding: 1.25rem 1.5rem;
+            }
+            
+            .event-item h3 {
+                font-size: 1.5rem;
+                margin-bottom: 0.75rem;
             }
             
             .event-details {
                 grid-template-columns: 1fr;
-                gap: 0.75rem;
+                gap: 1rem;
+                padding: 1.25rem;
             }
             
             .event-actions {
                 flex-direction: column;
                 align-items: stretch;
+                gap: 0.75rem;
             }
             
             .event-btn {
                 justify-content: center;
+                min-width: auto;
+                width: 100%;
+            }
+            
+            .event-description {
+                padding: 1rem;
+                font-size: 0.95rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .event-item {
+                margin-bottom: 1rem;
+            }
+            
+            .event-card .card-body {
+                padding: 1rem 1.25rem;
+            }
+            
+            .event-item h3 {
+                font-size: 1.3rem;
+            }
+            
+            .event-item h4 {
+                font-size: 1rem;
+            }
+            
+            .event-details {
+                padding: 1rem;
+                gap: 0.75rem;
+            }
+            
+            .event-detail-item {
+                font-size: 0.9rem;
+                padding: 0.4rem;
+            }
+            
+            .event-btn {
+                padding: 0.65rem 1.25rem;
+                font-size: 0.85rem;
             }
         }
         
@@ -1000,7 +1286,7 @@
 
     <div class="main-content">
         <div class="container">
-            <h1 class="text-center mb-4" style="color: var(--chess-gold); font-family: 'Cinzel', serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 2rem;">Rhode Island Chess Tournaments & Events</h1>
+            <h1 class="text-center mb-4" style="color: var(--chess-gold); font-family: 'Cinzel', serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 2rem;">Chess Clubs, Tournaments & Special Events</h1>
             
             <!-- Organizer Filter Bar -->
             <div id="organizer-filter-container" class="organizer-filter-container">
@@ -1054,8 +1340,6 @@
     <!-- Navbar Script -->
     <script src="../../js/navbar-chess.js"></script>
     
-    <!-- Shopify Configuration -->
-    <script src="../../js/shopify-config.js"></script>
     <!-- Add modern jump-to-top component -->
     <script src="../../js/components/modernJumpToTop.js"></script>
     
@@ -1509,7 +1793,7 @@
     <script src="../../js/footer.js"></script>
     <script src="../../js/script.js"></script>
     <script src="../../js/events.js"></script>
-    <script src="../../js/ad-injector.js"></script>
-    <script src="../../js/theme-manager.js"></script>
+    <script src="../../js/shopify-config.js"></script>
+    <script src="../../js/enhanced-ad-injector.js"></script>
 </body>
 </html>

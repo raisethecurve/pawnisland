@@ -185,8 +185,18 @@ html, body {
     box-sizing: border-box;
 }
 
+/* Uniform spacing between all cards using row gap */
+#events-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 1.5rem; /* equals Bootstrap mb-4 */
+}
+
+/* Neutralize any per-card bottom margins to rely on container gap */
+.event-item { margin-bottom: 0 !important; }
+
 .event-card:hover {
-    transform: translateY(-8px);
+    transform: none; /* keep vertical spacing uniform */
     box-shadow: 0 15px 30px rgba(0,0,0,0.15);
 }
 

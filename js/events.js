@@ -669,7 +669,7 @@ function createEventCard(event, currentDate, cardIndex = 0) {
     const formattedDateWithSuffix = `${eventDate.toLocaleString('en-US', { month: 'long' })} ${day}${ordinalSuffix(day)}, ${eventDate.getUTCFullYear()}`;
     
     const eventCard = document.createElement('div');
-    eventCard.className = `col-12 mb-4 event-item ${isPast ? 'past-event' : 'upcoming-event'}`;
+    eventCard.className = `col-12 event-item ${isPast ? 'past-event' : 'upcoming-event'}`;
     
     // Improved AOS setup with progressive delays
     eventCard.setAttribute('data-aos', 'fade-up');

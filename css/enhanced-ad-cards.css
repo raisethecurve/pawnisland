@@ -1,0 +1,657 @@
+/**
+ * Ultra-Modern Unified Ad Card System
+ * Matches event card design with shorter, cleaner layout
+ * 
+ * @author Pawn Island Academy
+ * @version 4.0.0
+ */
+
+/* Unified Ad Card Base - Matches Event Cards */
+.shop-product-card {
+    transition: box-shadow 0.3s ease !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    border: none !important;
+    max-width: 800px !important; /* match event card max width */
+    margin: 0 auto !important; /* center like event cards */
+    background: #fff !important;
+    color: #212529 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important;
+}
+
+/* Premium-inspired angled background overlay */
+.shop-product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(221, 54, 73, 0.05) 0%, rgba(221, 54, 73, 0.15) 100%);
+    clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Subtle animated background texture (chess-inspired crosshatch) */
+.shop-product-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(221, 54, 73, 0.03) 100%),
+        repeating-linear-gradient(45deg, rgba(0,0,0,0.015) 0px, rgba(0,0,0,0.015) 1px, transparent 1px, transparent 10px),
+        repeating-linear-gradient(-45deg, rgba(0,0,0,0.01) 0px, rgba(0,0,0,0.01) 1px, transparent 1px, transparent 10px);
+    opacity: 0.6;
+    z-index: 0;
+    pointer-events: none;
+    animation: bgDrift 60s linear infinite;
+}
+
+.shop-product-card:hover { transform: none !important; box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important; }
+.shop-product-card:hover::before { left: 100%; }
+
+/* Simplified animations removed - using unified design system */
+
+/* Modern Product Badge with Glass Effect */
+.product-badge { display: none !important; }
+
+/* Compact Product Image Container */
+.shop-product-card .event-img-container {
+    position: relative;
+    height: 240px; /* shorter visual */
+    overflow: hidden;
+    max-width: 100%;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.shop-product-card .product-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* show full product */
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    background: transparent;
+    padding: 0.25rem;
+}
+
+.shop-product-card:hover .product-image { transform: scale(1.04); opacity: 0.95; }
+
+/* Spacing is controlled by #events-container row-gap; neutralize per-card margin */
+.event-item { margin-bottom: 0 !important; }
+
+/* Hard-center promo ads like event cards, regardless of inner width quirks */
+.event-item.promo-item { display: flex; justify-content: center; }
+.event-item.promo-item > .shop-product-card { max-width: 800px; width: 100%; }
+
+/* Horizontal layout variant: image left, details right */
+.shop-product-card.horizontal { 
+    height: 100%;
+}
+.shop-product-card.horizontal .row.no-gutters { height: 100%; position: relative; z-index: 1; }
+
+/* Image column with elegant divider */
+.shop-product-card.horizontal .image-col { 
+    display: flex; 
+    align-items: stretch; 
+    position: relative;
+    margin-bottom: 0.75rem;
+}
+
+/* Add elegant dividing line between image and content */
+.shop-product-card.horizontal .image-col::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: 0;
+    width: 1px;
+    height: 80%;
+    background: linear-gradient(to bottom, 
+        transparent 0%, 
+        rgba(221, 54, 73, 0.2) 20%, 
+        rgba(221, 54, 73, 0.4) 50%, 
+        rgba(221, 54, 73, 0.2) 80%, 
+        transparent 100%);
+    z-index: 2;
+}
+
+.shop-product-card.horizontal .event-img-container { 
+    width: 100%; 
+    padding: 0.75rem; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    height: 260px;
+}
+
+.shop-product-card.horizontal .product-image { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; 
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-origin: center;
+}
+
+/* Clickable price CTA styling */
+.product-price-cta {
+    display: inline-block;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #fff;
+    font-family: 'Cinzel', serif;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    background: #dd3649;
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 3px 10px rgba(221,54,73,0.25);
+    position: relative;
+    overflow: hidden;
+}
+.product-price-cta::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -120%;
+    width: 120%; height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.25) 50%, transparent 100%);
+    transition: left 0.6s ease;
+    will-change: left;
+    animation: ctaShine 5s linear infinite; /* periodic subtle shine */
+}
+
+.product-price-cta:hover {
+    color: #fff;
+    transform: translateY(-1px);
+    text-decoration: none !important;
+}
+.product-price-cta:hover::before { left: 100%; }
+
+.product-price-cta i {
+    font-size: 0.8em;
+    opacity: 0.8;
+}
+
+/* Adjust card body for elegant spacing and content alignment */
+.shop-product-card.horizontal .product-card-body {
+    padding: 1.25rem 1.5rem !important;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+/* Add subtle background texture to content area */
+.shop-product-card.horizontal .product-card-body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(221, 54, 73, 0.02) 0%, 
+        transparent 30%, 
+        rgba(221, 54, 73, 0.01) 100%);
+    opacity: 0.7;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Ensure content sits above background */
+.shop-product-card.horizontal .product-card-body > * {
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    /* Keep horizontal shape on mobile: two columns with proportional widths */
+    .shop-product-card.horizontal .row.no-gutters {
+        display: flex;
+        flex-wrap: nowrap; /* prevent stacking */
+    }
+    .shop-product-card.horizontal .image-col,
+    .shop-product-card.horizontal .col-md-5 { flex: 0 0 42%; max-width: 42%; }
+    .shop-product-card.horizontal .col-md-7 { flex: 0 0 58%; max-width: 58%; }
+    .shop-product-card.horizontal .image-col::after { display: none; }
+    .shop-product-card.horizontal .event-img-container { min-height: 160px; padding: 0.5rem; }
+    .shop-product-card.horizontal .row.no-gutters { min-height: 180px; }
+    .shop-product-card.horizontal .product-card-body { padding: 0.9rem 1rem !important; }
+    .product-price-cta { font-size: 1.05rem; }
+}
+
+/* Enhanced Product Overlay with Modern Design */
+.product-overlay { display: none !important; }
+
+.product-overlay-content {
+    text-align: center;
+    color: white;
+    transform: translateY(30px) scale(0.9);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.shop-product-card:hover .product-overlay-content {
+    transform: translateY(0) scale(1);
+}
+
+.product-overlay-content i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+    animation: pulseIcon 2s ease-in-out infinite;
+}
+
+@keyframes pulseIcon {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.product-overlay-content span {
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced Multiple Images Indicator */
+.image-indicator { display: none !important; }
+
+/* Compact Product Card Body */
+.product-card-body {
+    padding: 1.25rem 1.25rem !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 120px;
+    background: #fff;
+    position: relative;
+    border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.product-card-body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(0, 123, 255, 0.02) 0%, 
+        transparent 50%, 
+        rgba(255, 215, 0, 0.02) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.shop-product-card:hover .product-card-body::before { display: none; }
+
+/* Compact Product Title */
+.product-title {
+    font-family: 'Cinzel', serif !important;
+    font-size: 1.4rem !important;
+    font-weight: 700 !important;
+    color: #212529 !important;
+    margin-bottom: 1rem !important;
+    line-height: 1.3 !important;
+    letter-spacing: 0.8px !important;
+    position: relative !important;
+}
+
+.product-title::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--chess-gold), var(--chess-amber));
+    border-radius: 1px;
+    transition: width 0.5s ease;
+}
+
+.shop-product-card:hover .product-title::after {
+    width: 80px;
+}
+
+/* Compact Product Info Section */
+.product-info-section {
+    flex: 1;
+    margin-bottom: 0.75rem;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+}
+
+.product-info-section:hover { background: rgba(255, 255, 255, 0.06); border-color: rgba(255,255,255,0.15); }
+
+.product-description {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 1rem !important;
+    font-family: 'Raleway', sans-serif !important;
+    position: relative;
+}
+
+/* Compact Product Pricing */
+.product-pricing {
+    margin-bottom: 0.5rem;
+    padding: 0.6rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.08);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.product-pricing:hover { background: rgba(255,255,255,0.08); transform: translateY(-1px); }
+
+.product-price {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--chess-gold);
+    font-family: 'Cinzel', serif;
+    text-shadow: none;
+    position: relative;
+}
+
+.product-price::before {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--chess-gold), var(--chess-amber));
+    border-radius: 1px;
+}
+
+/* Compact Product Actions */
+.product-actions {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Streamlined CTA Button */
+.product-cta {
+    background: rgba(255,255,255,0.8) !important;
+    color: #111 !important;
+    border: none !important;
+    padding: 0.6rem 1.25rem !important;
+    border-radius: 24px !important;
+    font-family: 'Cinzel', serif !important;
+    font-weight: 700 !important;
+    font-size: 0.9rem !important;
+    letter-spacing: 0.6px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2) !important;
+}
+.product-cta:hover { transform: translateY(-2px) !important; box-shadow: 0 12px 26px rgba(0,0,0,0.25) !important; }
+.product-cta:focus { outline: 2px solid rgba(255,255,255,0.35) !important; outline-offset: 2px !important; }
+.product-cta .cta-text {
+    position: relative;
+    z-index: 3;
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.product-cta .cta-text i {
+    font-size: 0.9rem;
+    transition: transform 0.4s ease;
+}
+
+.product-cta:hover .cta-text i {
+    transform: scale(1.2);
+}
+
+/* Enhanced Mobile Responsive Design */
+@media (max-width: 768px) {
+    .shop-product-card .event-img-container {
+    height: 140px; /* keep promo card smaller on mobile */
+        border-radius: 0 0 16px 16px;
+    }
+
+    .product-card-body {
+        padding: 1.25rem 1.5rem !important;
+        min-height: 120px;
+    }
+
+    .product-title {
+        font-size: 1.2rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    .product-price {
+        font-size: 1.3rem;
+    }
+
+    .product-cta {
+        padding: 0.65rem 1.25rem !important;
+        font-size: 0.85rem !important;
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .product-info-section {
+        padding: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .product-pricing {
+        padding: 0.6rem;
+        margin-bottom: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Maintain side-by-side layout and gently reduce heights */
+    .shop-product-card.horizontal .row.no-gutters { min-height: 160px; }
+    .shop-product-card.horizontal .event-img-container { height: 150px; }
+    .shop-product-card.horizontal .image-col,
+    .shop-product-card.horizontal .col-md-5 { flex: 0 0 44%; max-width: 44%; }
+    .shop-product-card.horizontal .col-md-7 { flex: 0 0 56%; max-width: 56%; }
+    .product-title { font-size: 1.05rem !important; }
+    .product-price-cta { padding: 0.45rem 0.9rem; font-size: 0.95rem; }
+}
+
+/* Enhanced Tablet Responsive Design */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .shop-product-card { margin: 0 auto !important; }
+    .shop-product-card .event-img-container { height: 260px; }
+
+    .product-card-body { padding: 1.5rem !important; }
+
+    .product-title { font-size: 1.4rem !important; }
+
+    .product-cta { padding: 0.8rem 1.6rem !important; }
+}
+
+/* Large Desktop Optimizations */
+@media (min-width: 1200px) {
+    .shop-product-card { margin: 0 auto !important; }
+    .shop-product-card .event-img-container { height: 260px; }
+    .product-card-body { padding: 1.25rem !important; min-height: 140px; }
+    .product-title { font-size: 1.6rem !important; }
+}
+
+/* Advanced Animation Enhancements */
+@keyframes productCardReveal {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Background drift for subtle pattern movement */
+@keyframes bgDrift {
+    0% { transform: translate3d(0,0,0); }
+    100% { transform: translate3d(40px, 40px, 0); }
+}
+
+/* Periodic CTA shine sweep */
+@keyframes ctaShine {
+    0% { left: -120%; }
+    20% { left: 100%; }
+    100% { left: 100%; }
+}
+
+.ad-product-card {
+    animation: productCardReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Elegant click animation effects for image swapping */
+.product-image.clicking {
+    animation: imageClickPulse 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.product-image.swapping-out {
+    animation: swapOut 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.product-image.swapping-in {
+    animation: swapIn 0.45s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes imageClickPulse {
+    0% { transform: scale(1) rotate(0deg); }
+    30% { transform: scale(1.05) rotate(1deg); }
+    60% { transform: scale(0.98) rotate(-0.5deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes swapOut {
+    0% { 
+        transform: scale(1) translateX(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% { 
+        transform: scale(0.85) translateX(-20px) rotate(-5deg);
+        opacity: 0;
+    }
+}
+
+@keyframes swapIn {
+    0% { 
+        transform: scale(0.85) translateX(20px) rotate(5deg);
+        opacity: 0;
+    }
+    100% { 
+        transform: scale(1) translateX(0) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+/* Superior Accessibility Improvements */
+.product-cta:focus-visible {
+    outline: 3px solid #007bff;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px rgba(0, 123, 255, 0.15);
+}
+
+/* Advanced Dark Theme Support: keep promo card white to match event cards */
+@media (prefers-color-scheme: dark) {
+    .shop-product-card { background: #fff !important; color: #212529 !important; border-color: transparent !important; }
+    .product-title { color: #212529 !important; }
+    .product-description { color: #495057 !important; }
+}
+
+/* Gentle pulse animation to mirror index */
+@keyframes gentlePulse {
+    0%, 100% { opacity: 0.1; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.2; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* High DPI Display Optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .product-badge {
+        backdrop-filter: blur(16px);
+    }
+
+    .product-overlay {
+        backdrop-filter: blur(12px);
+    }
+    
+    .ad-product-card {
+        backdrop-filter: blur(28px);
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .ad-product-card,
+    .product-image,
+    .product-cta,
+    .product-overlay,
+    .product-overlay-content,
+    .product-badge {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    .ad-product-card:hover {
+        transform: none !important;
+    }
+
+    .product-cta:hover {
+        transform: none !important;
+    }
+    
+    .ad-product-card::before,
+    .ad-product-card::after {
+        animation: none !important;
+    }
+}
+
+/* Enhanced Print Styles */
+@media print {
+    .ad-product-card {
+        box-shadow: none !important;
+        border: 2px solid #333 !important;
+        background: white !important;
+        backdrop-filter: none !important;
+    }
+
+    .product-overlay,
+    .ad-product-card::before,
+    .ad-product-card::after {
+        display: none !important;
+    }
+
+    .product-cta {
+        background: #007bff !important;
+        color: white !important;
+        backdrop-filter: none !important;
+    }
+    
+    .product-title {
+        color: #333 !important;
+        background: none !important;
+        -webkit-text-fill-color: #333 !important;
+    }
+}
+
+/* Width aligns with event cards via base max-width: 800px; no special desktop override */
