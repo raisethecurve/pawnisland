@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pawn Island Wallpaper</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        :root {
+            --chess-black: #1a1a1a;
+            --chess-dark-gray: #2d2d2d;
+            --chess-medium-gray: #404040;
+            --chess-gold: #ffd700;
+            --chess-amber: #ffed4a;
+            --chess-blue: #2c5aa0;
+            --chess-white: #ffffff;
+            --chess-shadow: rgba(0, 0, 0, 0.8);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--chess-white);
+            background: var(--chess-black);
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+            margin-top: 0;
+            padding-top: 0;
+        }
+        .hero-section {
+            height: 100vh;
+            width: 100vw;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            overflow: hidden;
+        }
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 80px,
+                    var(--chess-medium-gray) 80px,
+                    var(--chess-medium-gray) 81px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 80px,
+                    var(--chess-medium-gray) 80px,
+                    var(--chess-medium-gray) 81px
+                );
+            animation: chessPatternMove 20s linear infinite;
+        }
+        @keyframes chessPatternMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(80px, 80px); }
+        }
+        .chess-pieces {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .chess-piece {
+            position: absolute;
+            font-size: 3rem;
+            color: var(--chess-medium-gray);
+            opacity: 0.3;
+            animation: float 15s ease-in-out infinite;
+        }
+        .chess-piece:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .chess-piece:nth-child(2) { top: 20%; right: 15%; animation-delay: 3s; }
+        .chess-piece:nth-child(3) { bottom: 20%; left: 20%; animation-delay: 6s; }
+        .chess-piece:nth-child(4) { bottom: 10%; right: 10%; animation-delay: 9s; }
+        .chess-piece:nth-child(5) { top: 50%; left: 5%; animation-delay: 12s; }
+        .chess-piece:nth-child(6) { top: 60%; right: 5%; animation-delay: 15s; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 90vw;
+        }
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            filter: drop-shadow(0 0 20px var(--chess-gold));
+        }
+        @media (min-width: 1024px) {
+            .hero-logo {
+                width: 144px;
+                height: 144px;
+            }
+        }
+        .hero-logo img {
+            width: 100%;
+            height: 100%;
+            filter: invert(1) sepia(1) saturate(5) hue-rotate(45deg);
+        }
+        .spinning-logo {
+            animation: spinClockwise 8s linear infinite;
+        }
+        @keyframes spinClockwise {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--chess-white) 0%, var(--chess-gold) 50%, var(--chess-amber) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            font-weight: 300;
+            color: var(--chess-white);
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        @media (max-width: 768px) {
+            .hero-logo {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+
+<!-- If you are reading this, you are clever -->
+<!-- You can use this app: https://github.com/rocksdanister/lively -->
+<!-- ... to set this page as your windows background -->
+<!-- Thanks, Dani!! -->
+<body style="margin-top:0;padding-top:0;">
+    <section class="hero-section" id="hero">
+        <div class="hero-background"></div>
+        <div class="chess-pieces">
+            <div class="chess-piece">♜</div>
+            <div class="chess-piece">♞</div>
+            <div class="chess-piece">♝</div>
+            <div class="chess-piece">♛</div>
+            <div class="chess-piece">♚</div>
+            <div class="chess-piece">♟</div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-logo">
+                <img src="../../images/brand-icons/pawn_island_vectorized.svg" alt="Pawn Island Academy Logo" class="spinning-logo">
+            </div>
+            <h1 class="hero-title">Pawn Island Academy</h1>
+            <p class="hero-subtitle">Move With Purpose</p>
+        </div>
+    </section>
+</body>
+</html>
