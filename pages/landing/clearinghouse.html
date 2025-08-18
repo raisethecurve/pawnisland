@@ -211,7 +211,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('../../images/headers-pages/heart-background.jpg') repeat;
             opacity: 0.1;
             z-index: 0;
         }
@@ -1262,23 +1261,26 @@
 
     <!-- Enhanced Fight With Madi Promotional Link -->
     <div class="container mt-4 mb-4">
-        <div class="fight-madi-promo">
-            <div class="row align-items-center">
-                <div class="col-md-2 text-center">
-                    <div class="heart-container">
-                        <div class="heart-bg"></div>
-                        <i class="fas fa-heart pulse-heart"></i>
+        <div class="fight-madi-promo" style="max-width:765px; aspect-ratio:2/1; min-height:384px; margin:0 auto; width:100%; height:384px; position:relative; overflow:hidden; border-radius:20px;">
+            <div class="row align-items-center" style="background: url('../../images/doug/hero-banner.jpg') center/cover no-repeat; background-blend-mode: lighten; border-radius: 20px; position: absolute; left:-1px; top:-1px; width: calc(100% + 2px); height: calc(100% + 2px); aspect-ratio: 2 / 1; margin: 0; pointer-events:none; z-index:0; overflow:hidden;">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 20px; pointer-events: none; z-index: 1; background: linear-gradient(135deg, rgba(26,26,26,0.85) 0%, rgba(45,45,45,0.7) 100%);"></div>
+                <div style="position: relative; z-index: 2; width: 100%; display: flex; flex-wrap: wrap;">
+                    <div class="col-md-2 text-center">
+                        <div class="heart-container">
+                            <div class="heart-bg"></div>
+                            <i class="fas fa-ribbon pulse-heart" style="color:#e75480;font-size:3.8rem;"></i>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-7">
-                    <div class="success-badge"><i class="fas fa-check mr-1"></i>Fundraiser Complete</div>
-                    <h4>Fight With Madi Charity Tournament</h4>
-                    <p>View the amazing results of our charity tournament that raised over <strong>$4,166</strong> for Madison's battle against cancer. Thanks to all participants and donors!</p>
-                </div>
-                <div class="col-md-3 text-center">
-                    <a href="../../pages/landing/fight-with-madi.html" class="btn btn-madi">
-                        <i class="fas fa-trophy"></i>See Tournament Results
-                    </a>
+                    <div class="col-md-7">
+                        <div class="success-badge" style="background-color:#e75480;color:#fff;"><i class="fas fa-hands-helping mr-1"></i>Support Doug</div>
+                        <h4>Moves That Matter Chess Benefit</h4>
+                        <p>Join us in supporting Doug's fight against cancer. Participate in our charity chess tournament or donate to help Doug and his family during this critical time.</p>
+                    </div>
+                    <div class="col-md-3 text-center">
+                        <a href="../../pages/landing/moves-that-matter.html" class="btn btn-madi" style="background:linear-gradient(135deg,#e75480,#ffd700);color:#fff;z-index:100;position:relative;pointer-events:auto;">
+                            This Saturday 8/23 2PM EST
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
