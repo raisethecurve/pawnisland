@@ -545,6 +545,7 @@ const BADGE_DEFINITIONS = [
     { id: 'adults-only', label: 'Adults Only', icon: 'fa-users', class: 'badge-danger' },
     { id: 'broadcast', label: 'Broadcast', icon: 'fa-video', class: 'badge-info' },
     { id: 'fundraiser', label: 'Fundraiser', icon: 'fa-hand-holding-heart', class: 'badge-warning' },
+    { id: 'speed', label: 'Speed Chess', icon: 'fa-bolt', class: 'badge-danger' }, // New speed badge for blitz/rapid
     { id: 'online', label: 'Online', icon: 'fa-laptop', class: 'badge-secondary' },
     { id: 'gprix', label: 'Grand Prix', icon: 'fa-coins', class: 'badge-warning' }, // badge indicates grand prix points
     { id: 'regional', label: 'Regional', icon: 'fa-map-marker-alt', class: 'badge-secondary' },

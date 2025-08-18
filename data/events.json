@@ -1554,5 +1554,27 @@
     "prizes": "Open: $1,000-600-400, plus $250 to Top U2300. U2100: $700-400-300, plus $200 to Top U1800. U1700: $500-300-200, plus $150 to Top U1400. U1200: Trophies to Top 3; Top U900. U700: Trophies to Top 3; Top U400. NER: Trophies to Top 3. Trophies to Open/U2100/U1700 winners. Trophies for all who score ≥ 3.0; medals for others in lower sections. Cash prizes via PayPal.",
     "ages": "All ages",
     "tags": ["regional", "gprix"]
-    }
+    },
+    {
+    "name": "Moves That Matter: A Benefit Arena for Doug",
+    "startdate": "2025-08-23",
+    "days": "1",
+    "image": "../../images/doug/banner.jpg",
+    "organizer": "Ocean State Chess Association",
+    "location": "Lichess.org (Online)",
+    "format": "Lichess Arena, 2-hour duration",
+    "time_control": "G/3+1",
+    "round_times": "1:00 PM EST",
+    "entry_fee": "Suggested GoFundMe donation",
+    "ages": "All ages",
+    "notes": "<p>Any help given will go towards helping the family regain financial stability during these difficult times and alleviate that added stress so that they can continue to care for Doug and spend what precious time they have left with him.</p><p>Thank you so much for your consideration in helping raise money for Doug’s family. This not only helps them but helps Doug continue to have family around him throughout this.</p>",
+    "link": "https://gofund.me/e4a4bc7f",
+    "registration_link": "https://lichess.org/tournament/SyynOXsj",
+    "tags": [
+        "fundraiser",
+        "online",
+        "speed",
+        "free-entry"
+    ]
+}
 ]
