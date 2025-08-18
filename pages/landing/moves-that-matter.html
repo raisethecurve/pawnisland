@@ -501,6 +501,59 @@ img {
             <a href="https://gofund.me/48293bed" class="btn-chess" target="_blank">
                 Visit Doug's GoFundMe
             </a>
+            <!-- Animated Downward Chevron -->
+            <div class="chevron-down-wrapper mt-4">
+                <button class="chevron-down-btn" aria-label="Scroll Down" onclick="scrollToNextSection()">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                        <defs>
+                            <linearGradient id="chevronGradient" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#ffb7d5"/>
+                                <stop offset="0.5" stop-color="#e75480"/>
+                                <stop offset="1" stop-color="#d9534f"/>
+                            </linearGradient>
+                        </defs>
+                        <polyline points="12,20 24,32 36,20" stroke="url(#chevronGradient)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    </svg>
+                </button>
+            </div>
+            <style>
+                .chevron-down-wrapper {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                }
+                .chevron-down-btn {
+                    background: none;
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+                    animation: chevronBounce 1.5s infinite;
+                    padding: 0;
+                    margin-top: 1.2rem;
+                    transition: transform 0.2s;
+                }
+                .chevron-down-btn:active {
+                    transform: scale(0.95);
+                }
+                @keyframes chevronBounce {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(12px); }
+                }
+                .chevron-down-btn svg {
+                    display: block;
+                    filter: drop-shadow(0 2px 8px rgba(231,84,128,0.18));
+                }
+            </style>
+            <script>
+                function scrollToNextSection() {
+                    // Find the first main section after hero
+                    var nextSection = document.querySelector('main');
+                    if (nextSection) {
+                        nextSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            </script>
         </div>
     </section>
     <!-- Donate button now inside hero card -->
