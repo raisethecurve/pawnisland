@@ -18,7 +18,8 @@ for (const file of htmlFiles) {
 }
 
 validateSitemap();
-validateJsonFiles(['data/scheduler-config.json', 'data/testimonials.json', 'site-facts.json', 'site.webmanifest']);
+validateJsonFiles(['data/scheduler-config.json', 'data/testimonials.json', 'data/image-sources.json', 'site-facts.json', 'site.webmanifest']);
+validateImageSources();
 
 if (errors.length) {
   console.error(errors.map((error) => `- ${error}`).join('\n'));
@@ -88,6 +89,41 @@ function validateJsonFiles(files) {
       errors.push(`${file}: invalid JSON (${error.message})`);
     }
   }
+}
+
+function validateImageSources() {
+  const sources = JSON.parse(read('data/image-sources.json'));
+  for (const [file, metadata] of Object.entries(sources)) {
+    if (!fs.existsSync(path.join(root, file))) errors.push(`${file}: image source metadata points to a missing asset`);
+    if (!metadata.sourceUrl?.startsWith('https://')) errors.push(`${file}: image source metadata needs an HTTPS sourceUrl`);
+
+    const counts = countFenPieces(metadata.fen || '');
+    if (counts.K !== 1 || counts.k !== 1) errors.push(`${file}: FEN must contain exactly one king per side`);
+    if ((counts.R || 0) > 2) errors.push(`${file}: FEN has too many white rooks`);
+    if ((counts.r || 0) > 2) errors.push(`${file}: FEN has too many black rooks`);
+  }
+}
+
+function countFenPieces(fen) {
+  const placement = fen.split(/\s+/)[0] || '';
+  const counts = {};
+  const ranks = placement.split('/');
+  if (ranks.length !== 8) return counts;
+
+  for (const rank of ranks) {
+    let files = 0;
+    for (const character of rank) {
+      if (/\d/.test(character)) {
+        files += Number(character);
+        continue;
+      }
+      if (!/[kqrbnpKQRBNP]/.test(character)) return {};
+      counts[character] = (counts[character] || 0) + 1;
+      files += 1;
+    }
+    if (files !== 8) return {};
+  }
+  return counts;
 }
 
 function getMeta(html, name) {
