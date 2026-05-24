@@ -1,0 +1,57 @@
+name: Submit changed URLs to IndexNow
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "**/*.html"
+      - "sitemap.xml"
+      - "robots.txt"
+      - "llms.txt"
+      - "llms-full.txt"
+      - "site-facts.json"
+      - "site.webmanifest"
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Submit sitemap URLs
+        env:
+          INDEXNOW_KEY: 43d5281c79e06abf
+          HOST: www.pawnislandacademy.com
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.request
+          import xml.etree.ElementTree as ET
+
+          ns = {'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+          urls = [
+              loc.text
+              for loc in ET.parse('sitemap.xml').findall('.//sm:loc', ns)
+              if loc.text
+          ]
+          body = json.dumps({
+              "host": os.environ["HOST"],
+              "key": os.environ["INDEXNOW_KEY"],
+              "keyLocation": f"https://{os.environ['HOST']}/{os.environ['INDEXNOW_KEY']}.txt",
+              "urlList": urls,
+          }).encode()
+          request = urllib.request.Request(
+              "https://api.indexnow.org/IndexNow",
+              data=body,
+              headers={"Content-Type": "application/json; charset=utf-8"},
+              method="POST",
+          )
+          try:
+              with urllib.request.urlopen(request, timeout=20) as response:
+                  print(response.status, response.reason)
+          except Exception as error:
+              print(f"IndexNow submission failed: {error}")
+              raise
+          PY

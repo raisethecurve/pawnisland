@@ -16,6 +16,9 @@ Pawn Island Academy offers personalized chess coaching in Rhode Island.
 - **Pawn Island Scheduler:** Branded booking flow with a secure Google Calendar backend scaffold
 - **About Me:** Information about the coach and teaching philosophy
 - **Testimonials:** Student and parent feedback loaded into the coaching page
+- **SEO Landing Pages:** Dedicated local, online, scholastic, and adult coaching pages
+- **LLM Discovery:** `llms.txt`, `llms-full.txt`, and public `site-facts.json` summarize the business for AI systems
+- **IndexNow:** GitHub Actions submits sitemap URLs to Bing/IndexNow after content pushes
 
 ## Project Structure
 ```
@@ -24,6 +27,7 @@ pawnisland/
 │   ├── footer.css
 │   ├── home.css
 │   ├── navbar-chess.css
+│   ├── seo-pages.css
 │   ├── scheduler.css
 │   ├── components/
 │   │   └── modernJumpToTop.css
@@ -40,8 +44,13 @@ pawnisland/
 ├── pages/
 │   ├── landing/
 │   │   ├── about-me.html
+│   │   ├── adult-chess-lessons.html
 │   │   ├── coaching.html
-│   │   └── schedule.html
+│   │   ├── online-chess-coaching.html
+│   │   ├── providence-chess-lessons.html
+│   │   ├── rhode-island-chess-lessons.html
+│   │   ├── schedule.html
+│   │   └── scholastic-chess-coaching.html
 │   └── partials/
 │       ├── footer.html
 │       └── navbar.html
@@ -51,9 +60,13 @@ pawnisland/
 │   ├── headers-pages/
 │   └── testimonials/
 ├── index.html
+├── llms.txt
+├── llms-full.txt
 ├── LICENSE
 ├── README.md
 ├── robots.txt
+├── site-facts.json
+├── site.webmanifest
 ├── sitemap.xml
 └── workers/
     └── scheduler/
@@ -78,8 +91,10 @@ pawnisland/
    - Open `index.html` in your preferred web browser
 
 ## Usage
-- **Chess Coaching:** Visit the [Chess Coaching](https://pawnislandacademy.com/pages/landing/coaching.html) page
-- **Scheduling:** Book lessons through the Pawn Island Scheduler at [Schedule a Lesson](https://pawnislandacademy.com/pages/landing/schedule.html)
+- **Chess Coaching:** Visit the [Chess Coaching](https://www.pawnislandacademy.com/pages/landing/coaching.html) page
+- **Scheduling:** Book lessons through the Pawn Island Scheduler at [Schedule a Lesson](https://www.pawnislandacademy.com/pages/landing/schedule.html)
+- **Local Lessons:** Use [Rhode Island Chess Lessons](https://www.pawnislandacademy.com/pages/landing/rhode-island-chess-lessons.html) and [Providence Chess Lessons](https://www.pawnislandacademy.com/pages/landing/providence-chess-lessons.html) for local-intent traffic
+- **Online Coaching:** Use [Online Chess Coaching](https://www.pawnislandacademy.com/pages/landing/online-chess-coaching.html) for remote students
 
 ## Scheduler Backend
 The public site is static, so live calendar reads and writes run through the Cloudflare Worker in `workers/scheduler/`.
@@ -97,6 +112,16 @@ When creating or updating pages, follow these guidelines for optimal search engi
 - **URL Structure:** Keep URLs short and descriptive
 - **Headings:** Use H1-H6 tags appropriately with keywords
 - **Content:** Create high-quality, unique content that includes relevant keywords naturally
+- **Canonical Host:** Use `https://www.pawnislandacademy.com/` in canonicals, schema, sitemaps, Open Graph tags, and AI summary files
+- **Structured Data:** Keep `LocalBusiness`, `Person`, `Service`, `FAQPage`, `BreadcrumbList`, and `ReserveAction` content aligned with visible page copy
+- **LLM Readiness:** Update `llms.txt`, `llms-full.txt`, and `site-facts.json` when services, contact details, or target audiences change
+- **Measurement:** Schedule and email CTAs emit GA4 events through `gtag` when analytics is available
+
+## Off-Site SEO Checklist
+- Create or update Google Business Profile, Bing Places, and Apple Business Connect with the same name, website, email, service area, and booking URL
+- Add real coaching photos and keep service descriptions aligned with the website
+- Ask satisfied students and parents for platform-compliant reviews after successful lessons
+- Build local citations from Rhode Island chess, school, club, tournament, and community organizations
 
 ## Contributing
 1. Fork the Repository

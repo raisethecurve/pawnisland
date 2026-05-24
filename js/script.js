@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+    initConversionTracking();
+
     // Handle the navbar background change on scroll with enhanced effect
     const navbar = document.querySelector('.navbar');
 
@@ -40,4 +42,37 @@ function initParallaxEffects() {
             });
         });
     }
+}
+
+function trackSiteEvent(eventName, parameters) {
+    if (typeof window.gtag !== 'function') return;
+
+    window.gtag('event', eventName, {
+        event_category: 'site_engagement',
+        ...parameters
+    });
+}
+
+function initConversionTracking() {
+    document.addEventListener('click', function(event) {
+        const link = event.target.closest('a');
+        if (!link) return;
+
+        const href = link.getAttribute('href') || '';
+        const label = link.textContent.trim().replace(/\s+/g, ' ');
+
+        if (href.includes('schedule.html')) {
+            trackSiteEvent('schedule_cta_click', {
+                link_text: label,
+                link_url: link.href
+            });
+        }
+
+        if (href.startsWith('mailto:')) {
+            trackSiteEvent('email_click', {
+                link_text: label || 'Email',
+                link_url: href
+            });
+        }
+    });
 }

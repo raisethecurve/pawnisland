@@ -1,0 +1,33 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.pawnislandacademy.com/#business",
+  "name": "Pawn Island Academy",
+  "url": "https://www.pawnislandacademy.com/",
+  "email": "info@pawnislandacademy.com",
+  "description": "Pawn Island Academy provides private chess coaching in Rhode Island and online for scholastic players, adult improvers, families, and tournament players.",
+  "founder": {
+    "@type": "Person",
+    "@id": "https://www.pawnislandacademy.com/pages/landing/about-me.html#person",
+    "name": "Matthew Freeman",
+    "jobTitle": "Chess Coach"
+  },
+  "areaServed": [
+    "Rhode Island",
+    "Providence",
+    "East Providence",
+    "Cranston",
+    "New England",
+    "Online"
+  ],
+  "services": [
+    "Private chess lessons",
+    "Online chess coaching",
+    "Scholastic chess coaching",
+    "Adult chess lessons",
+    "Tournament preparation",
+    "Game review"
+  ],
+  "bookingUrl": "https://www.pawnislandacademy.com/pages/landing/schedule.html",
+  "lastReviewed": "2026-05-24"
+}

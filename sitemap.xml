@@ -1,27 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://pawnislandacademy.com/</loc>
+        <loc>https://www.pawnislandacademy.com/</loc>
         <lastmod>2026-05-24</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://pawnislandacademy.com/pages/landing/about-me.html</loc>
+        <loc>https://www.pawnislandacademy.com/pages/landing/about-me.html</loc>
         <lastmod>2026-05-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://pawnislandacademy.com/pages/landing/coaching.html</loc>
+        <loc>https://www.pawnislandacademy.com/pages/landing/coaching.html</loc>
         <lastmod>2026-05-24</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://pawnislandacademy.com/pages/landing/schedule.html</loc>
+        <loc>https://www.pawnislandacademy.com/pages/landing/schedule.html</loc>
         <lastmod>2026-05-24</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.pawnislandacademy.com/pages/landing/rhode-island-chess-lessons.html</loc>
+        <lastmod>2026-05-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.pawnislandacademy.com/pages/landing/providence-chess-lessons.html</loc>
+        <lastmod>2026-05-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.pawnislandacademy.com/pages/landing/online-chess-coaching.html</loc>
+        <lastmod>2026-05-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.pawnislandacademy.com/pages/landing/scholastic-chess-coaching.html</loc>
+        <lastmod>2026-05-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.pawnislandacademy.com/pages/landing/adult-chess-lessons.html</loc>
+        <lastmod>2026-05-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
     </url>
 </urlset>

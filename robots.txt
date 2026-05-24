@@ -5,17 +5,31 @@ Disallow: /admin/
 Disallow: /private/
 Disallow: /data/
 
-# Specific instructions for Bingbot
+# Search crawlers
 User-agent: Bingbot
 Allow: /
 Disallow: /admin/
 Crawl-delay: 5
 
-# Specific instructions for GPTBot (ChatGPT crawler)
+# OpenAI search and ad crawlers. OAI-SearchBot supports ChatGPT search visibility.
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin/
+
+User-agent: OAI-AdsBot
+Allow: /
+Disallow: /admin/
+
+# OpenAI training crawler. Allowed because this is public marketing content.
 User-agent: GPTBot
 Allow: /
 Disallow: /admin/
 Crawl-delay: 10
 
+# User-triggered ChatGPT retrieval may not always follow robots.txt, but this declares the public site open.
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin/
+
 # Sitemap location
-Sitemap: https://pawnislandacademy.com/sitemap.xml
+Sitemap: https://www.pawnislandacademy.com/sitemap.xml

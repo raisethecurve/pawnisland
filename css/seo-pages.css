@@ -1,0 +1,180 @@
+:root {
+    --seo-black: #141414;
+    --seo-panel: #202020;
+    --seo-panel-soft: rgba(255, 255, 255, 0.06);
+    --seo-line: rgba(255, 215, 0, 0.22);
+    --seo-gold: #ffd700;
+    --seo-blue: #2c5aa0;
+    --seo-white: #ffffff;
+    --seo-muted: rgba(255, 255, 255, 0.76);
+}
+
+body.seo-page {
+    background: var(--seo-black);
+    color: var(--seo-white);
+    font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.seo-hero {
+    position: relative;
+    min-height: 72vh;
+    display: grid;
+    place-items: center;
+    padding: 8rem 1.25rem 5rem;
+    overflow: hidden;
+    background:
+        linear-gradient(135deg, rgba(20, 20, 20, 0.96), rgba(20, 20, 20, 0.72)),
+        url("../images/headers-pages/coach-2.webp") center / cover;
+}
+
+.seo-hero::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--seo-gold), transparent);
+}
+
+.seo-hero__content,
+.seo-shell {
+    width: min(1120px, 100%);
+    margin: 0 auto;
+}
+
+.seo-hero__content {
+    position: relative;
+    z-index: 1;
+}
+
+.seo-kicker {
+    color: var(--seo-gold);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0;
+}
+
+.seo-hero h1 {
+    margin: 0.5rem 0 1rem;
+    max-width: 920px;
+    color: var(--seo-gold);
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.35rem, 7vw, 5.4rem);
+    line-height: 1.02;
+}
+
+.seo-hero p {
+    max-width: 760px;
+    color: var(--seo-white);
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    line-height: 1.7;
+}
+
+.seo-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.seo-shell {
+    padding: 4rem 1.25rem;
+}
+
+.seo-section {
+    padding: 3rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.seo-section:last-child {
+    border-bottom: 0;
+}
+
+.seo-section h2 {
+    color: var(--seo-gold);
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+}
+
+.seo-section p,
+.seo-section li {
+    color: var(--seo-muted);
+    font-size: 1.05rem;
+    line-height: 1.75;
+}
+
+.seo-grid,
+.seo-proof-grid,
+.seo-faq-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.seo-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.seo-proof-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.seo-card,
+.seo-proof,
+.seo-faq {
+    background: linear-gradient(180deg, var(--seo-panel-soft), rgba(255, 255, 255, 0.03));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.35rem;
+}
+
+.seo-card h3,
+.seo-faq h3 {
+    color: var(--seo-white);
+    margin: 0 0 0.75rem;
+    font-size: 1.18rem;
+}
+
+.seo-proof strong {
+    display: block;
+    color: var(--seo-gold);
+    font-size: 1.8rem;
+    margin-bottom: 0.35rem;
+}
+
+.seo-list {
+    padding-left: 1.2rem;
+}
+
+.seo-cta {
+    display: grid;
+    gap: 1rem;
+    align-items: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(44, 90, 160, 0.34), rgba(255, 215, 0, 0.11));
+    border: 1px solid var(--seo-line);
+    border-radius: 8px;
+}
+
+.seo-cta h2,
+.seo-cta p {
+    margin: 0;
+}
+
+@media (min-width: 800px) {
+    .seo-cta {
+        grid-template-columns: 1fr auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .seo-actions,
+    .seo-cta {
+        align-items: stretch;
+    }
+
+    .seo-actions .btn-chess,
+    .seo-cta .btn-chess {
+        justify-content: center;
+        width: 100%;
+    }
+}

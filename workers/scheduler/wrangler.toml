@@ -3,7 +3,7 @@ main = "worker.js"
 compatibility_date = "2026-05-24"
 
 [vars]
-ALLOWED_ORIGINS = "https://pawnislandacademy.com,http://127.0.0.1:8017,http://localhost:8017"
+ALLOWED_ORIGINS = "https://www.pawnislandacademy.com,https://pawnislandacademy.com,http://127.0.0.1:8017,http://localhost:8017,http://127.0.0.1:4177,http://localhost:4177"
 GOOGLE_CALENDAR_ID = "primary"
 NOTIFICATION_EMAIL = "info@pawnislandacademy.com"
 

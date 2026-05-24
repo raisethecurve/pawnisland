@@ -1,6 +1,6 @@
 const HOST_TIME_ZONE = 'America/New_York';
 const HOLD_MINUTES = 10;
-const DEFAULT_ORIGIN = 'https://pawnislandacademy.com';
+const DEFAULT_ORIGIN = 'https://www.pawnislandacademy.com';
 
 const EVENT_TYPES = [
     {

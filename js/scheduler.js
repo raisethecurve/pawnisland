@@ -72,6 +72,11 @@
         elements.backToDetails.addEventListener('click', () => setStep('details'));
         elements.startOver.addEventListener('click', resetScheduler);
         elements.detailsForm.addEventListener('submit', handleSubmit);
+        document.addEventListener('click', (event) => {
+            if (event.target.closest('[data-scheduler-mailto]')) {
+                trackSchedulerEvent('scheduler_mailto_click');
+            }
+        });
     }
 
     async function initializeScheduler() {
@@ -148,6 +153,10 @@
 
         elements.nextFromType.disabled = false;
         renderSummary();
+        trackSchedulerEvent('scheduler_lesson_type_selected', {
+            event_type: state.selectedEventType.id,
+            event_name: state.selectedEventType.name
+        });
         await loadAvailability();
     }
 
@@ -295,6 +304,11 @@
         renderTimeSlots();
         renderSummary();
         elements.nextFromTime.disabled = false;
+        trackSchedulerEvent('scheduler_time_selected', {
+            event_type: state.selectedEventType.id,
+            start_time: slot.start,
+            preview_mode: Boolean(slot.preview || state.previewMode)
+        });
 
         if (state.liveApiAvailable) {
             await createHold(slot);
@@ -355,6 +369,10 @@
         if (!state.liveApiAvailable || state.previewMode || state.selectedSlot.preview) {
             renderFallbackRequest(payload);
             setStep('confirm');
+            trackSchedulerEvent('scheduler_request_prepared', {
+                event_type: state.selectedEventType.id,
+                preview_mode: true
+            });
             return;
         }
 
@@ -372,8 +390,16 @@
             renderConfirmation(data);
             setStep('confirm');
             showStatus('');
+            trackSchedulerEvent('scheduler_booking_confirmed', {
+                event_type: state.selectedEventType.id,
+                booking_id: data.bookingId || ''
+            });
         } catch (error) {
             showStatus(error.message || 'That time is no longer available. Please choose another time.', true);
+            trackSchedulerEvent('scheduler_booking_error', {
+                event_type: state.selectedEventType.id,
+                error_message: error.message || 'Booking failed'
+            });
             await loadAvailability();
             setStep('time');
         }
@@ -398,7 +424,7 @@
         elements.confirmationPanel.innerHTML = `
             <h3>Request prepared</h3>
             <p>The live calendar backend is not connected in this environment yet. Send this request and we will confirm the time manually.</p>
-            <a class="scheduler-button" href="mailto:${email}?subject=${subject}&body=${body}">
+            <a class="scheduler-button" data-scheduler-mailto href="mailto:${email}?subject=${subject}&body=${body}">
                 <i class="fas fa-envelope" aria-hidden="true"></i>
                 Send Request
             </a>
@@ -419,6 +445,10 @@
 
     function setStep(step) {
         state.step = step;
+        trackSchedulerEvent('scheduler_step_view', {
+            step,
+            event_type: state.selectedEventType?.id || ''
+        });
         Object.entries(elements.views).forEach(([viewName, element]) => {
             element.hidden = viewName !== step;
         });
@@ -467,6 +497,15 @@
         elements.status.hidden = !message;
         elements.status.textContent = message;
         elements.status.classList.toggle('is-error', Boolean(isError));
+    }
+
+    function trackSchedulerEvent(eventName, parameters = {}) {
+        if (typeof window.gtag !== 'function') return;
+
+        window.gtag('event', eventName, {
+            event_category: 'scheduler',
+            ...parameters
+        });
     }
 
     function formatDateKey(value) {
