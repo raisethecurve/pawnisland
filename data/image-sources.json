@@ -3,6 +3,7 @@
     "placement": "Game Review service card",
     "boardStateSource": "Lichess puzzle 00sJ9, from gyFeQsOE after 17...Qf4",
     "sourceUrl": "https://lichess.org/gyFeQsOE#35",
+    "rendering": "Photorealistic imagegen edit from a deterministic Three.js 3D render based on the source FEN",
     "fen": "r3r1k1/p4ppp/2p2n2/1p6/3P1qb1/2NQR3/PPB2PP1/R1B3K1 w - - 5 18",
     "pieceCount": {
       "whiteRooks": 2,
@@ -13,6 +14,7 @@
     "placement": "Calculation and Habits service card",
     "boardStateSource": "Lichess evaluation database sample",
     "sourceUrl": "https://huggingface.co/datasets/Lichess/chess-position-evaluations/blob/main/README.md",
+    "rendering": "Photorealistic imagegen edit from a deterministic Three.js 3D render based on the source FEN",
     "fen": "2bq1rk1/pr3ppn/1p2p3/7P/2pP1B1P/2P5/PPQ2PB1/R3R1K1 w - -",
     "pieceCount": {
       "whiteRooks": 2,

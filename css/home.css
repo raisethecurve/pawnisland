@@ -69,8 +69,8 @@
     width: 128px;
     height: auto;
     margin-bottom: 1rem;
-    filter: drop-shadow(0 0 24px rgba(255, 215, 0, 0.52));
-    animation: spinClockwise 12s linear infinite;
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(45deg) drop-shadow(0 0 10px var(--chess-gold));
+    animation: spinClockwise 8s linear infinite;
 }
 
 .eyebrow {

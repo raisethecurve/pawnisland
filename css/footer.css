@@ -149,7 +149,7 @@
     filter: invert(1) sepia(1) saturate(5) hue-rotate(45deg);
 }
 
-.spinning-logo {
+.footer-logo-img.spinning-logo {
     animation: spinClockwise 12s linear infinite;
 }
 
