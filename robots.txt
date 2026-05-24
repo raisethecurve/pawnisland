@@ -4,32 +4,38 @@ Allow: /
 Disallow: /admin/
 Disallow: /private/
 Disallow: /data/
+Disallow: /pages/_hidden/
 
 # Search crawlers
 User-agent: Bingbot
 Allow: /
 Disallow: /admin/
+Disallow: /pages/_hidden/
 Crawl-delay: 5
 
 # OpenAI search and ad crawlers. OAI-SearchBot supports ChatGPT search visibility.
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /admin/
+Disallow: /pages/_hidden/
 
 User-agent: OAI-AdsBot
 Allow: /
 Disallow: /admin/
+Disallow: /pages/_hidden/
 
 # OpenAI training crawler. Allowed because this is public marketing content.
 User-agent: GPTBot
 Allow: /
 Disallow: /admin/
+Disallow: /pages/_hidden/
 Crawl-delay: 10
 
-# User-triggered ChatGPT retrieval may not always follow robots.txt, but this declares the public site open.
+# User-triggered ChatGPT retrieval may not always follow robots.txt, but this declares the public site open except hidden/private paths.
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /admin/
+Disallow: /pages/_hidden/
 
 # Sitemap location
 Sitemap: https://www.pawnislandacademy.com/sitemap.xml

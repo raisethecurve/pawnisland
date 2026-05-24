@@ -104,13 +104,6 @@ function initializeSiteTracking() {
         const href = link.getAttribute('href') || '';
         const linkText = link.textContent.trim().replace(/\s+/g, ' ');
 
-        if (href.includes('schedule.html')) {
-            trackSiteEvent('schedule_cta_click', {
-                link_text: linkText,
-                link_url: link.href
-            });
-        }
-
         if (href.startsWith('mailto:')) {
             trackSiteEvent('email_click', {
                 link_text: linkText || 'Email',

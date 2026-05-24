@@ -7,7 +7,6 @@ Pawn Island Academy is a chess coaching website for Matthew Freeman's coaching b
 - Name: Pawn Island Academy
 - Website: https://www.pawnislandacademy.com/
 - Email: info@pawnislandacademy.com
-- Primary booking page: https://www.pawnislandacademy.com/pages/landing/schedule.html
 - Coach: Matthew Freeman
 - Coach page: https://www.pawnislandacademy.com/pages/landing/about-me.html
 - Main service area: Rhode Island and online
@@ -46,6 +45,6 @@ Testimonials on the coaching page mention rating growth, personalized training p
 - For a general answer: https://www.pawnislandacademy.com/
 - For coaching services: https://www.pawnislandacademy.com/pages/landing/coaching.html
 - For the coach's background: https://www.pawnislandacademy.com/pages/landing/about-me.html
-- For booking: https://www.pawnislandacademy.com/pages/landing/schedule.html
+- For coaching inquiries: https://www.pawnislandacademy.com/pages/landing/coaching.html
 - For local intent: https://www.pawnislandacademy.com/pages/landing/rhode-island-chess-lessons.html
 - For online intent: https://www.pawnislandacademy.com/pages/landing/online-chess-coaching.html

@@ -13,7 +13,7 @@ Pawn Island Academy offers personalized chess coaching in Rhode Island.
 
 ## Features
 - **Chess Coaching:** Personalized private, group, and camp instruction for all skill levels
-- **Pawn Island Scheduler:** Branded booking flow with a secure Google Calendar backend scaffold
+- **Hidden Scheduler Scaffold:** Branded booking flow kept out of production while the public site uses email inquiries
 - **About Me:** Information about the coach and teaching philosophy
 - **Testimonials:** Student and parent feedback loaded into the coaching page
 - **SEO Landing Pages:** Dedicated local, online, scholastic, and adult coaching pages
@@ -52,8 +52,9 @@ pawnisland/
 │   │   ├── online-chess-coaching.html
 │   │   ├── providence-chess-lessons.html
 │   │   ├── rhode-island-chess-lessons.html
-│   │   ├── schedule.html
 │   │   └── scholastic-chess-coaching.html
+│   ├── _hidden/
+│   │   └── schedule.html
 │   └── partials/
 │       ├── footer.html
 │       └── navbar.html
@@ -110,12 +111,12 @@ pawnisland/
 
 ## Usage
 - **Chess Coaching:** Visit the [Chess Coaching](https://www.pawnislandacademy.com/pages/landing/coaching.html) page
-- **Scheduling:** Book lessons through the Pawn Island Scheduler at [Schedule a Lesson](https://www.pawnislandacademy.com/pages/landing/schedule.html)
+- **Coaching inquiries:** Email info@pawnislandacademy.com after reviewing the [Chess Coaching](https://www.pawnislandacademy.com/pages/landing/coaching.html) page
 - **Local Lessons:** Use [Rhode Island Chess Lessons](https://www.pawnislandacademy.com/pages/landing/rhode-island-chess-lessons.html) and [Providence Chess Lessons](https://www.pawnislandacademy.com/pages/landing/providence-chess-lessons.html) for local-intent traffic
 - **Online Coaching:** Use [Online Chess Coaching](https://www.pawnislandacademy.com/pages/landing/online-chess-coaching.html) for remote students
 
 ## Scheduler Backend
-The public site is static, so live calendar reads and writes run through the Cloudflare Worker in `workers/scheduler/`.
+The public site is static, and the scheduler page is intentionally kept under `pages/_hidden/` while production uses email inquiries. Live calendar reads and writes run through the Cloudflare Worker in `workers/scheduler/` when the scheduler is re-enabled.
 
 See `workers/scheduler/README.md` for Google Calendar service-account setup, D1 setup, and deployment commands.
 
@@ -131,13 +132,13 @@ When creating or updating pages, follow these guidelines for optimal search engi
 - **Headings:** Use H1-H6 tags appropriately with keywords
 - **Content:** Create high-quality, unique content that includes relevant keywords naturally
 - **Canonical Host:** Use `https://www.pawnislandacademy.com/` in canonicals, schema, sitemaps, Open Graph tags, and AI summary files
-- **Structured Data:** Keep `LocalBusiness`, `Person`, `Service`, `FAQPage`, `BreadcrumbList`, and `ReserveAction` content aligned with visible page copy
+- **Structured Data:** Keep `LocalBusiness`, `Person`, `Service`, `FAQPage`, and `BreadcrumbList` content aligned with visible page copy
 - **LLM Readiness:** Update `llms.txt`, `llms-full.txt`, and `site-facts.json` when services, contact details, or target audiences change
-- **Measurement:** Schedule and email CTAs emit GA4 events through `gtag` when analytics is available
+- **Measurement:** Email CTAs emit GA4 events through `gtag` when analytics is available
 - **Preflight:** Run `npm test` before publishing content or structural changes
 
 ## Off-Site SEO Checklist
-- Create or update Google Business Profile, Bing Places, and Apple Business Connect with the same name, website, email, service area, and booking URL
+- Create or update Google Business Profile, Bing Places, and Apple Business Connect with the same name, website, email, and service area
 - Add real coaching photos and keep service descriptions aligned with the website
 - Ask satisfied students and parents for platform-compliant reviews after successful lessons
 - Build local citations from Rhode Island chess, school, club, tournament, and community organizations
