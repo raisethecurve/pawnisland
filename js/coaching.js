@@ -45,56 +45,181 @@ function loadTestimonials() {
         });
 
     /**
-     * Process testimonials data and display in the testimonial grid
+     * Process testimonials data and display in a curated proof layout
      */
     function processTestimonials(testimonials) {
         if (loadingElement) loadingElement.style.display = 'none';
         testimonialContainer.textContent = '';
 
-        testimonials.slice(0, 6).forEach((testimonial) => {
-            createTestimonialItem(testimonial, testimonialContainer);
+        const normalizedTestimonials = testimonials.map(normalizeTestimonial);
+        const featuredTestimonial = normalizedTestimonials.find(testimonial => testimonial.featured) || normalizedTestimonials[0];
+        const supportingTestimonials = normalizedTestimonials
+            .filter(testimonial => testimonial !== featuredTestimonial)
+            .sort((first, second) => first.displayOrder - second.displayOrder)
+            .slice(0, 4);
+
+        testimonialContainer.appendChild(createFeaturedTestimonial(featuredTestimonial));
+
+        const supportingList = document.createElement('div');
+        supportingList.className = 'supporting-testimonials';
+
+        supportingTestimonials.forEach((testimonial) => {
+            supportingList.appendChild(createTestimonialItem(testimonial));
         });
+
+        testimonialContainer.appendChild(supportingList);
     }
 }
 
 /**
- * Creates a testimonial card for the testimonials grid
+ * Normalizes testimonial fields for display.
  */
-function createTestimonialItem(testimonial, container) {
-    const testimonialText = testimonial.text || testimonial.quote || '';
-    const testimonialDesignation = testimonial.designation || testimonial.title || '';
-    const hasImage = testimonial.image && testimonial.image.trim() !== '';
-    const card = document.createElement('article');
-    card.className = hasImage ? 'testimonial-card with-image' : 'testimonial-card';
+function normalizeTestimonial(testimonial) {
+    const fullText = cleanTestimonialText(testimonial.text || testimonial.quote || '');
+    return {
+        ...testimonial,
+        fullText,
+        shortQuote: cleanTestimonialText(testimonial.shortQuote || fullText),
+        designation: testimonial.designation || testimonial.title || '',
+        audience: testimonial.audience || testimonial.designation || 'Student',
+        result: testimonial.result || '',
+        proof: testimonial.proof || '',
+        displayOrder: testimonial.displayOrder || 99
+    };
+}
 
-    if (hasImage) {
-        const image = document.createElement('img');
-        image.src = testimonial.image;
-        image.alt = testimonial.name || 'Chess coaching student';
-        card.appendChild(image);
-    }
+/**
+ * Creates the featured testimonial story.
+ */
+function createFeaturedTestimonial(testimonial) {
+    const article = document.createElement('article');
+    article.className = 'testimonial-feature';
 
     const content = document.createElement('div');
+    content.className = 'testimonial-feature-content';
+
+    const label = document.createElement('div');
+    label.className = 'testimonial-label';
+    label.appendChild(createIcon('fa-chart-line'));
+    label.appendChild(document.createTextNode(testimonial.result || 'Measured student progress'));
+
     const quote = document.createElement('blockquote');
-    quote.textContent = testimonialText
+    quote.textContent = testimonial.shortQuote;
+
+    content.appendChild(label);
+    content.appendChild(quote);
+    article.appendChild(content);
+
+    const proofList = document.createElement('div');
+    proofList.className = 'testimonial-proof-list';
+    proofList.appendChild(createProofPoint('Result', testimonial.result || 'Student growth'));
+    proofList.appendChild(createProofPoint('Why it worked', testimonial.proof || 'Tailored lessons'));
+    article.appendChild(proofList);
+
+    const footer = document.createElement('footer');
+    footer.className = 'testimonial-feature-footer';
+    footer.appendChild(createAvatar(testimonial, true));
+    footer.appendChild(createAuthorBlock(testimonial));
+    article.appendChild(footer);
+
+    return article;
+}
+
+/**
+ * Creates a supporting testimonial card.
+ */
+function createTestimonialItem(testimonial) {
+    const card = document.createElement('article');
+    card.className = 'testimonial-card';
+
+    const header = document.createElement('header');
+    header.className = 'testimonial-card-header';
+    header.appendChild(createAuthorBlock(testimonial));
+
+    if (testimonial.result) {
+        const outcome = document.createElement('strong');
+        outcome.className = 'testimonial-outcome';
+        outcome.textContent = testimonial.result;
+        header.appendChild(outcome);
+    }
+
+    const quote = document.createElement('blockquote');
+    quote.textContent = testimonial.shortQuote;
+
+    card.appendChild(header);
+    card.appendChild(quote);
+
+    return card;
+}
+
+function cleanTestimonialText(text) {
+    return text
         .replace(/<br\s*\/?>/gi, ' ')
         .replace(/<\/?p>/gi, ' ')
         .replace(/\s+/g, ' ')
         .trim();
+}
 
-    const author = document.createElement('cite');
-    author.textContent = testimonial.name || 'Student';
-    content.appendChild(quote);
-    content.appendChild(author);
+function createIcon(iconClass) {
+    const icon = document.createElement('i');
+    icon.className = `fas ${iconClass}`;
+    icon.setAttribute('aria-hidden', 'true');
+    return icon;
+}
 
-    if (testimonialDesignation) {
-        const designation = document.createElement('span');
-        designation.textContent = testimonialDesignation;
-        content.appendChild(designation);
+function createProofPoint(label, value) {
+    const proof = document.createElement('div');
+    proof.className = 'testimonial-proof';
+
+    const proofLabel = document.createElement('span');
+    proofLabel.textContent = label;
+
+    const proofValue = document.createElement('strong');
+    proofValue.textContent = value;
+
+    proof.appendChild(proofLabel);
+    proof.appendChild(proofValue);
+    return proof;
+}
+
+function createAvatar(testimonial, showImage) {
+    if (showImage && testimonial.image && testimonial.image.trim() !== '') {
+        const image = document.createElement('img');
+        image.src = testimonial.image;
+        image.alt = testimonial.name || 'Chess coaching student';
+        image.className = 'testimonial-avatar';
+        return image;
     }
 
-    card.appendChild(content);
-    container.appendChild(card);
+    const initials = document.createElement('div');
+    initials.className = 'testimonial-avatar testimonial-initials';
+    initials.setAttribute('aria-hidden', 'true');
+    initials.textContent = getInitials(testimonial.name || 'Student');
+    return initials;
+}
+
+function createAuthorBlock(testimonial) {
+    const author = document.createElement('div');
+    author.className = 'testimonial-author';
+
+    const name = document.createElement('cite');
+    name.textContent = testimonial.name || 'Student';
+
+    const details = document.createElement('span');
+    details.textContent = testimonial.audience || testimonial.designation || 'Student';
+
+    author.appendChild(name);
+    author.appendChild(details);
+    return author;
+}
+
+function getInitials(name) {
+    return name
+        .split(/\s+/)
+        .filter(Boolean)
+        .slice(0, 2)
+        .map(part => part.charAt(0).toUpperCase())
+        .join('');
 }
 
 /**

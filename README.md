@@ -13,7 +13,7 @@ Pawn Island Academy offers personalized chess coaching in Rhode Island.
 
 ## Features
 - **Chess Coaching:** Personalized private, group, and camp instruction for all skill levels
-- **Online Scheduling:** Direct booking through Setmore
+- **Pawn Island Scheduler:** Branded booking flow with a secure Google Calendar backend scaffold
 - **About Me:** Information about the coach and teaching philosophy
 - **Testimonials:** Student and parent feedback loaded into the coaching page
 
@@ -24,20 +24,24 @@ pawnisland/
 │   ├── footer.css
 │   ├── home.css
 │   ├── navbar-chess.css
+│   ├── scheduler.css
 │   ├── components/
 │   │   └── modernJumpToTop.css
 │   └── styles.css
 ├── data/
+│   ├── scheduler-config.json
 │   └── testimonials.json
 ├── js/
 │   ├── coaching.js
 │   ├── footer.js
 │   ├── navbar-chess.js
+│   ├── scheduler.js
 │   └── script.js
 ├── pages/
 │   ├── landing/
 │   │   ├── about-me.html
-│   │   └── coaching.html
+│   │   ├── coaching.html
+│   │   └── schedule.html
 │   └── partials/
 │       ├── footer.html
 │       └── navbar.html
@@ -50,7 +54,9 @@ pawnisland/
 ├── LICENSE
 ├── README.md
 ├── robots.txt
-└── sitemap.xml
+├── sitemap.xml
+└── workers/
+    └── scheduler/
 ```
 
 ## Setup Instructions
@@ -73,7 +79,12 @@ pawnisland/
 
 ## Usage
 - **Chess Coaching:** Visit the [Chess Coaching](https://pawnislandacademy.com/pages/landing/coaching.html) page
-- **Scheduling:** Book lessons through [Setmore](https://pawnisland.setmore.com/)
+- **Scheduling:** Book lessons through the Pawn Island Scheduler at [Schedule a Lesson](https://pawnislandacademy.com/pages/landing/schedule.html)
+
+## Scheduler Backend
+The public site is static, so live calendar reads and writes run through the Cloudflare Worker in `workers/scheduler/`.
+
+See `workers/scheduler/README.md` for Google Calendar service-account setup, D1 setup, and deployment commands.
 
 ## SEO Guidelines
 When creating or updating pages, follow these guidelines for optimal search engine visibility:

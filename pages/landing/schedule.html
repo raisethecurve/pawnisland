@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Chess Coaching | Pawn Island Academy</title>
+    <meta name="description" content="Schedule a private online or Rhode Island chess lesson with Matthew Freeman at Pawn Island Academy.">
+    <meta property="og:title" content="Schedule Chess Coaching | Pawn Island Academy">
+    <meta property="og:description" content="Choose a lesson type, review available times, and request or confirm chess coaching with Pawn Island Academy.">
+    <meta property="og:image" content="https://pawnislandacademy.com/images/brand-icons/logo-light.png">
+    <meta property="og:url" content="https://pawnislandacademy.com/pages/landing/schedule.html">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://pawnislandacademy.com/pages/landing/schedule.html">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/navbar-chess.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="../../css/components/modernJumpToTop.css">
+    <link rel="stylesheet" href="../../css/scheduler.css">
+    <link rel="icon" type="image/png" href="../../images/brand-icons/favicon.png">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ReserveAction",
+        "name": "Schedule a Chess Coaching Lesson",
+        "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://pawnislandacademy.com/pages/landing/schedule.html",
+            "actionPlatform": [
+                "https://schema.org/DesktopWebPlatform",
+                "https://schema.org/MobileWebPlatform"
+            ]
+        },
+        "result": {
+            "@type": "Reservation",
+            "name": "Pawn Island Academy Chess Lesson"
+        }
+    }
+    </script>
+</head>
+<body class="schedule-page">
+    <div id="navbar-placeholder"></div>
+
+    <header class="schedule-hero">
+        <div class="schedule-hero__content">
+            <p class="schedule-kicker">Pawn Island Scheduler</p>
+            <h1>Schedule a Lesson</h1>
+            <p>
+                Choose the format that fits your goals, find an open time, and send the details Matthew needs to make the first session useful.
+            </p>
+        </div>
+    </header>
+
+    <main id="main-content" class="scheduler-shell" aria-labelledby="scheduler-title">
+        <section class="scheduler-panel" id="schedulerPanel">
+            <div class="scheduler-card">
+                <div class="scheduler-steps" aria-label="Scheduling steps">
+                    <div class="scheduler-step is-active" data-scheduler-step="type"><span>1</span> Lesson</div>
+                    <div class="scheduler-step" data-scheduler-step="time"><span>2</span> Time</div>
+                    <div class="scheduler-step" data-scheduler-step="details"><span>3</span> Details</div>
+                    <div class="scheduler-step" data-scheduler-step="confirm"><span>4</span> Confirm</div>
+                </div>
+
+                <div id="viewType" class="scheduler-view">
+                    <h2 id="scheduler-title">Choose your coaching format</h2>
+                    <p>Start with the simplest fit. The lesson plan can always be adjusted after Matthew sees your games and goals.</p>
+                    <div id="eventTypeGrid" class="event-type-grid"></div>
+                    <div class="scheduler-actions">
+                        <button id="nextFromType" class="scheduler-button" type="button" disabled>
+                            Continue <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="viewTime" class="scheduler-view" hidden>
+                    <h2>Pick an available time</h2>
+                    <p>Times are shown in your detected time zone. Availability is checked again before confirmation.</p>
+                    <div class="scheduler-toolbar">
+                        <div class="timezone-pill">
+                            <i class="fas fa-globe" aria-hidden="true"></i>
+                            Times shown in <strong id="timeZoneLabel">your time zone</strong>
+                        </div>
+                    </div>
+                    <div id="previewNotice" class="scheduler-notice" hidden></div>
+                    <div id="dateStrip" class="date-strip" aria-label="Available dates"></div>
+                    <div id="timeSlotGrid" class="time-slot-grid" aria-label="Available times"></div>
+                    <div class="scheduler-actions">
+                        <button id="backToType" class="scheduler-button secondary" type="button">
+                            <i class="fas fa-arrow-left" aria-hidden="true"></i> Back
+                        </button>
+                        <button id="nextFromTime" class="scheduler-button" type="button" disabled>
+                            Continue <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="viewDetails" class="scheduler-view" hidden>
+                    <h2>Tell me what we are training</h2>
+                    <p>Good scheduling is not just picking a time. These details help Matthew prepare the first session well.</p>
+                    <form id="schedulerDetailsForm" class="scheduler-form">
+                        <div class="form-field">
+                            <label for="name">Your name</label>
+                            <input id="name" name="name" autocomplete="name" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="email">Email</label>
+                            <input id="email" name="email" type="email" autocomplete="email" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="phone">Phone</label>
+                            <input id="phone" name="phone" type="tel" autocomplete="tel">
+                        </div>
+                        <div class="form-field">
+                            <label for="playerName">Player name</label>
+                            <input id="playerName" name="playerName" autocomplete="off">
+                        </div>
+                        <div class="form-field">
+                            <label for="rating">Rating or level</label>
+                            <input id="rating" name="rating" placeholder="Beginner, 1200 USCF, 1600 Chess.com...">
+                        </div>
+                        <div class="form-field">
+                            <label for="formatPreference">Format preference</label>
+                            <select id="formatPreference" name="formatPreference">
+                                <option value="No preference">No preference</option>
+                                <option value="Online">Online</option>
+                                <option value="In-person">In-person</option>
+                                <option value="Discuss first">Discuss first</option>
+                            </select>
+                        </div>
+                        <div class="form-field full">
+                            <label for="goals">Goals, recent results, or questions</label>
+                            <textarea id="goals" name="goals" required placeholder="Tell me what you want to improve, any upcoming tournaments, and whether you have a recent game to review."></textarea>
+                        </div>
+                        <div class="scheduler-actions full">
+                            <button id="backToTime" class="scheduler-button secondary" type="button">
+                                <i class="fas fa-arrow-left" aria-hidden="true"></i> Back
+                            </button>
+                            <button class="scheduler-button" type="submit">
+                                Confirm Request <i class="fas fa-check" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="viewConfirm" class="scheduler-view" hidden>
+                    <h2>Review and confirmation</h2>
+                    <div id="confirmationPanel" class="confirmation-panel">
+                        <h3>Almost there</h3>
+                        <p>Review your lesson request and submit when ready.</p>
+                    </div>
+                    <div class="scheduler-actions">
+                        <button id="backToDetails" class="scheduler-button secondary" type="button">
+                            <i class="fas fa-arrow-left" aria-hidden="true"></i> Back
+                        </button>
+                        <button id="startOver" class="scheduler-button secondary" type="button">Start Over</button>
+                    </div>
+                </div>
+
+                <div id="schedulerStatus" class="scheduler-status" role="status" aria-live="polite" hidden></div>
+            </div>
+
+            <aside class="scheduler-summary" aria-label="Lesson summary">
+                <h2>Your Lesson</h2>
+                <dl class="summary-list">
+                    <div>
+                        <dt>Type</dt>
+                        <dd id="summaryType">Choose a lesson type</dd>
+                    </div>
+                    <div>
+                        <dt>Time</dt>
+                        <dd id="summaryTime">Choose an available time.</dd>
+                    </div>
+                    <div>
+                        <dt>Format</dt>
+                        <dd id="summaryFormat">Format and duration will appear here.</dd>
+                    </div>
+                    <div>
+                        <dt>Status</dt>
+                        <dd id="summaryNotice">Availability is checked against the calendar before confirmation.</dd>
+                    </div>
+                </dl>
+                <dl id="reviewDetails" class="summary-list" aria-live="polite"></dl>
+            </aside>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../../js/navbar-chess.js"></script>
+    <script src="../../js/footer.js"></script>
+    <script src="../../js/components/modernJumpToTop.js"></script>
+    <script src="../../js/scheduler.js"></script>
+    <script>
+        if (typeof createModernJumpToTop === 'function') {
+            createModernJumpToTop({ theme: 'gradient', color: 'primary', showAfter: 300, size: 'medium' });
+        }
+    </script>
+</body>
+</html>

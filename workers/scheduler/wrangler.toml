@@ -1,0 +1,13 @@
+name = "pawn-island-scheduler"
+main = "worker.js"
+compatibility_date = "2026-05-24"
+
+[vars]
+ALLOWED_ORIGINS = "https://pawnislandacademy.com,http://127.0.0.1:8017,http://localhost:8017"
+GOOGLE_CALENDAR_ID = "primary"
+NOTIFICATION_EMAIL = "info@pawnislandacademy.com"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "pawn-island-scheduler"
+database_id = "replace-with-cloudflare-d1-database-id"

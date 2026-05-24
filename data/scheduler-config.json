@@ -1,0 +1,50 @@
+{
+    "apiBaseUrl": "https://api.pawnislandacademy.com/scheduler",
+    "fallbackEmail": "info@pawnislandacademy.com",
+    "hostTimeZone": "America/New_York",
+    "minimumNoticeHours": 18,
+    "bookingHorizonDays": 60,
+    "eventTypes": [
+        {
+            "id": "private-online-60",
+            "name": "Private Online Lesson",
+            "durationMinutes": 60,
+            "format": "Online",
+            "description": "A focused one-on-one lesson with game review, calculation work, and a clear training assignment.",
+            "bestFor": "Students outside Rhode Island or anyone who wants the most flexible format.",
+            "icon": "fa-laptop"
+        },
+        {
+            "id": "private-in-person-60",
+            "name": "Private In-Person Lesson",
+            "durationMinutes": 60,
+            "format": "Rhode Island",
+            "description": "Board-first coaching for students and families who want in-person feedback and practical training.",
+            "bestFor": "Local students, scholastic players, and families preparing for tournaments.",
+            "icon": "fa-chess-board"
+        },
+        {
+            "id": "student-fit-call-20",
+            "name": "Student Fit Call",
+            "durationMinutes": 20,
+            "format": "Phone or video",
+            "description": "A short conversation about goals, rating, schedule, and whether coaching is the right fit.",
+            "bestFor": "New families or adults who want to talk before booking a lesson.",
+            "icon": "fa-comments"
+        }
+    ],
+    "previewAvailability": {
+        "enabled": true,
+        "message": "Live calendar connection is waiting for the backend deployment. These preview times show how the scheduler behaves.",
+        "weeklyWindows": [
+            {
+                "days": [2, 4],
+                "times": ["17:00", "18:30"]
+            },
+            {
+                "days": [6],
+                "times": ["10:00", "11:30", "13:00"]
+            }
+        ]
+    }
+}

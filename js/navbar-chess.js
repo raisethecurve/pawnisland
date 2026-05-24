@@ -252,7 +252,7 @@ class ChessNavbar {
         const href = link.getAttribute('href');
 
         // Don't prevent default for external links
-        if (href.startsWith('http') || href.includes('setmore.com')) {
+        if (href.startsWith('http')) {
             return;
         }
 
@@ -292,7 +292,8 @@ class ChessNavbar {
         return normalizeCurrent === normalizeHref ||
                normalizeCurrent.endsWith(normalizeHref) ||
                (normalizeHref.includes('/about-me.html') && normalizeCurrent.includes('/about-me.html')) ||
-               (normalizeHref.includes('/coaching.html') && normalizeCurrent.includes('/coaching.html'));
+               (normalizeHref.includes('/coaching.html') && normalizeCurrent.includes('/coaching.html')) ||
+               (normalizeHref.includes('/schedule.html') && normalizeCurrent.includes('/schedule.html'));
     }
 
     /**
