@@ -269,6 +269,12 @@
     box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
 }
 
+.nav-link.is-current {
+    border-color: rgba(255, 215, 0, 0.55);
+    color: var(--chess-gold);
+    pointer-events: none;
+}
+
 .nav-link i {
     font-size: 1rem;
     transition: transform var(--duration-medium) var(--ease-smooth);
@@ -289,6 +295,8 @@
     width: 48px;
     height: 48px;
     cursor: pointer;
+    border: 0;
+    background: transparent;
     border-radius: 12px;
     transition: all var(--duration-medium) var(--ease-smooth);
     position: relative;
@@ -363,6 +371,10 @@
 .mobile-menu-overlay.active {
     opacity: 1;
     visibility: visible;
+}
+
+body.has-open-menu {
+    overflow: hidden;
 }
 
 .mobile-menu {

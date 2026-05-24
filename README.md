@@ -19,28 +19,31 @@ Pawn Island Academy offers personalized chess coaching in Rhode Island.
 - **SEO Landing Pages:** Dedicated local, online, scholastic, and adult coaching pages
 - **LLM Discovery:** `llms.txt`, `llms-full.txt`, and public `site-facts.json` summarize the business for AI systems
 - **IndexNow:** GitHub Actions submits sitemap URLs to Bing/IndexNow after content pushes
+- **Modern Static Shell:** Shared ES modules hydrate navigation, footer, analytics, reveal effects, FAQ behavior, and utility UI without legacy framework dependencies
+- **Validation Pipeline:** Local and GitHub Actions validation check core SEO, structured data, sitemap coverage, local references, and JSON assets
 
 ## Project Structure
 ```
 pawnisland/
+├── .github/
+│   └── workflows/
+│       └── validate-site.yml
 ├── css/
+│   ├── foundation.css
 │   ├── footer.css
 │   ├── home.css
 │   ├── navbar-chess.css
 │   ├── seo-pages.css
 │   ├── scheduler.css
-│   ├── components/
-│   │   └── modernJumpToTop.css
 │   └── styles.css
 ├── data/
 │   ├── scheduler-config.json
 │   └── testimonials.json
 ├── js/
 │   ├── coaching.js
-│   ├── footer.js
-│   ├── navbar-chess.js
 │   ├── scheduler.js
-│   └── script.js
+│   ├── site-core.js
+│   └── site-shell.js
 ├── pages/
 │   ├── landing/
 │   │   ├── about-me.html
@@ -63,8 +66,11 @@ pawnisland/
 ├── llms.txt
 ├── llms-full.txt
 ├── LICENSE
+├── package.json
 ├── README.md
 ├── robots.txt
+├── scripts/
+│   └── validate-site.mjs
 ├── site-facts.json
 ├── site.webmanifest
 ├── sitemap.xml
@@ -85,10 +91,22 @@ pawnisland/
 
 3. **Install Dependencies**
    - Ensure you have [Node.js](https://nodejs.org/) installed
-   - Install any necessary packages if applicable
+   - Install dependencies:
+     ```bash
+     npm install
+     ```
 
 4. **Run the Application**
-   - Open `index.html` in your preferred web browser
+   - Serve the folder locally so shared partials load through `fetch`:
+     ```bash
+     python -m http.server 4177
+     ```
+   - Visit `http://localhost:4177/`
+
+5. **Validate the Site**
+   ```bash
+   npm test
+   ```
 
 ## Usage
 - **Chess Coaching:** Visit the [Chess Coaching](https://www.pawnislandacademy.com/pages/landing/coaching.html) page
@@ -116,6 +134,7 @@ When creating or updating pages, follow these guidelines for optimal search engi
 - **Structured Data:** Keep `LocalBusiness`, `Person`, `Service`, `FAQPage`, `BreadcrumbList`, and `ReserveAction` content aligned with visible page copy
 - **LLM Readiness:** Update `llms.txt`, `llms-full.txt`, and `site-facts.json` when services, contact details, or target audiences change
 - **Measurement:** Schedule and email CTAs emit GA4 events through `gtag` when analytics is available
+- **Preflight:** Run `npm test` before publishing content or structural changes
 
 ## Off-Site SEO Checklist
 - Create or update Google Business Profile, Bing Places, and Apple Business Connect with the same name, website, email, service area, and booking URL

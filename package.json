@@ -1,0 +1,10 @@
+{
+  "name": "pawn-island-academy",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate-site.mjs",
+    "test": "npm run validate"
+  }
+}

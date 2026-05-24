@@ -22,15 +22,13 @@
     <meta name="theme-color" content="#ffd700">
 
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/foundation.css">
     <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href="../../css/navbar-chess.css">
     <link rel="stylesheet" href="../../css/footer.css">
-    <link rel="stylesheet" href="../../css/components/modernJumpToTop.css">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,15 +37,6 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../../images/brand-icons/favicon.png">
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T12VEHM2PY"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-T12VEHM2PY');
-    </script>
 
     <script type="application/ld+json">
     {
@@ -660,12 +649,25 @@
         }
 
         .faq-header-item {
-            padding: 1.5rem;
             cursor: pointer;
             display: flex;
-            justify-content: between;
+            justify-content: space-between;
             align-items: center;
             transition: all 0.3s ease;
+        }
+
+        .faq-toggle {
+            width: 100%;
+            border: 0;
+            background: transparent;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.5rem;
+            text-align: left;
+            cursor: pointer;
         }
 
         .faq-header-item h3 {
@@ -761,6 +763,80 @@
             gap: 0.5rem;
             color: var(--chess-gold);
             font-weight: 600;
+        }
+
+        .main-content-shell {
+            background: var(--chess-black);
+            padding: 5rem 0;
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
+        .hero-actions-center,
+        .quote-dots,
+        .cta-actions {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .section-lead {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--chess-white);
+            margin-bottom: 3rem;
+        }
+
+        .result-highlight {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 15px;
+            border-left: 4px solid var(--chess-gold);
+        }
+
+        .result-highlight-icon {
+            color: var(--chess-gold);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .result-highlight h3 {
+            color: var(--chess-white);
+            margin-bottom: 1rem;
+        }
+
+        .result-highlight p {
+            color: var(--chess-white);
+            margin: 0;
+        }
+
+        .quote-dot-row {
+            display: inline-flex;
+            gap: 0.5rem;
+        }
+
+        .quote-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--chess-gold);
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+
+        .lesson-details {
+            margin-top: 1.5rem;
+        }
+
+        .lesson-heading {
+            color: var(--chess-gold);
+            margin-bottom: 1rem;
+        }
+
+        .faq-accordion {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         /* Button Styles */
@@ -1074,10 +1150,7 @@
                                 <div class="stat-label">Students Coached</div>
                             </div>
                         </div>
-                        <div style="margin-top: 2rem; text-align: center;">
-                           <!--- <a href="schedule.html" class="btn-chess">
-                                <i class="fas fa-calendar-alt"></i> Book a Session
-                            </a> --->
+                        <div class="hero-actions-center">
                             <a href="#story" class="btn-chess btn-chess-secondary">
                                 <i class="fas fa-chevron-down"></i> Learn More
                             </a>
@@ -1087,7 +1160,7 @@
                 <div class="col-lg-5" data-aos="fade-left">
                     <div class="profile-card">
                         <div class="profile-image">
-                            <img src="../../images/headers-pages/freeman-2.webp" alt="Chess coach studying a position at the board" width="512" height="512">
+                            <img src="../../images/headers-pages/freeman-2.webp" alt="Chess coach studying a position at the board" width="512" height="512" fetchpriority="high" decoding="async">
                         </div>
                         <div class="achievement-badge">
                             <i class="fas fa-crown"></i> The King of Pawn Island
@@ -1099,7 +1172,7 @@
     </section>
 
     <!-- Main Content -->
-    <main id="main-content" style="background: var(--chess-black); padding: 5rem 0; width: 100%; max-width: 100vw; overflow-x: hidden;">
+    <main id="main-content" class="main-content-shell">
         <div class="container">
             <!-- Story Section -->
             <section id="story" class="section" data-aos="fade-up">
@@ -1147,7 +1220,7 @@
             <!-- Experience Section -->
             <section class="section" data-aos="fade-up">
                 <h2 class="section-title">Coaching Excellence Across Institutions</h2>
-                <p style="text-align: center; font-size: 1.2rem; color: var(--chess-white); margin-bottom: 3rem;">
+                <p class="section-lead">
                     Building champions at every level of education
                 </p>
                 <div class="experience-grid">
@@ -1200,17 +1273,17 @@
                         <div class="achievement">Achievement First Schools</div>
                     </div>
                 </div>
-                <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: rgba(255, 215, 0, 0.1); border-radius: 15px; border-left: 4px solid var(--chess-gold);" data-aos="fade-up" data-aos-delay="700">
-                    <i class="fas fa-star" style="color: var(--chess-gold); font-size: 2rem; margin-bottom: 1rem;"></i>
-                    <h3 style="color: var(--chess-white); margin-bottom: 1rem;">Remarkable Results in Rhode Island</h3>
-                    <p style="color: var(--chess-white); margin: 0;">My scholastic students have achieved multiple league, state, and national championships! Incredible progress!</p>
+                <div class="result-highlight" data-aos="fade-up" data-aos-delay="700">
+                    <i class="fas fa-star result-highlight-icon"></i>
+                    <h3>Remarkable Results in Rhode Island</h3>
+                    <p>My scholastic students have achieved multiple league, state, and national championships! Incredible progress!</p>
                 </div>
             </section>
 
             <!-- Philosophy Section -->
             <section class="section" data-aos="fade-up">
                 <h2 class="section-title">The Four Pillars of Decision-Making</h2>
-                <p style="text-align: center; font-size: 1.2rem; color: var(--chess-white); margin-bottom: 3rem;">
+                <p class="section-lead">
                     I teach a decision-making method that transforms how you approach a chess position:
                 </p>
                 <div class="philosophy-grid">
@@ -1248,13 +1321,13 @@
                         "My method is a simple feedback engine. It helps you notice what matters, compare moves, and choose with confidence. It never forces a style. With practice, you discover and develop your own way to play."
                     </blockquote>
                     <cite>— Matthew Freeman</cite>
-                    <div style="text-align: center; margin-top: 2rem;">
-                        <div style="display: inline-flex; gap: 0.5rem;">
-                            <span style="width: 8px; height: 8px; background: var(--chess-gold); border-radius: 50%; opacity: 0.4;"></span>
-                            <span style="width: 8px; height: 8px; background: var(--chess-gold); border-radius: 50%; opacity: 0.4;"></span>
-                            <span style="width: 8px; height: 8px; background: var(--chess-gold); border-radius: 50%; opacity: 0.4;"></span>
-                            <span style="width: 8px; height: 8px; background: var(--chess-gold); border-radius: 50%; opacity: 0.4;"></span>
-                            <span style="width: 8px; height: 8px; background: var(--chess-gold); border-radius: 50%; opacity: 0.4;"></span>
+                    <div class="quote-dots" aria-hidden="true">
+                        <div class="quote-dot-row">
+                            <span class="quote-dot"></span>
+                            <span class="quote-dot"></span>
+                            <span class="quote-dot"></span>
+                            <span class="quote-dot"></span>
+                            <span class="quote-dot"></span>
                         </div>
                     </div>
                 </div>
@@ -1337,8 +1410,8 @@
                                     <p>Learn how to support your child's chess journey effectively</p>
                                 </div>
                             </div>
-                            <div style="margin-top: 1.5rem;">
-                                <h4 style="color: var(--chess-gold); margin-bottom: 1rem;">Lesson Structure:</h4>
+                            <div class="lesson-details">
+                                <h4 class="lesson-heading">Lesson Structure:</h4>
                                 <div class="lesson-component">
                                     <i class="fas fa-comments"></i>
                                     <span>5-minute catch-up conversation</span>
@@ -1364,10 +1437,10 @@
             <!-- FAQ Section -->
             <section class="section" data-aos="fade-up">
                 <h2 class="section-title">Frequently Asked Questions</h2>
-                <p style="text-align: center; font-size: 1.2rem; color: var(--chess-white); margin-bottom: 3rem;">
+                <p class="section-lead">
                     Everything you need to know about chess coaching
                 </p>
-                <div class="faq-accordion" style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-accordion">
                     <div class="faq-item">
                         <div class="faq-header-item">
                             <h3>What resources will I gain access to while working with you?</h3>
@@ -1429,7 +1502,7 @@
                             <span>All Skill Levels Welcome</span>
                         </div>
                     </div>
-                    <div style="margin-top: 2rem;">
+                    <div class="cta-actions">
                         <a href="schedule.html" class="btn-chess">
                             <i class="fas fa-calendar-alt"></i> Schedule Your First Lesson
                         </a>
@@ -1444,117 +1517,7 @@
 
     <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>
-
-    <!-- JavaScript Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
-    <!-- Custom Scripts -->
-    <script src="../../js/components/modernJumpToTop.js"></script>
-    <script src="../../js/navbar-chess.js"></script>
-    <script src="../../js/footer.js"></script>
-    <script src="../../js/script.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize AOS animations
-            AOS.init({
-                duration: 800,
-                once: true,
-                offset: 100,
-                easing: 'ease-out-cubic'
-            });
-
-            // Initialize modern jump-to-top button
-            createModernJumpToTop({
-                theme: 'gradient',
-                color: '#ffd700',
-                position: 'right',
-                size: 'medium',
-                shape: 'circle',
-                animation: 'bounce',
-                showAfter: 300,
-                zIndex: 1500,
-                accessibility: true
-            });
-
-            // FAQ functionality
-            const faqItems = document.querySelectorAll('.faq-item');
-            faqItems.forEach(item => {
-                const header = item.querySelector('.faq-header-item');
-                const content = item.querySelector('.faq-content');
-                const icon = item.querySelector('i');
-
-                header.addEventListener('click', () => {
-                    const isActive = item.classList.contains('active');
-
-                    // Close all FAQ items
-                    faqItems.forEach(otherItem => {
-                        otherItem.classList.remove('active');
-                        otherItem.querySelector('i').style.transform = 'rotate(0deg)';
-                    });
-
-                    // Open clicked item if it wasn't active
-                    if (!isActive) {
-                        item.classList.add('active');
-                        icon.style.transform = 'rotate(180deg)';
-                    }
-                });
-            });
-
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-
-            // Animated stats counters
-            const animateCounters = () => {
-                const counters = document.querySelectorAll('.stat-number');
-                counters.forEach(counter => {
-                    const target = parseInt(counter.getAttribute('data-value'));
-                    const duration = 2000;
-                    const startTime = performance.now();
-
-                    const animate = (currentTime) => {
-                        const elapsed = currentTime - startTime;
-                        const progress = Math.min(elapsed / duration, 1);
-                        const current = Math.floor(progress * target);
-
-                        counter.textContent = current + (target >= 100 ? '+' : '');
-
-                        if (progress < 1) {
-                            requestAnimationFrame(animate);
-                        }
-                    };
-
-                    requestAnimationFrame(animate);
-                });
-            };
-
-            // Start counter animation when stats section is in view
-            const statsObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounters();
-                        statsObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-
-            const heroStats = document.querySelector('.hero-stats');
-            if (heroStats) {
-                statsObserver.observe(heroStats);
-            }
-
-        });
-    </script>
+    <script type="module" src="../../js/site-shell.js"></script>
+    <script type="module" src="../../js/site-core.js"></script>
 </body>
 </html>

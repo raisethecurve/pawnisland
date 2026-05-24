@@ -22,15 +22,13 @@
     <meta name="theme-color" content="#ffd700">
 
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/foundation.css">
     <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href="../../css/navbar-chess.css">
     <link rel="stylesheet" href="../../css/footer.css">
-    <link rel="stylesheet" href="../../css/components/modernJumpToTop.css">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,15 +37,6 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../../images/brand-icons/favicon.png">
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T12VEHM2PY"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-T12VEHM2PY');
-    </script>
 
     <script type="application/ld+json">
     {
@@ -496,6 +485,12 @@
             margin-bottom: 2rem;
         }
 
+        .approach-lead {
+            max-width: 820px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
         /* Testimonials */
         .testimonials-section {
             position: relative;
@@ -840,9 +835,8 @@
             <h1 class="hero-title">Chess Coaching</h1>
             <p class="hero-subtitle">Personalized Instruction for All Levels</p>
             <a href="schedule.html" class="btn-chess">Schedule Your First Session</a>
-            <!-- Animated Downward Chevron -->
             <div class="chevron-down-wrapper mt-4">
-                <button class="chevron-down-btn" aria-label="Scroll Down" onclick="scrollToNextSection()">
+                <a class="chevron-down-btn" href="#main-content" aria-label="Scroll to coaching details">
                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
                         <defs>
                             <linearGradient id="chevronGradientGold" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
@@ -853,46 +847,8 @@
                         </defs>
                         <polyline points="12,20 24,32 36,20" stroke="url(#chevronGradientGold)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
                     </svg>
-                </button>
+                </a>
             </div>
-            <style>
-                .chevron-down-wrapper {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: 100%;
-                }
-                .chevron-down-btn {
-                    background: none;
-                    border: none;
-                    outline: none;
-                    cursor: pointer;
-                    animation: chevronBounce 1.5s infinite;
-                    padding: 0;
-                    margin-top: 1.2rem;
-                    transition: transform 0.2s;
-                }
-                .chevron-down-btn:active {
-                    transform: scale(0.95);
-                }
-                @keyframes chevronBounce {
-                    0%, 100% { transform: translateY(0); }
-                    50% { transform: translateY(12px); }
-                }
-                .chevron-down-btn svg {
-                    display: block;
-                    filter: drop-shadow(0 2px 8px rgba(255,215,0,0.18));
-                }
-            </style>
-            <script>
-                function scrollToNextSection() {
-                    // Find the first main section after hero
-                    var nextSection = document.querySelector('main');
-                    if (nextSection) {
-                        nextSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
-            </script>
         </div>
     </section>
 
@@ -972,7 +928,7 @@
                 <div class="services-grid">
                     <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="service-image">
-                            <img src="../../images/coaching/one-on-one-coaching.webp" alt="One-on-One chess coaching session" width="1000" height="750">
+                            <img src="../../images/coaching/one-on-one-coaching.webp" alt="One-on-One chess coaching session" width="1000" height="750" loading="lazy" decoding="async">
                         </div>
                         <div class="service-content">
                             <h3 class="service-title">Game Review</h3>
@@ -985,7 +941,7 @@
 
                     <div class="service-card" data-aos="fade-up" data-aos-delay="200">
                         <div class="service-image">
-                            <img src="../../images/coaching/group-coaching.webp" alt="Chess calculation and study session" width="1000" height="750">
+                            <img src="../../images/coaching/group-coaching.webp" alt="Chess calculation and study session" width="1000" height="750" loading="lazy" decoding="async">
                         </div>
                         <div class="service-content">
                             <h3 class="service-title">Calculation and Habits</h3>
@@ -998,7 +954,7 @@
 
                     <div class="service-card" data-aos="fade-up" data-aos-delay="300">
                         <div class="service-image">
-                            <img src="../../images/coaching/chess-camp.webp" alt="Tournament chess preparation" width="1000" height="750">
+                            <img src="../../images/coaching/chess-camp.webp" alt="Tournament chess preparation" width="1000" height="750" loading="lazy" decoding="async">
                         </div>
                         <div class="service-content">
                             <h3 class="service-title">Tournament Preparation</h3>
@@ -1015,7 +971,7 @@
             <section class="approach-section section" data-aos="fade-up">
                 <h2 class="section-title">Our Coaching Approach</h2>
                 <div class="container">
-                    <p class="cta-text" style="text-align: center; margin-bottom: 3rem;">
+                    <p class="cta-text approach-lead">
                         We believe in developing complete chess players through a comprehensive, multi-faceted approach that addresses every aspect of the game.
                     </p>
                     <ul class="approach-list">
@@ -1099,7 +1055,7 @@
                             </div>
                         </div>
                         <footer class="testimonial-feature-footer">
-                            <img src="../../images/testimonials/testimonial-ryan-upscaled.webp" alt="James R., chess coaching student" class="testimonial-avatar" width="96" height="96">
+                            <img src="../../images/testimonials/testimonial-ryan-upscaled.webp" alt="James R., chess coaching student" class="testimonial-avatar" width="96" height="96" loading="lazy" decoding="async">
                             <div class="testimonial-author">
                                 <cite>James R.</cite>
                                 <span>Adult student</span>
@@ -1158,40 +1114,8 @@
     <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
-    <!-- Custom Scripts -->
-    <script src="../../js/navbar-chess.js"></script>
-    <script src="../../js/footer.js"></script>
-    <script src="../../js/coaching.js?v=20260524-testimonials"></script>
-    <script src="../../js/components/modernJumpToTop.js"></script>
-    <script src="../../js/script.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize AOS animations
-            AOS.init({
-                duration: 800,
-                once: true,
-                offset: 100,
-                easing: 'ease-out-cubic'
-            });
-
-            // Initialize modern jump-to-top
-            createModernJumpToTop({
-                theme: 'gradient',
-                color: '#ffd700',
-                position: 'right',
-                size: 'medium',
-                shape: 'circle',
-                animation: 'bounce',
-                showAfter: 300,
-                zIndex: 1500,
-                accessibility: true
-            });
-
-        });
-    </script>
+    <script type="module" src="../../js/site-shell.js"></script>
+    <script type="module" src="../../js/site-core.js"></script>
+    <script src="../../js/coaching.js?v=20260524-testimonials" defer></script>
 </body>
 </html>
