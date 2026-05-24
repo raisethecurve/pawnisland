@@ -1,5 +1,7 @@
 document.documentElement.classList.add('js');
 
+const SITE_BASE_PATH = getSiteBasePath();
+
 document.addEventListener('DOMContentLoaded', () => {
     void initializeSiteShell();
 });
@@ -8,11 +10,11 @@ async function initializeSiteShell() {
     ensureSkipLink();
 
     await Promise.all([
-        loadPartial('navbar-placeholder', partialPath('navbar.html')),
-        loadPartial('footer-placeholder', partialPath('footer.html'))
+        loadPartial('navbar-placeholder', sitePath('/pages/partials/navbar.html')),
+        loadPartial('footer-placeholder', sitePath('/pages/partials/footer.html'))
     ]);
 
-    normalizeShellAssetPaths();
+    normalizeShellPaths();
     initializeNavbar();
     initializeFooter();
     document.dispatchEvent(new CustomEvent('pia:shell-ready'));
@@ -32,23 +34,18 @@ async function loadPartial(targetId, path) {
     }
 }
 
-function partialPath(filename) {
-    return isLandingPage()
-        ? `../../pages/partials/${filename}`
-        : `pages/partials/${filename}`;
-}
-
-function isLandingPage() {
-    return window.location.pathname.includes('/pages/landing/');
-}
-
-function normalizeShellAssetPaths() {
+function normalizeShellPaths() {
     const shell = document.querySelectorAll('#navbar-placeholder, #footer-placeholder');
     shell.forEach((root) => {
+        root.querySelectorAll('a[href^="/"]').forEach((link) => {
+            link.setAttribute('href', sitePath(link.getAttribute('href')));
+        });
+
         root.querySelectorAll('img[src*="images/brand-icons"]').forEach((image) => {
             const rawSrc = image.getAttribute('src') || '';
             const normalized = rawSrc.replace(/^(\.\.\/)+/, '/').replace(/^\.\//, '/');
-            image.setAttribute('src', normalized.startsWith('/') ? normalized : `/${normalized}`);
+            const absolutePath = normalized.startsWith('/') ? normalized : `/${normalized}`;
+            image.setAttribute('src', sitePath(absolutePath));
             image.decoding = 'async';
             image.loading = 'eager';
         });
@@ -134,6 +131,20 @@ function setActiveLinks(links) {
 
 function normalizePath(path) {
     return path.replace(/\/index\.html$/, '/');
+}
+
+function sitePath(path) {
+    if (!path || !path.startsWith('/') || path.startsWith('//')) return path;
+    if (!SITE_BASE_PATH) return path;
+    if (path === '/') return `${SITE_BASE_PATH}/`;
+    if (path === SITE_BASE_PATH || path.startsWith(`${SITE_BASE_PATH}/`)) return path;
+    return `${SITE_BASE_PATH}${path}`;
+}
+
+function getSiteBasePath() {
+    const scriptPath = new URL(import.meta.url).pathname;
+    const basePath = scriptPath.replace(/\/js\/site-shell\.js$/, '');
+    return basePath === scriptPath ? '' : basePath;
 }
 
 function initializeFooter() {
