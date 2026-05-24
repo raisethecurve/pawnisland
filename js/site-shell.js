@@ -1,6 +1,7 @@
 document.documentElement.classList.add('js');
 
 const SITE_BASE_PATH = getSiteBasePath();
+const SHELL_ASSET_VERSION = '20260524-hide-schedule';
 
 document.addEventListener('DOMContentLoaded', () => {
     void initializeSiteShell();
@@ -10,8 +11,8 @@ async function initializeSiteShell() {
     ensureSkipLink();
 
     await Promise.all([
-        loadPartial('navbar-placeholder', sitePath('/pages/partials/navbar.html')),
-        loadPartial('footer-placeholder', sitePath('/pages/partials/footer.html'))
+        loadPartial('navbar-placeholder', versionedSitePath('/pages/partials/navbar.html')),
+        loadPartial('footer-placeholder', versionedSitePath('/pages/partials/footer.html'))
     ]);
 
     normalizeShellPaths();
@@ -25,7 +26,7 @@ async function loadPartial(targetId, path) {
     if (!target) return;
 
     try {
-        const response = await fetch(path, { cache: 'force-cache' });
+        const response = await fetch(path, { cache: 'no-cache' });
         if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
         target.innerHTML = await response.text();
     } catch (error) {
@@ -139,6 +140,11 @@ function sitePath(path) {
     if (path === '/') return `${SITE_BASE_PATH}/`;
     if (path === SITE_BASE_PATH || path.startsWith(`${SITE_BASE_PATH}/`)) return path;
     return `${SITE_BASE_PATH}${path}`;
+}
+
+function versionedSitePath(path) {
+    const separator = path.includes('?') ? '&' : '?';
+    return sitePath(`${path}${separator}v=${SHELL_ASSET_VERSION}`);
 }
 
 function getSiteBasePath() {
