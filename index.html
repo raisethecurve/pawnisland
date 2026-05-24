@@ -1,360 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Website Closure Announcement | Pawn Island Academy</title>
-	<meta name="description" content="Pawn Island Academy is temporarily closed during personal and business transitions. Thank you for your support.">
-	
-	<!-- Favicon -->
-	<link rel="icon" type="image/svg+xml" href="images/brand-icons/pawn_island_vectorized.svg">
-	
-	<!-- Google Fonts -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-	
-	<!-- Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-T12VEHM2PY"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-		gtag('config', 'G-T12VEHM2PY');
-	</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Coaching Rhode Island | Pawn Island Academy</title>
+    <meta name="description" content="Private chess coaching in Rhode Island and online with Matthew Freeman. Personalized lessons for scholastic players, adults, and ambitious improvers.">
+    <meta name="keywords" content="chess coaching Rhode Island, chess lessons Providence, online chess coach, scholastic chess coach, Matthew Freeman">
+    <meta property="og:title" content="Chess Coaching Rhode Island | Pawn Island Academy">
+    <meta property="og:description" content="Private chess coaching in Rhode Island and online with Matthew Freeman. Personalized lessons for scholastic players, adults, and ambitious improvers.">
+    <meta property="og:image" content="https://pawnislandacademy.com/images/brand-icons/logo-light.png">
+    <meta property="og:url" content="https://pawnislandacademy.com/">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://pawnislandacademy.com/">
 
-	
-	<style>
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-		html, body {
-			width: 100%;
-			height: 100%;
-			overflow-x: hidden;
-		}
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/navbar-chess.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/components/modernJumpToTop.css">
+    <link rel="stylesheet" href="css/home.css">
 
-		body {
-			font-family: 'Open Sans', sans-serif;
-			background: linear-gradient(135deg, #0f172a 0%, #1a1f3a 50%, #0f172a 100%);
-			color: #e0e0e0;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			min-height: 100vh;
-			position: relative;
-			background-attachment: fixed;
-		}
+    <link rel="icon" type="image/png" href="images/brand-icons/favicon.png">
 
-		/* Animated Background Elements */
-		.background-animate {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			z-index: 0;
-			overflow: hidden;
-			pointer-events: none;
-		}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T12VEHM2PY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-T12VEHM2PY');
+    </script>
 
-		.geometric-shape {
-			position: absolute;
-			opacity: 0.08;
-		}
-
-		.circle {
-			border-radius: 50%;
-			background: radial-gradient(circle, #d4af37, transparent);
-		}
-
-		.circle-1 {
-			width: 300px;
-			height: 300px;
-			top: -100px;
-			right: -100px;
-			animation: float 20s ease-in-out infinite;
-		}
-
-		.circle-2 {
-			width: 200px;
-			height: 200px;
-			bottom: 10%;
-			left: 5%;
-			animation: float 25s ease-in-out infinite reverse;
-		}
-
-		.circle-3 {
-			width: 150px;
-			height: 150px;
-			top: 50%;
-			right: 10%;
-			animation: float 30s ease-in-out infinite;
-		}
-
-		@keyframes float {
-			0%, 100% {
-				transform: translateY(0px) translateX(0px);
-			}
-			25% {
-				transform: translateY(-30px) translateX(20px);
-			}
-			50% {
-				transform: translateY(-50px) translateX(-20px);
-			}
-			75% {
-				transform: translateY(-20px) translateX(30px);
-			}
-		}
-
-		.gradient-overlay {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			background: 
-				radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
-				radial-gradient(circle at 80% 50%, rgba(220, 53, 69, 0.1) 0%, transparent 50%);
-		}
-
-		/* Background Logo */
-		.background-logo {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			width: 600px;
-			height: 600px;
-			opacity: 0.18;
-			z-index: 1;
-			pointer-events: none;
-			animation: logoFloat 15s ease-in-out infinite;
-		}
-
-		.background-logo img {
-			width: 100%;
-			height: 100%;
-			object-fit: contain;
-			filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.15));
-		}
-
-		@keyframes logoFloat {
-			0%, 100% {
-				transform: translate(-50%, -50%) scale(1);
-			}
-			50% {
-				transform: translate(-50%, -50%) scale(1.1);
-			}
-		}
-
-		/* Main Content */
-		.content-wrapper {
-			position: relative;
-			z-index: 10;
-			flex: 1;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			padding: 40px 20px;
-		}
-
-		.container {
-			max-width: 900px;
-			width: 100%;
-			text-align: center;
-		}
-
-		/* Headline */
-		.headline {
-			font-family: 'Montserrat', sans-serif;
-			font-size: 3.5rem;
-			font-weight: 800;
-			line-height: 1.2;
-			margin-bottom: 30px;
-			color: #ffffff;
-			text-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-			letter-spacing: -1px;
-		}
-
-		.headline .accent {
-			background: linear-gradient(135deg, #d4af37, #dc3545);
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			background-clip: text;
-			animation: shimmer 3s ease-in-out infinite;
-		}
-
-		@keyframes shimmer {
-			0%, 100% {
-				opacity: 1;
-			}
-			50% {
-				opacity: 0.8;
-			}
-		}
-
-		/* Message */
-		.message {
-			font-size: 1.3rem;
-			font-weight: 400;
-			line-height: 1.8;
-			color: #b0b0b0;
-			margin-bottom: 50px;
-			max-width: 700px;
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		/* Accent Line */
-		.accent-line {
-			width: 80px;
-			height: 4px;
-			background: linear-gradient(90deg, #d4af37, #dc3545);
-			margin: 30px auto 50px auto;
-			border-radius: 2px;
-			animation: expand 1.5s ease-out;
-		}
-
-		@keyframes expand {
-			from {
-				width: 0;
-				opacity: 0;
-			}
-			to {
-				width: 80px;
-				opacity: 1;
-			}
-		}
-
-		/* Secondary Message */
-		.secondary-message {
-			font-size: 1rem;
-			color: #888;
-			margin-top: 30px;
-			font-style: italic;
-		}
-
-		/* Footer */
-		.footer-container {
-			position: relative;
-			z-index: 10;
-			padding: 40px 20px 30px;
-			border-top: 1px solid rgba(212, 175, 55, 0.2);
-			text-align: center;
-		}
-
-		.footer-text {
-			font-size: 0.95rem;
-			color: #666;
-			font-family: 'Open Sans', sans-serif;
-			font-weight: 400;
-		}
-
-		.footer-text strong {
-			color: #888;
-		}
-
-		/* Responsive Design */
-		@media (max-width: 768px) {
-			.headline {
-				font-size: 2.5rem;
-				margin-bottom: 20px;
-			}
-
-			.message {
-				font-size: 1.1rem;
-				margin-bottom: 40px;
-			}
-
-			.content-wrapper {
-				padding: 30px 15px;
-			}
-
-			.geometric-shape {
-				opacity: 0.05;
-			}
-
-			.circle-1 {
-				width: 200px;
-				height: 200px;
-			}
-
-			.circle-2 {
-				width: 150px;
-				height: 150px;
-			}
-
-			.circle-3 {
-				width: 100px;
-				height: 100px;
-			}
-		}
-
-		@media (max-width: 480px) {
-			.headline {
-				font-size: 2rem;
-				margin-bottom: 15px;
-			}
-
-			.message {
-				font-size: 1rem;
-				margin-bottom: 30px;
-			}
-
-			.accent-line {
-				margin: 20px auto 30px auto;
-			}
-
-			.secondary-message {
-				font-size: 0.9rem;
-			}
-
-			.footer-text {
-				font-size: 0.85rem;
-			}
-		}
-	</style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://pawnislandacademy.com/#business",
+        "name": "Pawn Island Academy",
+        "url": "https://pawnislandacademy.com/",
+        "image": "https://pawnislandacademy.com/images/brand-icons/logo-light.png",
+        "email": "info@pawnislandacademy.com",
+        "description": "Personalized chess coaching in Rhode Island and online for students, families, adults, and ambitious tournament players.",
+        "areaServed": [
+            "Rhode Island",
+            "Providence",
+            "New England",
+            "Online"
+        ],
+        "founder": {
+            "@type": "Person",
+            "name": "Matthew Freeman",
+            "jobTitle": "Chess Coach"
+        },
+        "makesOffer": [
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Private Chess Coaching",
+                    "serviceType": "Chess lessons"
+                },
+                "url": "https://pawnisland.setmore.com/"
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Scholastic Chess Coaching",
+                    "serviceType": "Youth chess instruction"
+                },
+                "url": "https://pawnislandacademy.com/pages/landing/coaching.html"
+            }
+        ]
+    }
+    </script>
 </head>
-<body>
-	<!-- Animated Background -->
-	<div class="background-animate">
-		<div class="gradient-overlay"></div>
-		<div class="background-logo">
-			<img src="images/brand-icons/pawn_island_vectorized.svg" alt="Pawn Island Academy">
-		</div>
-		<div class="geometric-shape circle circle-1"></div>
-		<div class="geometric-shape circle circle-2"></div>
-		<div class="geometric-shape circle circle-3"></div>
-	</div>
+<body class="index-page">
+    <div id="navbar-placeholder"></div>
 
-	<!-- Main Content -->
-	<div class="content-wrapper">
-		<div class="container">
-			<h1 class="headline">
-				This Website is <span class="accent">Closed</span> — Change is Underway
-			</h1>
+    <header class="home-hero">
+        <div class="home-hero__pattern" aria-hidden="true"></div>
+        <div class="home-hero__pieces" aria-hidden="true">
+            <span>♜</span>
+            <span>♞</span>
+            <span>♝</span>
+            <span>♛</span>
+            <span>♚</span>
+            <span>♟</span>
+        </div>
+        <div class="home-hero__content">
+            <img src="images/brand-icons/pawn_island_vectorized.svg" alt="Pawn Island Academy Logo" class="home-hero__logo">
+            <p class="eyebrow">Rhode Island and online chess coaching</p>
+            <h1>Pawn Island Academy</h1>
+            <p class="home-hero__lead">
+                Private chess lessons for students who want clearer thinking, stronger habits,
+                and a training plan that actually fits the way they play.
+            </p>
+            <div class="hero-actions" aria-label="Primary actions">
+                <a href="https://pawnisland.setmore.com/" class="btn-chess" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-calendar-alt"></i>
+                    Book a Lesson
+                </a>
+                <a href="pages/landing/coaching.html" class="btn-chess btn-chess-secondary">
+                    <i class="fas fa-chess-knight"></i>
+                    View Coaching
+                </a>
+            </div>
+        </div>
+    </header>
 
-			<div class="accent-line"></div>
+    <main id="main-content">
+        <section class="proof-strip" aria-label="Coaching proof points">
+            <div>
+                <strong>20+</strong>
+                <span>Years playing and teaching</span>
+            </div>
+            <div>
+                <strong>500+</strong>
+                <span>Students coached</span>
+            </div>
+            <div>
+                <strong>RI</strong>
+                <span>State champion experience</span>
+            </div>
+        </section>
 
-			<p class="message">
-				We are pausing operations during personal and business transitions. Thank you for your support and patience as we navigate this period of change and growth.
-			</p>
+        <section class="home-section split-section">
+            <div class="section-copy">
+                <p class="eyebrow">Why coaching works here</p>
+                <h2>Training that starts with how you make decisions</h2>
+                <p>
+                    Lessons focus on the positions, habits, and blind spots that actually show up in your games.
+                    We study calculation, openings, endgames, tournament psychology, and review work in a way that
+                    gives you something concrete to practice between sessions.
+                </p>
+                <a href="pages/landing/about-me.html" class="text-link">
+                    Meet Matthew Freeman <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="testimonial-callout">
+                <p>
+                    "You will NOT receive generic one-size-fits-all chess courses but rather a meticulous,
+                    well-thought-out training plan."
+                </p>
+                <span>James R., student</span>
+            </div>
+        </section>
 
-			<p class="secondary-message">
-				We look forward to reconnecting with you in the future.
-			</p>
-		</div>
-	</div>
+        <section class="home-section">
+            <div class="section-heading">
+                <p class="eyebrow">Choose your path</p>
+                <h2>Coaching options for different goals</h2>
+            </div>
+            <div class="program-grid">
+                <article class="program-card">
+                    <i class="fas fa-user-graduate" aria-hidden="true"></i>
+                    <h3>Private Lessons</h3>
+                    <p>Focused one-on-one coaching for players who want direct feedback, structured homework, and steady rating growth.</p>
+                    <a href="https://pawnisland.setmore.com/" target="_blank" rel="noopener noreferrer">Book private coaching</a>
+                </article>
+                <article class="program-card">
+                    <i class="fas fa-school" aria-hidden="true"></i>
+                    <h3>Scholastic Training</h3>
+                    <p>Support for young players preparing for school leagues, state championships, nationals, or their first rated events.</p>
+                    <a href="pages/landing/coaching.html#packages">See student options</a>
+                </article>
+                <article class="program-card">
+                    <i class="fas fa-laptop" aria-hidden="true"></i>
+                    <h3>Online Improvement</h3>
+                    <p>Remote lessons with shared boards, game review, and personalized study plans for students outside Rhode Island.</p>
+                    <a href="pages/landing/coaching.html#packages">Compare formats</a>
+                </article>
+            </div>
+        </section>
 
-	<!-- Footer -->
-	<div class="footer-container">
-		<p class="footer-text">
-			&copy; 2025-2026 <strong>Pawn Island Academy</strong> — All Rights Reserved
-		</p>
-	</div>
+        <section class="home-section process-section">
+            <div class="section-heading">
+                <p class="eyebrow">What happens next</p>
+                <h2>A simple start for serious improvement</h2>
+            </div>
+            <ol class="process-list">
+                <li>
+                    <strong>Share your goals</strong>
+                    <span>Tell me your rating, schedule, tournaments, and what keeps showing up in your games.</span>
+                </li>
+                <li>
+                    <strong>Get a lesson plan</strong>
+                    <span>We pick the right mix of review, calculation, openings, endings, and practical training.</span>
+                </li>
+                <li>
+                    <strong>Build momentum</strong>
+                    <span>You leave each session with a clear next assignment instead of a vague pile of advice.</span>
+                </li>
+            </ol>
+        </section>
+
+        <section class="home-cta">
+            <div>
+                <p class="eyebrow">Ready to train?</p>
+                <h2>Book a first lesson and bring one recent game.</h2>
+                <p>We will use it to identify your highest-leverage improvement path.</p>
+            </div>
+            <a href="https://pawnisland.setmore.com/" class="btn-chess" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-calendar-check"></i>
+                Schedule Now
+            </a>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="js/navbar-chess.js"></script>
+    <script src="js/footer.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

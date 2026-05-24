@@ -1,0 +1,436 @@
+:root {
+    --chess-black: #1a1a1a;
+    --chess-dark-gray: #2d2d2d;
+    --chess-medium-gray: #404040;
+    --chess-gold: #ffd700;
+    --chess-amber: #ffed4a;
+    --chess-blue: #2c5aa0;
+    --chess-white: #ffffff;
+}
+
+.index-page {
+    background: var(--chess-black);
+    color: var(--chess-white);
+}
+
+.home-hero {
+    min-height: 88vh;
+    min-height: 88dvh;
+    position: relative;
+    box-sizing: border-box;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    padding: 5.5rem 1.25rem 2rem;
+    background:
+        linear-gradient(135deg, rgba(26, 26, 26, 0.94), rgba(45, 45, 45, 0.86)),
+        url("../images/headers-pages/coach-2.webp") center/cover;
+}
+
+.home-hero__pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.11;
+    background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 80px, var(--chess-medium-gray) 80px, var(--chess-medium-gray) 81px),
+        repeating-linear-gradient(90deg, transparent, transparent 80px, var(--chess-medium-gray) 80px, var(--chess-medium-gray) 81px);
+    animation: chessPatternMove 24s linear infinite;
+}
+
+.home-hero__pieces {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+}
+
+.home-hero__pieces span {
+    position: absolute;
+    color: rgba(255, 215, 0, 0.28);
+    font-size: 3.25rem;
+    animation: floatPiece 16s ease-in-out infinite;
+}
+
+.home-hero__pieces span:nth-child(1) { top: 13%; left: 9%; animation-delay: 0s; }
+.home-hero__pieces span:nth-child(2) { top: 22%; right: 13%; animation-delay: 2s; }
+.home-hero__pieces span:nth-child(3) { bottom: 22%; left: 18%; animation-delay: 4s; }
+.home-hero__pieces span:nth-child(4) { bottom: 16%; right: 12%; animation-delay: 6s; }
+.home-hero__pieces span:nth-child(5) { top: 54%; left: 4%; animation-delay: 8s; }
+.home-hero__pieces span:nth-child(6) { top: 62%; right: 5%; animation-delay: 10s; }
+
+.home-hero__content {
+    position: relative;
+    z-index: 2;
+    width: min(920px, 100%);
+    text-align: center;
+}
+
+.home-hero__logo {
+    width: 128px;
+    height: auto;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 24px rgba(255, 215, 0, 0.52));
+    animation: spinClockwise 12s linear infinite;
+}
+
+.eyebrow {
+    margin: 0 0 0.75rem;
+    color: var(--chess-gold);
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.home-hero h1,
+.home-section h2,
+.home-cta h2 {
+    font-family: "Cinzel", serif;
+}
+
+.home-hero h1 {
+    font-size: 4.4rem;
+    line-height: 1.05;
+    margin: 0 0 1rem;
+    background: linear-gradient(135deg, var(--chess-white), var(--chess-gold), var(--chess-amber));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.home-hero__lead {
+    max-width: 760px;
+    margin: 0 auto 1.45rem;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 1.25rem;
+    line-height: 1.7;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.index-page .btn-chess {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    box-sizing: border-box;
+    min-height: 3.1rem;
+    padding: 0.75rem 1.2rem;
+    border: 0;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--chess-gold), var(--chess-amber));
+    color: var(--chess-black);
+    font-family: "Cinzel", serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.1;
+    text-decoration: none;
+    box-shadow: 0 12px 28px rgba(255, 215, 0, 0.24);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.index-page .btn-chess:hover,
+.index-page .btn-chess:focus {
+    color: var(--chess-black);
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px rgba(255, 215, 0, 0.32);
+}
+
+.index-page .btn-chess-secondary {
+    background: rgba(26, 26, 26, 0.7);
+    border: 1px solid rgba(255, 215, 0, 0.55);
+    color: var(--chess-white);
+}
+
+.index-page .btn-chess-secondary:hover,
+.index-page .btn-chess-secondary:focus {
+    color: var(--chess-gold);
+}
+
+#main-content {
+    background:
+        radial-gradient(circle at 15% 10%, rgba(44, 90, 160, 0.16), transparent 30rem),
+        linear-gradient(180deg, var(--chess-black), #121212);
+}
+
+.proof-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    background: rgba(255, 215, 0, 0.22);
+    border-top: 1px solid rgba(255, 215, 0, 0.22);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.22);
+}
+
+.proof-strip div {
+    padding: 1.6rem 1rem;
+    text-align: center;
+    background: rgba(26, 26, 26, 0.92);
+}
+
+.proof-strip strong {
+    display: block;
+    color: var(--chess-gold);
+    font-family: "Cinzel", serif;
+    font-size: 2.75rem;
+    line-height: 1;
+}
+
+.proof-strip span {
+    display: block;
+    margin-top: 0.4rem;
+    color: rgba(255, 255, 255, 0.84);
+}
+
+.home-section {
+    width: min(1120px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: clamp(4rem, 8vw, 6rem) 0;
+}
+
+.split-section {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+}
+
+.section-copy h2,
+.section-heading h2,
+.home-cta h2 {
+    color: var(--chess-white);
+    font-size: 3rem;
+    line-height: 1.12;
+    margin: 0 0 1.1rem;
+}
+
+.section-copy p,
+.home-cta p,
+.program-card p,
+.process-list span {
+    color: rgba(255, 255, 255, 0.84);
+    line-height: 1.7;
+}
+
+.text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--chess-gold);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.text-link:hover {
+    color: var(--chess-amber);
+    text-decoration: none;
+}
+
+.testimonial-callout {
+    border: 1px solid rgba(255, 215, 0, 0.28);
+    border-radius: 8px;
+    padding: clamp(1.4rem, 3vw, 2.2rem);
+    background: linear-gradient(135deg, rgba(45, 45, 45, 0.88), rgba(26, 26, 26, 0.92));
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.32);
+}
+
+.testimonial-callout p {
+    margin: 0 0 1rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.testimonial-callout span {
+    color: var(--chess-gold);
+    font-weight: 700;
+}
+
+.section-heading {
+    max-width: 780px;
+    margin-bottom: 2rem;
+}
+
+.program-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.program-card {
+    min-height: 100%;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 215, 0, 0.22);
+    border-radius: 8px;
+    background: rgba(45, 45, 45, 0.7);
+}
+
+.program-card i {
+    color: var(--chess-gold);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.program-card h3 {
+    color: var(--chess-white);
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+}
+
+.program-card a {
+    color: var(--chess-gold);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.program-card a:hover {
+    color: var(--chess-amber);
+}
+
+.process-section {
+    border-top: 1px solid rgba(255, 215, 0, 0.14);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.14);
+}
+
+.process-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: process;
+}
+
+.process-list li {
+    position: relative;
+    padding: 4rem 1.35rem 1.35rem;
+    border-radius: 8px;
+    background: rgba(26, 26, 26, 0.72);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    counter-increment: process;
+}
+
+.process-list li::before {
+    content: counter(process);
+    position: absolute;
+    top: 1rem;
+    left: 1.35rem;
+    width: 2rem;
+    height: 2rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--chess-gold);
+    color: var(--chess-black);
+    font-weight: 800;
+}
+
+.process-list strong {
+    display: block;
+    margin-bottom: 0.65rem;
+    color: var(--chess-white);
+    font-size: 1.15rem;
+}
+
+.home-cta {
+    width: min(1120px, calc(100% - 2rem));
+    margin: 0 auto 5rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(2rem, 5vw, 3rem);
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(44, 90, 160, 0.86), rgba(45, 45, 45, 0.96));
+    border: 1px solid rgba(255, 215, 0, 0.25);
+}
+
+.home-cta h2 {
+    margin-bottom: 0.6rem;
+}
+
+.home-cta p {
+    margin: 0;
+}
+
+@keyframes chessPatternMove {
+    from { transform: translate(0, 0); }
+    to { transform: translate(80px, 80px); }
+}
+
+@keyframes floatPiece {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-22px) rotate(8deg); }
+}
+
+@keyframes spinClockwise {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+}
+
+@media (max-width: 900px) {
+    .proof-strip,
+    .program-grid,
+    .process-list,
+    .split-section {
+        grid-template-columns: 1fr;
+    }
+
+    .home-cta {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .home-hero h1 {
+        font-size: 3.25rem;
+    }
+
+    .section-copy h2,
+    .section-heading h2,
+    .home-cta h2 {
+        font-size: 2.35rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .home-hero {
+        padding-top: 6rem;
+    }
+
+    .home-hero__pieces span {
+        font-size: 2rem;
+    }
+
+    .home-hero h1 {
+        font-size: 2.45rem;
+    }
+
+    .home-hero__lead {
+        font-size: 1.05rem;
+    }
+
+    .proof-strip strong {
+        font-size: 1.9rem;
+    }
+
+    .section-copy h2,
+    .section-heading h2,
+    .home-cta h2 {
+        font-size: 2rem;
+    }
+
+    .hero-actions,
+    .hero-actions .btn-chess,
+    .home-cta .btn-chess {
+        width: 100%;
+    }
+
+    .proof-strip div {
+        padding: 1.2rem 1rem;
+    }
+}

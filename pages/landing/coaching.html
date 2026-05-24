@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Lessons Rhode Island | Pawn Island Academy</title>
+    <meta name="description" content="Transform your chess game with personalized coaching in Rhode Island. One-on-one lessons, group training, and chess camps for all levels.">
+    <meta name="keywords" content="chess lessons, chess coach, Rhode Island chess, Providence chess training, chess strategy">
+    <meta property="og:title" content="Chess Lessons Rhode Island | Pawn Island Academy">
+    <meta property="og:description" content="Transform your chess game with personalized coaching in Rhode Island. One-on-one lessons, group training, and chess camps for all levels.">
+    <meta property="og:image" content="https://pawnislandacademy.com/images/brand-icons/logo-light.png">
+    <meta property="og:url" content="https://pawnislandacademy.com/pages/landing/coaching.html">
+    <meta property="og:type" content="service">
+    <link rel="canonical" href="https://pawnislandacademy.com/pages/landing/coaching.html">
+
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/navbar-chess.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="../../css/components/modernJumpToTop.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../../images/brand-icons/favicon.png">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T12VEHM2PY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-T12VEHM2PY');
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "@id": "https://pawnislandacademy.com/pages/landing/coaching.html#service",
+        "name": "Chess Coaching",
+        "serviceType": "Chess lessons and training",
+        "description": "Personalized chess coaching in Rhode Island and online, including private lessons, scholastic training, group instruction, and lesson bundles.",
+        "provider": {
+            "@type": "LocalBusiness",
+            "@id": "https://pawnislandacademy.com/#business",
+            "name": "Pawn Island Academy",
+            "url": "https://pawnislandacademy.com/",
+            "email": "info@pawnislandacademy.com",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Providence",
+                "addressRegion": "RI",
+                "addressCountry": "US"
+            }
+        },
+        "areaServed": ["Rhode Island", "Providence", "New England", "Online"],
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Private Chess Lesson",
+                "url": "https://pawnisland.setmore.com/"
+            },
+            {
+                "@type": "Offer",
+                "name": "Four-Lesson Training Bundle",
+                "url": "https://pawnisland.setmore.com/"
+            },
+            {
+                "@type": "Offer",
+                "name": "Scholastic Chess Coaching",
+                "url": "https://pawnisland.setmore.com/"
+            }
+        ]
+    }
+    </script>
+
+    <style>
+        /* Dark Chess Theme Variables - Consistent with index.html */
+        :root {
+            --chess-black: #1a1a1a;
+            --chess-dark-gray: #2d2d2d;
+            --chess-medium-gray: #404040;
+
+            --chess-gold: #ffd700;
+            --chess-amber: #ffed4a;
+            --chess-blue: #2c5aa0;
+            --chess-white: #ffffff;
+            --chess-shadow: rgba(0, 0, 0, 0.8);
+
+            /* Navbar Height Variables */
+            --navbar-height-mobile: 70px;
+            --navbar-height-tablet: 80px;
+            --navbar-height-desktop: 90px;
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--chess-white);
+            background: var(--chess-black);
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: calc(88vh - var(--navbar-height-mobile));
+            min-height: calc(88dvh - var(--navbar-height-mobile));
+            height: auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(45, 45, 45, 0.95) 100%),
+                        url('../../images/headers-pages/coach-2.webp') center/cover;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 90vw;
+        }
+
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--chess-white) 0%, var(--chess-gold) 50%, var(--chess-amber) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--chess-white);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: var(--chess-black);
+            padding: 4rem 0;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 5rem;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--chess-gold);
+            text-transform: uppercase;
+            letter-spacing: 0;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--chess-gold), var(--chess-amber));
+            border-radius: 2px;
+        }
+
+        /* Premium Experience Section */
+        .premium-experience {
+            background: linear-gradient(135deg, var(--chess-dark-gray) 0%, var(--chess-medium-gray) 100%);
+            border-radius: 20px;
+            padding: 4rem 2rem;
+            margin-bottom: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-experience::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 48%, rgba(255, 215, 0, 0.05) 49%, rgba(255, 215, 0, 0.05) 51%, transparent 52%);
+            background-size: 100px 100px;
+            animation: patternMove 30s linear infinite;
+        }
+
+        @keyframes patternMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
+        }
+
+        .premium-experience-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .premium-experience-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--chess-white);
+            margin-bottom: 1.5rem;
+        }
+
+        .premium-experience-text {
+            font-size: 1.2rem;
+            color: var(--chess-white);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Metrics */
+        .premium-metrics {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .metric {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .metric-value {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--chess-gold);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 1rem;
+            color: var(--chess-white);
+            text-transform: uppercase;
+            letter-spacing: 0;
+        }
+
+        /* Service Cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, var(--chess-dark-gray) 0%, var(--chess-medium-gray) 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            border: 2px solid var(--chess-medium-gray);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--chess-gold);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+        }
+
+        .service-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+
+        /* Packages */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .package-card {
+            background: linear-gradient(135deg, var(--chess-dark-gray) 0%, var(--chess-medium-gray) 100%);
+            border: 2px solid var(--chess-medium-gray);
+            border-radius: 12px;
+            padding: 1.75rem;
+            min-height: 100%;
+        }
+
+        .package-card.featured {
+            border-color: var(--chess-gold);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.18);
+        }
+
+        .package-label {
+            color: var(--chess-gold);
+            font-weight: 700;
+            letter-spacing: 0;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .package-card h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--chess-white);
+            font-size: 1.35rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .package-card p,
+        .package-card li {
+            color: var(--chess-white);
+            line-height: 1.6;
+        }
+
+        .package-card ul {
+            padding-left: 1.2rem;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--chess-gold);
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: var(--chess-white);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Approach Section */
+        .approach-section {
+            background: linear-gradient(135deg, var(--chess-dark-gray) 0%, var(--chess-black) 100%);
+            border-radius: 20px;
+            padding: 4rem 2rem;
+            margin: 5rem 0;
+            border: 2px solid var(--chess-medium-gray);
+        }
+
+        .approach-list {
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .approach-list li {
+            background: rgba(255, 215, 0, 0.1);
+            margin-bottom: 1rem;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--chess-gold);
+            transition: all 0.3s ease;
+        }
+
+        .approach-list li:hover {
+            background: rgba(255, 215, 0, 0.15);
+            transform: translateX(10px);
+        }
+
+        .approach-list li i {
+            color: var(--chess-gold);
+            font-size: 1.2rem;
+            margin-right: 1rem;
+        }
+
+        .approach-list li strong {
+            color: var(--chess-white);
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background: linear-gradient(135deg, var(--chess-medium-gray) 0%, var(--chess-dark-gray) 100%);
+            border-radius: 20px;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--chess-white);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            color: var(--chess-white);
+            margin-bottom: 2rem;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, var(--chess-dark-gray) 0%, var(--chess-medium-gray) 100%);
+            border: 1px solid rgba(255, 215, 0, 0.25);
+            border-radius: 12px;
+            padding: 1.5rem;
+            min-height: 100%;
+        }
+
+        .testimonial-card.with-image {
+            display: grid;
+            grid-template-columns: 76px 1fr;
+            gap: 1rem;
+            align-items: start;
+        }
+
+        .testimonial-card img {
+            width: 76px;
+            height: 76px;
+            object-fit: cover;
+            border-radius: 18px;
+            border: 2px solid var(--chess-gold);
+        }
+
+        .testimonial-card blockquote {
+            margin: 0 0 1rem;
+            color: var(--chess-white);
+            line-height: 1.65;
+        }
+
+        .testimonial-card cite {
+            display: block;
+            color: var(--chess-gold);
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        .testimonial-card span {
+            display: block;
+            margin-top: 0.2rem;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.92rem;
+        }
+
+        .loading-container {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .loading-spinner {
+            border: 4px solid var(--chess-medium-gray);
+            border-top: 4px solid var(--chess-gold);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Button Styles */
+        .btn-chess {
+            background: linear-gradient(135deg, var(--chess-gold) 0%, var(--chess-amber) 100%);
+            color: var(--chess-black);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-chess::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-chess:hover::before {
+            left: 100%;
+        }
+
+        .btn-chess:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+            color: var(--chess-black);
+            text-decoration: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: calc(86vh - var(--navbar-height-mobile));
+                min-height: calc(86dvh - var(--navbar-height-mobile));
+            }
+
+            .hero-title,
+            .section-title,
+            .metric-value,
+            .cta-title {
+                font-size: 2.35rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .premium-experience-title {
+                font-size: 2rem;
+            }
+
+            .premium-experience,
+            .approach-section,
+            .cta-section {
+                padding: 2rem 1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .premium-metrics {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Tablet Responsive */
+        @media (min-width: 768px) {
+            .hero-section {
+                min-height: calc(88vh - var(--navbar-height-tablet));
+                min-height: calc(88dvh - var(--navbar-height-tablet));
+            }
+        }
+
+        /* Desktop Responsive */
+        @media (min-width: 1024px) {
+            .hero-section {
+                min-height: calc(88vh - var(--navbar-height-desktop));
+                min-height: calc(88dvh - var(--navbar-height-desktop));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Placeholder -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <h1 class="hero-title">Chess Coaching</h1>
+            <p class="hero-subtitle">Personalized Instruction for All Levels</p>
+            <a href="https://pawnisland.setmore.com/" class="btn-chess" target="_blank" rel="noopener noreferrer">Schedule Your First Session</a>
+            <!-- Animated Downward Chevron -->
+            <div class="chevron-down-wrapper mt-4">
+                <button class="chevron-down-btn" aria-label="Scroll Down" onclick="scrollToNextSection()">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                        <defs>
+                            <linearGradient id="chevronGradientGold" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#ffd700"/>
+                                <stop offset="0.5" stop-color="#ffed4a"/>
+                                <stop offset="1" stop-color="#ffd700"/>
+                            </linearGradient>
+                        </defs>
+                        <polyline points="12,20 24,32 36,20" stroke="url(#chevronGradientGold)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    </svg>
+                </button>
+            </div>
+            <style>
+                .chevron-down-wrapper {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                }
+                .chevron-down-btn {
+                    background: none;
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+                    animation: chevronBounce 1.5s infinite;
+                    padding: 0;
+                    margin-top: 1.2rem;
+                    transition: transform 0.2s;
+                }
+                .chevron-down-btn:active {
+                    transform: scale(0.95);
+                }
+                @keyframes chevronBounce {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(12px); }
+                }
+                .chevron-down-btn svg {
+                    display: block;
+                    filter: drop-shadow(0 2px 8px rgba(255,215,0,0.18));
+                }
+            </style>
+            <script>
+                function scrollToNextSection() {
+                    // Find the first main section after hero
+                    var nextSection = document.querySelector('main');
+                    if (nextSection) {
+                        nextSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            </script>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+        <div class="container">
+            <!-- Premium Experience Section -->
+            <section class="premium-experience section" data-aos="fade-up">
+                <div class="premium-experience-content">
+                    <h2 class="premium-experience-title">Elevate Your Chess Game</h2>
+                    <p class="premium-experience-text">
+                        Personalized instruction designed to transform and reinforce your chess understanding and decision making.
+                        Our comprehensive approach combines strategic thinking, tactical precision, and psychological resilience.
+                    </p>
+                    <div class="premium-metrics">
+                        <div class="metric" data-aos="fade-up" data-aos-delay="100">
+                            <span class="metric-value" data-value="20+">0</span>
+                            <div class="metric-label">Years Experience</div>
+                        </div>
+                        <div class="metric" data-aos="fade-up" data-aos-delay="200">
+                            <span class="metric-value" data-value="500+">0</span>
+                            <div class="metric-label">Students Coached</div>
+                        </div>
+                        <div class="metric" data-aos="fade-up" data-aos-delay="300">
+                            <span class="metric-value" data-value="1000+">0</span>
+                            <div class="metric-label">Lessons & Games Reviewed</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Packages Section -->
+            <section class="section" id="packages" data-aos="fade-up">
+                <h2 class="section-title">Choose a Coaching Format</h2>
+                <div class="packages-grid">
+                    <article class="package-card featured" data-aos="fade-up" data-aos-delay="100">
+                        <div class="package-label">Most direct</div>
+                        <h3>Private Lesson</h3>
+                        <p>Best for players who want focused feedback, game review, and a clear assignment after each session.</p>
+                        <ul>
+                            <li>Online or local in-person options</li>
+                            <li>Bring recent games or current study problems</li>
+                            <li>Good fit for adults and scholastic players</li>
+                        </ul>
+                        <a href="https://pawnisland.setmore.com/" class="btn-chess" target="_blank" rel="noopener noreferrer">Book a Lesson</a>
+                    </article>
+
+                    <article class="package-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="package-label">Best value</div>
+                        <h3>Four-Lesson Bundle</h3>
+                        <p>Best for students ready to build momentum through a short training cycle instead of one isolated lesson.</p>
+                        <ul>
+                            <li>Structured theme across four meetings</li>
+                            <li>Homework and review between sessions</li>
+                            <li>Bundle savings available for dedicated students</li>
+                        </ul>
+                        <a href="mailto:info@pawnislandacademy.com" class="btn-chess">Ask About Bundles</a>
+                    </article>
+
+                    <article class="package-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="package-label">Teams and schools</div>
+                        <h3>Scholastic Coaching</h3>
+                        <p>Best for families, schools, clubs, and young players preparing for leagues, states, nationals, or first rated events.</p>
+                        <ul>
+                            <li>Beginner through advanced scholastic training</li>
+                            <li>Parent guidance and tournament readiness</li>
+                            <li>Group lesson options by request</li>
+                        </ul>
+                        <a href="mailto:info@pawnislandacademy.com" class="btn-chess">Discuss a Group</a>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section class="section" data-aos="fade-up">
+                <h2 class="section-title">What We Train</h2>
+                <div class="services-grid">
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-image">
+                            <img src="../../images/coaching/one-on-one-coaching.webp" alt="One-on-One Coaching">
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">Game Review</h3>
+                            <p class="service-description">
+                                We find the recurring decisions that cost you games and turn them into a practical training plan.
+                            </p>
+                            <a href="https://pawnisland.setmore.com/" class="btn-chess" target="_blank" rel="noopener noreferrer">Book Session</a>
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-image">
+                            <img src="../../images/coaching/group-coaching.webp" alt="Group Lessons">
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">Calculation and Habits</h3>
+                            <p class="service-description">
+                                Build a repeatable thinking process for candidate moves, evaluation, tactical vision, and time pressure.
+                            </p>
+                            <a href="mailto:info@pawnislandacademy.com" class="btn-chess">Ask a Question</a>
+                        </div>
+                    </div>
+
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="service-image">
+                            <img src="../../images/coaching/chess-camp.webp" alt="Chess Camps">
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">Tournament Preparation</h3>
+                            <p class="service-description">
+                                Prepare openings, endings, confidence, routines, and game plans for your next serious event.
+                            </p>
+                            <a href="about-me.html" class="btn-chess">Meet the Coach</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Approach Section -->
+            <section class="approach-section section" data-aos="fade-up">
+                <h2 class="section-title">Our Coaching Approach</h2>
+                <div class="container">
+                    <p class="cta-text" style="text-align: center; margin-bottom: 3rem;">
+                        We believe in developing complete chess players through a comprehensive, multi-faceted approach that addresses every aspect of the game.
+                    </p>
+                    <ul class="approach-list">
+                        <li data-aos="fade-right" data-aos-delay="100">
+                            <i class="fas fa-chess-knight"></i>
+                            <strong>Strategic Thinking:</strong> Learn how to create and execute long-term plans, control key squares, and understand positional advantages.
+                        </li>
+                        <li data-aos="fade-right" data-aos-delay="200">
+                            <i class="fas fa-chess-bishop"></i>
+                            <strong>Tactical Vision:</strong> Develop your ability to spot combinations, calculate accurately, and execute precise tactical strikes.
+                        </li>
+                        <li data-aos="fade-right" data-aos-delay="300">
+                            <i class="fas fa-chess-rook"></i>
+                            <strong>Endgame Technique:</strong> Master essential endgame principles, key positions, and conversion techniques for winning advantages.
+                        </li>
+                        <li data-aos="fade-right" data-aos-delay="400">
+                            <i class="fas fa-chess-queen"></i>
+                            <strong>Opening Preparation:</strong> Build a solid, coherent repertoire suited to your playing style and tournament goals.
+                        </li>
+                        <li data-aos="fade-right" data-aos-delay="500">
+                            <i class="fas fa-chess-king"></i>
+                            <strong>Psychological Resilience:</strong> Develop the mental strength to handle competitive pressure and maintain focus during critical moments.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section class="section" data-aos="fade-up">
+                <h2 class="section-title">What Our Students Say</h2>
+                <div id="testimonialContainer" class="testimonials-grid">
+                    <!-- Testimonials will be loaded dynamically -->
+                </div>
+                <div id="testimonialLoading" class="loading-container">
+                    <div class="loading-spinner" aria-label="Loading testimonials"></div>
+                </div>
+            </section>
+
+            <!-- Call to Action -->
+            <section class="cta-section section" data-aos="fade-up">
+                <div class="cta-content">
+                    <h2 class="cta-title">Ready to Improve Your Game?</h2>
+                    <p class="cta-text">Take the first step toward chess mastery with personalized coaching designed for your skill level and goals.</p>
+                    <a href="https://pawnisland.setmore.com/" class="btn-chess" target="_blank" rel="noopener noreferrer">Schedule Your First Session</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <!-- Custom Scripts -->
+    <script src="../../js/navbar-chess.js"></script>
+    <script src="../../js/footer.js"></script>
+    <script src="../../js/coaching.js"></script>
+    <script src="../../js/components/modernJumpToTop.js"></script>
+    <script src="../../js/script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS animations
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 100,
+                easing: 'ease-out-cubic'
+            });
+
+            // Initialize modern jump-to-top
+            createModernJumpToTop({
+                theme: 'gradient',
+                color: '#ffd700',
+                position: 'right',
+                size: 'medium',
+                shape: 'circle',
+                animation: 'bounce',
+                showAfter: 300,
+                zIndex: 1500,
+                accessibility: true
+            });
+
+        });
+    </script>
+</body>
+</html>
