@@ -217,17 +217,17 @@ textarea {
 }
 
 @media (min-width: 992px) {
-    .col-lg-5 {
+    .row > .col-lg-5 {
         flex: 0 0 41.666667%;
         max-width: 41.666667%;
     }
 
-    .col-lg-6 {
+    .row > .col-lg-6 {
         flex: 0 0 50%;
         max-width: 50%;
     }
 
-    .col-lg-7 {
+    .row > .col-lg-7 {
         flex: 0 0 58.333333%;
         max-width: 58.333333%;
     }

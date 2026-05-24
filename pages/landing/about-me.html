@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../../css/foundation.css">
+    <link rel="stylesheet" href="../../css/foundation.css?v=20260524-layout">
     <link rel="stylesheet" href="../../css/styles.css">
     <link rel="stylesheet" href="../../css/navbar-chess.css">
     <link rel="stylesheet" href="../../css/footer.css">
@@ -167,11 +167,11 @@
             display: flex;
             align-items: center;
             background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(45, 45, 45, 0.95) 100%),
-                        url('../../images/headers-pages/freeman-3.webp') center/cover;
+                        url('../../images/headers-pages/coach-2.webp') center/cover;
             overflow: hidden;
             margin: 0;
             padding: 0;
-            background-attachment: fixed;
+            background-attachment: scroll;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -285,8 +285,8 @@
                 min-height: 88vh;
                 min-height: 88dvh;
                 height: auto;
-                background-attachment: fixed;
-                padding-top: 0; /* Remove navbar padding on desktop for full centering */
+                background-attachment: scroll;
+                padding-top: var(--navbar-height-desktop, 90px);
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -1160,7 +1160,7 @@
                 <div class="col-lg-5" data-aos="fade-left">
                     <div class="profile-card">
                         <div class="profile-image">
-                            <img src="../../images/headers-pages/freeman-2.webp" alt="Chess coach studying a position at the board" width="512" height="512" fetchpriority="high" decoding="async">
+                            <img src="../../images/headers-pages/freeman-2.webp" alt="Matthew Freeman holding a chess championship trophy" width="512" height="512" fetchpriority="high" decoding="async">
                         </div>
                         <div class="achievement-badge">
                             <i class="fas fa-crown"></i> The King of Pawn Island
