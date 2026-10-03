@@ -1,7 +1,7 @@
 document.documentElement.classList.add('js');
 
 const SITE_BASE_PATH = getSiteBasePath();
-const SHELL_ASSET_VERSION = '20260524-hide-schedule';
+const SHELL_ASSET_VERSION = '20261003-remote';
 
 document.addEventListener('DOMContentLoaded', () => {
     void initializeSiteShell();
@@ -167,3 +167,4 @@ function ensureSkipLink() {
     skip.textContent = 'Skip to main content';
     document.body.prepend(skip);
 }
+
