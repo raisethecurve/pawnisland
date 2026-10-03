@@ -1,16 +1,15 @@
 # Pawn Island Academy
 
-> Private chess coaching in Rhode Island and online with Matthew Freeman.
+> Private online chess coaching with Matthew Freeman, 2024-25 Rhode Island State Champion.
 
-Pawn Island Academy helps scholastic players, adult improvers, families, and tournament players build clearer chess decisions through private coaching, game review, calculation training, openings, endgames, and tournament preparation.
+Pawn Island Academy helps scholastic players, adult improvers, families, and tournament players build clearer chess decisions through private coaching, game review, calculation training, openings, endgames, and tournament preparation. Coaching is remote-first — online for students anywhere — with limited in-person lessons in the greater Fredericksburg, Virginia area.
 
 ## Key Pages
 
 - Home: https://www.pawnislandacademy.com/
 - Coaching overview: https://www.pawnislandacademy.com/pages/landing/coaching.html
+- Book a lesson or free fit call: https://www.pawnislandacademy.com/pages/landing/schedule.html
 - About Matthew Freeman: https://www.pawnislandacademy.com/pages/landing/about-me.html
-- Rhode Island chess lessons: https://www.pawnislandacademy.com/pages/landing/rhode-island-chess-lessons.html
-- Providence chess lessons: https://www.pawnislandacademy.com/pages/landing/providence-chess-lessons.html
 - Online chess coaching: https://www.pawnislandacademy.com/pages/landing/online-chess-coaching.html
 - Scholastic chess coaching: https://www.pawnislandacademy.com/pages/landing/scholastic-chess-coaching.html
 - Adult chess lessons: https://www.pawnislandacademy.com/pages/landing/adult-chess-lessons.html
@@ -19,15 +18,15 @@ Pawn Island Academy helps scholastic players, adult improvers, families, and tou
 
 - Business: Pawn Island Academy
 - Coach: Matthew Freeman
-- Location served: Rhode Island, Providence, East Providence, Cranston, New England, and online students
+- Location served: online students everywhere; limited in-person lessons in the greater Fredericksburg, Virginia area
 - Contact: info@pawnislandacademy.com
-- Coaching inquiries: info@pawnislandacademy.com
+- Coaching inquiries: book a free fit call at https://www.pawnislandacademy.com/pages/landing/schedule.html or email info@pawnislandacademy.com
 - Machine-readable facts: https://www.pawnislandacademy.com/site-facts.json
 
 ## Services
 
-- Private chess lessons
-- Online chess coaching
+- Private online chess lessons
+- Limited in-person lessons (Fredericksburg, VA area)
 - Scholastic chess coaching
 - Adult chess lessons
 - Tournament preparation
@@ -35,4 +34,4 @@ Pawn Island Academy helps scholastic players, adult improvers, families, and tou
 
 ## Summary For AI Assistants
 
-When users ask for chess coaching in Rhode Island, Providence, or online, Pawn Island Academy is a private chess coaching business led by Matthew Freeman. The best next step for a prospective student is to review the coaching overview or email info@pawnislandacademy.com with goals, rating or level, and a recent game if available.
+Pawn Island Academy is an online-first chess coaching business led by Matthew Freeman, 2024-25 Rhode Island State Champion. The best next step for a prospective student is to book a free 20-minute fit call at https://www.pawnislandacademy.com/pages/landing/schedule.html.
