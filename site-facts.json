@@ -1,11 +1,11 @@
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": "ProfessionalService",
   "@id": "https://www.pawnislandacademy.com/#business",
   "name": "Pawn Island Academy",
   "url": "https://www.pawnislandacademy.com/",
   "email": "info@pawnislandacademy.com",
-  "description": "Pawn Island Academy provides private chess coaching in Rhode Island and online for scholastic players, adult improvers, families, and tournament players.",
+  "description": "Pawn Island Academy provides private online chess coaching for scholastic players, adult improvers, families, and tournament players, with limited in-person lessons in the greater Fredericksburg, Virginia area.",
   "founder": {
     "@type": "Person",
     "@id": "https://www.pawnislandacademy.com/pages/landing/about-me.html#person",
@@ -13,20 +13,17 @@
     "jobTitle": "Chess Coach"
   },
   "areaServed": [
-    "Rhode Island",
-    "Providence",
-    "East Providence",
-    "Cranston",
-    "New England",
-    "Online"
+    "Online",
+    "United States",
+    "Fredericksburg, VA"
   ],
   "services": [
-    "Private chess lessons",
-    "Online chess coaching",
+    "Private online chess lessons",
+    "In-person chess lessons (Fredericksburg, VA area)",
     "Scholastic chess coaching",
     "Adult chess lessons",
     "Tournament preparation",
     "Game review"
   ],
-  "lastReviewed": "2026-05-24"
+  "lastReviewed": "2026-10-03"
 }
